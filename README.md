@@ -1,2 +1,2 @@
-# KalturaGeneratedAPIClientsPHP
+# KalturaGeneratedAPIClientsPHP |build-status| |coverage-status|
 PHP auto generated clients libs which will then be built and test by Travis CI
