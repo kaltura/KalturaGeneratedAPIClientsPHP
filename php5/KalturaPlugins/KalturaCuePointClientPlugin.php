@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -44,16 +44,7 @@ class KalturaCuePointStatus
 	const READY = 1;
 	const DELETED = 2;
 	const HANDLED = 3;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaThumbCuePointSubType
-{
-	const SLIDE = 1;
-	const CHAPTER = 2;
+	const PENDING = 4;
 }
 
 /**
@@ -84,7 +75,6 @@ class KalturaCuePointType
 	const ANNOTATION = "annotation.Annotation";
 	const CODE = "codeCuePoint.Code";
 	const EVENT = "eventCuePoint.Event";
-	const THUMB = "thumbCuePoint.Thumb";
 }
 
 /**
@@ -453,6 +443,13 @@ abstract class KalturaCuePointBaseFilter extends KalturaFilter
  */
 class KalturaCuePointFilter extends KalturaCuePointBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $freeText = null;
+
 
 }
 

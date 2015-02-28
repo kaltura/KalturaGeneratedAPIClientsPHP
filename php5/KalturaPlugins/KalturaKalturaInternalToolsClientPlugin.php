@@ -39,162 +39,63 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTag extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $tag = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaTaggedObjectType
-	 * @readonly
-	 */
-	public $taggedObjectType = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $instanceCount = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaTagListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaTag
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaIndexTagsByPrivacyContextJobData extends KalturaJobData
+class KalturaInternalToolsSession extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $changedCategoryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $deletedPrivacyContexts = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $addedPrivacyContexts = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaTagFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaTaggedObjectType
-	 */
-	public $objectTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagStartsWith = null;
+	public $partner_id = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $instanceCountEqual = null;
+	public $valid_until = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partner_pattern = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaSessionType
+	 */
+	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $error = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $instanceCountIn = null;
+	public $rand = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $user = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privileges = null;
 
 
 }
@@ -204,7 +105,7 @@ class KalturaTagFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTagService extends KalturaServiceBase
+class KalturaKalturaInternalToolsSystemHelperService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
 	{
@@ -212,64 +113,57 @@ class KalturaTagService extends KalturaServiceBase
 	}
 
 	/**
+	 * KS from Secure String
 	 * 
-	 * 
-	 * @param KalturaTagFilter $tagFilter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaTagListResponse
+	 * @param string $str 
+	 * @return KalturaInternalToolsSession
 	 */
-	function search(KalturaTagFilter $tagFilter, KalturaFilterPager $pager = null)
+	function fromSecureString($str)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "tagFilter", $tagFilter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("tagsearch_tag", "search", $kparams);
+		$this->client->addParam($kparams, "str", $str);
+		$this->client->queueServiceActionCall("kalturainternaltools_kalturainternaltoolssystemhelper", "fromSecureString", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaTagListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaInternalToolsSession");
 		return $resultObject;
 	}
 
 	/**
-	 * Action goes over all tags with instanceCount==0 and checks whether they need to be removed from the DB. Returns number of removed tags.
+	 * From ip to country
 	 * 
-	 * @return int
+	 * @param string $remote_addr 
+	 * @return string
 	 */
-	function deletePending()
+	function iptocountry($remote_addr)
 	{
 		$kparams = array();
-		$this->client->queueServiceActionCall("tagsearch_tag", "deletePending", $kparams);
+		$this->client->addParam($kparams, "remote_addr", $remote_addr);
+		$this->client->queueServiceActionCall("kalturainternaltools_kalturainternaltoolssystemhelper", "iptocountry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 
 	/**
 	 * 
 	 * 
-	 * @param int $categoryId 
-	 * @param string $pcToDecrement 
-	 * @param string $pcToIncrement 
-	 * @return 
+	 * @return string
 	 */
-	function indexCategoryEntryTags($categoryId, $pcToDecrement, $pcToIncrement)
+	function getRemoteAddress()
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "categoryId", $categoryId);
-		$this->client->addParam($kparams, "pcToDecrement", $pcToDecrement);
-		$this->client->addParam($kparams, "pcToIncrement", $pcToIncrement);
-		$this->client->queueServiceActionCall("tagsearch_tag", "indexCategoryEntryTags", $kparams);
+		$this->client->queueServiceActionCall("kalturainternaltools_kalturainternaltoolssystemhelper", "getRemoteAddress", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 }
@@ -277,25 +171,25 @@ class KalturaTagService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTagSearchClientPlugin extends KalturaClientPlugin
+class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
 {
 	/**
-	 * @var KalturaTagService
+	 * @var KalturaKalturaInternalToolsSystemHelperService
 	 */
-	public $tag = null;
+	public $KalturaInternalToolsSystemHelper = null;
 
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->tag = new KalturaTagService($client);
+		$this->KalturaInternalToolsSystemHelper = new KalturaKalturaInternalToolsSystemHelperService($client);
 	}
 
 	/**
-	 * @return KalturaTagSearchClientPlugin
+	 * @return KalturaKalturaInternalToolsClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaTagSearchClientPlugin($client);
+		return new KalturaKalturaInternalToolsClientPlugin($client);
 	}
 
 	/**
@@ -304,7 +198,7 @@ class KalturaTagSearchClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'tag' => $this->tag,
+			'KalturaInternalToolsSystemHelper' => $this->KalturaInternalToolsSystemHelper,
 		);
 		return $services;
 	}
@@ -314,7 +208,7 @@ class KalturaTagSearchClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'tagSearch';
+		return 'KalturaInternalTools';
 	}
 }
 

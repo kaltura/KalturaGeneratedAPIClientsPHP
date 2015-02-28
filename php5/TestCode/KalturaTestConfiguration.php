@@ -28,9 +28,9 @@
 // ===================================================================================================
 class KalturaTestConfiguration
 {
-	const PARTNER_ID = 101;
-	const SECRET = "9c9f8d1cbb6bab63f3ac8450fcdb33f7";
-	const ADMIN_SECRET = "e068809c752fb5f311217eb3da3bc74d";
-	const SERVICE_URL = "http://54.159.220.35/";
+	const PARTNER_ID = @YOUR_PARTNER_ID@;
+	const SECRET = "@YOUR_USER_SECRET@";
+	const ADMIN_SECRET = "@YOUR_ADMIN_SECRET@";
+	const SERVICE_URL = "@SERVICE_URL@";
 	const UPLOAD_FILE = "DemoVideo.flv";	
 }

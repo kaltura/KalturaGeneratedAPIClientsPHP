@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -361,6 +361,16 @@ class KalturaGender
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaGroupUserStatus
+{
+	const ACTIVE = 0;
+	const DELETED = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaInheritanceType
 {
 	const INHERIT = 1;
@@ -679,6 +689,7 @@ class KalturaReportType
 	const OPERATION_SYSTEM = 22;
 	const BROWSERS = 23;
 	const LIVE = 24;
+	const TOP_PLAYBACK_CONTEXT = 25;
 	const PARTNER_USAGE = 201;
 }
 
@@ -916,6 +927,18 @@ class KalturaStorageProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaStorageServePriority
+{
+	const KALTURA_ONLY = 1;
+	const KALTURA_FIRST = 2;
+	const EXTERNAL_FIRST = 3;
+	const EXTERNAL_ONLY = 4;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSyndicationFeedStatus
 {
 	const DELETED = -1;
@@ -1000,6 +1023,7 @@ class KalturaUiConfObjType
 	const CLIPPER = 18;
 	const KSR = 19;
 	const KUPLOAD = 20;
+	const WEBCASTING = 21;
 }
 
 /**
@@ -1078,6 +1102,16 @@ class KalturaUserStatus
 	const BLOCKED = 0;
 	const ACTIVE = 1;
 	const DELETED = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserType
+{
+	const USER = 0;
+	const GROUP = 1;
 }
 
 /**
@@ -1242,8 +1276,6 @@ class KalturaAssetType
 	const IMAGE = "document.Image";
 	const PDF = "document.PDF";
 	const SWF = "document.SWF";
-	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
-	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
 	const FLAVOR = "1";
 	const THUMBNAIL = "2";
 	const LIVE = "3";
@@ -1351,21 +1383,19 @@ class KalturaBatchJobType
 {
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
-	const CONVERT = "0";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
+	const CONVERT = "0";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
-	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
-	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 	const IMPORT = "1";
 	const DELETE = "2";
 	const FLATTEN = "3";
@@ -1552,7 +1582,6 @@ class KalturaCategoryUserOrderBy
  */
 class KalturaConditionType
 {
-	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
 	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
 	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
 	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
@@ -1568,6 +1597,7 @@ class KalturaConditionType
 	const ASSET_PROPERTIES_COMPARE = "8";
 	const USER_ROLE = "9";
 	const GEO_DISTANCE = "10";
+	const OR_OPERATOR = "11";
 }
 
 /**
@@ -1839,8 +1869,6 @@ class KalturaDeliveryProfileType
 	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
 	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
 	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
-	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
-	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
 	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
 	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 	const APPLE_HTTP = "1";
@@ -1878,6 +1906,7 @@ class KalturaDeliveryProfileType
 	const VOD_PACKAGER_DASH = "68";
 	const LIVE_HLS = "1001";
 	const LIVE_HDS = "1002";
+	const LIVE_DASH = "1003";
 	const LIVE_RTMP = "1005";
 	const LIVE_AKAMAI_HDS = "1013";
 }
@@ -2121,6 +2150,18 @@ class KalturaGoogleVideoSyndicationFeedOrderBy
 	const NAME_DESC = "-name";
 	const PLAYLIST_ID_DESC = "-playlistId";
 	const TYPE_DESC = "-type";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaGroupUserOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -2691,6 +2732,17 @@ class KalturaLiveParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveReportOrderBy
+{
+	const AUDIENCE_DESC = "-audience";
+	const EVENT_TIME_DESC = "-eventTime";
+	const PLAYS_DESC = "-plays";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveReportType
 {
 	const ENTRY_GEO_TIME_LINE = "ENTRY_GEO_TIME_LINE";
@@ -2909,7 +2961,6 @@ class KalturaMediaInfoOrderBy
 class KalturaMediaParserType
 {
 	const MEDIAINFO = "0";
-	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
 	const FFMPEG = "1";
 }
 
@@ -3159,7 +3210,6 @@ class KalturaReportOrderBy
  */
 class KalturaRuleActionType
 {
-	const DRM_POLICY = "playReady.DRM_POLICY";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";
@@ -3199,7 +3249,6 @@ class KalturaSearchConditionComparison
  */
 class KalturaSourceType
 {
-	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
 	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
 	const WEBCAM = "2";
