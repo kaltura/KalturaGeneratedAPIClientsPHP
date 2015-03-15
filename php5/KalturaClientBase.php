@@ -1164,7 +1164,7 @@ class KalturaConfiguration
 	public $serviceUrl    				= "http://www.kaltura.com/";
 	public $partnerId    				= null;
 	public $format        				= 3;
-	public $clientTag 	  				= "php5:15-03-14";
+	public $clientTag 	  				= "php5:15-03-15";
 	public $curlTimeout   				= 120;
 	public $userAgent					= '';
 	public $startZendDebuggerSession 	= false;
