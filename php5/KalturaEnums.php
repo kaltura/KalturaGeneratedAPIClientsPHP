@@ -452,6 +452,16 @@ class KalturaLiveReportExportType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveStatsEventType
+{
+	const LIVE = 1;
+	const DVR = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMailJobStatus
 {
 	const PENDING = 1;
@@ -659,7 +669,8 @@ class KalturaPrivacyType
 class KalturaRecordStatus
 {
 	const DISABLED = 0;
-	const ENABLED = 1;
+	const APPENDED = 1;
+	const PER_SESSION = 2;
 }
 
 /**
@@ -1898,6 +1909,7 @@ class KalturaDeliveryProfileType
 	const LIMELIGHT_HTTP = "44";
 	const LIMELIGHT_RTMP = "45";
 	const LOCAL_PATH_APPLE_HTTP = "51";
+	const LOCAL_PATH_HDS = "53";
 	const LOCAL_PATH_HTTP = "54";
 	const LOCAL_PATH_RTMP = "55";
 	const VOD_PACKAGER_HLS = "61";
