@@ -4325,6 +4325,22 @@ abstract class KalturaObject extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaIntegerValue extends KalturaValue
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaJobData extends KalturaObjectBase
 {
 
@@ -6568,6 +6584,31 @@ class KalturaModerationFlagListResponse extends KalturaObjectBase
 	 * 
 	 *
 	 * @var array of KalturaModerationFlag
+	 * @readonly
+	 */
+	public $objects;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $totalCount = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaObjectListResponse extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaObject
 	 * @readonly
 	 */
 	public $objects;
@@ -12342,22 +12383,6 @@ class KalturaClipAttributes extends KalturaOperationAttributes
 	 * @var int
 	 */
 	public $duration = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaIntegerValue extends KalturaValue
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $value = null;
 
 
 }
