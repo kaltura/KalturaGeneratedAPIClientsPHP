@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -84,6 +84,7 @@ class KalturaObjectFilterEngineType
  */
 class KalturaObjectTaskType
 {
+	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
 	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
 	const EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt";
 	const DELETE_ENTRY = "1";
@@ -91,6 +92,7 @@ class KalturaObjectTaskType
 	const DELETE_ENTRY_FLAVORS = "3";
 	const CONVERT_ENTRY_FLAVORS = "4";
 	const DELETE_LOCAL_CONTENT = "5";
+	const STORAGE_EXPORT = "6";
 }
 
 /**
@@ -122,6 +124,13 @@ abstract class KalturaObjectTask extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $stopProcessingOnError = null;
 
 
 }
@@ -485,6 +494,23 @@ abstract class KalturaScheduledTaskProfileBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $lastExecutionStartedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaStorageExportObjectTask extends KalturaObjectTask
+{
+	/**
+	 * Storage profile id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $storageId = null;
 
 
 }

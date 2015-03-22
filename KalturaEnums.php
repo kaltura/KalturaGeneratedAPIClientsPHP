@@ -452,6 +452,16 @@ class KalturaLiveReportExportType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveStatsEventType
+{
+	const LIVE = 1;
+	const DVR = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMailJobStatus
 {
 	const PENDING = 1;
@@ -659,7 +669,8 @@ class KalturaPrivacyType
 class KalturaRecordStatus
 {
 	const DISABLED = 0;
-	const ENABLED = 1;
+	const APPENDED = 1;
+	const PER_SESSION = 2;
 }
 
 /**
@@ -1381,18 +1392,19 @@ class KalturaBatchJobOrderBy
  */
 class KalturaBatchJobType
 {
+	const CONVERT = "0";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
-	const CONVERT = "0";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
+	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
@@ -1898,6 +1910,7 @@ class KalturaDeliveryProfileType
 	const LIMELIGHT_HTTP = "44";
 	const LIMELIGHT_RTMP = "45";
 	const LOCAL_PATH_APPLE_HTTP = "51";
+	const LOCAL_PATH_HDS = "53";
 	const LOCAL_PATH_HTTP = "54";
 	const LOCAL_PATH_RTMP = "55";
 	const VOD_PACKAGER_HLS = "61";

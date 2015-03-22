@@ -35,21 +35,21 @@ require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 require_once(dirname(__FILE__) . "/KalturaScheduledTaskClientPlugin.php");
-require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDispatchEventNotificationObjectTask extends KalturaObjectTask
+class KalturaDistributeObjectTask extends KalturaObjectTask
 {
 	/**
-	 * The event notification template id to dispatch
+	 * Distribution profile id
 	 * 	 
 	 *
-	 * @var int
+	 * @var string
 	 */
-	public $eventNotificationTemplateId = null;
+	public $distributionProfileId = null;
 
 
 }
@@ -58,7 +58,7 @@ class KalturaDispatchEventNotificationObjectTask extends KalturaObjectTask
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduledTaskEventNotificationClientPlugin extends KalturaClientPlugin
+class KalturaScheduledTaskContentDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -66,11 +66,11 @@ class KalturaScheduledTaskEventNotificationClientPlugin extends KalturaClientPlu
 	}
 
 	/**
-	 * @return KalturaScheduledTaskEventNotificationClientPlugin
+	 * @return KalturaScheduledTaskContentDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaScheduledTaskEventNotificationClientPlugin($client);
+		return new KalturaScheduledTaskContentDistributionClientPlugin($client);
 	}
 
 	/**
@@ -88,7 +88,7 @@ class KalturaScheduledTaskEventNotificationClientPlugin extends KalturaClientPlu
 	 */
 	public function getName()
 	{
-		return 'scheduledTaskEventNotification';
+		return 'scheduledTaskContentDistribution';
 	}
 }
 

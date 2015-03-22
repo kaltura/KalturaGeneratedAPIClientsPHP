@@ -856,7 +856,7 @@ class KalturaBaseEntry extends KalturaObjectBase
 	public $adminTags = null;
 
 	/**
-	 * Categories with no entitlement that this entry belongs to.
+	 * Comma separated list of full names of categories to which this entry belongs. Only categories that don't have entitlement (privacy context) are listed, to retrieve the full list of categories, use the categoryEntry.list action. 
 	 * 	 
 	 *
 	 * @var string
@@ -864,7 +864,7 @@ class KalturaBaseEntry extends KalturaObjectBase
 	public $categories = null;
 
 	/**
-	 * Categories Ids of categories with no entitlement that this entry belongs to
+	 * Comma separated list of ids of categories to which this entry belongs. Only categories that don't have entitlement (privacy context) are listed, to retrieve the full list of categories, use the categoryEntry.list action. 
 	 * 	 
 	 *
 	 * @var string
@@ -4325,6 +4325,22 @@ abstract class KalturaObject extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaIntegerValue extends KalturaValue
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaJobData extends KalturaObjectBase
 {
 
@@ -4796,6 +4812,14 @@ class KalturaLiveReportExportParams extends KalturaObjectBase
 	 */
 	public $timeZoneOffset = null;
 
+	/**
+	 * Optional argument that allows controlling the prefix of the exported csv url
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $applicationUrlTemplate = null;
+
 
 }
 
@@ -4882,6 +4906,13 @@ class KalturaLiveStats extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $dvrAudience = null;
+
+	/**
+	 * 
+	 *
 	 * @var float
 	 */
 	public $avgBitrate = null;
@@ -4945,9 +4976,10 @@ class KalturaLiveStatsEvent extends KalturaObjectBase
 	public $entryId = null;
 
 	/**
-	 * 
+	 * an integer representing the type of event being sent from the player
+	 * 	 
 	 *
-	 * @var KalturaStatsEventType
+	 * @var KalturaLiveStatsEventType
 	 */
 	public $eventType = null;
 
@@ -4997,6 +5029,14 @@ class KalturaLiveStatsEvent extends KalturaObjectBase
 	 * @var bool
 	 */
 	public $isLive = null;
+
+	/**
+	 * the event start time as string
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $startTime = null;
 
 	/**
 	 * delivery type used for this stream
@@ -6544,6 +6584,31 @@ class KalturaModerationFlagListResponse extends KalturaObjectBase
 	 * 
 	 *
 	 * @var array of KalturaModerationFlag
+	 * @readonly
+	 */
+	public $objects;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $totalCount = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaObjectListResponse extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaObject
 	 * @readonly
 	 */
 	public $objects;
@@ -12326,22 +12391,6 @@ class KalturaClipAttributes extends KalturaOperationAttributes
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegerValue extends KalturaValue
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $value = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaCompareCondition extends KalturaCondition
 {
 	/**
@@ -13752,6 +13801,13 @@ class KalturaEntryLiveStats extends KalturaLiveStats
 	 * @var int
 	 */
 	public $peakAudience = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $peakDvrAudience = null;
 
 
 }
