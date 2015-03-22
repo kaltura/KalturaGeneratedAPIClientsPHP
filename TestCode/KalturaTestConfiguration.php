@@ -31,6 +31,6 @@ class KalturaTestConfiguration
 	const PARTNER_ID = 101;
 	const SECRET = "65b05dbdfc77b95ed4b21ff9b923d545";
 	const ADMIN_SECRET = "066439f83615896a16efce529b84fcfb";
-	const SERVICE_URL = "http://54.81.207.25";
+	const SERVICE_URL = "http://54.163.254.64";
 	const UPLOAD_FILE = "DemoVideo.flv";	
 }
