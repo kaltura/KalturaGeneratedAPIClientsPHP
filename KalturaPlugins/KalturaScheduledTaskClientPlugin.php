@@ -247,31 +247,6 @@ class KalturaScheduledTaskProfile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduledTaskProfileListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaScheduledTaskProfile
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaConvertEntryFlavorsObjectTask extends KalturaObjectTask
 {
 	/**
@@ -494,6 +469,23 @@ abstract class KalturaScheduledTaskProfileBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $lastExecutionStartedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaScheduledTaskProfileListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaScheduledTaskProfile
+	 * @readonly
+	 */
+	public $objects;
 
 
 }

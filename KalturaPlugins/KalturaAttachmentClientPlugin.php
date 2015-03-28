@@ -122,7 +122,7 @@ class KalturaAttachmentAsset extends KalturaAsset
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAttachmentAssetListResponse extends KalturaObjectBase
+class KalturaAttachmentAssetListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -131,14 +131,6 @@ class KalturaAttachmentAssetListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

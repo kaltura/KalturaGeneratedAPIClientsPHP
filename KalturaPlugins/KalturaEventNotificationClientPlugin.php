@@ -312,31 +312,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationTemplateListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaEventNotificationTemplate
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEventFieldCondition extends KalturaCondition
 {
 	/**
@@ -524,6 +499,23 @@ abstract class KalturaEventNotificationTemplateBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $updatedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEventNotificationTemplateListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaEventNotificationTemplate
+	 * @readonly
+	 */
+	public $objects;
 
 
 }

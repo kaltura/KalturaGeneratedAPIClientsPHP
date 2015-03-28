@@ -708,6 +708,27 @@ class KalturaReportType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaResponseProfileStatus
+{
+	const DISABLED = 1;
+	const ENABLED = 2;
+	const DELETED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResponseProfileType
+{
+	const INCLUDE_FIELDS = 1;
+	const EXCLUDE_FIELDS = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaResponseType
 {
 	const RESPONSE_TYPE_JSON = 1;
@@ -717,6 +738,21 @@ class KalturaResponseType
 	const RESPONSE_TYPE_HTML = 7;
 	const RESPONSE_TYPE_MRSS = 8;
 	const RESPONSE_TYPE_JSONP = 9;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSchedulerStatusType
+{
+	const RUNNING_BATCHES_COUNT = 1;
+	const RUNNING_BATCHES_CPU = 2;
+	const RUNNING_BATCHES_MEMORY = 3;
+	const RUNNING_BATCHES_NETWORK = 4;
+	const RUNNING_BATCHES_DISC_IO = 5;
+	const RUNNING_BATCHES_DISC_SPACE = 6;
+	const RUNNING_BATCHES_IS_RUNNING = 7;
 }
 
 /**
@@ -2981,18 +3017,6 @@ class KalturaMediaParserType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaServerOrderBy
-{
-	const CREATED_AT_ASC = "+createdAt";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const UPDATED_AT_DESC = "-updatedAt";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMixEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -3215,6 +3239,18 @@ class KalturaReportOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResponseProfileOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**

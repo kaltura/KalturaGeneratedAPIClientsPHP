@@ -724,29 +724,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSystemPartnerUsageListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaSystemPartnerUsageItem
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaSystemPartnerOveragedLimit extends KalturaSystemPartnerLimit
 {
 	/**
@@ -795,6 +772,22 @@ class KalturaSystemPartnerUsageFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $timezoneOffset = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSystemPartnerUsageListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaSystemPartnerUsageItem
+	 */
+	public $objects;
 
 
 }

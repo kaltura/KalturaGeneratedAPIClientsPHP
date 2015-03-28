@@ -86,7 +86,7 @@ class KalturaCaptionAssetItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionAssetItemListResponse extends KalturaObjectBase
+class KalturaCaptionAssetItemListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -95,14 +95,6 @@ class KalturaCaptionAssetItemListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

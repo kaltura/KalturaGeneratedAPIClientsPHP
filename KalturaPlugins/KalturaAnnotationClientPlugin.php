@@ -130,7 +130,7 @@ class KalturaAnnotation extends KalturaCuePoint
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAnnotationListResponse extends KalturaObjectBase
+class KalturaAnnotationListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -139,14 +139,6 @@ class KalturaAnnotationListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

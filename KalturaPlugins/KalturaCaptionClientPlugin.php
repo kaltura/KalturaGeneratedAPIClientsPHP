@@ -157,31 +157,6 @@ class KalturaCaptionAsset extends KalturaAsset
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionAssetListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaCaptionAsset
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaCaptionParams extends KalturaAssetParams
 {
 	/**
@@ -233,7 +208,24 @@ class KalturaCaptionParams extends KalturaAssetParams
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionParamsListResponse extends KalturaObjectBase
+class KalturaCaptionAssetListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaCaptionAsset
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCaptionParamsListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -242,14 +234,6 @@ class KalturaCaptionParamsListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

@@ -116,7 +116,7 @@ class KalturaExternalMediaEntry extends KalturaMediaEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaExternalMediaEntryListResponse extends KalturaObjectBase
+class KalturaExternalMediaEntryListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -125,14 +125,6 @@ class KalturaExternalMediaEntryListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

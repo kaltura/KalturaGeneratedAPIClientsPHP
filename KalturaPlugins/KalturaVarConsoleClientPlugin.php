@@ -224,7 +224,7 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPartnerUsageListResponse extends KalturaObjectBase
+class KalturaPartnerUsageListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -239,13 +239,6 @@ class KalturaPartnerUsageListResponse extends KalturaObjectBase
 	 * @var array of KalturaVarPartnerUsageItem
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $totalCount = null;
 
 
 }

@@ -171,31 +171,6 @@ class KalturaVirusScanProfile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusScanProfileListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaVirusScanProfile
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaParseCaptionAssetJobData extends KalturaJobData
 {
 	/**
@@ -348,6 +323,23 @@ abstract class KalturaVirusScanProfileBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $engineTypeIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVirusScanProfileListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaVirusScanProfile
+	 * @readonly
+	 */
+	public $objects;
 
 
 }

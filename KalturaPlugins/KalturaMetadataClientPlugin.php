@@ -212,31 +212,6 @@ class KalturaMetadata extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaMetadata
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMetadataProfile extends KalturaObjectBase
 {
 	/**
@@ -394,56 +369,6 @@ class KalturaMetadataProfileField extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataProfileFieldListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaMetadataProfileField
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMetadataProfileListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaMetadataProfile
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaImportMetadataJobData extends KalturaJobData
 {
 	/**
@@ -474,126 +399,15 @@ class KalturaImportMetadataJobData extends KalturaJobData
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaMetadataBaseFilter extends KalturaFilter
+class KalturaMetadataListResponse extends KalturaListResponse
 {
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var array of KalturaMetadata
+	 * @readonly
 	 */
-	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataProfileIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataProfileVersionEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataProfileVersionGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataProfileVersionLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaMetadataObjectType
-	 */
-	public $metadataObjectTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $objectIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $objectIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $versionEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $versionGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $versionLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaMetadataStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
+	public $objects;
 
 
 }
@@ -737,6 +551,40 @@ abstract class KalturaMetadataProfileBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataProfileFieldListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaMetadataProfileField
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMetadataProfileListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaMetadataProfile
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaTransformMetadataJobData extends KalturaJobData
 {
 	/**
@@ -853,6 +701,134 @@ class KalturaMatchMetadataCondition extends KalturaMatchCondition
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileVersionEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileVersionGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileVersionLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaMetadataObjectType
+	 */
+	public $metadataObjectTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $versionEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $versionGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $versionLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaMetadataStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMetadataFieldChangedCondition extends KalturaMatchCondition
 {
 	/**
@@ -903,15 +879,6 @@ class KalturaMetadataFieldChangedCondition extends KalturaMatchCondition
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataFilter extends KalturaMetadataBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMetadataProfileFilter extends KalturaMetadataProfileBaseFilter
 {
 
@@ -937,6 +904,15 @@ class KalturaMetadataSearchItem extends KalturaSearchOperator
 	 */
 	public $orderBy = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMetadataFilter extends KalturaMetadataBaseFilter
+{
 
 }
 

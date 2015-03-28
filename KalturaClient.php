@@ -6177,6 +6177,140 @@ class KalturaReportService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaResponseProfileService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Add new response profile
+	 * 
+	 * @param KalturaResponseProfile $addResponseProfile 
+	 * @return KalturaResponseProfile
+	 */
+	function add(KalturaResponseProfile $addResponseProfile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "addResponseProfile", $addResponseProfile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Get response profile by id
+	 * 
+	 * @param int $id 
+	 * @return KalturaResponseProfile
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("responseprofile", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update response profile by id
+	 * 
+	 * @param int $id 
+	 * @param KalturaResponseProfile $updateResponseProfile 
+	 * @return KalturaResponseProfile
+	 */
+	function update($id, KalturaResponseProfile $updateResponseProfile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "updateResponseProfile", $updateResponseProfile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update response profile status by id
+	 * 
+	 * @param int $id 
+	 * @param int $status 
+	 * @return KalturaResponseProfile
+	 */
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("responseprofile", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete response profile by id
+	 * 
+	 * @param int $id 
+	 * @return 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("responseprofile", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+
+	/**
+	 * List response profiles by filter and pager
+	 * 
+	 * @param KalturaResponseProfileFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaResponseProfileListResponse
+	 */
+	function listAction(KalturaResponseProfileFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfileListResponse");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSchemaService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -8502,11 +8636,6 @@ class KalturaXInternalService extends KalturaServiceBase
 class KalturaClient extends KalturaClientBase
 {
 	/**
-	 * @var string
-	 */
-	protected $apiVersion = '3.1.6';
-
-	/**
 	 * Manage access control profiles
 	 * @var KalturaAccessControlProfileService
 	 */
@@ -8714,6 +8843,12 @@ class KalturaClient extends KalturaClientBase
 	public $report = null;
 
 	/**
+	 * Manage response profiles
+	 * @var KalturaResponseProfileService
+	 */
+	public $responseProfile = null;
+
+	/**
 	 * Expose the schema definitions for syndication MRSS, bulk upload XML and other schema types.
 	 * @var KalturaSchemaService
 	 */
@@ -8827,6 +8962,9 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
+		$this->setClientTag('php5:15-03-23');
+		$this->setApiVersion('3.2.0');
+		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
 		$this->adminUser = new KalturaAdminUserService($this);
@@ -8861,6 +8999,7 @@ class KalturaClient extends KalturaClientBase
 		$this->permission = new KalturaPermissionService($this);
 		$this->playlist = new KalturaPlaylistService($this);
 		$this->report = new KalturaReportService($this);
+		$this->responseProfile = new KalturaResponseProfileService($this);
 		$this->schema = new KalturaSchemaService($this);
 		$this->search = new KalturaSearchService($this);
 		$this->session = new KalturaSessionService($this);
@@ -8878,6 +9017,148 @@ class KalturaClient extends KalturaClientBase
 		$this->user = new KalturaUserService($this);
 		$this->widget = new KalturaWidgetService($this);
 		$this->xInternal = new KalturaXInternalService($this);
+	}
+	
+	/**
+	 * @param string $clientTag
+	 */
+	public function setClientTag($clientTag)
+	{
+		$this->clientConfiguration['clientTag'] = $clientTag;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getClientTag()
+	{
+		if(isset($this->clientConfiguration['clientTag']))
+		{
+			return $this->clientConfiguration['clientTag'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * @param string $apiVersion
+	 */
+	public function setApiVersion($apiVersion)
+	{
+		$this->clientConfiguration['apiVersion'] = $apiVersion;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getApiVersion()
+	{
+		if(isset($this->clientConfiguration['apiVersion']))
+		{
+			return $this->clientConfiguration['apiVersion'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @param int $partnerId
+	 */
+	public function setPartnerId($partnerId)
+	{
+		$this->requestConfiguration['partnerId'] = $partnerId;
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @return int
+	 */
+	public function getPartnerId()
+	{
+		if(isset($this->requestConfiguration['partnerId']))
+		{
+			return $this->requestConfiguration['partnerId'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param string $ks
+	 */
+	public function setKs($ks)
+	{
+		$this->requestConfiguration['ks'] = $ks;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return string
+	 */
+	public function getKs()
+	{
+		if(isset($this->requestConfiguration['ks']))
+		{
+			return $this->requestConfiguration['ks'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param string $sessionId
+	 */
+	public function setSessionId($sessionId)
+	{
+		$this->requestConfiguration['ks'] = $sessionId;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return string
+	 */
+	public function getSessionId()
+	{
+		if(isset($this->requestConfiguration['ks']))
+		{
+			return $this->requestConfiguration['ks'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @param KalturaBaseResponseProfile $responseProfile
+	 */
+	public function setResponseProfile(KalturaBaseResponseProfile $responseProfile)
+	{
+		$this->requestConfiguration['responseProfile'] = $responseProfile;
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @return KalturaBaseResponseProfile
+	 */
+	public function getResponseProfile()
+	{
+		if(isset($this->requestConfiguration['responseProfile']))
+		{
+			return $this->requestConfiguration['responseProfile'];
+		}
+		
+		return null;
 	}
 	
 }

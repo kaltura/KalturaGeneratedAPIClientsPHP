@@ -171,7 +171,7 @@ class KalturaDocumentEntry extends KalturaBaseEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentListResponse extends KalturaObjectBase
+class KalturaDocumentListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -180,14 +180,6 @@ class KalturaDocumentListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }
@@ -288,43 +280,6 @@ class KalturaSwfFlavorParams extends KalturaFlavorParams
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaDocumentEntryBaseFilter extends KalturaBaseEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaDocumentType
-	 */
-	public $documentTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $documentTypeIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $assetParamsIdsMatchOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $assetParamsIdsMatchAnd = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaDocumentFlavorParamsOutput extends KalturaFlavorParamsOutput
 {
 
@@ -409,6 +364,43 @@ class KalturaSwfFlavorParamsOutput extends KalturaFlavorParamsOutput
 	 * @var bool
 	 */
 	public $poly2Bitmap = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaDocumentEntryBaseFilter extends KalturaBaseEntryFilter
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDocumentType
+	 */
+	public $documentTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $documentTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetParamsIdsMatchOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetParamsIdsMatchAnd = null;
 
 
 }

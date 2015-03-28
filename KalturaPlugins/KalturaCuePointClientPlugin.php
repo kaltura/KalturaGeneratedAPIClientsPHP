@@ -211,7 +211,7 @@ abstract class KalturaCuePoint extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCuePointListResponse extends KalturaObjectBase
+class KalturaCuePointListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -221,14 +221,6 @@ class KalturaCuePointListResponse extends KalturaObjectBase
 	 */
 	public $objects;
 
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
 
 }
 
@@ -236,7 +228,7 @@ class KalturaCuePointListResponse extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaCuePointBaseFilter extends KalturaFilter
+abstract class KalturaCuePointBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 

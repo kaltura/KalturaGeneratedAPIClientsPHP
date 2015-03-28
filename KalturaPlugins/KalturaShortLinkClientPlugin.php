@@ -147,31 +147,6 @@ class KalturaShortLink extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaShortLinkListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaShortLink
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaShortLinkBaseFilter extends KalturaFilter
 {
 	/**
@@ -285,6 +260,23 @@ abstract class KalturaShortLinkBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $statusIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaShortLinkListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaShortLink
+	 * @readonly
+	 */
+	public $objects;
 
 
 }

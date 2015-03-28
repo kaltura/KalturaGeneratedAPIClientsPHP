@@ -696,56 +696,6 @@ class KalturaDropFolderFile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaDropFolderFile
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDropFolderListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaDropFolder
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaDropFolderBaseFilter extends KalturaFilter
 {
 	/**
@@ -1226,6 +1176,40 @@ abstract class KalturaDropFolderFileBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $updatedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDropFolderFileListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaDropFolderFile
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDropFolderListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaDropFolder
+	 * @readonly
+	 */
+	public $objects;
 
 
 }

@@ -194,31 +194,6 @@ class KalturaTrackEntry extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTrackEntryListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaTrackEntry
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaUiConfAdmin extends KalturaUiConf
 {
 	/**
@@ -235,7 +210,24 @@ class KalturaUiConfAdmin extends KalturaUiConf
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfAdminListResponse extends KalturaObjectBase
+class KalturaTrackEntryListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaTrackEntry
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUiConfAdminListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -244,14 +236,6 @@ class KalturaUiConfAdminListResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

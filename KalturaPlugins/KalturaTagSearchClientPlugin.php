@@ -104,31 +104,6 @@ class KalturaTag extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTagListResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaTag
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaIndexTagsByPrivacyContextJobData extends KalturaJobData
 {
 	/**
@@ -195,6 +170,23 @@ class KalturaTagFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $instanceCountIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTagListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaTag
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
