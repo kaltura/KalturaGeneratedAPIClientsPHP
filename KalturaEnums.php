@@ -2783,6 +2783,7 @@ class KalturaLiveParamsOrderBy
  */
 class KalturaLiveReportOrderBy
 {
+	const NAME_ASC = "+name";
 	const AUDIENCE_DESC = "-audience";
 	const EVENT_TIME_DESC = "-eventTime";
 	const PLAYS_DESC = "-plays";

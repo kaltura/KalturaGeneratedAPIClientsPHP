@@ -81,6 +81,7 @@ class KalturaMetadataObjectType
 	const CATEGORY = "2";
 	const USER = "3";
 	const PARTNER = "4";
+	const DYNAMIC_OBJECT = "5";
 }
 
 /**
@@ -739,7 +740,8 @@ abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter
 	public $metadataProfileVersionLessThanOrEqual = null;
 
 	/**
-	 * 
+	 * When null, default is KalturaMetadataObjectType::ENTRY
+	 * 	 
 	 *
 	 * @var KalturaMetadataObjectType
 	 */
@@ -1155,6 +1157,27 @@ class KalturaMetadataService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+
+	/**
+	 * Index metadata by id, will also index the related object
+	 * 
+	 * @param string $id 
+	 * @param bool $shouldUpdate 
+	 * @return int
+	 */
+	function index($id, $shouldUpdate)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
+		$this->client->queueServiceActionCall("metadata_metadata", "index", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
 		return $resultObject;
 	}
 

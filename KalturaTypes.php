@@ -10349,6 +10349,13 @@ class KalturaAmazonS3StorageProfile extends KalturaStorageProfile
 	 */
 	public $filesPermissionInS3 = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $s3Region = null;
+
 
 }
 
@@ -18483,6 +18490,13 @@ class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData
 	 * @var KalturaAmazonS3StorageProfileFilesPermissionLevel
 	 */
 	public $filesPermissionInS3 = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $s3Region = null;
 
 
 }
