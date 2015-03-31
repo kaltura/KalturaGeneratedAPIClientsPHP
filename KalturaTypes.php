@@ -15724,6 +15724,29 @@ class KalturaUrlTokenizerBitGravity extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $keyPairId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $rootDir = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlTokenizerLevel3 extends KalturaUrlTokenizer
 {
 	/**

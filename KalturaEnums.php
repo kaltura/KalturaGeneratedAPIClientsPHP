@@ -1663,6 +1663,7 @@ class KalturaContainerFormat
 	const HLS = "hls";
 	const ISMV = "ismv";
 	const JPG = "jpg";
+	const M2TS = "m2ts";
 	const M4V = "m4v";
 	const MKV = "mkv";
 	const MOV = "mov";
@@ -1670,6 +1671,7 @@ class KalturaContainerFormat
 	const MP4 = "mp4";
 	const MPEG = "mpeg";
 	const MPEGTS = "mpegts";
+	const MXF = "mxf";
 	const OGG = "ogg";
 	const OGV = "ogv";
 	const PDF = "pdf";
