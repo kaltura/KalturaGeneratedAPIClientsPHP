@@ -3431,6 +3431,13 @@ class KalturaResponseProfileMapping extends KalturaObjectBase
 	 */
 	public $filterProperty = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowNull = null;
+
 
 }
 

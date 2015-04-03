@@ -586,6 +586,15 @@ class KalturaMetadataProfileListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataResponseProfileMapping extends KalturaResponseProfileMapping
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaTransformMetadataJobData extends KalturaJobData
 {
 	/**
