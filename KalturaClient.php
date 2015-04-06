@@ -2938,14 +2938,17 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 	 * @param string $id 
 	 * @param int $storageId 
 	 * @param bool $forceProxy 
+	 * @param KalturaFlavorAssetUrlOptions $options 
 	 * @return string
 	 */
-	function getUrl($id, $storageId = null, $forceProxy = false)
+	function getUrl($id, $storageId = null, $forceProxy = false, KalturaFlavorAssetUrlOptions $options = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "storageId", $storageId);
 		$this->client->addParam($kparams, "forceProxy", $forceProxy);
+		if ($options !== null)
+			$this->client->addParam($kparams, "options", $options->toParams());
 		$this->client->queueServiceActionCall("flavorasset", "getUrl", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

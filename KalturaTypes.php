@@ -4122,6 +4122,23 @@ class KalturaFlavorAsset extends KalturaAsset
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaFlavorAssetUrlOptions extends KalturaObjectBase
+{
+	/**
+	 * The name of the downloaded file
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $fileName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFlavorParams extends KalturaAssetParams
 {
 	/**
