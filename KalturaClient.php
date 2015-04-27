@@ -2185,7 +2185,7 @@ class KalturaDocumentService extends KalturaServiceBase
 	 * @param string $entryId Document entry id
 	 * @param int $conversionProfileId 
 	 * @param array $dynamicConversionAttributes 
-	 * @return int
+	 * @return bigint
 	 */
 	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
 	{
@@ -2202,7 +2202,7 @@ class KalturaDocumentService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "bigint");
 		return $resultObject;
 	}
 
@@ -4462,7 +4462,7 @@ class KalturaMediaService extends KalturaServiceBase
 	 * @param string $entryId Media entry id
 	 * @param int $conversionProfileId 
 	 * @param array $dynamicConversionAttributes 
-	 * @return int
+	 * @return bigint
 	 */
 	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
 	{
@@ -4479,7 +4479,7 @@ class KalturaMediaService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "bigint");
 		return $resultObject;
 	}
 
@@ -5855,9 +5855,10 @@ class KalturaPlaylistService extends KalturaServiceBase
 	 * @param string $detailed 
 	 * @param KalturaContext $playlistContext 
 	 * @param KalturaMediaEntryFilterForPlaylist $filter 
+	 * @param KalturaFilterPager $pager 
 	 * @return array
 	 */
-	function execute($id, $detailed = "", KalturaContext $playlistContext = null, KalturaMediaEntryFilterForPlaylist $filter = null)
+	function execute($id, $detailed = "", KalturaContext $playlistContext = null, KalturaMediaEntryFilterForPlaylist $filter = null, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
@@ -5866,6 +5867,8 @@ class KalturaPlaylistService extends KalturaServiceBase
 			$this->client->addParam($kparams, "playlistContext", $playlistContext->toParams());
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "execute", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -5881,14 +5884,17 @@ class KalturaPlaylistService extends KalturaServiceBase
 	 * @param int $playlistType 
 	 * @param string $playlistContent 
 	 * @param string $detailed 
+	 * @param KalturaFilterPager $pager 
 	 * @return array
 	 */
-	function executeFromContent($playlistType, $playlistContent, $detailed = "")
+	function executeFromContent($playlistType, $playlistContent, $detailed = "", KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "playlistType", $playlistType);
 		$this->client->addParam($kparams, "playlistContent", $playlistContent);
 		$this->client->addParam($kparams, "detailed", $detailed);
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "executeFromContent", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -5904,9 +5910,10 @@ class KalturaPlaylistService extends KalturaServiceBase
 	 * @param array $filters 
 	 * @param int $totalResults 
 	 * @param string $detailed 
+	 * @param KalturaFilterPager $pager 
 	 * @return array
 	 */
-	function executeFromFilters(array $filters, $totalResults, $detailed = "")
+	function executeFromFilters(array $filters, $totalResults, $detailed = "1", KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
 		foreach($filters as $index => $obj)
@@ -5915,6 +5922,8 @@ class KalturaPlaylistService extends KalturaServiceBase
 		}
 		$this->client->addParam($kparams, "totalResults", $totalResults);
 		$this->client->addParam($kparams, "detailed", $detailed);
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "executeFromFilters", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

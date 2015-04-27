@@ -643,7 +643,7 @@ class KalturaDocumentsService extends KalturaServiceBase
 	 * @param string $entryId Document entry id
 	 * @param int $conversionProfileId 
 	 * @param array $dynamicConversionAttributes 
-	 * @return int
+	 * @return bigint
 	 */
 	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
 	{
@@ -660,7 +660,7 @@ class KalturaDocumentsService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "bigint");
 		return $resultObject;
 	}
 

@@ -12729,85 +12729,6 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaDetachedResponseProfileFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaResponseProfileStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaDirectoryRestriction extends KalturaBaseRestriction
 {
 	/**
@@ -14838,6 +14759,85 @@ class KalturaReportListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaResponseProfileBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaResponseProfileStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
 
 
 }
@@ -18218,7 +18218,7 @@ class KalturaReportFilter extends KalturaReportBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaResponseProfileFilter extends KalturaDetachedResponseProfileFilter
+class KalturaResponseProfileFilter extends KalturaResponseProfileBaseFilter
 {
 
 }
