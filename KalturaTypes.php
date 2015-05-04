@@ -444,6 +444,29 @@ class KalturaAccessControlScope extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaApiExceptionArg extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAsset extends KalturaObjectBase
 {
 	/**
@@ -3301,6 +3324,14 @@ class KalturaDeliveryProfile extends KalturaObjectBase
 	 * @var string
 	 */
 	public $mediaProtocols = null;
+
+	/**
+	 * priority used for ordering similar delivery profiles
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $priority = null;
 
 
 }
