@@ -103,6 +103,36 @@ class KalturaCaptionAssetItemListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryCaptionAssetSearchItem extends KalturaSearchItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeAnd = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCaptionAssetItemFilter extends KalturaCaptionAssetFilter
 {
 	/**

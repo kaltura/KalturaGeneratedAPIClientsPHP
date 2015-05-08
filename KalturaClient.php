@@ -8974,7 +8974,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-05-07');
+		$this->setClientTag('php5:15-05-08');
 		$this->setApiVersion('3.2.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9173,5 +9173,13 @@ class KalturaClient extends KalturaClientBase
 		return null;
 	}
 	
+	/**
+	 * Clear all volatile configuration parameters
+	 */
+	protected function resetRequest()
+	{
+		parent::resetRequest();
+		unset($this->requestConfiguration['responseProfile']);
+	}
 }
 
