@@ -123,6 +123,22 @@ class KalturaAnnotation extends KalturaCuePoint
 	 */
 	public $directChildrenCount = null;
 
+	/**
+	 * Is the annotation public.
+	 * 	 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isPublic = null;
+
+	/**
+	 * Should the cue point get indexed on the entry.
+	 * 	 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $searchableOnEntry = null;
+
 
 }
 
@@ -211,6 +227,13 @@ abstract class KalturaAnnotationBaseFilter extends KalturaCuePointFilter
 	 * @var int
 	 */
 	public $durationLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isPublicEqual = null;
 
 
 }
