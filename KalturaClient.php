@@ -2202,7 +2202,7 @@ class KalturaDocumentService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "bigint");
+		$this->client->validateObjectType($resultObject, "double");
 		return $resultObject;
 	}
 
@@ -4479,7 +4479,7 @@ class KalturaMediaService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "bigint");
+		$this->client->validateObjectType($resultObject, "double");
 		return $resultObject;
 	}
 
