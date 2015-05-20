@@ -995,7 +995,7 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 * 	 
 	 *
 	 * @var string
-	 * @insertonly
+	 * @readonly
 	 */
 	public $thumbnailUrl = null;
 
@@ -7518,6 +7518,15 @@ class KalturaPlaylist extends KalturaBaseEntry
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPluginData extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaRemotePath extends KalturaObjectBase
 {
 	/**
@@ -12777,6 +12786,24 @@ class KalturaDirectoryRestriction extends KalturaBaseRestriction
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDrmEntryContextPluginData extends KalturaPluginData
+{
+	/**
+	 * For the uDRM we give the drm context data which is a json encoding of an array containing the uDRM data
+	 *      for each flavor that is required from this getContextData request.
+	 *      
+	 *
+	 * @var string
+	 */
+	public $flavorData = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaCategoryUserBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -13324,6 +13351,14 @@ class KalturaEntryContextDataResult extends KalturaContextDataResult
 	 * @var array of KalturaFlavorAsset
 	 */
 	public $flavorAssets;
+
+	/**
+	 * Array of allowed flavor assets according to access control limitations and requested tags
+	 *      
+	 *
+	 * @var map
+	 */
+	public $pluginData;
 
 
 }
