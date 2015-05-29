@@ -10321,6 +10321,30 @@ class KalturaAccessControlBlockAction extends KalturaRuleAction
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlLimitDeliveryProfilesAction extends KalturaRuleAction
+{
+	/**
+	 * Comma separated list of delivery profile ids 
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $deliveryProfileIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isBlockedList = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAccessControlLimitFlavorsAction extends KalturaRuleAction
 {
 	/**
