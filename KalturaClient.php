@@ -2436,6 +2436,119 @@ class KalturaDocumentService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEdgeServerService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Adds a edge server to the Kaltura DB.
+	 * 
+	 * @param KalturaEdgeServer $edgeServer Sto
+	 * @return KalturaEdgeServer
+	 */
+	function add(KalturaEdgeServer $edgeServer)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "edgeServer", $edgeServer->toParams());
+		$this->client->queueServiceActionCall("edgeserver", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
+		return $resultObject;
+	}
+
+	/**
+	 * Get edge server by id
+	 * 
+	 * @param int $edgeServerId 
+	 * @return KalturaEdgeServer
+	 */
+	function get($edgeServerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
+		$this->client->queueServiceActionCall("edgeserver", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
+		return $resultObject;
+	}
+
+	/**
+	 * Update edge server by id
+	 * 
+	 * @param int $edgeServerId 
+	 * @param KalturaEdgeServer $edgeServer Id
+	 * @return KalturaEdgeServer
+	 */
+	function update($edgeServerId, KalturaEdgeServer $edgeServer)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
+		$this->client->addParam($kparams, "edgeServer", $edgeServer->toParams());
+		$this->client->queueServiceActionCall("edgeserver", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete edge server by id
+	 * 
+	 * @param string $edgeServerId 
+	 * @return 
+	 */
+	function delete($edgeServerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
+		$this->client->queueServiceActionCall("edgeserver", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaEdgeServerFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaEdgeServerListResponse
+	 */
+	function listAction(KalturaEdgeServerFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("edgeserver", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEdgeServerListResponse");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEmailIngestionProfileService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -8727,6 +8840,12 @@ class KalturaClient extends KalturaClientBase
 	public $document = null;
 
 	/**
+	 * Edge Server service
+	 * @var KalturaEdgeServerService
+	 */
+	public $edgeServer = null;
+
+	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
 	 * @var KalturaEmailIngestionProfileService
 	 */
@@ -8990,6 +9109,7 @@ class KalturaClient extends KalturaClientBase
 		$this->data = new KalturaDataService($this);
 		$this->deliveryProfile = new KalturaDeliveryProfileService($this);
 		$this->document = new KalturaDocumentService($this);
+		$this->edgeServer = new KalturaEdgeServerService($this);
 		$this->EmailIngestionProfile = new KalturaEmailIngestionProfileService($this);
 		$this->fileAsset = new KalturaFileAssetService($this);
 		$this->flavorAsset = new KalturaFlavorAssetService($this);

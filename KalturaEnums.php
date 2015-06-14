@@ -272,6 +272,17 @@ class KalturaDirectoryRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEdgeServerStatus
+{
+	const ACTIVE = 1;
+	const DISABLED = 2;
+	const DELETED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEditorType
 {
 	const SIMPLE = 1;
@@ -1429,6 +1440,7 @@ class KalturaBatchJobOrderBy
 class KalturaBatchJobType
 {
 	const CONVERT = "0";
+	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
@@ -1646,6 +1658,7 @@ class KalturaConditionType
 	const USER_ROLE = "9";
 	const GEO_DISTANCE = "10";
 	const OR_OPERATOR = "11";
+	const HASH = "12";
 }
 
 /**
@@ -1661,6 +1674,7 @@ class KalturaContainerFormat
 	const COPY = "copy";
 	const FLV = "flv";
 	const HLS = "hls";
+	const ISMA = "isma";
 	const ISMV = "ismv";
 	const JPG = "jpg";
 	const M2TS = "m2ts";
@@ -1980,6 +1994,18 @@ class KalturaDurationType
  */
 class KalturaDynamicEnum
 {
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEdgeServerOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
@@ -2411,6 +2437,7 @@ class KalturaLanguage
 	const MR = "Marathi";
 	const MO = "Moldavian";
 	const MN = "Mongolian";
+	const MU = "Multilingual";
 	const NA = "Nauru";
 	const NE = "Nepali";
 	const NO = "Norwegian";
@@ -2465,8 +2492,8 @@ class KalturaLanguage
 	const CY = "Welsh";
 	const WO = "Wolof";
 	const XH = "Xhosa";
-	const YI = "Yiddish";
 	const JI = "Yiddish";
+	const YI = "Yiddish";
 	const YO = "Yoruba";
 	const ZU = "Zulu";
 }
@@ -2560,6 +2587,7 @@ class KalturaLanguageCode
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
+	const MU = "multilingual";
 	const MY = "my";
 	const NA = "na";
 	const NE = "ne";

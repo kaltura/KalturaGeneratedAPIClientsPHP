@@ -150,6 +150,15 @@ class KalturaCaptionAsset extends KalturaAsset
 	 */
 	public $status = null;
 
+	/**
+	 * The parent id of the asset
+	 * 	 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $parentId = null;
+
 
 }
 
@@ -234,6 +243,36 @@ class KalturaCaptionParamsListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaParseMultiLanguageCaptionAssetJobData extends KalturaJobData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $multiLanaguageCaptionAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileLocation = null;
 
 
 }

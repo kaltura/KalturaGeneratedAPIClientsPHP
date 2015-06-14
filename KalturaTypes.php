@@ -3536,6 +3536,118 @@ class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEdgeServer extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * edgeServer name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * edgeServer uniqe system name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $systemName = null;
+
+	/**
+	 * edgeServer description
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $desciption = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEdgeServerStatus
+	 */
+	public $status = null;
+
+	/**
+	 * edgeServer tags
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
+
+	/**
+	 * edgeServer host name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hostName = null;
+
+	/**
+	 * edgeServer playback hostName
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $playbackHostName = null;
+
+	/**
+	 * Delivery profile ids comma seperated
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $deliveryProfileIds = null;
+
+	/**
+	 * Id of the parent edge server
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $parentId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -12828,6 +12940,193 @@ class KalturaDrmEntryContextPluginData extends KalturaPluginData
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaEdgeServerBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nameIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEdgeServerStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackHostNameLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackHostNameMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackHostNameMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $parentIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEdgeServerListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaStorageProfile
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaCategoryUserBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -13621,6 +13920,31 @@ class KalturaGroupUserListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaHashCondition extends KalturaCondition
+{
+	/**
+	 * hash name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hashName = null;
+
+	/**
+	 * hash secret
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hashSecret = null;
 
 
 }
@@ -17335,6 +17659,15 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
 	 */
 	public $rendererClass = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEdgeServerFilter extends KalturaEdgeServerBaseFilter
+{
 
 }
 
