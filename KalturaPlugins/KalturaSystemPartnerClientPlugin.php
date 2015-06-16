@@ -141,6 +141,13 @@ class KalturaSystemPartnerConfiguration extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
+	public $cdnHostWhiteList = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $thumbnailHost = null;
 
 	/**
