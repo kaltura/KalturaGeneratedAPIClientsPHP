@@ -1186,6 +1186,19 @@ class KalturaWidgetSecurityType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlActionType
+{
+	const BLOCK = "1";
+	const PREVIEW = "2";
+	const LIMIT_FLAVORS = "3";
+	const ADD_TO_STORAGE = "4";
+	const LIMIT_DELIVERY_PROFILES = "5";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAccessControlOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -3256,6 +3269,20 @@ class KalturaPlaylistOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaQuizUserEntryOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const SCORE_ASC = "+score";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const SCORE_DESC = "-score";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReportInterval
 {
 	const DAYS = "days";
@@ -3485,6 +3512,28 @@ class KalturaUploadTokenOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserEntryOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserEntryStatus
+{
+	const ACTIVE = "1";
+	const DELETED = "2";
 }
 
 /**

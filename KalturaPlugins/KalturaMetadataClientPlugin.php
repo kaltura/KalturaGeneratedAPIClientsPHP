@@ -322,6 +322,13 @@ class KalturaMetadataProfile extends KalturaObjectBase
 	 */
 	public $createMode = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $disableReIndexing = null;
+
 
 }
 
@@ -667,6 +674,22 @@ class KalturaCompareMetadataCondition extends KalturaCompareCondition
 	 * @var string
 	 */
 	public $profileSystemName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDynamicObjectSearchItem extends KalturaSearchOperator
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $field = null;
 
 
 }

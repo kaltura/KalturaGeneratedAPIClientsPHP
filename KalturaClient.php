@@ -8078,6 +8078,118 @@ class KalturaUploadTokenService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUserEntryService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Adds a user_entry to the Kaltura DB.
+	 * 
+	 * @param KalturaUserEntry $userEntry 
+	 * @return KalturaUserEntry
+	 */
+	function add(KalturaUserEntry $userEntry)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userEntry", $userEntry->toParams());
+		$this->client->queueServiceActionCall("userentry", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $id 
+	 * @param KalturaUserEntry $userEntry 
+	 * @return 
+	 */
+	function update($id, KalturaUserEntry $userEntry)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "userEntry", $userEntry->toParams());
+		$this->client->queueServiceActionCall("userentry", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $id 
+	 * @return KalturaUserEntry
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("userentry", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaUserEntryFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaUserEntryListResponse
+	 */
+	function listAction(KalturaUserEntryFilter $filter, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("userentry", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserEntryListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $id 
+	 * @return KalturaUserEntry
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("userentry", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserEntry");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserRoleService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -9060,6 +9172,12 @@ class KalturaClient extends KalturaClientBase
 	public $uploadToken = null;
 
 	/**
+	 * 
+	 * @var KalturaUserEntryService
+	 */
+	public $userEntry = null;
+
+	/**
 	 * UserRole service lets you create and manage user roles
 	 * @var KalturaUserRoleService
 	 */
@@ -9145,6 +9263,7 @@ class KalturaClient extends KalturaClientBase
 		$this->uiConf = new KalturaUiConfService($this);
 		$this->upload = new KalturaUploadService($this);
 		$this->uploadToken = new KalturaUploadTokenService($this);
+		$this->userEntry = new KalturaUserEntryService($this);
 		$this->userRole = new KalturaUserRoleService($this);
 		$this->user = new KalturaUserService($this);
 		$this->widget = new KalturaWidgetService($this);
