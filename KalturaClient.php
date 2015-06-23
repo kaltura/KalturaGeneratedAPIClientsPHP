@@ -8184,6 +8184,25 @@ class KalturaUserEntryService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaUserEntry");
 		return $resultObject;
 	}
+
+	/**
+	 * Submits the quiz so that it's status will be submitted and calculates the score for the quiz
+	 * 
+	 * @param int $id 
+	 * @return KalturaQuizUserEntry
+	 */
+	function submitQuiz($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("userentry", "submitQuiz", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuizUserEntry");
+		return $resultObject;
+	}
 }
 
 /**

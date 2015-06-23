@@ -1193,6 +1193,7 @@ class KalturaAccessControlActionType
 	const LIMIT_FLAVORS = "3";
 	const ADD_TO_STORAGE = "4";
 	const LIMIT_DELIVERY_PROFILES = "5";
+	const SERVE_FROM_REMOTE_SERVER = "6";
 }
 
 /**
@@ -3272,10 +3273,8 @@ class KalturaPlaylistOrderBy
 class KalturaQuizUserEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const SCORE_ASC = "+score";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const SCORE_DESC = "-score";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -3322,6 +3321,7 @@ class KalturaRuleActionType
 	const LIMIT_FLAVORS = "3";
 	const ADD_TO_STORAGE = "4";
 	const LIMIT_DELIVERY_PROFILES = "5";
+	const SERVE_FROM_REMOTE_SERVER = "6";
 }
 
 /**
@@ -3532,6 +3532,7 @@ class KalturaUserEntryOrderBy
  */
 class KalturaUserEntryStatus
 {
+	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";
 	const DELETED = "2";
 }

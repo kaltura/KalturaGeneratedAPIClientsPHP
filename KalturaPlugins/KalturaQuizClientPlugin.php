@@ -43,13 +43,11 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
 class KalturaAnswerCuePointOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const IS_CORRECT_ASC = "+isCorrect";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
 	const START_TIME_ASC = "+startTime";
 	const TRIGGERED_AT_ASC = "+triggeredAt";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const IS_CORRECT_DESC = "-isCorrect";
 	const PARTNER_SORT_VALUE_DESC = "-partnerSortValue";
 	const START_TIME_DESC = "-startTime";
 	const TRIGGERED_AT_DESC = "-triggeredAt";
@@ -64,13 +62,11 @@ class KalturaQuestionCuePointOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
-	const QUESTION_ASC = "+question";
 	const START_TIME_ASC = "+startTime";
 	const TRIGGERED_AT_ASC = "+triggeredAt";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const PARTNER_SORT_VALUE_DESC = "-partnerSortValue";
-	const QUESTION_DESC = "-question";
 	const START_TIME_DESC = "-startTime";
 	const TRIGGERED_AT_DESC = "-triggeredAt";
 	const UPDATED_AT_DESC = "-updatedAt";
@@ -376,15 +372,117 @@ class KalturaQuestionCuePointFilter extends KalturaQuestionCuePointBaseFilter
 
 }
 
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaQuizService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Allows to add a quiz to an entry
+	 * 
+	 * @param string $entryId 
+	 * @param KalturaQuiz $quiz 
+	 * @return KalturaQuiz
+	 */
+	function add($entryId, KalturaQuiz $quiz)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "quiz", $quiz->toParams());
+		$this->client->queueServiceActionCall("quiz_quiz", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuiz");
+		return $resultObject;
+	}
+
+	/**
+	 * Allows to update a quiz
+	 * 
+	 * @param string $entryId 
+	 * @param KalturaQuiz $quiz 
+	 * @return KalturaQuiz
+	 */
+	function update($entryId, KalturaQuiz $quiz)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "quiz", $quiz->toParams());
+		$this->client->queueServiceActionCall("quiz_quiz", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuiz");
+		return $resultObject;
+	}
+
+	/**
+	 * Allows to get a quiz
+	 * 
+	 * @param string $entryId 
+	 * @return KalturaQuiz
+	 */
+	function get($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("quiz_quiz", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuiz");
+		return $resultObject;
+	}
+
+	/**
+	 * List quiz objects by filter and pager
+	 * 
+	 * @param KalturaQuizFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaQuizListResponse
+	 */
+	function listAction(KalturaQuizFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("quiz_quiz", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuizListResponse");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaQuizClientPlugin extends KalturaClientPlugin
 {
+	/**
+	 * @var KalturaQuizService
+	 */
+	public $quiz = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
+		$this->quiz = new KalturaQuizService($client);
 	}
 
 	/**
@@ -401,6 +499,7 @@ class KalturaQuizClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'quiz' => $this->quiz,
 		);
 		return $services;
 	}

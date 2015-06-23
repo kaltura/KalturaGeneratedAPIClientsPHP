@@ -11134,6 +11134,23 @@ class KalturaAccessControlProfileListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlServeRemoteEdgeServerAction extends KalturaRuleAction
+{
+	/**
+	 * Comma separated list of edge servers playBack should be done from
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $edgeServerIds = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAdminUser extends KalturaUser
 {
 
