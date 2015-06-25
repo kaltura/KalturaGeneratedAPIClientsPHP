@@ -18453,6 +18453,22 @@ abstract class KalturaGroupUserBaseFilter extends KalturaRelatedFilter
  */
 class KalturaIpAddressCondition extends KalturaMatchCondition
 {
+	/**
+	 * allow internal ips
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $acceptInternalIps = null;
+
+	/**
+	 * http header name for extracting the ip
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $httpHeader = null;
+
 
 }
 
