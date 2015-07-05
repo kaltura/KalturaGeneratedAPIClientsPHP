@@ -366,6 +366,146 @@ class KalturaAdminUserService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAppTokenService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Add new application authentication token
+	 * 
+	 * @param KalturaAppToken $appToken 
+	 * @return KalturaAppToken
+	 */
+	function add(KalturaAppToken $appToken)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "appToken", $appToken->toParams());
+		$this->client->queueServiceActionCall("apptoken", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAppToken");
+		return $resultObject;
+	}
+
+	/**
+	 * Get application authentication token by id
+	 * 
+	 * @param string $id 
+	 * @return KalturaAppToken
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("apptoken", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAppToken");
+		return $resultObject;
+	}
+
+	/**
+	 * Update application authentication token by id
+	 * 
+	 * @param string $id 
+	 * @param KalturaAppToken $appToken 
+	 * @return KalturaAppToken
+	 */
+	function update($id, KalturaAppToken $appToken)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "appToken", $appToken->toParams());
+		$this->client->queueServiceActionCall("apptoken", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAppToken");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete application authentication token by id
+	 * 
+	 * @param string $id 
+	 * @return 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("apptoken", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+
+	/**
+	 * List application authentication tokens by filter and pager
+	 * 
+	 * @param KalturaAppTokenFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaAppTokenListResponse
+	 */
+	function listAction(KalturaAppTokenFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("apptoken", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAppTokenListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Starts a new KS (kaltura Session) based on application authentication token id
+	 * 
+	 * @param string $id Application token id
+	 * @param string $tokenHash Hashed token, built of sha1 on current KS concatenated with the application token
+	 * @param string $userId Session user id, will be ignored if a different user id already defined on the application token
+	 * @param int $type Session type, will be ignored if a different session type already defined on the application token
+	 * @param int $expiry Session expiry (in seconds), could be overwritten by shorter expiry of the application token and the session-expiry that defined on the application token
+	 * @return KalturaSessionInfo
+	 */
+	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "tokenHash", $tokenHash);
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "type", $type);
+		$this->client->addParam($kparams, "expiry", $expiry);
+		$this->client->queueServiceActionCall("apptoken", "startSession", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaSessionInfo");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBaseEntryService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -8910,6 +9050,12 @@ class KalturaClient extends KalturaClientBase
 	public $adminUser = null;
 
 	/**
+	 * Manage application authentication tokens
+	 * @var KalturaAppTokenService
+	 */
+	public $appToken = null;
+
+	/**
 	 * Base Entry Service
 	 * @var KalturaBaseEntryService
 	 */
@@ -9230,12 +9376,13 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-06-29');
+		$this->setClientTag('php5:15-07-05');
 		$this->setApiVersion('3.2.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
 		$this->adminUser = new KalturaAdminUserService($this);
+		$this->appToken = new KalturaAppTokenService($this);
 		$this->baseEntry = new KalturaBaseEntryService($this);
 		$this->bulkUpload = new KalturaBulkUploadService($this);
 		$this->categoryEntry = new KalturaCategoryEntryService($this);

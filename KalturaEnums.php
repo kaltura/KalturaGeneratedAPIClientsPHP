@@ -37,6 +37,17 @@ require_once(dirname(__FILE__) . "/KalturaClientBase.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAppTokenStatus
+{
+	const DISABLED = 1;
+	const ACTIVE = 2;
+	const DELETED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAppearInListType
 {
 	const PARTNER_ONLY = 1;
@@ -1301,6 +1312,18 @@ class KalturaApiParameterPermissionItemOrderBy
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const ID_DESC = "-id";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAppTokenOrderBy
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -3535,6 +3558,15 @@ class KalturaUserEntryStatus
 	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";
 	const DELETED = "2";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserEntryType
+{
+	const QUIZ = "quiz.QUIZ";
 }
 
 /**

@@ -485,6 +485,108 @@ class KalturaApiExceptionArg extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAppToken extends KalturaObjectBase
+{
+	/**
+	 * The id of the application token
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * The application token
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $token = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * Creation time as Unix timestamp (In seconds) 
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * Update time as Unix timestamp (In seconds) 
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * Application token status 
+	 * 	 
+	 *
+	 * @var KalturaAppTokenStatus
+	 * @readonly
+	 */
+	public $status = null;
+
+	/**
+	 * Expiry time of current token (unix timestamp in seconds)
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $expiry = null;
+
+	/**
+	 * Type of KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var KalturaSessionType
+	 */
+	public $sessionType = null;
+
+	/**
+	 * User id of KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $sessionUserId = null;
+
+	/**
+	 * Expiry duration of KS (Kaltura Session) that created using the current token (in seconds)
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $sessionDuration = null;
+
+	/**
+	 * Comma separated privileges to be applied on KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $sessionPrivileges = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAsset extends KalturaObjectBase
 {
 	/**
@@ -10383,7 +10485,7 @@ abstract class KalturaUserEntry extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 * @insertonly
 	 */
 	public $userId = null;
@@ -10419,6 +10521,14 @@ abstract class KalturaUserEntry extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryType
+	 * @readonly
+	 */
+	public $type = null;
 
 
 }
@@ -11228,6 +11338,74 @@ class KalturaApiParameterPermissionItem extends KalturaPermissionItem
 	 * @var KalturaApiParameterPermissionItemAction
 	 */
 	public $action = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaAppTokenBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAppTokenListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaAppToken
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
@@ -16599,6 +16777,13 @@ abstract class KalturaUserEntryBaseFilter extends KalturaFilter
 	/**
 	 * 
 	 *
+	 * @var KalturaUserEntryStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $createdAtLessThanOrEqual = null;
@@ -16623,6 +16808,13 @@ abstract class KalturaUserEntryBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryType
+	 */
+	public $typeEqual = null;
 
 
 }
@@ -17105,6 +17297,15 @@ class KalturaAkamaiUniversalProvisionJobData extends KalturaProvisionJobData
 	 */
 	public $notificationEmail = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAppTokenFilter extends KalturaAppTokenBaseFilter
+{
 
 }
 
