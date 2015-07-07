@@ -4900,6 +4900,7 @@ abstract class KalturaObject extends KalturaObjectBase
 	 * 
 	 *
 	 * @var map
+	 * @readonly
 	 */
 	public $relatedObjects;
 
@@ -13202,6 +13203,23 @@ abstract class KalturaDeliveryProfileBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $statusIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDeliveryProfileCondition extends KalturaCondition
+{
+	/**
+	 * The delivery ids that are accepted by this condition
+	 * 	 
+	 *
+	 * @var array of KalturaIntegerValue
+	 */
+	public $deliveryProfileIds;
 
 
 }

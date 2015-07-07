@@ -1696,6 +1696,7 @@ class KalturaConditionType
 	const GEO_DISTANCE = "10";
 	const OR_OPERATOR = "11";
 	const HASH = "12";
+	const DELIVERY_PROFILE = "13";
 }
 
 /**
@@ -1746,6 +1747,7 @@ class KalturaContextType
 	const THUMBNAIL = "3";
 	const METADATA = "4";
 	const EXPORT = "5";
+	const SERVE = "6";
 }
 
 /**
