@@ -2012,6 +2012,7 @@ class KalturaDeliveryProfileType
 	const LIVE_HDS = "1002";
 	const LIVE_DASH = "1003";
 	const LIVE_RTMP = "1005";
+	const LIVE_HLS_TO_MULTICAST = "1006";
 	const LIVE_AKAMAI_HDS = "1013";
 }
 
@@ -3248,6 +3249,7 @@ class KalturaPlayableEntryOrderBy
 class KalturaPlaybackProtocol
 {
 	const APPLE_HTTP = "applehttp";
+	const APPLE_HTTP_TO_MC = "applehttp_to_mc";
 	const AUTO = "auto";
 	const AKAMAI_HD = "hdnetwork";
 	const AKAMAI_HDS = "hdnetworkmanifest";

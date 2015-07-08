@@ -185,7 +185,6 @@ class KalturaFileSync extends KalturaObjectBase
 	 * 
 	 *
 	 * @var KalturaFileSyncStatus
-	 * @readonly
 	 */
 	public $status = null;
 
@@ -217,7 +216,6 @@ class KalturaFileSync extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $fileRoot = null;
 
@@ -225,7 +223,6 @@ class KalturaFileSync extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $filePath = null;
 
@@ -268,6 +265,22 @@ class KalturaFileSync extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $isCurrentDc = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $isDir = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $originalId = null;
 
 
 }
