@@ -699,37 +699,6 @@ class KalturaRecordStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportType
-{
-	const TOP_CONTENT = 1;
-	const CONTENT_DROPOFF = 2;
-	const CONTENT_INTERACTIONS = 3;
-	const MAP_OVERLAY = 4;
-	const TOP_CONTRIBUTORS = 5;
-	const TOP_SYNDICATION = 6;
-	const CONTENT_CONTRIBUTIONS = 7;
-	const USER_ENGAGEMENT = 11;
-	const SPEFICIC_USER_ENGAGEMENT = 12;
-	const USER_TOP_CONTENT = 13;
-	const USER_CONTENT_DROPOFF = 14;
-	const USER_CONTENT_INTERACTIONS = 15;
-	const APPLICATIONS = 16;
-	const USER_USAGE = 17;
-	const SPECIFIC_USER_USAGE = 18;
-	const VAR_USAGE = 19;
-	const TOP_CREATORS = 20;
-	const PLATFORMS = 21;
-	const OPERATION_SYSTEM = 22;
-	const BROWSERS = 23;
-	const LIVE = 24;
-	const TOP_PLAYBACK_CONTEXT = 25;
-	const PARTNER_USAGE = 201;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaResponseProfileStatus
 {
 	const DISABLED = 1;
@@ -1371,6 +1340,7 @@ class KalturaAssetType
 	const IMAGE = "document.Image";
 	const PDF = "document.PDF";
 	const SWF = "document.SWF";
+	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const FLAVOR = "1";
 	const THUMBNAIL = "2";
 	const LIVE = "3";
@@ -1529,6 +1499,7 @@ class KalturaBatchJobType
 	const VALIDATE_LIVE_MEDIA_SERVERS = "38";
 	const SYNC_CATEGORY_PRIVACY_CONTEXT = "39";
 	const LIVE_REPORT_EXPORT = "40";
+	const RECALCULATE_CACHE = "41";
 }
 
 /**
@@ -3323,6 +3294,39 @@ class KalturaReportOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportType
+{
+	const QUIZ = "quiz.QUIZ";
+	const QUIZ_USER_PERCENTAGE = "quiz.self::QUIZ_USER_PERCENTAGE";
+	const TOP_CONTENT = "1";
+	const CONTENT_DROPOFF = "2";
+	const CONTENT_INTERACTIONS = "3";
+	const MAP_OVERLAY = "4";
+	const TOP_CONTRIBUTORS = "5";
+	const TOP_SYNDICATION = "6";
+	const CONTENT_CONTRIBUTIONS = "7";
+	const USER_ENGAGEMENT = "11";
+	const SPEFICIC_USER_ENGAGEMENT = "12";
+	const USER_TOP_CONTENT = "13";
+	const USER_CONTENT_DROPOFF = "14";
+	const USER_CONTENT_INTERACTIONS = "15";
+	const APPLICATIONS = "16";
+	const USER_USAGE = "17";
+	const SPECIFIC_USER_USAGE = "18";
+	const VAR_USAGE = "19";
+	const TOP_CREATORS = "20";
+	const PLATFORMS = "21";
+	const OPERATION_SYSTEM = "22";
+	const BROWSERS = "23";
+	const LIVE = "24";
+	const TOP_PLAYBACK_CONTEXT = "25";
+	const PARTNER_USAGE = "201";
 }
 
 /**

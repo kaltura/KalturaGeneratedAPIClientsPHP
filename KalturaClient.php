@@ -6222,7 +6222,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * Report getGraphs action allows to get a graph data for a specific report.
 	 * 
-	 * @param int $reportType 
+	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $dimension 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
@@ -6247,7 +6247,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * Report getTotal action allows to get a graph data for a specific report.
 	 * 
-	 * @param int $reportType 
+	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
 	 * @return KalturaReportTotal
@@ -6270,7 +6270,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * Report getBaseTotal action allows to get a the total base for storage reports
 	 * 
-	 * @param int $reportType 
+	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
 	 * @return array
@@ -6293,7 +6293,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * Report getTable action allows to get a graph data for a specific report.
 	 * 
-	 * @param int $reportType 
+	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param KalturaFilterPager $pager 
 	 * @param string $order 
@@ -6323,7 +6323,7 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param string $reportTitle The title of the report to display at top of CSV
 	 * @param string $reportText The text of the filter of the report
 	 * @param string $headers The headers of the columns - a map between the enumerations on the server side and the their display text
-	 * @param int $reportType 
+	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $dimension 
 	 * @param KalturaFilterPager $pager 
@@ -6568,6 +6568,25 @@ class KalturaResponseProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaResponseProfileListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Recalculate response profile cached objects
+	 * 
+	 * @param KalturaResponseProfileCacheRecalculateOptions $options 
+	 * @return KalturaResponseProfileCacheRecalculateResults
+	 */
+	function recalculate(KalturaResponseProfileCacheRecalculateOptions $options)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "options", $options->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "recalculate", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfileCacheRecalculateResults");
 		return $resultObject;
 	}
 }
@@ -9554,7 +9573,7 @@ class KalturaClient extends KalturaClientBase
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @param KalturaBaseResponseProfile $responseProfile
 	 */
@@ -9564,7 +9583,7 @@ class KalturaClient extends KalturaClientBase
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @return KalturaBaseResponseProfile
 	 */

@@ -8444,7 +8444,7 @@ class KalturaRequestConfiguration extends KalturaObjectBase
 	public $ks = null;
 
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 	 
 	 *
 	 * @var KalturaBaseResponseProfile
@@ -8510,6 +8510,99 @@ class KalturaResponseProfile extends KalturaDetachedResponseProfile
 	 * @readonly
 	 */
 	public $status = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $version = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResponseProfileCacheRecalculateOptions extends KalturaObjectBase
+{
+	/**
+	 * Maximum number of keys to recalculate
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $limit = null;
+
+	/**
+	 * Class name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $cachedObjectType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $startObjectKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $endObjectKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $jobCreatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isFirstLoop = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResponseProfileCacheRecalculateResults extends KalturaObjectBase
+{
+	/**
+	 * Last recalculated id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $lastObjectKey = null;
+
+	/**
+	 * Number of recalculated keys
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $recalculated = null;
 
 
 }
@@ -15498,6 +15591,15 @@ class KalturaQuizUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaRecalculateCacheJobData extends KalturaJobData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaRemotePathListResponse extends KalturaListResponse
 {
 	/**
@@ -16774,7 +16876,7 @@ abstract class KalturaUserEntryBaseFilter extends KalturaFilter
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $userIdEqual = null;
 
@@ -19195,6 +19297,66 @@ class KalturaPreviewRestriction extends KalturaSessionRestriction
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaRecalculateResponseProfileCacheJobData extends KalturaRecalculateCacheJobData
+{
+	/**
+	 * http / https
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $protocol = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaSessionType
+	 */
+	public $ksType = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaIntegerValue
+	 */
+	public $userRoles;
+
+	/**
+	 * Class name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $cachedObjectType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $startObjectKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $endObjectKey = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaRegexCondition extends KalturaMatchCondition
 {
 
@@ -19372,6 +19534,13 @@ class KalturaUploadTokenFilter extends KalturaUploadTokenBaseFilter
  */
 class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $userIdEqualCurrent = null;
+
 
 }
 

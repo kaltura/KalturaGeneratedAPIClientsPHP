@@ -51,6 +51,16 @@ class KalturaCuePointStatus
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaThumbCuePointSubType
+{
+	const SLIDE = 1;
+	const CHAPTER = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCuePointOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -77,6 +87,7 @@ class KalturaCuePointType
 	const EVENT = "eventCuePoint.Event";
 	const QUIZ_ANSWER = "quiz.QUIZ_ANSWER";
 	const QUIZ_QUESTION = "quiz.QUIZ_QUESTION";
+	const THUMB = "thumbCuePoint.Thumb";
 }
 
 /**
@@ -443,6 +454,20 @@ class KalturaCuePointFilter extends KalturaCuePointBaseFilter
 	 * @var string
 	 */
 	public $freeText = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $userIdEqualCurrent = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $userIdCurrent = null;
 
 
 }
