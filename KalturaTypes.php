@@ -3801,7 +3801,7 @@ class KalturaEdgeServer extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
-	public $desciption = null;
+	public $description = null;
 
 	/**
 	 * 
