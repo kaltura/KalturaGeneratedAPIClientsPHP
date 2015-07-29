@@ -6589,6 +6589,27 @@ class KalturaResponseProfileService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaResponseProfileCacheRecalculateResults");
 		return $resultObject;
 	}
+
+	/**
+	 * Clone an existing response profile
+	 * 
+	 * @param int $id 
+	 * @param KalturaResponseProfile $profile 
+	 * @return KalturaResponseProfile
+	 */
+	function cloneAction($id, KalturaResponseProfile $profile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "profile", $profile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "clone", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaResponseProfile");
+		return $resultObject;
+	}
 }
 
 /**
@@ -9395,7 +9416,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-07-28');
+		$this->setClientTag('php5:15-07-29');
 		$this->setApiVersion('3.2.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

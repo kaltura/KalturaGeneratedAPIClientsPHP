@@ -147,24 +147,6 @@ class KalturaAccessControl extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaAccessControlAction extends KalturaObjectBase
-{
-	/**
-	 * The type of the access control action
-	 * 	 
-	 *
-	 * @var KalturaAccessControlActionType
-	 * @readonly
-	 */
-	public $type = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaContextTypeHolder extends KalturaObjectBase
 {
 	/**
@@ -1802,86 +1784,6 @@ class KalturaBatchJob extends KalturaObjectBase
 	 * @var int
 	 */
 	public $jobObjectType = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaBatchQueuesStatus extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobType
-	 */
-	public $jobType = null;
-
-	/**
-	 * The worker configured id
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $workerId = null;
-
-	/**
-	 * The friendly name of the type
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $typeName = null;
-
-	/**
-	 * The size of the queue
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $size = null;
-
-	/**
-	 * The avarage wait time
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $waitTime = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaValue extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaBooleanValue extends KalturaValue
-{
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $value = null;
 
 
 }
@@ -3982,6 +3884,22 @@ class KalturaEmailIngestionProfile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaValue extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaStringValue extends KalturaValue
 {
 	/**
@@ -4919,548 +4837,6 @@ class KalturaIntegerValue extends KalturaValue
 	 * @var int
 	 */
 	public $value = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMediaInfo extends KalturaObjectBase
-{
-	/**
-	 * The id of the media info
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * The id of the related flavor asset
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $flavorAssetId = null;
-
-	/**
-	 * The file size
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $fileSize = null;
-
-	/**
-	 * The container format
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $containerFormat = null;
-
-	/**
-	 * The container id
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $containerId = null;
-
-	/**
-	 * The container profile
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $containerProfile = null;
-
-	/**
-	 * The container duration
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $containerDuration = null;
-
-	/**
-	 * The container bit rate
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $containerBitRate = null;
-
-	/**
-	 * The video format
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $videoFormat = null;
-
-	/**
-	 * The video codec id
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $videoCodecId = null;
-
-	/**
-	 * The video duration
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $videoDuration = null;
-
-	/**
-	 * The video bit rate
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $videoBitRate = null;
-
-	/**
-	 * The video bit rate mode
-	 * 	 
-	 *
-	 * @var KalturaBitRateMode
-	 */
-	public $videoBitRateMode = null;
-
-	/**
-	 * The video width
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $videoWidth = null;
-
-	/**
-	 * The video height
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $videoHeight = null;
-
-	/**
-	 * The video frame rate
-	 * 	 
-	 *
-	 * @var float
-	 */
-	public $videoFrameRate = null;
-
-	/**
-	 * The video display aspect ratio (dar)
-	 * 	 
-	 *
-	 * @var float
-	 */
-	public $videoDar = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $videoRotation = null;
-
-	/**
-	 * The audio format
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $audioFormat = null;
-
-	/**
-	 * The audio codec id
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $audioCodecId = null;
-
-	/**
-	 * The audio duration
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $audioDuration = null;
-
-	/**
-	 * The audio bit rate
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $audioBitRate = null;
-
-	/**
-	 * The audio bit rate mode
-	 * 	 
-	 *
-	 * @var KalturaBitRateMode
-	 */
-	public $audioBitRateMode = null;
-
-	/**
-	 * The number of audio channels
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $audioChannels = null;
-
-	/**
-	 * The audio sampling rate
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $audioSamplingRate = null;
-
-	/**
-	 * The audio resolution
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $audioResolution = null;
-
-	/**
-	 * The writing library
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $writingLib = null;
-
-	/**
-	 * The data as returned by the mediainfo command line
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $rawData = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $multiStreamInfo = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $scanType = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $multiStream = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $isFastStart = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentStreams = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMediaInfoListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaMediaInfo
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaFlavorParamsOutputListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaFlavorParamsOutput
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaThumbAsset extends KalturaAsset
-{
-	/**
-	 * The Flavor Params used to create this Flavor Asset
-	 * 	 
-	 *
-	 * @var int
-	 * @insertonly
-	 */
-	public $thumbParamsId = null;
-
-	/**
-	 * The width of the Flavor Asset 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $width = null;
-
-	/**
-	 * The height of the Flavor Asset
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $height = null;
-
-	/**
-	 * The status of the asset
-	 * 	 
-	 *
-	 * @var KalturaThumbAssetStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaThumbParams extends KalturaAssetParams
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaThumbCropType
-	 */
-	public $cropType = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $quality = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $cropX = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $cropY = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $cropWidth = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $cropHeight = null;
-
-	/**
-	 * 
-	 *
-	 * @var float
-	 */
-	public $videoOffset = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $width = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $height = null;
-
-	/**
-	 * 
-	 *
-	 * @var float
-	 */
-	public $scaleWidth = null;
-
-	/**
-	 * 
-	 *
-	 * @var float
-	 */
-	public $scaleHeight = null;
-
-	/**
-	 * Hexadecimal value
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $backgroundColor = null;
-
-	/**
-	 * Id of the flavor params or the thumbnail params to be used as source for the thumbnail creation
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $sourceParamsId = null;
-
-	/**
-	 * The container format of the Flavor Params
-	 * 	 
-	 *
-	 * @var KalturaContainerFormat
-	 */
-	public $format = null;
-
-	/**
-	 * The image density (dpi) for example: 72 or 96
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $density = null;
-
-	/**
-	 * Strip profiles and comments
-	 * 	 
-	 *
-	 * @var bool
-	 */
-	public $stripProfiles = null;
-
-	/**
-	 * Create thumbnail from the videoLengthpercentage second
-	 *      
-	 *
-	 * @var int
-	 */
-	public $videoOffsetInPercentage = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaThumbParamsOutput extends KalturaThumbParams
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $thumbParamsId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $thumbParamsVersion = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $thumbAssetId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $thumbAssetVersion = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $rotate = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaThumbParamsOutputListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaThumbParamsOutput
-	 * @readonly
-	 */
-	public $objects;
 
 
 }
@@ -7051,6 +6427,274 @@ class KalturaMediaEntryFilterForPlaylist extends KalturaMediaEntryFilter
 	 * @var int
 	 */
 	public $limit = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaInfo extends KalturaObjectBase
+{
+	/**
+	 * The id of the media info
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * The id of the related flavor asset
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $flavorAssetId = null;
+
+	/**
+	 * The file size
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $fileSize = null;
+
+	/**
+	 * The container format
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $containerFormat = null;
+
+	/**
+	 * The container id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $containerId = null;
+
+	/**
+	 * The container profile
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $containerProfile = null;
+
+	/**
+	 * The container duration
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $containerDuration = null;
+
+	/**
+	 * The container bit rate
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $containerBitRate = null;
+
+	/**
+	 * The video format
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $videoFormat = null;
+
+	/**
+	 * The video codec id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $videoCodecId = null;
+
+	/**
+	 * The video duration
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $videoDuration = null;
+
+	/**
+	 * The video bit rate
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $videoBitRate = null;
+
+	/**
+	 * The video bit rate mode
+	 * 	 
+	 *
+	 * @var KalturaBitRateMode
+	 */
+	public $videoBitRateMode = null;
+
+	/**
+	 * The video width
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $videoWidth = null;
+
+	/**
+	 * The video height
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $videoHeight = null;
+
+	/**
+	 * The video frame rate
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $videoFrameRate = null;
+
+	/**
+	 * The video display aspect ratio (dar)
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $videoDar = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $videoRotation = null;
+
+	/**
+	 * The audio format
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $audioFormat = null;
+
+	/**
+	 * The audio codec id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $audioCodecId = null;
+
+	/**
+	 * The audio duration
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $audioDuration = null;
+
+	/**
+	 * The audio bit rate
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $audioBitRate = null;
+
+	/**
+	 * The audio bit rate mode
+	 * 	 
+	 *
+	 * @var KalturaBitRateMode
+	 */
+	public $audioBitRateMode = null;
+
+	/**
+	 * The number of audio channels
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $audioChannels = null;
+
+	/**
+	 * The audio sampling rate
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $audioSamplingRate = null;
+
+	/**
+	 * The audio resolution
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $audioResolution = null;
+
+	/**
+	 * The writing library
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $writingLib = null;
+
+	/**
+	 * The data as returned by the mediainfo command line
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $rawData = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $multiStreamInfo = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $scanType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $multiStream = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $isFastStart = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentStreams = null;
 
 
 }
@@ -9886,14 +9530,43 @@ class KalturaSyndicationFeedEntryCount extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbnailServeOptions extends KalturaObjectBase
+class KalturaThumbAsset extends KalturaAsset
 {
 	/**
-	 * 
+	 * The Flavor Params used to create this Flavor Asset
+	 * 	 
 	 *
-	 * @var bool
+	 * @var int
+	 * @insertonly
 	 */
-	public $download = null;
+	public $thumbParamsId = null;
+
+	/**
+	 * The width of the Flavor Asset 
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $width = null;
+
+	/**
+	 * The height of the Flavor Asset
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $height = null;
+
+	/**
+	 * The status of the asset
+	 * 	 
+	 *
+	 * @var KalturaThumbAssetStatus
+	 * @readonly
+	 */
+	public $status = null;
 
 
 }
@@ -9902,14 +9575,192 @@ class KalturaThumbnailServeOptions extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaTypedArray extends KalturaObjectBase
+class KalturaThumbParams extends KalturaAssetParams
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaThumbCropType
+	 */
+	public $cropType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $quality = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $cropX = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $cropY = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $cropWidth = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $cropHeight = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $videoOffset = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $width = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $height = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $scaleWidth = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $scaleHeight = null;
+
+	/**
+	 * Hexadecimal value
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $backgroundColor = null;
+
+	/**
+	 * Id of the flavor params or the thumbnail params to be used as source for the thumbnail creation
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $sourceParamsId = null;
+
+	/**
+	 * The container format of the Flavor Params
+	 * 	 
+	 *
+	 * @var KalturaContainerFormat
+	 */
+	public $format = null;
+
+	/**
+	 * The image density (dpi) for example: 72 or 96
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $density = null;
+
+	/**
+	 * Strip profiles and comments
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $stripProfiles = null;
+
+	/**
+	 * Create thumbnail from the videoLengthpercentage second
+	 *      
+	 *
+	 * @var int
+	 */
+	public $videoOffsetInPercentage = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaThumbParamsOutput extends KalturaThumbParams
 {
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $count = null;
+	public $thumbParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbParamsVersion = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbAssetVersion = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $rotate = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaThumbnailServeOptions extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $download = null;
 
 
 }
@@ -10861,376 +10712,6 @@ class KalturaWidget extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaBatchJobBaseFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $partnerIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $partnerIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $executionAttemptsGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $executionAttemptsLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lockVersionGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lockVersionLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobType
-	 */
-	public $jobTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $jobTypeIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $jobTypeNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $jobSubTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $jobSubTypeIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $jobSubTypeNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $priorityGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $priorityLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $priorityEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $priorityIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $priorityNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $batchVersionGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $batchVersionLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $batchVersionEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $queueTimeGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $queueTimeLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $finishTimeGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $finishTimeLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobErrorTypes
-	 */
-	public $errTypeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $errTypeIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $errTypeNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $errNumberEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $errNumberIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $errNumberNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $estimatedEffortLessThan = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $estimatedEffortGreaterThan = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $urgencyLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $urgencyGreaterThanOrEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaBatchJobFilter extends KalturaBatchJobBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWorkerQueueFilter extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $schedulerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $workerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobType
-	 */
-	public $jobType = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaBatchJobFilter
-	 */
-	public $filter;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaAccessControlBlockAction extends KalturaRuleAction
 {
 
@@ -11654,6 +11135,330 @@ class KalturaBaseSyndicationFeedListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaBatchJobBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $executionAttemptsGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $executionAttemptsLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lockVersionGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lockVersionLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaBatchJobType
+	 */
+	public $jobTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $jobTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $jobTypeNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $jobSubTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $jobSubTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $jobSubTypeNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaBatchJobStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $priorityGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $priorityLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $priorityEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $priorityIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $priorityNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $batchVersionGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $batchVersionLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $batchVersionEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $queueTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $queueTimeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $finishTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $finishTimeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaBatchJobErrorTypes
+	 */
+	public $errTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $errTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $errTypeNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $errNumberEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $errNumberIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $errNumberNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $estimatedEffortLessThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $estimatedEffortGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $urgencyLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $urgencyGreaterThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBatchJobListResponse extends KalturaListResponse
 {
 	/**
@@ -11663,6 +11468,22 @@ class KalturaBatchJobListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBooleanValue extends KalturaValue
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $value = null;
 
 
 }
@@ -14422,6 +14243,23 @@ class KalturaFlavorParamsListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaFlavorParamsOutputListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaFlavorParamsOutput
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed
 {
 	/**
@@ -15022,6 +14860,23 @@ abstract class KalturaMediaInfoBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $flavorAssetIdEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaInfoListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaMediaInfo
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
@@ -16247,6 +16102,23 @@ class KalturaThumbParamsListResponse extends KalturaListResponse
 	 * 
 	 *
 	 * @var array of KalturaThumbParams
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaThumbParamsOutputListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaThumbParamsOutput
 	 * @readonly
 	 */
 	public $objects;
@@ -17616,6 +17488,15 @@ class KalturaAssetResource extends KalturaContentResource
  * @subpackage Client
  */
 class KalturaBaseSyndicationFeedFilter extends KalturaBaseSyndicationFeedBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBatchJobFilter extends KalturaBatchJobBaseFilter
 {
 
 }

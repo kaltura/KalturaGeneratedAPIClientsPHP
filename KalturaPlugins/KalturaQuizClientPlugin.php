@@ -203,7 +203,7 @@ class KalturaAnswerCuePoint extends KalturaCuePoint
 	 * Array of string
 	 * 	 
 	 *
-	 * @var KalturaTypedArray
+	 * @var array of KalturaString
 	 * @readonly
 	 */
 	public $correctAnswerKeys;
@@ -321,6 +321,20 @@ class KalturaQuizFilter extends KalturaRelatedFilter
  */
 abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdIn = null;
+
 
 }
 

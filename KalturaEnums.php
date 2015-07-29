@@ -1166,20 +1166,6 @@ class KalturaWidgetSecurityType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAccessControlActionType
-{
-	const BLOCK = "1";
-	const PREVIEW = "2";
-	const LIMIT_FLAVORS = "3";
-	const ADD_TO_STORAGE = "4";
-	const LIMIT_DELIVERY_PROFILES = "5";
-	const SERVE_FROM_REMOTE_SERVER = "6";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaAccessControlOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -3307,7 +3293,7 @@ class KalturaReportOrderBy
 class KalturaReportType
 {
 	const QUIZ = "quiz.QUIZ";
-	const QUIZ_USER_PERCENTAGE = "quiz.self::QUIZ_USER_PERCENTAGE";
+	const QUIZ_USER_PERCENTAGE = "quiz.QUIZ_USER_PERCENTAGE";
 	const TOP_CONTENT = "1";
 	const CONTENT_DROPOFF = "2";
 	const CONTENT_INTERACTIONS = "3";

@@ -146,15 +146,6 @@ class KalturaEventNotificationTemplateType
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaEventCondition extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEventNotificationParameter extends KalturaObjectBase
 {
 	/**
