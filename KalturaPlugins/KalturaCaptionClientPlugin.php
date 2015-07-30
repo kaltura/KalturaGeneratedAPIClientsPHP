@@ -159,6 +159,14 @@ class KalturaCaptionAsset extends KalturaAsset
 	 */
 	public $parentId = null;
 
+	/**
+	 * The Accuracy of the caption content
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $accuracy = null;
+
 
 }
 
