@@ -19298,6 +19298,22 @@ class KalturaSearchComparableCondition extends KalturaSearchCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSearchMatchCondition extends KalturaSearchCondition
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $not = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSiteCondition extends KalturaMatchCondition
 {
 

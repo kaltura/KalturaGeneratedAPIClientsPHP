@@ -3293,6 +3293,8 @@ class KalturaReportOrderBy
 class KalturaReportType
 {
 	const QUIZ = "quiz.QUIZ";
+	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";
+	const QUIZ_USER_AGGREGATE_BY_QUESTION = "quiz.QUIZ_USER_AGGREGATE_BY_QUESTION";
 	const QUIZ_USER_PERCENTAGE = "quiz.QUIZ_USER_PERCENTAGE";
 	const TOP_CONTENT = "1";
 	const CONTENT_DROPOFF = "2";
@@ -3370,6 +3372,7 @@ class KalturaSearchConditionComparison
 	const GREATER_THAN_OR_EQUAL = "3";
 	const LESS_THAN = "4";
 	const LESS_THAN_OR_EQUAL = "5";
+	const NOT_EQUAL = "6";
 }
 
 /**
