@@ -559,7 +559,7 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 	}
 
 	/**
-	 * This action allows for the creation of new backend event types in the system. This action requires access to the Kaltura server Admin Console. If you’re looking to register to existing event types, please use the clone action instead.
+	 * This action allows for the creation of new backend event types in the system. This action requires access to the Kaltura server Admin Console. If you're looking to register to existing event types, please use the clone action instead.
 	 * 
 	 * @param KalturaEventNotificationTemplate $eventNotificationTemplate 
 	 * @return KalturaEventNotificationTemplate
