@@ -562,13 +562,6 @@ class KalturaAppToken extends KalturaObjectBase
 	 */
 	public $sessionPrivileges = null;
 
-	/**
-	 * 
-	 *
-	 * @var KalturaAppTokenHashType
-	 */
-	public $hashType = null;
-
 
 }
 
@@ -11082,6 +11075,22 @@ class KalturaAssetsParamsResourceContainers extends KalturaResource
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaAttributeCondition extends KalturaSearchItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAuthenticatedCondition extends KalturaCondition
 {
 	/**
@@ -19289,6 +19298,22 @@ class KalturaResponseProfileFilter extends KalturaResponseProfileBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaSearchComparableAttributeCondition extends KalturaAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaSearchConditionComparison
+	 */
+	public $comparison = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSearchComparableCondition extends KalturaSearchCondition
 {
 	/**
@@ -19297,6 +19322,22 @@ class KalturaSearchComparableCondition extends KalturaSearchCondition
 	 * @var KalturaSearchConditionComparison
 	 */
 	public $comparison = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaSearchMatchAttributeCondition extends KalturaAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $not = null;
 
 
 }
@@ -19673,6 +19714,38 @@ class KalturaAssetParamsFilter extends KalturaAssetParamsBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBaseEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaBaseEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBaseEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaBaseEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBatchJobFilterExt extends KalturaBatchJobFilter
 {
 	/**
@@ -19830,6 +19903,38 @@ class KalturaCountryContextField extends KalturaStringField
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDataEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDataEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDataEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDataEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaDeliveryProfileAkamaiAppleHttpManifestBaseFilter extends KalturaDeliveryProfileFilter
 {
 
@@ -19911,6 +20016,38 @@ abstract class KalturaDeliveryProfileRtmpBaseFilter extends KalturaDeliveryProfi
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDocumentEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDocumentEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDocumentEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDocumentEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEvalBooleanField extends KalturaBooleanField
 {
 	/**
@@ -19937,6 +20074,38 @@ class KalturaEvalStringField extends KalturaStringField
 	 * @var string
 	 */
 	public $code = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaExternalMediaEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaExternalMediaEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaExternalMediaEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaExternalMediaEntryMatchAttribute
+	 */
+	public $attribute = null;
 
 
 }
@@ -19999,6 +20168,38 @@ class KalturaIpAddressContextField extends KalturaStringField
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveChannelCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveChannelCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveChannelMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveChannelMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveChannelSegmentFilter extends KalturaLiveChannelSegmentBaseFilter
 {
 
@@ -20008,8 +20209,168 @@ class KalturaLiveChannelSegmentFilter extends KalturaLiveChannelSegmentBaseFilte
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamAdminEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveStreamAdminEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamAdminEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveStreamAdminEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveStreamEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveStreamEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaMediaEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaMediaEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaFlavorParamsOutput extends KalturaFlavorParamsOutput
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMixEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaMixEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMixEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaMixEntryMatchAttribute
+	 */
+	public $attribute = null;
+
 
 }
 
@@ -20037,6 +20398,70 @@ class KalturaPermissionFilter extends KalturaPermissionBaseFilter
  */
 class KalturaPermissionItemFilter extends KalturaPermissionItemBaseFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlayableEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaPlayableEntryCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlayableEntryMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaPlayableEntryMatchAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaylistCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaPlaylistCompareAttribute
+	 */
+	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaylistMatchAttributeCondition extends KalturaSearchMatchAttributeCondition
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaPlaylistMatchAttribute
+	 */
+	public $attribute = null;
+
 
 }
 

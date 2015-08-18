@@ -1274,18 +1274,6 @@ class KalturaApiParameterPermissionItemOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAppTokenHashType
-{
-	const MD5 = "MD5";
-	const SHA1 = "SHA1";
-	const SHA256 = "SHA256";
-	const SHA512 = "SHA512";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaAppTokenOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -1362,6 +1350,49 @@ class KalturaAudioCodec
 	const VORBIS = "vorbis";
 	const WMA = "wma";
 	const WMAPRO = "wmapro";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBaseEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBaseEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
 }
 
 /**
@@ -1774,6 +1805,49 @@ class KalturaConversionProfileType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDataEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDataEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDataEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -1989,6 +2063,49 @@ class KalturaDeliveryProfileType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDocumentEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDocumentEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDurationType
 {
 	const LONG = "long";
@@ -2075,6 +2192,57 @@ class KalturaEntryType
 	const LIVE_STREAM = "7";
 	const LIVE_CHANNEL = "8";
 	const DOCUMENT = "10";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaExternalMediaEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaExternalMediaEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
 }
 
 /**
@@ -2683,6 +2851,57 @@ class KalturaLiveAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveChannelCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveChannelMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveChannelOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -2772,6 +2991,57 @@ class KalturaLiveChannelSegmentType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -2849,6 +3119,57 @@ class KalturaLiveReportType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveStreamAdminEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamAdminEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveStreamAdminEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -2887,6 +3208,57 @@ class KalturaLiveStreamAdminEntryOrderBy
 	const UPDATED_AT_DESC = "-updatedAt";
 	const VIEWS_DESC = "-views";
 	const WEIGHT_DESC = "-weight";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
 }
 
 /**
@@ -2987,6 +3359,57 @@ class KalturaMailType
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMediaEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MEDIA_DATE = "mediaDate";
+	const MEDIA_TYPE = "mediaType";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const FLAVOR_PARAMS_IDS = "flavorParamsIds";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -3055,6 +3478,54 @@ class KalturaMediaParserType
 {
 	const MEDIAINFO = "0";
 	const FFMPEG = "1";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMixEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMixEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
 }
 
 /**
@@ -3181,6 +3652,54 @@ class KalturaPermissionOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPlayableEntryCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const LAST_PLAYED_AT = "lastPlayedAt";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const MS_DURATION = "msDuration";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const PLAYS = "plays";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+	const VIEWS = "views";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlayableEntryMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const DURATION_TYPE = "durationType";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPlayableEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -3234,6 +3753,49 @@ class KalturaPlaybackProtocol
 	const RTMP = "rtmp";
 	const RTSP = "rtsp";
 	const SILVER_LIGHT = "sl";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaylistCompareAttribute
+{
+	const ACCESS_CONTROL_ID = "accessControlId";
+	const CREATED_AT = "createdAt";
+	const END_DATE = "endDate";
+	const MODERATION_COUNT = "moderationCount";
+	const MODERATION_STATUS = "moderationStatus";
+	const PARTNER_ID = "partnerId";
+	const PARTNER_SORT_VALUE = "partnerSortValue";
+	const RANK = "rank";
+	const REPLACEMENT_STATUS = "replacementStatus";
+	const START_DATE = "startDate";
+	const STATUS = "status";
+	const TOTAL_RANK = "totalRank";
+	const TYPE = "type";
+	const UPDATED_AT = "updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaylistMatchAttribute
+{
+	const ADMIN_TAGS = "adminTags";
+	const CATEGORIES_IDS = "categoriesIds";
+	const CREATOR_ID = "creatorId";
+	const DESCRIPTION = "description";
+	const GROUP_ID = "groupId";
+	const ID = "id";
+	const NAME = "name";
+	const REFERENCE_ID = "referenceId";
+	const REPLACED_ENTRY_ID = "replacedEntryId";
+	const REPLACING_ENTRY_ID = "replacingEntryId";
+	const SEARCH_TEXT = "searchText";
+	const TAGS = "tags";
+	const USER_ID = "userId";
 }
 
 /**
