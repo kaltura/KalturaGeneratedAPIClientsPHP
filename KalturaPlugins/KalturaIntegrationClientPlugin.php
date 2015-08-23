@@ -119,15 +119,75 @@ class KalturaIntegrationJobData extends KalturaJobData
 
 }
 
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaIntegrationService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Dispatch integration task
+	 * 
+	 * @param KalturaIntegrationJobData $data 
+	 * @param string $objectType 
+	 * @param string $objectId 
+	 * @return int
+	 */
+	function dispatch(KalturaIntegrationJobData $data, $objectType, $objectId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data->toParams());
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->queueServiceActionCall("integration_integration", "dispatch", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $id Integration job id
+	 * @return 
+	 */
+	function notify($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("integration_integration", "notify", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaIntegrationClientPlugin extends KalturaClientPlugin
 {
+	/**
+	 * @var KalturaIntegrationService
+	 */
+	public $integration = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
+		$this->integration = new KalturaIntegrationService($client);
 	}
 
 	/**
@@ -144,6 +204,7 @@ class KalturaIntegrationClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'integration' => $this->integration,
 		);
 		return $services;
 	}

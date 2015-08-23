@@ -1447,6 +1447,23 @@ class KalturaBaseSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBatchJobObjectType
+{
+	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
+	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
+	const METADATA = "metadata.Metadata";
+	const METADATA_PROFILE = "metadata.MetadataProfile";
+	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
+	const ENTRY = "1";
+	const CATEGORY = "2";
+	const FILE_SYNC = "3";
+	const ASSET = "4";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBatchJobOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -1488,6 +1505,7 @@ class KalturaBatchJobType
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
+	const INTEGRATION = "integration.Integration";
 	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
