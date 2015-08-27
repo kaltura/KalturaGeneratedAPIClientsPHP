@@ -562,6 +562,13 @@ class KalturaAppToken extends KalturaObjectBase
 	 */
 	public $sessionPrivileges = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaAppTokenHashType
+	 */
+	public $hashType = null;
+
 
 }
 

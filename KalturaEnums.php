@@ -1274,6 +1274,18 @@ class KalturaApiParameterPermissionItemOrderBy
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAppTokenHashType
+{
+	const MD5 = "MD5";
+	const SHA1 = "SHA1";
+	const SHA256 = "SHA256";
+	const SHA512 = "SHA512";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAppTokenOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
