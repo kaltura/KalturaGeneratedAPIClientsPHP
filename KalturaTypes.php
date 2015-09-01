@@ -7383,6 +7383,14 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $referenceId = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $timeAlignedRenditions = null;
+
 
 }
 
@@ -15262,6 +15270,13 @@ abstract class KalturaPartnerBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $partnerPackageLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerPackageIn = null;
 
 	/**
 	 * 

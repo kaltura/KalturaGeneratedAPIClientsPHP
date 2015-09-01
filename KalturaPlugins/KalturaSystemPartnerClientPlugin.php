@@ -524,6 +524,13 @@ class KalturaSystemPartnerConfiguration extends KalturaObjectBase
 	 */
 	public $liveThumbEntryId = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $timeAlignedRenditions = null;
+
 
 }
 
