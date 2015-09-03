@@ -10801,6 +10801,31 @@ class KalturaAccessControlListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRuleAction
+{
+	/**
+	 * Request host regex pattern
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $pattern = null;
+
+	/**
+	 * Request host regex replacment
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $replacement = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAccessControlPreviewAction extends KalturaRuleAction
 {
 	/**

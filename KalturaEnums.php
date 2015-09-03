@@ -3949,6 +3949,7 @@ class KalturaRuleActionType
 	const ADD_TO_STORAGE = "4";
 	const LIMIT_DELIVERY_PROFILES = "5";
 	const SERVE_FROM_REMOTE_SERVER = "6";
+	const REQUEST_HOST_REGEX = "7";
 }
 
 /**
