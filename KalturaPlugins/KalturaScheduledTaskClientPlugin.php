@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeleteFlavorsLogicType
+class KalturaDeleteFlavorsLogicType extends KalturaEnumBase
 {
 	const KEEP_LIST_DELETE_OTHERS = 1;
 	const DELETE_LIST = 2;
@@ -50,7 +50,7 @@ class KalturaDeleteFlavorsLogicType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduledTaskAddOrRemoveType
+class KalturaScheduledTaskAddOrRemoveType extends KalturaEnumBase
 {
 	const ADD = 1;
 	const REMOVE = 2;
@@ -60,7 +60,7 @@ class KalturaScheduledTaskAddOrRemoveType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduledTaskProfileStatus
+class KalturaScheduledTaskProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ACTIVE = 2;
@@ -73,7 +73,7 @@ class KalturaScheduledTaskProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaObjectFilterEngineType
+class KalturaObjectFilterEngineType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 }
@@ -82,7 +82,7 @@ class KalturaObjectFilterEngineType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaObjectTaskType
+class KalturaObjectTaskType extends KalturaEnumBase
 {
 	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
 	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
@@ -99,7 +99,7 @@ class KalturaObjectTaskType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduledTaskProfileOrderBy
+class KalturaScheduledTaskProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -591,7 +591,6 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 	 * Delete a scheduled task profile
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -603,7 +602,6 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAnnotationOrderBy
+class KalturaAnnotationOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -351,6 +351,9 @@ class KalturaAnnotationService extends KalturaServiceBase
 	 */
 	function serveBulk(KalturaCuePointFilter $filter = null, KalturaFilterPager $pager = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
@@ -405,7 +408,6 @@ class KalturaAnnotationService extends KalturaServiceBase
 	 * Delete cue point by id, and delete all children cue points
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -417,7 +419,6 @@ class KalturaAnnotationService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

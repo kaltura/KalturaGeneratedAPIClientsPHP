@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAnswerCuePointOrderBy
+class KalturaAnswerCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
@@ -58,7 +58,7 @@ class KalturaAnswerCuePointOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaQuestionCuePointOrderBy
+class KalturaQuestionCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";

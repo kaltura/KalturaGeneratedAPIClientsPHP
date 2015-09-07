@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionAssetStatus
+class KalturaCaptionAssetStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;
@@ -53,7 +53,7 @@ class KalturaCaptionAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionAssetOrderBy
+class KalturaCaptionAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -69,7 +69,7 @@ class KalturaCaptionAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionParamsOrderBy
+class KalturaCaptionParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -77,7 +77,7 @@ class KalturaCaptionParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCaptionType
+class KalturaCaptionType extends KalturaEnumBase
 {
 	const SRT = "1";
 	const DFXP = "2";
@@ -468,6 +468,9 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	 */
 	function serveByEntryId($entryId, $captionParamId = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "captionParamId", $captionParamId);
@@ -525,6 +528,9 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	 */
 	function serve($captionAssetId)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
 		$this->client->queueServiceActionCall("caption_captionasset", "serve", $kparams);
@@ -544,6 +550,9 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	 */
 	function serveWebVTT($captionAssetId, $segmentDuration = 30, $segmentIndex = null, $localTimestamp = 10000)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
 		$this->client->addParam($kparams, "segmentDuration", $segmentDuration);
@@ -559,7 +568,6 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	 * Markss the caption as default and removes that mark from all other caption assets of the entry.
 	 * 
 	 * @param string $captionAssetId 
-	 * @return 
 	 */
 	function setAsDefault($captionAssetId)
 	{
@@ -571,7 +579,6 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -620,7 +627,6 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param string $captionAssetId 
-	 * @return 
 	 */
 	function delete($captionAssetId)
 	{
@@ -632,7 +638,6 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -710,7 +715,6 @@ class KalturaCaptionParamsService extends KalturaServiceBase
 	 * Delete Caption Params by ID
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -722,7 +726,6 @@ class KalturaCaptionParamsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

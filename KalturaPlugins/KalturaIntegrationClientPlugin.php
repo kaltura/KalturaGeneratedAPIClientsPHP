@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegrationProviderType
+class KalturaIntegrationProviderType extends KalturaEnumBase
 {
 	const VOICEBASE = "voicebase.Voicebase";
 }
@@ -49,7 +49,7 @@ class KalturaIntegrationProviderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegrationTriggerType
+class KalturaIntegrationTriggerType extends KalturaEnumBase
 {
 	const MANUAL = "1";
 }
@@ -158,7 +158,6 @@ class KalturaIntegrationService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param int $id Integration job id
-	 * @return 
 	 */
 	function notify($id)
 	{
@@ -170,7 +169,6 @@ class KalturaIntegrationService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

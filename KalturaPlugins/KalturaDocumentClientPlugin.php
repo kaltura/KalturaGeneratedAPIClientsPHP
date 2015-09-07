@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentType
+class KalturaDocumentType extends KalturaEnumBase
 {
 	const DOCUMENT = 11;
 	const SWF = 12;
@@ -50,7 +50,7 @@ class KalturaDocumentType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentEntryOrderBy
+class KalturaDocumentEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";
@@ -80,7 +80,7 @@ class KalturaDocumentEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentFlavorParamsOrderBy
+class KalturaDocumentFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -88,7 +88,7 @@ class KalturaDocumentFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentFlavorParamsOutputOrderBy
+class KalturaDocumentFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -96,7 +96,7 @@ class KalturaDocumentFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaImageFlavorParamsOrderBy
+class KalturaImageFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -104,7 +104,7 @@ class KalturaImageFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaImageFlavorParamsOutputOrderBy
+class KalturaImageFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -112,7 +112,7 @@ class KalturaImageFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPdfFlavorParamsOrderBy
+class KalturaPdfFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -120,7 +120,7 @@ class KalturaPdfFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPdfFlavorParamsOutputOrderBy
+class KalturaPdfFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -128,7 +128,7 @@ class KalturaPdfFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSwfFlavorParamsOrderBy
+class KalturaSwfFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -136,7 +136,7 @@ class KalturaSwfFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSwfFlavorParamsOutputOrderBy
+class KalturaSwfFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -710,7 +710,6 @@ class KalturaDocumentsService extends KalturaServiceBase
 	 * Delete a document entry.
 	 * 
 	 * @param string $entryId Document entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -722,7 +721,6 @@ class KalturaDocumentsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -798,6 +796,9 @@ class KalturaDocumentsService extends KalturaServiceBase
 	 */
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
@@ -818,6 +819,9 @@ class KalturaDocumentsService extends KalturaServiceBase
 	 */
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);

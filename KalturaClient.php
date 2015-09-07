@@ -110,7 +110,6 @@ class KalturaAccessControlProfileService extends KalturaServiceBase
 	 * Delete access control profile by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -122,7 +121,6 @@ class KalturaAccessControlProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -223,7 +221,6 @@ class KalturaAccessControlService extends KalturaServiceBase
 	 * Delete Access Control Profile by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -235,7 +232,6 @@ class KalturaAccessControlService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -302,7 +298,6 @@ class KalturaAdminUserService extends KalturaServiceBase
 	 * Reset admin user password and send it to the users email address
 	 * 
 	 * @param string $email 
-	 * @return 
 	 */
 	function resetPassword($email)
 	{
@@ -314,7 +309,6 @@ class KalturaAdminUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -345,7 +339,6 @@ class KalturaAdminUserService extends KalturaServiceBase
 	 * 
 	 * @param string $hashKey 
 	 * @param string $newPassword New password to set
-	 * @return 
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -358,7 +351,6 @@ class KalturaAdminUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -436,7 +428,6 @@ class KalturaAppTokenService extends KalturaServiceBase
 	 * Delete application authentication token by id
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -448,7 +439,6 @@ class KalturaAppTokenService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -688,7 +678,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * Delete an entry.
 	 * 
 	 * @param string $entryId Entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -700,7 +689,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -858,7 +846,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * Flag inappropriate entry for moderation.
 	 * 
 	 * @param KalturaModerationFlag $moderationFlag 
-	 * @return 
 	 */
 	function flag(KalturaModerationFlag $moderationFlag)
 	{
@@ -870,14 +857,12 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Reject the entry and mark the pending flags (if any) as moderated (this will make the entry non-playable).
 	 * 
 	 * @param string $entryId 
-	 * @return 
 	 */
 	function reject($entryId)
 	{
@@ -889,14 +874,12 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Approve the entry and mark the pending flags (if any) as moderated (this will make the entry playable).
 	 * 
 	 * @param string $entryId 
-	 * @return 
 	 */
 	function approve($entryId)
 	{
@@ -908,7 +891,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -938,7 +920,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $rank 
-	 * @return 
 	 */
 	function anonymousRank($entryId, $rank)
 	{
@@ -951,7 +932,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1125,6 +1105,9 @@ class KalturaBulkUploadService extends KalturaServiceBase
 	 */
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("bulkupload", "serve", $kparams);
@@ -1141,6 +1124,9 @@ class KalturaBulkUploadService extends KalturaServiceBase
 	 */
 	function serveLog($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("bulkupload", "serveLog", $kparams);
@@ -1204,7 +1190,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $categoryId 
-	 * @return 
 	 */
 	function delete($entryId, $categoryId)
 	{
@@ -1217,7 +1202,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1271,7 +1255,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $categoryId 
-	 * @return 
 	 */
 	function activate($entryId, $categoryId)
 	{
@@ -1284,7 +1267,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1292,7 +1274,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $categoryId 
-	 * @return 
 	 */
 	function reject($entryId, $categoryId)
 	{
@@ -1305,7 +1286,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1313,7 +1293,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $categoryId 
-	 * @return 
 	 */
 	function syncPrivacyContext($entryId, $categoryId)
 	{
@@ -1326,7 +1305,6 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1427,7 +1405,6 @@ class KalturaCategoryService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param int $moveEntriesToParentCategory 
-	 * @return 
 	 */
 	function delete($id, $moveEntriesToParentCategory = 1)
 	{
@@ -1440,7 +1417,6 @@ class KalturaCategoryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1511,7 +1487,6 @@ class KalturaCategoryService extends KalturaServiceBase
 	/**
 	 * Unlock categories
 	 * 
-	 * @return 
 	 */
 	function unlockCategories()
 	{
@@ -1522,7 +1497,6 @@ class KalturaCategoryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1633,7 +1607,6 @@ class KalturaCategoryUserService extends KalturaServiceBase
 	 * 
 	 * @param int $categoryId 
 	 * @param string $userId 
-	 * @return 
 	 */
 	function delete($categoryId, $userId)
 	{
@@ -1646,7 +1619,6 @@ class KalturaCategoryUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1718,7 +1690,6 @@ class KalturaCategoryUserService extends KalturaServiceBase
 	 * Copy all memeber from parent category
 	 * 
 	 * @param int $categoryId 
-	 * @return 
 	 */
 	function copyFromCategory($categoryId)
 	{
@@ -1730,7 +1701,6 @@ class KalturaCategoryUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1953,7 +1923,6 @@ class KalturaConversionProfileService extends KalturaServiceBase
 	 * Delete Conversion Profile by ID
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -1965,7 +1934,6 @@ class KalturaConversionProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2068,7 +2036,6 @@ class KalturaDataService extends KalturaServiceBase
 	 * Delete a data entry.
 	 * 
 	 * @param string $entryId Data entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -2080,7 +2047,6 @@ class KalturaDataService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2116,6 +2082,9 @@ class KalturaDataService extends KalturaServiceBase
 	 */
 	function serve($entryId, $version = -1, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "version", $version);
@@ -2392,7 +2361,6 @@ class KalturaDocumentService extends KalturaServiceBase
 	 * Delete a document entry.
 	 * 
 	 * @param string $entryId Document entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -2404,7 +2372,6 @@ class KalturaDocumentService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2480,6 +2447,9 @@ class KalturaDocumentService extends KalturaServiceBase
 	 */
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
@@ -2500,6 +2470,9 @@ class KalturaDocumentService extends KalturaServiceBase
 	 */
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
@@ -2646,7 +2619,6 @@ class KalturaEdgeServerService extends KalturaServiceBase
 	 * Delete edge server by id
 	 * 
 	 * @param string $edgeServerId 
-	 * @return 
 	 */
 	function delete($edgeServerId)
 	{
@@ -2658,7 +2630,6 @@ class KalturaEdgeServerService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2778,7 +2749,6 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
 	 * Delete an existing EmailIngestionProfile
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -2790,7 +2760,6 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2895,7 +2864,6 @@ class KalturaFileAssetService extends KalturaServiceBase
 	 * Delete file asset by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -2907,7 +2875,6 @@ class KalturaFileAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2918,6 +2885,9 @@ class KalturaFileAssetService extends KalturaServiceBase
 	 */
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("fileasset", "serve", $kparams);
@@ -3130,7 +3100,6 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 	 * @param string $entryId 
 	 * @param int $flavorParamsId 
 	 * @param int $priority 
-	 * @return 
 	 */
 	function convert($entryId, $flavorParamsId, $priority = 0)
 	{
@@ -3144,14 +3113,12 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Reconvert Flavor Asset by ID
 	 * 
 	 * @param string $id Flavor Asset ID
-	 * @return 
 	 */
 	function reconvert($id)
 	{
@@ -3163,14 +3130,12 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Delete Flavor Asset by ID
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -3182,7 +3147,6 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3295,7 +3259,6 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 	 * Set a given flavor as the original flavor
 	 * 
 	 * @param string $assetId 
-	 * @return 
 	 */
 	function setAsSource($assetId)
 	{
@@ -3307,14 +3270,12 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Delete all local file syncs for this asset
 	 * 
 	 * @param string $assetId 
-	 * @return 
 	 */
 	function deleteLocalContent($assetId)
 	{
@@ -3326,7 +3287,6 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -3458,7 +3418,6 @@ class KalturaFlavorParamsService extends KalturaServiceBase
 	 * Delete Flavor Params by ID
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -3470,7 +3429,6 @@ class KalturaFlavorParamsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3551,7 +3509,6 @@ class KalturaGroupUserService extends KalturaServiceBase
 	 * 
 	 * @param string $userId 
 	 * @param string $groupId 
-	 * @return 
 	 */
 	function delete($userId, $groupId)
 	{
@@ -3564,7 +3521,6 @@ class KalturaGroupUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3665,7 +3621,6 @@ class KalturaLiveChannelSegmentService extends KalturaServiceBase
 	 * Delete live channel segment by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -3677,7 +3632,6 @@ class KalturaLiveChannelSegmentService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3778,7 +3732,6 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * Delete a live channel.
 	 * 
 	 * @param string $id Live channel id to delete
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -3790,7 +3743,6 @@ class KalturaLiveChannelService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3916,7 +3868,6 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * Validates all registered media servers
 	 * 
 	 * @param string $entryId Live entry id
-	 * @return 
 	 */
 	function validateRegisteredMediaServers($entryId)
 	{
@@ -3928,7 +3879,6 @@ class KalturaLiveChannelService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -4166,7 +4116,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * Delete a live stream entry.
 	 * 
 	 * @param string $entryId Live stream entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -4178,7 +4127,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -4396,7 +4344,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * Validates all registered media servers
 	 * 
 	 * @param string $entryId Live entry id
-	 * @return 
 	 */
 	function validateRegisteredMediaServers($entryId)
 	{
@@ -4408,7 +4355,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -4417,7 +4363,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * @param string $entryId Kaltura live-stream entry id
 	 * @param int $interval Events interval in seconds
 	 * @param int $duration Duration in seconds
-	 * @return 
 	 */
 	function createPeriodicSyncPoints($entryId, $interval, $duration)
 	{
@@ -4431,7 +4376,6 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -4834,7 +4778,6 @@ class KalturaMediaService extends KalturaServiceBase
 	 * Delete a media entry.
 	 * 
 	 * @param string $entryId Media entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -4846,7 +4789,6 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -5068,7 +5010,6 @@ class KalturaMediaService extends KalturaServiceBase
 	 * Flag inappropriate media entry for moderation
 	 * 
 	 * @param KalturaModerationFlag $moderationFlag 
-	 * @return 
 	 */
 	function flag(KalturaModerationFlag $moderationFlag)
 	{
@@ -5080,14 +5021,12 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Reject the media entry and mark the pending flags (if any) as moderated (this will make the entry non playable)
 	 * 
 	 * @param string $entryId 
-	 * @return 
 	 */
 	function reject($entryId)
 	{
@@ -5099,14 +5038,12 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Approve the media entry and mark the pending flags (if any) as moderated (this will make the entry playable)
 	 * 
 	 * @param string $entryId 
-	 * @return 
 	 */
 	function approve($entryId)
 	{
@@ -5118,7 +5055,6 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -5148,7 +5084,6 @@ class KalturaMediaService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $rank 
-	 * @return 
 	 */
 	function anonymousRank($entryId, $rank)
 	{
@@ -5161,7 +5096,6 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -5270,7 +5204,6 @@ class KalturaMixingService extends KalturaServiceBase
 	 * Delete a mix entry.
 	 * 
 	 * @param string $entryId Mix entry id to delete
-	 * @return 
 	 */
 	function delete($entryId)
 	{
@@ -5282,7 +5215,6 @@ class KalturaMixingService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -5414,7 +5346,6 @@ class KalturaMixingService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param int $rank 
-	 * @return 
 	 */
 	function anonymousRank($entryId, $rank)
 	{
@@ -5427,7 +5358,6 @@ class KalturaMixingService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -6041,7 +5971,6 @@ class KalturaPlaylistService extends KalturaServiceBase
 	 * Delete existing playlist
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -6053,7 +5982,6 @@ class KalturaPlaylistService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -6406,6 +6334,9 @@ class KalturaReportService extends KalturaServiceBase
 	 */
 	function getCsv($id, array $params = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		if ($params !== null)
@@ -6428,6 +6359,9 @@ class KalturaReportService extends KalturaServiceBase
 	 */
 	function getCsvFromStringParams($id, $params = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "params", $params);
@@ -6533,7 +6467,6 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	 * Delete response profile by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -6545,7 +6478,6 @@ class KalturaResponseProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -6631,6 +6563,9 @@ class KalturaSchemaService extends KalturaServiceBase
 	 */
 	function serve($type)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->queueServiceActionCall("schema", "serve", $kparams);
@@ -6784,7 +6719,6 @@ class KalturaSessionService extends KalturaServiceBase
 	/**
 	 * End a session with the Kaltura server, making the current KS invalid.
 	 * 
-	 * @return 
 	 */
 	function end()
 	{
@@ -6795,7 +6729,6 @@ class KalturaSessionService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -6954,7 +6887,6 @@ referrer
 	 // this will actually be an empty function because all events will be sent using GET and will anyway be logged in the apache log
 	 * 
 	 * @param KalturaStatsKmcEvent $kmcEvent 
-	 * @return 
 	 */
 	function kmcCollect(KalturaStatsKmcEvent $kmcEvent)
 	{
@@ -6966,7 +6898,6 @@ referrer
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -6993,7 +6924,6 @@ referrer
 	 * 
 	 * @param string $errorCode 
 	 * @param string $errorMessage 
-	 * @return 
 	 */
 	function reportError($errorCode, $errorMessage)
 	{
@@ -7006,7 +6936,6 @@ referrer
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 
@@ -7045,7 +6974,6 @@ class KalturaStorageProfileService extends KalturaServiceBase
 	 * 
 	 * @param int $storageId 
 	 * @param int $status 
-	 * @return 
 	 */
 	function updateStatus($storageId, $status)
 	{
@@ -7058,7 +6986,6 @@ class KalturaStorageProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -7199,7 +7126,6 @@ class KalturaSyndicationFeedService extends KalturaServiceBase
 	 * Delete Syndication Feed by ID
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -7211,7 +7137,6 @@ class KalturaSyndicationFeedService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -7440,6 +7365,9 @@ class KalturaThumbAssetService extends KalturaServiceBase
 	 */
 	function serveByEntryId($entryId, $thumbParamId = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "thumbParamId", $thumbParamId);
@@ -7460,6 +7388,9 @@ class KalturaThumbAssetService extends KalturaServiceBase
 	 */
 	function serve($thumbAssetId, $version = null, KalturaThumbParams $thumbParams = null, KalturaThumbnailServeOptions $options = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "thumbAssetId", $thumbAssetId);
 		$this->client->addParam($kparams, "version", $version);
@@ -7478,7 +7409,6 @@ class KalturaThumbAssetService extends KalturaServiceBase
 	 Create a new file sync link on the entry thumbnail that points to the thumbnail asset file sync.
 	 * 
 	 * @param string $thumbAssetId 
-	 * @return 
 	 */
 	function setAsDefault($thumbAssetId)
 	{
@@ -7490,7 +7420,6 @@ class KalturaThumbAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -7664,7 +7593,6 @@ class KalturaThumbAssetService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param string $thumbAssetId 
-	 * @return 
 	 */
 	function delete($thumbAssetId)
 	{
@@ -7676,7 +7604,6 @@ class KalturaThumbAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -7851,7 +7778,6 @@ class KalturaThumbParamsService extends KalturaServiceBase
 	 * Delete Thumb Params by ID
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -7863,7 +7789,6 @@ class KalturaThumbParamsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -7983,7 +7908,6 @@ class KalturaUiConfService extends KalturaServiceBase
 	 * Delete an existing UIConf
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -7995,7 +7919,6 @@ class KalturaUiConfService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -8214,7 +8137,6 @@ class KalturaUploadTokenService extends KalturaServiceBase
 	 * Deletes the upload token by upload token id
 	 * 
 	 * @param string $uploadTokenId 
-	 * @return 
 	 */
 	function delete($uploadTokenId)
 	{
@@ -8226,7 +8148,6 @@ class KalturaUploadTokenService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -8289,7 +8210,6 @@ class KalturaUserEntryService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param KalturaUserEntry $userEntry 
-	 * @return 
 	 */
 	function update($id, KalturaUserEntry $userEntry)
 	{
@@ -8302,7 +8222,6 @@ class KalturaUserEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -8659,7 +8578,6 @@ class KalturaUserService extends KalturaServiceBase
 	 * Notifies that a user is banned from an account.
 	 * 
 	 * @param string $userId The user's unique identifier in the partner's system
-	 * @return 
 	 */
 	function notifyBan($userId)
 	{
@@ -8671,7 +8589,6 @@ class KalturaUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -8737,7 +8654,6 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param string $newPassword Optional, The user's new password
 	 * @param string $newFirstName Optional, The user's new first name
 	 * @param string $newLastName Optional, The user's new last name
-	 * @return 
 	 */
 	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
 	{
@@ -8754,14 +8670,12 @@ class KalturaUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
 	 * Reset user's password and send the user an email to generate a new one.
 	 * 
 	 * @param string $email The user's email address (login email)
-	 * @return 
 	 */
 	function resetPassword($email)
 	{
@@ -8773,7 +8687,6 @@ class KalturaUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -8781,7 +8694,6 @@ class KalturaUserService extends KalturaServiceBase
 	 * 
 	 * @param string $hashKey The hash key used to identify the user (retrieved by email)
 	 * @param string $newPassword The new password to set for the user
-	 * @return 
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -8794,7 +8706,6 @@ class KalturaUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

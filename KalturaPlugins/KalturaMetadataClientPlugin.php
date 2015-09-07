@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataProfileCreateMode
+class KalturaMetadataProfileCreateMode extends KalturaEnumBase
 {
 	const API = 1;
 	const KMC = 2;
@@ -50,7 +50,7 @@ class KalturaMetadataProfileCreateMode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataProfileStatus
+class KalturaMetadataProfileStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const DEPRECATED = 2;
@@ -61,7 +61,7 @@ class KalturaMetadataProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataStatus
+class KalturaMetadataStatus extends KalturaEnumBase
 {
 	const VALID = 1;
 	const INVALID = 2;
@@ -72,7 +72,7 @@ class KalturaMetadataStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataObjectType
+class KalturaMetadataObjectType extends KalturaEnumBase
 {
 	const AD_CUE_POINT = "adCuePointMetadata.AdCuePoint";
 	const ANNOTATION = "annotationMetadata.Annotation";
@@ -89,7 +89,7 @@ class KalturaMetadataObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataOrderBy
+class KalturaMetadataOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const METADATA_PROFILE_VERSION_ASC = "+metadataProfileVersion";
@@ -105,7 +105,7 @@ class KalturaMetadataOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataProfileOrderBy
+class KalturaMetadataProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1156,7 +1156,6 @@ class KalturaMetadataService extends KalturaServiceBase
 	 * Delete an existing metadata
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -1168,7 +1167,6 @@ class KalturaMetadataService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1177,7 +1175,6 @@ class KalturaMetadataService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param int $version Enable update only if the metadata object version did not change by other process
-	 * @return 
 	 */
 	function invalidate($id, $version = null)
 	{
@@ -1190,7 +1187,6 @@ class KalturaMetadataService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1222,6 +1218,9 @@ class KalturaMetadataService extends KalturaServiceBase
 	 */
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("metadata_metadata", "serve", $kparams);
@@ -1401,7 +1400,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	 * Delete an existing metadata profile
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -1413,7 +1411,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1511,6 +1508,9 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	 */
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "serve", $kparams);
@@ -1527,6 +1527,9 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	 */
 	function serveView($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "serveView", $kparams);

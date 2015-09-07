@@ -106,6 +106,9 @@ class KalturaBulkService extends KalturaServiceBase
 	 */
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("bulkupload_bulk", "serve", $kparams);
@@ -122,6 +125,9 @@ class KalturaBulkService extends KalturaServiceBase
 	 */
 	function serveLog($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("bulkupload_bulk", "serveLog", $kparams);

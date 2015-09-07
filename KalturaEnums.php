@@ -37,7 +37,7 @@ require_once(dirname(__FILE__) . "/KalturaClientBase.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAppTokenStatus
+class KalturaAppTokenStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ACTIVE = 2;
@@ -48,7 +48,7 @@ class KalturaAppTokenStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAppearInListType
+class KalturaAppearInListType extends KalturaEnumBase
 {
 	const PARTNER_ONLY = 1;
 	const CATEGORY_MEMBERS_ONLY = 3;
@@ -58,7 +58,7 @@ class KalturaAppearInListType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetParamsDeletePolicy
+class KalturaAssetParamsDeletePolicy extends KalturaEnumBase
 {
 	const KEEP = 0;
 	const DELETE = 1;
@@ -68,7 +68,7 @@ class KalturaAssetParamsDeletePolicy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetParamsOrigin
+class KalturaAssetParamsOrigin extends KalturaEnumBase
 {
 	const CONVERT = 0;
 	const INGEST = 1;
@@ -79,7 +79,7 @@ class KalturaAssetParamsOrigin
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetStatus
+class KalturaAssetStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;
@@ -93,7 +93,7 @@ class KalturaAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchJobErrorTypes
+class KalturaBatchJobErrorTypes extends KalturaEnumBase
 {
 	const APP = 0;
 	const RUNTIME = 1;
@@ -107,7 +107,7 @@ class KalturaBatchJobErrorTypes
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchJobStatus
+class KalturaBatchJobStatus extends KalturaEnumBase
 {
 	const PENDING = 0;
 	const QUEUED = 1;
@@ -128,7 +128,7 @@ class KalturaBatchJobStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBitRateMode
+class KalturaBitRateMode extends KalturaEnumBase
 {
 	const CBR = 1;
 	const VBR = 2;
@@ -138,7 +138,7 @@ class KalturaBitRateMode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryEntryStatus
+class KalturaCategoryEntryStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
 	const ACTIVE = 2;
@@ -150,7 +150,7 @@ class KalturaCategoryEntryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryStatus
+class KalturaCategoryStatus extends KalturaEnumBase
 {
 	const UPDATING = 1;
 	const ACTIVE = 2;
@@ -162,7 +162,7 @@ class KalturaCategoryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryUserPermissionLevel
+class KalturaCategoryUserPermissionLevel extends KalturaEnumBase
 {
 	const MANAGER = 0;
 	const MODERATOR = 1;
@@ -175,7 +175,7 @@ class KalturaCategoryUserPermissionLevel
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryUserStatus
+class KalturaCategoryUserStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const PENDING = 2;
@@ -187,7 +187,7 @@ class KalturaCategoryUserStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCommercialUseType
+class KalturaCommercialUseType extends KalturaEnumBase
 {
 	const NON_COMMERCIAL_USE = 0;
 	const COMMERCIAL_USE = 1;
@@ -197,7 +197,7 @@ class KalturaCommercialUseType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaContributionPolicyType
+class KalturaContributionPolicyType extends KalturaEnumBase
 {
 	const ALL = 1;
 	const MEMBERS_WITH_CONTRIBUTION_PERMISSION = 2;
@@ -207,7 +207,7 @@ class KalturaContributionPolicyType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaControlPanelCommandStatus
+class KalturaControlPanelCommandStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
 	const HANDLED = 2;
@@ -219,7 +219,7 @@ class KalturaControlPanelCommandStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaControlPanelCommandTargetType
+class KalturaControlPanelCommandTargetType extends KalturaEnumBase
 {
 	const DATA_CENTER = 1;
 	const SCHEDULER = 2;
@@ -232,7 +232,7 @@ class KalturaControlPanelCommandTargetType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaControlPanelCommandType
+class KalturaControlPanelCommandType extends KalturaEnumBase
 {
 	const KILL = 4;
 }
@@ -241,7 +241,7 @@ class KalturaControlPanelCommandType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCountryRestrictionType
+class KalturaCountryRestrictionType extends KalturaEnumBase
 {
 	const RESTRICT_COUNTRY_LIST = 0;
 	const ALLOW_COUNTRY_LIST = 1;
@@ -251,7 +251,7 @@ class KalturaCountryRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDVRStatus
+class KalturaDVRStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;
 	const ENABLED = 1;
@@ -261,7 +261,7 @@ class KalturaDVRStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryStatus
+class KalturaDeliveryStatus extends KalturaEnumBase
 {
 	const ACTIVE = 0;
 	const DELETED = 1;
@@ -273,7 +273,7 @@ class KalturaDeliveryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDirectoryRestrictionType
+class KalturaDirectoryRestrictionType extends KalturaEnumBase
 {
 	const DONT_DISPLAY = 0;
 	const DISPLAY_WITH_LINK = 1;
@@ -283,7 +283,7 @@ class KalturaDirectoryRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerStatus
+class KalturaEdgeServerStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const DISABLED = 2;
@@ -294,7 +294,7 @@ class KalturaEdgeServerStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEditorType
+class KalturaEditorType extends KalturaEnumBase
 {
 	const SIMPLE = 1;
 	const ADVANCED = 2;
@@ -304,7 +304,7 @@ class KalturaEditorType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEmailIngestionProfileStatus
+class KalturaEmailIngestionProfileStatus extends KalturaEnumBase
 {
 	const INACTIVE = 0;
 	const ACTIVE = 1;
@@ -314,7 +314,7 @@ class KalturaEmailIngestionProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryModerationStatus
+class KalturaEntryModerationStatus extends KalturaEnumBase
 {
 	const PENDING_MODERATION = 1;
 	const APPROVED = 2;
@@ -327,7 +327,7 @@ class KalturaEntryModerationStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeatureStatusType
+class KalturaFeatureStatusType extends KalturaEnumBase
 {
 	const LOCK_CATEGORY = 1;
 	const CATEGORY = 2;
@@ -341,7 +341,7 @@ class KalturaFeatureStatusType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFlavorAssetStatus
+class KalturaFlavorAssetStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;
@@ -360,7 +360,7 @@ class KalturaFlavorAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFlavorReadyBehaviorType
+class KalturaFlavorReadyBehaviorType extends KalturaEnumBase
 {
 	const NO_IMPACT = 0;
 	const INHERIT_FLAVOR_PARAMS = 0;
@@ -372,7 +372,7 @@ class KalturaFlavorReadyBehaviorType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGender
+class KalturaGender extends KalturaEnumBase
 {
 	const UNKNOWN = 0;
 	const MALE = 1;
@@ -383,7 +383,7 @@ class KalturaGender
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGroupUserStatus
+class KalturaGroupUserStatus extends KalturaEnumBase
 {
 	const ACTIVE = 0;
 	const DELETED = 1;
@@ -393,7 +393,7 @@ class KalturaGroupUserStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaInheritanceType
+class KalturaInheritanceType extends KalturaEnumBase
 {
 	const INHERIT = 1;
 	const MANUAL = 2;
@@ -403,7 +403,7 @@ class KalturaInheritanceType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIpAddressRestrictionType
+class KalturaIpAddressRestrictionType extends KalturaEnumBase
 {
 	const RESTRICT_LIST = 0;
 	const ALLOW_LIST = 1;
@@ -413,7 +413,7 @@ class KalturaIpAddressRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLicenseType
+class KalturaLicenseType extends KalturaEnumBase
 {
 	const UNKNOWN = -1;
 	const NONE = 0;
@@ -438,7 +438,7 @@ class KalturaLicenseType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLimitFlavorsRestrictionType
+class KalturaLimitFlavorsRestrictionType extends KalturaEnumBase
 {
 	const RESTRICT_LIST = 0;
 	const ALLOW_LIST = 1;
@@ -448,7 +448,7 @@ class KalturaLimitFlavorsRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLivePublishStatus
+class KalturaLivePublishStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;
 	const ENABLED = 1;
@@ -458,7 +458,7 @@ class KalturaLivePublishStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveReportExportType
+class KalturaLiveReportExportType extends KalturaEnumBase
 {
 	const PARTNER_TOTAL_ALL = 1;
 	const PARTNER_TOTAL_LIVE = 2;
@@ -474,7 +474,7 @@ class KalturaLiveReportExportType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStatsEventType
+class KalturaLiveStatsEventType extends KalturaEnumBase
 {
 	const LIVE = 1;
 	const DVR = 2;
@@ -484,7 +484,7 @@ class KalturaLiveStatsEventType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMailJobStatus
+class KalturaMailJobStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
 	const SENT = 2;
@@ -496,7 +496,7 @@ class KalturaMailJobStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaServerIndex
+class KalturaMediaServerIndex extends KalturaEnumBase
 {
 	const PRIMARY = 0;
 	const SECONDARY = 1;
@@ -506,7 +506,7 @@ class KalturaMediaServerIndex
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaType
+class KalturaMediaType extends KalturaEnumBase
 {
 	const VIDEO = 1;
 	const IMAGE = 2;
@@ -521,7 +521,7 @@ class KalturaMediaType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaModerationFlagType
+class KalturaModerationFlagType extends KalturaEnumBase
 {
 	const SEXUAL_CONTENT = 1;
 	const VIOLENT_REPULSIVE = 2;
@@ -535,7 +535,7 @@ class KalturaModerationFlagType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMrssExtensionMode
+class KalturaMrssExtensionMode extends KalturaEnumBase
 {
 	const APPEND = 1;
 	const REPLACE = 2;
@@ -545,7 +545,7 @@ class KalturaMrssExtensionMode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaNotificationObjectType
+class KalturaNotificationObjectType extends KalturaEnumBase
 {
 	const ENTRY = 1;
 	const KSHOW = 2;
@@ -557,7 +557,7 @@ class KalturaNotificationObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaNotificationStatus
+class KalturaNotificationStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
 	const SENT = 2;
@@ -572,7 +572,7 @@ class KalturaNotificationStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaNotificationType
+class KalturaNotificationType extends KalturaEnumBase
 {
 	const ENTRY_ADD = 1;
 	const ENTR_UPDATE_PERMISSIONS = 2;
@@ -589,7 +589,7 @@ class KalturaNotificationType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaNullableBoolean
+class KalturaNullableBoolean extends KalturaEnumBase
 {
 	const NULL_VALUE = -1;
 	const FALSE_VALUE = 0;
@@ -600,7 +600,7 @@ class KalturaNullableBoolean
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPartnerGroupType
+class KalturaPartnerGroupType extends KalturaEnumBase
 {
 	const PUBLISHER = 1;
 	const VAR_GROUP = 2;
@@ -612,7 +612,7 @@ class KalturaPartnerGroupType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPartnerStatus
+class KalturaPartnerStatus extends KalturaEnumBase
 {
 	const DELETED = 0;
 	const ACTIVE = 1;
@@ -624,7 +624,7 @@ class KalturaPartnerStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPartnerType
+class KalturaPartnerType extends KalturaEnumBase
 {
 	const KMC = 1;
 	const WIKI = 100;
@@ -643,7 +643,7 @@ class KalturaPartnerType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPermissionStatus
+class KalturaPermissionStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const BLOCKED = 2;
@@ -654,7 +654,7 @@ class KalturaPermissionStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPermissionType
+class KalturaPermissionType extends KalturaEnumBase
 {
 	const NORMAL = 1;
 	const SPECIAL_FEATURE = 2;
@@ -666,7 +666,7 @@ class KalturaPermissionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlaylistType
+class KalturaPlaylistType extends KalturaEnumBase
 {
 	const STATIC_LIST = 3;
 	const DYNAMIC = 10;
@@ -677,7 +677,7 @@ class KalturaPlaylistType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPrivacyType
+class KalturaPrivacyType extends KalturaEnumBase
 {
 	const ALL = 1;
 	const AUTHENTICATED_USERS = 2;
@@ -688,7 +688,7 @@ class KalturaPrivacyType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaRecordStatus
+class KalturaRecordStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;
 	const APPENDED = 1;
@@ -699,7 +699,7 @@ class KalturaRecordStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaResponseProfileStatus
+class KalturaResponseProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;
@@ -710,7 +710,7 @@ class KalturaResponseProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaResponseProfileType
+class KalturaResponseProfileType extends KalturaEnumBase
 {
 	const INCLUDE_FIELDS = 1;
 	const EXCLUDE_FIELDS = 2;
@@ -720,7 +720,7 @@ class KalturaResponseProfileType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaResponseType
+class KalturaResponseType extends KalturaEnumBase
 {
 	const RESPONSE_TYPE_JSON = 1;
 	const RESPONSE_TYPE_XML = 2;
@@ -735,7 +735,7 @@ class KalturaResponseType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSchedulerStatusType
+class KalturaSchedulerStatusType extends KalturaEnumBase
 {
 	const RUNNING_BATCHES_COUNT = 1;
 	const RUNNING_BATCHES_CPU = 2;
@@ -750,7 +750,7 @@ class KalturaSchedulerStatusType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchOperatorType
+class KalturaSearchOperatorType extends KalturaEnumBase
 {
 	const SEARCH_AND = 1;
 	const SEARCH_OR = 2;
@@ -760,7 +760,7 @@ class KalturaSearchOperatorType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchProviderType
+class KalturaSearchProviderType extends KalturaEnumBase
 {
 	const FLICKR = 3;
 	const YOUTUBE = 4;
@@ -784,7 +784,7 @@ class KalturaSearchProviderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSessionType
+class KalturaSessionType extends KalturaEnumBase
 {
 	const USER = 0;
 	const ADMIN = 2;
@@ -794,7 +794,7 @@ class KalturaSessionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSiteRestrictionType
+class KalturaSiteRestrictionType extends KalturaEnumBase
 {
 	const RESTRICT_SITE_LIST = 0;
 	const ALLOW_SITE_LIST = 1;
@@ -804,7 +804,7 @@ class KalturaSiteRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStatsEventType
+class KalturaStatsEventType extends KalturaEnumBase
 {
 	const WIDGET_LOADED = 1;
 	const MEDIA_LOADED = 2;
@@ -852,7 +852,7 @@ class KalturaStatsEventType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStatsFeatureType
+class KalturaStatsFeatureType extends KalturaEnumBase
 {
 	const NONE = 0;
 	const RELATED = 1;
@@ -862,7 +862,7 @@ class KalturaStatsFeatureType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStatsKmcEventType
+class KalturaStatsKmcEventType extends KalturaEnumBase
 {
 	const CONTENT_PAGE_VIEW = 1001;
 	const CONTENT_ADD_PLAYLIST = 1010;
@@ -934,7 +934,7 @@ class KalturaStatsKmcEventType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageProfileDeliveryStatus
+class KalturaStorageProfileDeliveryStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const BLOCKED = 2;
@@ -944,7 +944,7 @@ class KalturaStorageProfileDeliveryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageProfileReadyBehavior
+class KalturaStorageProfileReadyBehavior extends KalturaEnumBase
 {
 	const NO_IMPACT = 0;
 	const REQUIRED = 1;
@@ -954,7 +954,7 @@ class KalturaStorageProfileReadyBehavior
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageProfileStatus
+class KalturaStorageProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const AUTOMATIC = 2;
@@ -965,7 +965,7 @@ class KalturaStorageProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageServePriority
+class KalturaStorageServePriority extends KalturaEnumBase
 {
 	const KALTURA_ONLY = 1;
 	const KALTURA_FIRST = 2;
@@ -977,7 +977,7 @@ class KalturaStorageServePriority
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSyndicationFeedStatus
+class KalturaSyndicationFeedStatus extends KalturaEnumBase
 {
 	const DELETED = -1;
 	const ACTIVE = 1;
@@ -987,7 +987,7 @@ class KalturaSyndicationFeedStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSyndicationFeedType
+class KalturaSyndicationFeedType extends KalturaEnumBase
 {
 	const GOOGLE_VIDEO = 1;
 	const YAHOO = 2;
@@ -1001,7 +1001,7 @@ class KalturaSyndicationFeedType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbAssetStatus
+class KalturaThumbAssetStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;
@@ -1016,7 +1016,7 @@ class KalturaThumbAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbCropType
+class KalturaThumbCropType extends KalturaEnumBase
 {
 	const RESIZE = 1;
 	const RESIZE_WITH_PADDING = 2;
@@ -1029,7 +1029,7 @@ class KalturaThumbCropType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfCreationMode
+class KalturaUiConfCreationMode extends KalturaEnumBase
 {
 	const WIZARD = 2;
 	const ADVANCED = 3;
@@ -1039,7 +1039,7 @@ class KalturaUiConfCreationMode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfObjType
+class KalturaUiConfObjType extends KalturaEnumBase
 {
 	const PLAYER = 1;
 	const CONTRIBUTION_WIZARD = 2;
@@ -1068,7 +1068,7 @@ class KalturaUiConfObjType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUpdateMethodType
+class KalturaUpdateMethodType extends KalturaEnumBase
 {
 	const MANUAL = 0;
 	const AUTOMATIC = 1;
@@ -1078,7 +1078,7 @@ class KalturaUpdateMethodType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUploadErrorCode
+class KalturaUploadErrorCode extends KalturaEnumBase
 {
 	const NO_ERROR = 0;
 	const GENERAL_ERROR = 1;
@@ -1089,7 +1089,7 @@ class KalturaUploadErrorCode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUploadTokenStatus
+class KalturaUploadTokenStatus extends KalturaEnumBase
 {
 	const PENDING = 0;
 	const PARTIAL_UPLOAD = 1;
@@ -1103,7 +1103,7 @@ class KalturaUploadTokenStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserAgentRestrictionType
+class KalturaUserAgentRestrictionType extends KalturaEnumBase
 {
 	const RESTRICT_LIST = 0;
 	const ALLOW_LIST = 1;
@@ -1113,7 +1113,7 @@ class KalturaUserAgentRestrictionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserJoinPolicyType
+class KalturaUserJoinPolicyType extends KalturaEnumBase
 {
 	const AUTO_JOIN = 1;
 	const REQUEST_TO_JOIN = 2;
@@ -1124,7 +1124,7 @@ class KalturaUserJoinPolicyType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserRoleStatus
+class KalturaUserRoleStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const BLOCKED = 2;
@@ -1135,7 +1135,7 @@ class KalturaUserRoleStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserStatus
+class KalturaUserStatus extends KalturaEnumBase
 {
 	const BLOCKED = 0;
 	const ACTIVE = 1;
@@ -1146,7 +1146,7 @@ class KalturaUserStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserType
+class KalturaUserType extends KalturaEnumBase
 {
 	const USER = 0;
 	const GROUP = 1;
@@ -1156,7 +1156,7 @@ class KalturaUserType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidgetSecurityType
+class KalturaWidgetSecurityType extends KalturaEnumBase
 {
 	const NONE = 1;
 	const TIMEHASH = 2;
@@ -1166,7 +1166,7 @@ class KalturaWidgetSecurityType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAccessControlOrderBy
+class KalturaAccessControlOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -1176,7 +1176,7 @@ class KalturaAccessControlOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAccessControlProfileOrderBy
+class KalturaAccessControlProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1188,7 +1188,7 @@ class KalturaAccessControlProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdminUserOrderBy
+class KalturaAdminUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -1200,7 +1200,7 @@ class KalturaAdminUserOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAkamaiUniversalStreamType
+class KalturaAkamaiUniversalStreamType extends KalturaEnumBase
 {
 	const HD_IPHONE_IPAD_LIVE = "HD iPhone/iPad Live";
 	const UNIVERSAL_STREAMING_LIVE = "Universal Streaming Live";
@@ -1210,7 +1210,7 @@ class KalturaAkamaiUniversalStreamType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAmazonS3StorageProfileFilesPermissionLevel
+class KalturaAmazonS3StorageProfileFilesPermissionLevel extends KalturaEnumBase
 {
 	const ACL_AUTHENTICATED_READ = "authenticated-read";
 	const ACL_PRIVATE = "private";
@@ -1222,7 +1222,7 @@ class KalturaAmazonS3StorageProfileFilesPermissionLevel
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAmazonS3StorageProfileOrderBy
+class KalturaAmazonS3StorageProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1234,7 +1234,7 @@ class KalturaAmazonS3StorageProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaApiActionPermissionItemOrderBy
+class KalturaApiActionPermissionItemOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -1248,7 +1248,7 @@ class KalturaApiActionPermissionItemOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaApiParameterPermissionItemAction
+class KalturaApiParameterPermissionItemAction extends KalturaEnumBase
 {
 	const USAGE = "all";
 	const INSERT = "insert";
@@ -1260,7 +1260,7 @@ class KalturaApiParameterPermissionItemAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaApiParameterPermissionItemOrderBy
+class KalturaApiParameterPermissionItemOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -1274,7 +1274,7 @@ class KalturaApiParameterPermissionItemOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAppTokenHashType
+class KalturaAppTokenHashType extends KalturaEnumBase
 {
 	const MD5 = "MD5";
 	const SHA1 = "SHA1";
@@ -1286,7 +1286,7 @@ class KalturaAppTokenHashType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAppTokenOrderBy
+class KalturaAppTokenOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1298,7 +1298,7 @@ class KalturaAppTokenOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetOrderBy
+class KalturaAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -1314,7 +1314,7 @@ class KalturaAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetParamsOrderBy
+class KalturaAssetParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -1322,7 +1322,7 @@ class KalturaAssetParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetParamsOutputOrderBy
+class KalturaAssetParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -1330,7 +1330,7 @@ class KalturaAssetParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetType
+class KalturaAssetType extends KalturaEnumBase
 {
 	const ATTACHMENT = "attachment.Attachment";
 	const CAPTION = "caption.Caption";
@@ -1348,7 +1348,7 @@ class KalturaAssetType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAudioCodec
+class KalturaAudioCodec extends KalturaEnumBase
 {
 	const NONE = "";
 	const AAC = "aac";
@@ -1368,7 +1368,7 @@ class KalturaAudioCodec
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBaseEntryCompareAttribute
+class KalturaBaseEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -1390,7 +1390,7 @@ class KalturaBaseEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBaseEntryMatchAttribute
+class KalturaBaseEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -1411,7 +1411,7 @@ class KalturaBaseEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBaseEntryOrderBy
+class KalturaBaseEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";
@@ -1441,7 +1441,7 @@ class KalturaBaseEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBaseSyndicationFeedOrderBy
+class KalturaBaseSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";
@@ -1459,7 +1459,7 @@ class KalturaBaseSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchJobObjectType
+class KalturaBatchJobObjectType extends KalturaEnumBase
 {
 	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
 	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
@@ -1476,7 +1476,7 @@ class KalturaBatchJobObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchJobOrderBy
+class KalturaBatchJobOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ESTIMATED_EFFORT_ASC = "+estimatedEffort";
@@ -1502,7 +1502,7 @@ class KalturaBatchJobOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchJobType
+class KalturaBatchJobType extends KalturaEnumBase
 {
 	const CONVERT = "0";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
@@ -1565,7 +1565,7 @@ class KalturaBatchJobType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadAction
+class KalturaBulkUploadAction extends KalturaEnumBase
 {
 	const ADD = "1";
 	const UPDATE = "2";
@@ -1579,7 +1579,7 @@ class KalturaBulkUploadAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadObjectType
+class KalturaBulkUploadObjectType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";
@@ -1592,7 +1592,7 @@ class KalturaBulkUploadObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadOrderBy
+class KalturaBulkUploadOrderBy extends KalturaEnumBase
 {
 }
 
@@ -1600,7 +1600,7 @@ class KalturaBulkUploadOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadResultObjectType
+class KalturaBulkUploadResultObjectType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";
@@ -1613,7 +1613,7 @@ class KalturaBulkUploadResultObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadResultStatus
+class KalturaBulkUploadResultStatus extends KalturaEnumBase
 {
 	const ERROR = "1";
 	const OK = "2";
@@ -1624,7 +1624,7 @@ class KalturaBulkUploadResultStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadType
+class KalturaBulkUploadType extends KalturaEnumBase
 {
 	const CSV = "bulkUploadCsv.CSV";
 	const FILTER = "bulkUploadFilter.FILTER";
@@ -1636,7 +1636,7 @@ class KalturaBulkUploadType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryEntryAdvancedOrderBy
+class KalturaCategoryEntryAdvancedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -1646,7 +1646,7 @@ class KalturaCategoryEntryAdvancedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryEntryOrderBy
+class KalturaCategoryEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -1656,7 +1656,7 @@ class KalturaCategoryEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryIdentifierField
+class KalturaCategoryIdentifierField extends KalturaEnumBase
 {
 	const FULL_NAME = "fullName";
 	const ID = "id";
@@ -1667,7 +1667,7 @@ class KalturaCategoryIdentifierField
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryOrderBy
+class KalturaCategoryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DEPTH_ASC = "+depth";
@@ -1695,7 +1695,7 @@ class KalturaCategoryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryUserOrderBy
+class KalturaCategoryUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1707,7 +1707,7 @@ class KalturaCategoryUserOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConditionType
+class KalturaConditionType extends KalturaEnumBase
 {
 	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
 	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
@@ -1733,7 +1733,7 @@ class KalturaConditionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaContainerFormat
+class KalturaContainerFormat extends KalturaEnumBase
 {
 	const _3GP = "3gp";
 	const APPLEHTTP = "applehttp";
@@ -1770,7 +1770,7 @@ class KalturaContainerFormat
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaContextType
+class KalturaContextType extends KalturaEnumBase
 {
 	const PLAY = "1";
 	const DOWNLOAD = "2";
@@ -1784,7 +1784,7 @@ class KalturaContextType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaControlPanelCommandOrderBy
+class KalturaControlPanelCommandOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1796,7 +1796,7 @@ class KalturaControlPanelCommandOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConversionProfileAssetParamsOrderBy
+class KalturaConversionProfileAssetParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -1804,7 +1804,7 @@ class KalturaConversionProfileAssetParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConversionProfileOrderBy
+class KalturaConversionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -1814,7 +1814,7 @@ class KalturaConversionProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConversionProfileStatus
+class KalturaConversionProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = "1";
 	const ENABLED = "2";
@@ -1825,7 +1825,7 @@ class KalturaConversionProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConversionProfileType
+class KalturaConversionProfileType extends KalturaEnumBase
 {
 	const MEDIA = "1";
 	const LIVE_STREAM = "2";
@@ -1835,7 +1835,7 @@ class KalturaConversionProfileType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDataEntryCompareAttribute
+class KalturaDataEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -1857,7 +1857,7 @@ class KalturaDataEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDataEntryMatchAttribute
+class KalturaDataEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -1878,7 +1878,7 @@ class KalturaDataEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDataEntryOrderBy
+class KalturaDataEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";
@@ -1908,7 +1908,7 @@ class KalturaDataEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileAkamaiAppleHttpManifestOrderBy
+class KalturaDeliveryProfileAkamaiAppleHttpManifestOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1920,7 +1920,7 @@ class KalturaDeliveryProfileAkamaiAppleHttpManifestOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileAkamaiHdsOrderBy
+class KalturaDeliveryProfileAkamaiHdsOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1932,7 +1932,7 @@ class KalturaDeliveryProfileAkamaiHdsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileAkamaiHttpOrderBy
+class KalturaDeliveryProfileAkamaiHttpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1944,7 +1944,7 @@ class KalturaDeliveryProfileAkamaiHttpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericAppleHttpOrderBy
+class KalturaDeliveryProfileGenericAppleHttpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1956,7 +1956,7 @@ class KalturaDeliveryProfileGenericAppleHttpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericHdsOrderBy
+class KalturaDeliveryProfileGenericHdsOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1968,7 +1968,7 @@ class KalturaDeliveryProfileGenericHdsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericHttpOrderBy
+class KalturaDeliveryProfileGenericHttpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1980,7 +1980,7 @@ class KalturaDeliveryProfileGenericHttpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericRtmpOrderBy
+class KalturaDeliveryProfileGenericRtmpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -1992,7 +1992,7 @@ class KalturaDeliveryProfileGenericRtmpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericSilverLightOrderBy
+class KalturaDeliveryProfileGenericSilverLightOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2004,7 +2004,7 @@ class KalturaDeliveryProfileGenericSilverLightOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileLiveAppleHttpOrderBy
+class KalturaDeliveryProfileLiveAppleHttpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2016,7 +2016,7 @@ class KalturaDeliveryProfileLiveAppleHttpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileOrderBy
+class KalturaDeliveryProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2028,7 +2028,7 @@ class KalturaDeliveryProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileRtmpOrderBy
+class KalturaDeliveryProfileRtmpOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2040,7 +2040,7 @@ class KalturaDeliveryProfileRtmpOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileType
+class KalturaDeliveryProfileType extends KalturaEnumBase
 {
 	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
 	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
@@ -2093,7 +2093,7 @@ class KalturaDeliveryProfileType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentEntryCompareAttribute
+class KalturaDocumentEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -2115,7 +2115,7 @@ class KalturaDocumentEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentEntryMatchAttribute
+class KalturaDocumentEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -2136,7 +2136,7 @@ class KalturaDocumentEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDurationType
+class KalturaDurationType extends KalturaEnumBase
 {
 	const LONG = "long";
 	const MEDIUM = "medium";
@@ -2148,7 +2148,7 @@ class KalturaDurationType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDynamicEnum
+class KalturaDynamicEnum extends KalturaEnumBase
 {
 }
 
@@ -2156,7 +2156,7 @@ class KalturaDynamicEnum
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerOrderBy
+class KalturaEdgeServerOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2168,7 +2168,7 @@ class KalturaEdgeServerOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryIdentifierField
+class KalturaEntryIdentifierField extends KalturaEnumBase
 {
 	const ID = "id";
 	const REFERENCE_ID = "referenceId";
@@ -2178,7 +2178,7 @@ class KalturaEntryIdentifierField
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryReplacementStatus
+class KalturaEntryReplacementStatus extends KalturaEnumBase
 {
 	const NONE = "0";
 	const APPROVED_BUT_NOT_READY = "1";
@@ -2191,7 +2191,7 @@ class KalturaEntryReplacementStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryStatus
+class KalturaEntryStatus extends KalturaEnumBase
 {
 	const ERROR_IMPORTING = "-2";
 	const ERROR_CONVERTING = "-1";
@@ -2211,7 +2211,7 @@ class KalturaEntryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryType
+class KalturaEntryType extends KalturaEnumBase
 {
 	const AUTOMATIC = "-1";
 	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
@@ -2228,7 +2228,7 @@ class KalturaEntryType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaExternalMediaEntryCompareAttribute
+class KalturaExternalMediaEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -2256,7 +2256,7 @@ class KalturaExternalMediaEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaExternalMediaEntryMatchAttribute
+class KalturaExternalMediaEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -2279,7 +2279,7 @@ class KalturaExternalMediaEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileAssetObjectType
+class KalturaFileAssetObjectType extends KalturaEnumBase
 {
 	const UI_CONF = "2";
 }
@@ -2288,7 +2288,7 @@ class KalturaFileAssetObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileAssetOrderBy
+class KalturaFileAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2300,7 +2300,7 @@ class KalturaFileAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileAssetStatus
+class KalturaFileAssetStatus extends KalturaEnumBase
 {
 	const PENDING = "0";
 	const UPLOADING = "1";
@@ -2313,7 +2313,7 @@ class KalturaFileAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileSyncObjectType
+class KalturaFileSyncObjectType extends KalturaEnumBase
 {
 	const DISTRIBUTION_PROFILE = "contentDistribution.DistributionProfile";
 	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
@@ -2336,7 +2336,7 @@ class KalturaFileSyncObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFlavorAssetOrderBy
+class KalturaFlavorAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -2352,7 +2352,7 @@ class KalturaFlavorAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFlavorParamsOrderBy
+class KalturaFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -2360,7 +2360,7 @@ class KalturaFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFlavorParamsOutputOrderBy
+class KalturaFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -2368,25 +2368,7 @@ class KalturaFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericSyndicationFeedOrderBy
-{
-	const CREATED_AT_ASC = "+createdAt";
-	const NAME_ASC = "+name";
-	const PLAYLIST_ID_ASC = "+playlistId";
-	const TYPE_ASC = "+type";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const NAME_DESC = "-name";
-	const PLAYLIST_ID_DESC = "-playlistId";
-	const TYPE_DESC = "-type";
-	const UPDATED_AT_DESC = "-updatedAt";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaGenericXsltSyndicationFeedOrderBy
+class KalturaGenericSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";
@@ -2404,7 +2386,25 @@ class KalturaGenericXsltSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGeoCoderType
+class KalturaGenericXsltSyndicationFeedOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const NAME_ASC = "+name";
+	const PLAYLIST_ID_ASC = "+playlistId";
+	const TYPE_ASC = "+type";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const NAME_DESC = "-name";
+	const PLAYLIST_ID_DESC = "-playlistId";
+	const TYPE_DESC = "-type";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaGeoCoderType extends KalturaEnumBase
 {
 	const KALTURA = "1";
 }
@@ -2413,7 +2413,7 @@ class KalturaGeoCoderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGoogleSyndicationFeedAdultValues
+class KalturaGoogleSyndicationFeedAdultValues extends KalturaEnumBase
 {
 	const NO = "No";
 	const YES = "Yes";
@@ -2423,7 +2423,7 @@ class KalturaGoogleSyndicationFeedAdultValues
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGoogleVideoSyndicationFeedOrderBy
+class KalturaGoogleVideoSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";
@@ -2441,7 +2441,7 @@ class KalturaGoogleVideoSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGroupUserOrderBy
+class KalturaGroupUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2453,7 +2453,7 @@ class KalturaGroupUserOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaITunesSyndicationFeedAdultValues
+class KalturaITunesSyndicationFeedAdultValues extends KalturaEnumBase
 {
 	const CLEAN = "clean";
 	const NO = "no";
@@ -2464,7 +2464,7 @@ class KalturaITunesSyndicationFeedAdultValues
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaITunesSyndicationFeedCategories
+class KalturaITunesSyndicationFeedCategories extends KalturaEnumBase
 {
 	const ARTS = "Arts";
 	const ARTS_DESIGN = "Arts/Design";
@@ -2539,7 +2539,7 @@ class KalturaITunesSyndicationFeedCategories
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaITunesSyndicationFeedOrderBy
+class KalturaITunesSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";
@@ -2557,7 +2557,7 @@ class KalturaITunesSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLanguage
+class KalturaLanguage extends KalturaEnumBase
 {
 	const AB = "Abkhazian";
 	const AA = "Afar";
@@ -2711,7 +2711,7 @@ class KalturaLanguage
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLanguageCode
+class KalturaLanguageCode extends KalturaEnumBase
 {
 	const AA = "aa";
 	const AB = "ab";
@@ -2865,7 +2865,7 @@ class KalturaLanguageCode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveAssetOrderBy
+class KalturaLiveAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -2881,7 +2881,7 @@ class KalturaLiveAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelCompareAttribute
+class KalturaLiveChannelCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -2909,7 +2909,7 @@ class KalturaLiveChannelCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelMatchAttribute
+class KalturaLiveChannelMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -2932,7 +2932,7 @@ class KalturaLiveChannelMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelOrderBy
+class KalturaLiveChannelOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -2976,7 +2976,7 @@ class KalturaLiveChannelOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelSegmentOrderBy
+class KalturaLiveChannelSegmentOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const START_TIME_ASC = "+startTime";
@@ -2990,7 +2990,7 @@ class KalturaLiveChannelSegmentOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelSegmentStatus
+class KalturaLiveChannelSegmentStatus extends KalturaEnumBase
 {
 	const ACTIVE = "2";
 	const DELETED = "3";
@@ -3000,7 +3000,7 @@ class KalturaLiveChannelSegmentStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelSegmentTriggerType
+class KalturaLiveChannelSegmentTriggerType extends KalturaEnumBase
 {
 	const CHANNEL_RELATIVE = "1";
 	const ABSOLUTE_TIME = "2";
@@ -3012,7 +3012,7 @@ class KalturaLiveChannelSegmentTriggerType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveChannelSegmentType
+class KalturaLiveChannelSegmentType extends KalturaEnumBase
 {
 	const VIDEO_AND_AUDIO = "1";
 }
@@ -3021,7 +3021,7 @@ class KalturaLiveChannelSegmentType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveEntryCompareAttribute
+class KalturaLiveEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3049,7 +3049,7 @@ class KalturaLiveEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveEntryMatchAttribute
+class KalturaLiveEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3072,7 +3072,7 @@ class KalturaLiveEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveEntryOrderBy
+class KalturaLiveEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3116,7 +3116,7 @@ class KalturaLiveEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveParamsOrderBy
+class KalturaLiveParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -3124,7 +3124,7 @@ class KalturaLiveParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveReportOrderBy
+class KalturaLiveReportOrderBy extends KalturaEnumBase
 {
 	const NAME_ASC = "+name";
 	const AUDIENCE_DESC = "-audience";
@@ -3136,7 +3136,7 @@ class KalturaLiveReportOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveReportType
+class KalturaLiveReportType extends KalturaEnumBase
 {
 	const ENTRY_GEO_TIME_LINE = "ENTRY_GEO_TIME_LINE";
 	const ENTRY_SYNDICATION_TOTAL = "ENTRY_SYNDICATION_TOTAL";
@@ -3149,7 +3149,7 @@ class KalturaLiveReportType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamAdminEntryCompareAttribute
+class KalturaLiveStreamAdminEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3177,7 +3177,7 @@ class KalturaLiveStreamAdminEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamAdminEntryMatchAttribute
+class KalturaLiveStreamAdminEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3200,7 +3200,7 @@ class KalturaLiveStreamAdminEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamAdminEntryOrderBy
+class KalturaLiveStreamAdminEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3244,7 +3244,7 @@ class KalturaLiveStreamAdminEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamEntryCompareAttribute
+class KalturaLiveStreamEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3272,7 +3272,7 @@ class KalturaLiveStreamEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamEntryMatchAttribute
+class KalturaLiveStreamEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3295,7 +3295,7 @@ class KalturaLiveStreamEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveStreamEntryOrderBy
+class KalturaLiveStreamEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3339,7 +3339,7 @@ class KalturaLiveStreamEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMailType
+class KalturaMailType extends KalturaEnumBase
 {
 	const MAIL_TYPE_KALTURA_NEWSLETTER = "10";
 	const MAIL_TYPE_ADDED_TO_FAVORITES = "11";
@@ -3389,7 +3389,7 @@ class KalturaMailType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaEntryCompareAttribute
+class KalturaMediaEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3417,7 +3417,7 @@ class KalturaMediaEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaEntryMatchAttribute
+class KalturaMediaEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3440,7 +3440,7 @@ class KalturaMediaEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaEntryOrderBy
+class KalturaMediaEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3480,7 +3480,7 @@ class KalturaMediaEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaFlavorParamsOrderBy
+class KalturaMediaFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -3488,7 +3488,7 @@ class KalturaMediaFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaFlavorParamsOutputOrderBy
+class KalturaMediaFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -3496,7 +3496,7 @@ class KalturaMediaFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaInfoOrderBy
+class KalturaMediaInfoOrderBy extends KalturaEnumBase
 {
 }
 
@@ -3504,7 +3504,7 @@ class KalturaMediaInfoOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaParserType
+class KalturaMediaParserType extends KalturaEnumBase
 {
 	const MEDIAINFO = "0";
 	const FFMPEG = "1";
@@ -3514,7 +3514,7 @@ class KalturaMediaParserType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMixEntryCompareAttribute
+class KalturaMixEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3540,7 +3540,7 @@ class KalturaMixEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMixEntryMatchAttribute
+class KalturaMixEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3562,7 +3562,7 @@ class KalturaMixEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMixEntryOrderBy
+class KalturaMixEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3600,7 +3600,7 @@ class KalturaMixEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaModerationFlagStatus
+class KalturaModerationFlagStatus extends KalturaEnumBase
 {
 	const PENDING = "1";
 	const MODERATED = "2";
@@ -3610,7 +3610,7 @@ class KalturaModerationFlagStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaModerationObjectType
+class KalturaModerationObjectType extends KalturaEnumBase
 {
 	const ENTRY = "2";
 	const USER = "3";
@@ -3620,7 +3620,7 @@ class KalturaModerationObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPartnerOrderBy
+class KalturaPartnerOrderBy extends KalturaEnumBase
 {
 	const ADMIN_EMAIL_ASC = "+adminEmail";
 	const ADMIN_NAME_ASC = "+adminName";
@@ -3642,7 +3642,7 @@ class KalturaPartnerOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPermissionItemOrderBy
+class KalturaPermissionItemOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -3656,7 +3656,7 @@ class KalturaPermissionItemOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPermissionItemType
+class KalturaPermissionItemType extends KalturaEnumBase
 {
 	const API_ACTION_ITEM = "kApiActionPermissionItem";
 	const API_PARAMETER_ITEM = "kApiParameterPermissionItem";
@@ -3666,7 +3666,7 @@ class KalturaPermissionItemType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPermissionOrderBy
+class KalturaPermissionOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -3682,7 +3682,7 @@ class KalturaPermissionOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayableEntryCompareAttribute
+class KalturaPlayableEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3708,7 +3708,7 @@ class KalturaPlayableEntryCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayableEntryMatchAttribute
+class KalturaPlayableEntryMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3730,7 +3730,7 @@ class KalturaPlayableEntryMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayableEntryOrderBy
+class KalturaPlayableEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -3768,7 +3768,7 @@ class KalturaPlayableEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlaybackProtocol
+class KalturaPlaybackProtocol extends KalturaEnumBase
 {
 	const APPLE_HTTP = "applehttp";
 	const APPLE_HTTP_TO_MC = "applehttp_to_mc";
@@ -3789,7 +3789,7 @@ class KalturaPlaybackProtocol
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlaylistCompareAttribute
+class KalturaPlaylistCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";
@@ -3811,7 +3811,7 @@ class KalturaPlaylistCompareAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlaylistMatchAttribute
+class KalturaPlaylistMatchAttribute extends KalturaEnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";
@@ -3832,7 +3832,7 @@ class KalturaPlaylistMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlaylistOrderBy
+class KalturaPlaylistOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";
@@ -3862,7 +3862,7 @@ class KalturaPlaylistOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaQuizUserEntryOrderBy
+class KalturaQuizUserEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -3874,7 +3874,7 @@ class KalturaQuizUserEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportInterval
+class KalturaReportInterval extends KalturaEnumBase
 {
 	const DAYS = "days";
 	const MONTHS = "months";
@@ -3884,7 +3884,7 @@ class KalturaReportInterval
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportOrderBy
+class KalturaReportOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -3894,7 +3894,7 @@ class KalturaReportOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportType
+class KalturaReportType extends KalturaEnumBase
 {
 	const QUIZ = "quiz.QUIZ";
 	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";
@@ -3929,7 +3929,7 @@ class KalturaReportType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaResponseProfileOrderBy
+class KalturaResponseProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -3941,7 +3941,7 @@ class KalturaResponseProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaRuleActionType
+class KalturaRuleActionType extends KalturaEnumBase
 {
 	const BLOCK = "1";
 	const PREVIEW = "2";
@@ -3956,7 +3956,7 @@ class KalturaRuleActionType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSchemaType
+class KalturaSchemaType extends KalturaEnumBase
 {
 	const BULK_UPLOAD_RESULT_XML = "bulkUploadXml.bulkUploadResultXML";
 	const BULK_UPLOAD_XML = "bulkUploadXml.bulkUploadXML";
@@ -3970,7 +3970,7 @@ class KalturaSchemaType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchConditionComparison
+class KalturaSearchConditionComparison extends KalturaEnumBase
 {
 	const EQUAL = "1";
 	const GREATER_THAN = "2";
@@ -3984,7 +3984,7 @@ class KalturaSearchConditionComparison
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSourceType
+class KalturaSourceType extends KalturaEnumBase
 {
 	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
@@ -4005,7 +4005,7 @@ class KalturaSourceType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageProfileOrderBy
+class KalturaStorageProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -4017,7 +4017,7 @@ class KalturaStorageProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageProfileProtocol
+class KalturaStorageProfileProtocol extends KalturaEnumBase
 {
 	const KONTIKI = "kontiki.KONTIKI";
 	const KALTURA_DC = "0";
@@ -4032,7 +4032,7 @@ class KalturaStorageProfileProtocol
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSyndicationFeedEntriesOrderBy
+class KalturaSyndicationFeedEntriesOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_DESC = "-createdAt";
 	const RECENT = "recent";
@@ -4042,7 +4042,7 @@ class KalturaSyndicationFeedEntriesOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTaggedObjectType
+class KalturaTaggedObjectType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";
@@ -4052,7 +4052,7 @@ class KalturaTaggedObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbAssetOrderBy
+class KalturaThumbAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -4068,7 +4068,7 @@ class KalturaThumbAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbParamsOrderBy
+class KalturaThumbParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -4076,7 +4076,7 @@ class KalturaThumbParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbParamsOutputOrderBy
+class KalturaThumbParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -4084,7 +4084,7 @@ class KalturaThumbParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTubeMogulSyndicationFeedCategories
+class KalturaTubeMogulSyndicationFeedCategories extends KalturaEnumBase
 {
 	const ANIMALS_AND_PETS = "Animals &amp; Pets";
 	const ARTS_AND_ANIMATION = "Arts &amp; Animation";
@@ -4107,7 +4107,7 @@ class KalturaTubeMogulSyndicationFeedCategories
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTubeMogulSyndicationFeedOrderBy
+class KalturaTubeMogulSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";
@@ -4125,7 +4125,7 @@ class KalturaTubeMogulSyndicationFeedOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfOrderBy
+class KalturaUiConfOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -4137,7 +4137,7 @@ class KalturaUiConfOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUploadTokenOrderBy
+class KalturaUploadTokenOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -4147,7 +4147,7 @@ class KalturaUploadTokenOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserEntryOrderBy
+class KalturaUserEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -4159,7 +4159,7 @@ class KalturaUserEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserEntryStatus
+class KalturaUserEntryStatus extends KalturaEnumBase
 {
 	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";
@@ -4170,7 +4170,7 @@ class KalturaUserEntryStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserEntryType
+class KalturaUserEntryType extends KalturaEnumBase
 {
 	const QUIZ = "quiz.QUIZ";
 }
@@ -4179,7 +4179,7 @@ class KalturaUserEntryType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserLoginDataOrderBy
+class KalturaUserLoginDataOrderBy extends KalturaEnumBase
 {
 }
 
@@ -4187,7 +4187,7 @@ class KalturaUserLoginDataOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserOrderBy
+class KalturaUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -4199,7 +4199,7 @@ class KalturaUserOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserRoleOrderBy
+class KalturaUserRoleOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -4215,7 +4215,7 @@ class KalturaUserRoleOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVideoCodec
+class KalturaVideoCodec extends KalturaEnumBase
 {
 	const NONE = "";
 	const APCH = "apch";
@@ -4247,7 +4247,7 @@ class KalturaVideoCodec
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidgetOrderBy
+class KalturaWidgetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const CREATED_AT_DESC = "-createdAt";
@@ -4257,7 +4257,7 @@ class KalturaWidgetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaYahooSyndicationFeedAdultValues
+class KalturaYahooSyndicationFeedAdultValues extends KalturaEnumBase
 {
 	const ADULT = "adult";
 	const NON_ADULT = "nonadult";
@@ -4267,7 +4267,7 @@ class KalturaYahooSyndicationFeedAdultValues
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaYahooSyndicationFeedCategories
+class KalturaYahooSyndicationFeedCategories extends KalturaEnumBase
 {
 	const ACTION = "Action";
 	const ANIMALS = "Animals";
@@ -4295,7 +4295,7 @@ class KalturaYahooSyndicationFeedCategories
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaYahooSyndicationFeedOrderBy
+class KalturaYahooSyndicationFeedOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";

@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCuePointStatus
+class KalturaCuePointStatus extends KalturaEnumBase
 {
 	const READY = 1;
 	const DELETED = 2;
@@ -51,7 +51,7 @@ class KalturaCuePointStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbCuePointSubType
+class KalturaThumbCuePointSubType extends KalturaEnumBase
 {
 	const SLIDE = 1;
 	const CHAPTER = 2;
@@ -61,7 +61,7 @@ class KalturaThumbCuePointSubType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCuePointOrderBy
+class KalturaCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
@@ -79,7 +79,7 @@ class KalturaCuePointOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCuePointType
+class KalturaCuePointType extends KalturaEnumBase
 {
 	const AD = "adCuePoint.Ad";
 	const ANNOTATION = "annotation.Annotation";
@@ -532,6 +532,9 @@ class KalturaCuePointService extends KalturaServiceBase
 	 */
 	function serveBulk(KalturaCuePointFilter $filter = null, KalturaFilterPager $pager = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
@@ -630,7 +633,6 @@ class KalturaCuePointService extends KalturaServiceBase
 	 * Delete cue point by id, and delete all children cue points
 	 * 
 	 * @param string $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -642,7 +644,6 @@ class KalturaCuePointService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

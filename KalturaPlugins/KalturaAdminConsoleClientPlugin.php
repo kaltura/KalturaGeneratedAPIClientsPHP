@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaFileSyncClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTrackEntryEventType
+class KalturaTrackEntryEventType extends KalturaEnumBase
 {
 	const UPLOADED_FILE = 1;
 	const WEBCAM_COMPLETED = 2;
@@ -54,7 +54,7 @@ class KalturaTrackEntryEventType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfAdminOrderBy
+class KalturaUiConfAdminOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -406,7 +406,6 @@ class KalturaUiConfAdminService extends KalturaServiceBase
 	 * Delete an existing UIConf with no partner limitation
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -418,7 +417,6 @@ class KalturaUiConfAdminService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -542,7 +540,6 @@ class KalturaReportAdminService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -554,7 +551,6 @@ class KalturaReportAdminService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

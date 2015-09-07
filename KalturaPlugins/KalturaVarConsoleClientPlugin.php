@@ -328,7 +328,6 @@ class KalturaVarConsoleService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param int $status 
-	 * @return 
 	 */
 	function updateStatus($id, $status)
 	{
@@ -341,7 +340,6 @@ class KalturaVarConsoleService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

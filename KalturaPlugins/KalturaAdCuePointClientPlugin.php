@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdCuePointOrderBy
+class KalturaAdCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -62,7 +62,7 @@ class KalturaAdCuePointOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdProtocolType
+class KalturaAdProtocolType extends KalturaEnumBase
 {
 	const CUSTOM = "0";
 	const VAST = "1";
@@ -74,7 +74,7 @@ class KalturaAdProtocolType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdType
+class KalturaAdType extends KalturaEnumBase
 {
 	const VIDEO = "1";
 	const OVERLAY = "2";

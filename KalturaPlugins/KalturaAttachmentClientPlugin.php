@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAttachmentAssetStatus
+class KalturaAttachmentAssetStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;
@@ -53,7 +53,7 @@ class KalturaAttachmentAssetStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAttachmentAssetOrderBy
+class KalturaAttachmentAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -69,7 +69,7 @@ class KalturaAttachmentAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAttachmentType
+class KalturaAttachmentType extends KalturaEnumBase
 {
 	const TEXT = "1";
 	const MEDIA = "2";
@@ -311,6 +311,9 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 	 */
 	function serve($attachmentAssetId)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "serve", $kparams);
@@ -365,7 +368,6 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param string $attachmentAssetId 
-	 * @return 
 	 */
 	function delete($attachmentAssetId)
 	{
@@ -377,7 +379,6 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

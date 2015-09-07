@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSystemPartnerLimitType
+class KalturaSystemPartnerLimitType extends KalturaEnumBase
 {
 	const ACCESS_CONTROLS = "ACCESS_CONTROLS";
 	const ADMIN_LOGIN_USERS = "ADMIN_LOGIN_USERS";
@@ -916,7 +916,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 	 * @param int $partnerId 
 	 * @param int $status 
 	 * @param string $reason 
-	 * @return 
 	 */
 	function updateStatus($partnerId, $status, $reason)
 	{
@@ -930,7 +929,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -959,7 +957,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 	 * 
 	 * @param int $partnerId 
 	 * @param KalturaSystemPartnerConfiguration $configuration 
-	 * @return 
 	 */
 	function updateConfiguration($partnerId, KalturaSystemPartnerConfiguration $configuration)
 	{
@@ -972,7 +969,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -1085,7 +1081,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 	 * @param string $userId 
 	 * @param int $partnerId 
 	 * @param string $newPassword 
-	 * @return 
 	 */
 	function resetUserPassword($userId, $partnerId, $newPassword)
 	{
@@ -1099,7 +1094,6 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

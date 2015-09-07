@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderContentFileHandlerMatchPolicy
+class KalturaDropFolderContentFileHandlerMatchPolicy extends KalturaEnumBase
 {
 	const ADD_AS_NEW = 1;
 	const MATCH_EXISTING_OR_ADD_AS_NEW = 2;
@@ -51,7 +51,7 @@ class KalturaDropFolderContentFileHandlerMatchPolicy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileDeletePolicy
+class KalturaDropFolderFileDeletePolicy extends KalturaEnumBase
 {
 	const MANUAL_DELETE = 1;
 	const AUTO_DELETE = 2;
@@ -62,7 +62,7 @@ class KalturaDropFolderFileDeletePolicy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileStatus
+class KalturaDropFolderFileStatus extends KalturaEnumBase
 {
 	const UPLOADING = 1;
 	const PENDING = 2;
@@ -85,7 +85,7 @@ class KalturaDropFolderFileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderStatus
+class KalturaDropFolderStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;
 	const ENABLED = 1;
@@ -97,7 +97,7 @@ class KalturaDropFolderStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderErrorCode
+class KalturaDropFolderErrorCode extends KalturaEnumBase
 {
 	const ERROR_CONNECT = "1";
 	const ERROR_AUTENTICATE = "2";
@@ -111,7 +111,7 @@ class KalturaDropFolderErrorCode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileErrorCode
+class KalturaDropFolderFileErrorCode extends KalturaEnumBase
 {
 	const ERROR_ADDING_BULK_UPLOAD = "dropFolderXmlBulkUpload.ERROR_ADDING_BULK_UPLOAD";
 	const ERROR_ADD_CONTENT_RESOURCE = "dropFolderXmlBulkUpload.ERROR_ADD_CONTENT_RESOURCE";
@@ -139,7 +139,7 @@ class KalturaDropFolderFileErrorCode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileHandlerType
+class KalturaDropFolderFileHandlerType extends KalturaEnumBase
 {
 	const XML = "dropFolderXmlBulkUpload.XML";
 	const CONTENT = "1";
@@ -149,7 +149,7 @@ class KalturaDropFolderFileHandlerType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileOrderBy
+class KalturaDropFolderFileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const FILE_NAME_ASC = "+fileName";
@@ -173,7 +173,7 @@ class KalturaDropFolderFileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderOrderBy
+class KalturaDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -189,7 +189,7 @@ class KalturaDropFolderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderType
+class KalturaDropFolderType extends KalturaEnumBase
 {
 	const FEED = "FeedDropFolder.FEED";
 	const LOCAL = "1";
@@ -203,7 +203,7 @@ class KalturaDropFolderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFtpDropFolderOrderBy
+class KalturaFtpDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -219,7 +219,7 @@ class KalturaFtpDropFolderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaRemoteDropFolderOrderBy
+class KalturaRemoteDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -235,7 +235,7 @@ class KalturaRemoteDropFolderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScpDropFolderOrderBy
+class KalturaScpDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -251,7 +251,7 @@ class KalturaScpDropFolderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSftpDropFolderOrderBy
+class KalturaSftpDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -267,7 +267,7 @@ class KalturaSftpDropFolderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSshDropFolderOrderBy
+class KalturaSshDropFolderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";

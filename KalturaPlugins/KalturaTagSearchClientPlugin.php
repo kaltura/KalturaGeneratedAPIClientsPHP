@@ -248,7 +248,6 @@ class KalturaTagService extends KalturaServiceBase
 	 * @param int $categoryId 
 	 * @param string $pcToDecrement 
 	 * @param string $pcToIncrement 
-	 * @return 
 	 */
 	function indexCategoryEntryTags($categoryId, $pcToDecrement, $pcToIncrement)
 	{
@@ -262,7 +261,6 @@ class KalturaTagService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 }
 /**

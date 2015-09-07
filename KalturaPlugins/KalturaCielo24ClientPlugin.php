@@ -34,67 +34,45 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaIntegrationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaKontikiStorageProfileOrderBy extends KalturaEnumBase
+class KalturaCielo24Fidelity extends KalturaEnumBase
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const UPDATED_AT_DESC = "-updatedAt";
+	const MECHANICAL = "MECHANICAL";
+	const PREMIUM = "PREMIUM";
+	const PROFESSIONAL = "PROFESSIONAL";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaKontikiStorageProfile extends KalturaStorageProfile
+class KalturaCielo24Priority extends KalturaEnumBase
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serviceToken = null;
-
-
+	const PRIORITY = "PRIORITY";
+	const STANDARD = "STANDARD";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaKontikiStorageDeleteJobData extends KalturaStorageDeleteJobData
+class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 {
 	/**
-	 * Unique Kontiki MOID for the content uploaded to Kontiki
-	 *      
+	 * Entry ID
+	 * 	 
 	 *
 	 * @var string
 	 */
-	public $contentMoid = null;
+	public $entryId = null;
 
 	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serviceToken = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData
-{
-	/**
-	 * Holds the id of the exported asset
+	 * Flavor ID
 	 * 	 
 	 *
 	 * @var string
@@ -102,19 +80,60 @@ class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData
 	public $flavorAssetId = null;
 
 	/**
-	 * Unique Kontiki MOID for the content uploaded to Kontiki
+	 * Caption formats
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $contentMoid = null;
+	public $captionAssetFormats = null;
 
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaCielo24Priority
 	 */
-	public $serviceToken = null;
+	public $priority = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCielo24Fidelity
+	 */
+	public $fidelity = null;
+
+	/**
+	 * Api key for service provider
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $username = null;
+
+	/**
+	 * Api key for service provider
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $password = null;
+
+	/**
+	 * Transcript content language
+	 * 	 
+	 *
+	 * @var KalturaLanguage
+	 */
+	public $spokenLanguage = null;
+
+	/**
+	 * should replace remote media content
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $replaceMediaContent = null;
 
 
 }
@@ -123,25 +142,7 @@ class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaKontikiStorageProfileBaseFilter extends KalturaStorageProfileFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaKontikiStorageProfileFilter extends KalturaKontikiStorageProfileBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaKontikiClientPlugin extends KalturaClientPlugin
+class KalturaCielo24ClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -149,11 +150,11 @@ class KalturaKontikiClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaKontikiClientPlugin
+	 * @return KalturaCielo24ClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaKontikiClientPlugin($client);
+		return new KalturaCielo24ClientPlugin($client);
 	}
 
 	/**
@@ -171,7 +172,7 @@ class KalturaKontikiClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'kontiki';
+		return 'cielo24';
 	}
 }
 

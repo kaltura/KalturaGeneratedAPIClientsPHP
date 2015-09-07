@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaShortLinkStatus
+class KalturaShortLinkStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;
@@ -50,7 +50,7 @@ class KalturaShortLinkStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaShortLinkOrderBy
+class KalturaShortLinkOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const EXPIRES_AT_ASC = "+expiresAt";
@@ -412,6 +412,9 @@ class KalturaShortLinkService extends KalturaServiceBase
 	 */
 	function gotoAction($id, $proxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "proxy", $proxy);

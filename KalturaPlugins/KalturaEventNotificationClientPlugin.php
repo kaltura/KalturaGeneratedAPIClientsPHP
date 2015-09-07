@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationTemplateStatus
+class KalturaEventNotificationTemplateStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ACTIVE = 2;
@@ -50,7 +50,7 @@ class KalturaEventNotificationTemplateStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationEventObjectType
+class KalturaEventNotificationEventObjectType extends KalturaEnumBase
 {
 	const AD_CUE_POINT = "adCuePointEventNotifications.AdCuePoint";
 	const ANNOTATION = "annotationEventNotifications.Annotation";
@@ -101,7 +101,7 @@ class KalturaEventNotificationEventObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationEventType
+class KalturaEventNotificationEventType extends KalturaEnumBase
 {
 	const BATCH_JOB_STATUS = "1";
 	const OBJECT_ADDED = "2";
@@ -122,7 +122,7 @@ class KalturaEventNotificationEventType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationTemplateOrderBy
+class KalturaEventNotificationTemplateOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
@@ -136,7 +136,7 @@ class KalturaEventNotificationTemplateOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventNotificationTemplateType
+class KalturaEventNotificationTemplateType extends KalturaEnumBase
 {
 	const EMAIL = "emailNotification.Email";
 	const HTTP = "httpNotification.Http";
@@ -664,7 +664,6 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 	 * Delete an event notification template object
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -676,7 +675,6 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

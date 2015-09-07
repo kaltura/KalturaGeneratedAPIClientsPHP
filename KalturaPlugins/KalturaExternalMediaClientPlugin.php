@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaExternalMediaEntryOrderBy
+class KalturaExternalMediaEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";
@@ -79,7 +79,7 @@ class KalturaExternalMediaEntryOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaExternalMediaSourceType
+class KalturaExternalMediaSourceType extends KalturaEnumBase
 {
 	const INTERCALL = "InterCall";
 	const YOUTUBE = "YouTube";
@@ -250,7 +250,6 @@ class KalturaExternalMediaService extends KalturaServiceBase
 	 * Delete a external media entry.
 	 * 
 	 * @param string $id External media entry id to delete
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -262,7 +261,6 @@ class KalturaExternalMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

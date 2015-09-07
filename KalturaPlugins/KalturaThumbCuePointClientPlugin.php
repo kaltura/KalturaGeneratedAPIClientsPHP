@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbCuePointOrderBy
+class KalturaThumbCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
@@ -58,7 +58,7 @@ class KalturaThumbCuePointOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTimedThumbAssetOrderBy
+class KalturaTimedThumbAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";

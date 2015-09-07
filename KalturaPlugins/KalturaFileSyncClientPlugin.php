@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileSyncStatus
+class KalturaFileSyncStatus extends KalturaEnumBase
 {
 	const ERROR = -1;
 	const PENDING = 1;
@@ -52,7 +52,7 @@ class KalturaFileSyncStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileSyncType
+class KalturaFileSyncType extends KalturaEnumBase
 {
 	const FILE = 1;
 	const LINK = 2;
@@ -63,7 +63,7 @@ class KalturaFileSyncType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFileSyncOrderBy
+class KalturaFileSyncOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const FILE_SIZE_ASC = "+fileSize";

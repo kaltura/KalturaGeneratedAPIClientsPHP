@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusFoundAction
+class KalturaVirusFoundAction extends KalturaEnumBase
 {
 	const NONE = 0;
 	const DELETE = 1;
@@ -51,7 +51,7 @@ class KalturaVirusFoundAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusScanJobResult
+class KalturaVirusScanJobResult extends KalturaEnumBase
 {
 	const SCAN_ERROR = 1;
 	const FILE_IS_CLEAN = 2;
@@ -63,7 +63,7 @@ class KalturaVirusScanJobResult
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusScanProfileStatus
+class KalturaVirusScanProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;
@@ -74,7 +74,7 @@ class KalturaVirusScanProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusScanEngineType
+class KalturaVirusScanEngineType extends KalturaEnumBase
 {
 	const CLAMAV_SCAN_ENGINE = "clamAVScanEngine.ClamAV";
 }
@@ -83,7 +83,7 @@ class KalturaVirusScanEngineType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVirusScanProfileOrderBy
+class KalturaVirusScanProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";

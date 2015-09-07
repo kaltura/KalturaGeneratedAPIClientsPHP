@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEmailNotificationTemplatePriority
+class KalturaEmailNotificationTemplatePriority extends KalturaEnumBase
 {
 	const HIGH = 1;
 	const NORMAL = 3;
@@ -51,7 +51,7 @@ class KalturaEmailNotificationTemplatePriority
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEmailNotificationFormat
+class KalturaEmailNotificationFormat extends KalturaEnumBase
 {
 	const HTML = "1";
 	const TEXT = "2";
@@ -61,7 +61,7 @@ class KalturaEmailNotificationFormat
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEmailNotificationRecipientProviderType
+class KalturaEmailNotificationRecipientProviderType extends KalturaEnumBase
 {
 	const STATIC_LIST = "1";
 	const CATEGORY = "2";
@@ -72,7 +72,7 @@ class KalturaEmailNotificationRecipientProviderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEmailNotificationTemplateOrderBy
+class KalturaEmailNotificationTemplateOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";

@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadCsvVersion
+class KalturaBulkUploadCsvVersion extends KalturaEnumBase
 {
 	const V1 = 1;
 	const V2 = 2;

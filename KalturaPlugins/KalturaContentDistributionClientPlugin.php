@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionAction
+class KalturaDistributionAction extends KalturaEnumBase
 {
 	const SUBMIT = 1;
 	const UPDATE = 2;
@@ -52,7 +52,7 @@ class KalturaDistributionAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionErrorType
+class KalturaDistributionErrorType extends KalturaEnumBase
 {
 	const MISSING_FLAVOR = 1;
 	const MISSING_THUMBNAIL = 2;
@@ -66,7 +66,7 @@ class KalturaDistributionErrorType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionFieldRequiredStatus
+class KalturaDistributionFieldRequiredStatus extends KalturaEnumBase
 {
 	const NOT_REQUIRED = 0;
 	const REQUIRED_BY_PROVIDER = 1;
@@ -78,7 +78,7 @@ class KalturaDistributionFieldRequiredStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProfileActionStatus
+class KalturaDistributionProfileActionStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const AUTOMATIC = 2;
@@ -89,7 +89,7 @@ class KalturaDistributionProfileActionStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProfileStatus
+class KalturaDistributionProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;
@@ -100,7 +100,7 @@ class KalturaDistributionProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProtocol
+class KalturaDistributionProtocol extends KalturaEnumBase
 {
 	const FTP = 1;
 	const SCP = 2;
@@ -114,7 +114,7 @@ class KalturaDistributionProtocol
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionValidationErrorType
+class KalturaDistributionValidationErrorType extends KalturaEnumBase
 {
 	const CUSTOM_ERROR = 0;
 	const STRING_EMPTY = 1;
@@ -127,7 +127,7 @@ class KalturaDistributionValidationErrorType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryDistributionFlag
+class KalturaEntryDistributionFlag extends KalturaEnumBase
 {
 	const NONE = 0;
 	const SUBMIT_REQUIRED = 1;
@@ -141,7 +141,7 @@ class KalturaEntryDistributionFlag
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryDistributionStatus
+class KalturaEntryDistributionStatus extends KalturaEnumBase
 {
 	const PENDING = 0;
 	const QUEUED = 1;
@@ -162,7 +162,7 @@ class KalturaEntryDistributionStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryDistributionSunStatus
+class KalturaEntryDistributionSunStatus extends KalturaEnumBase
 {
 	const BEFORE_SUNRISE = 1;
 	const AFTER_SUNRISE = 2;
@@ -173,7 +173,7 @@ class KalturaEntryDistributionSunStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericDistributionProviderParser
+class KalturaGenericDistributionProviderParser extends KalturaEnumBase
 {
 	const XSL = 1;
 	const XPATH = 2;
@@ -184,7 +184,7 @@ class KalturaGenericDistributionProviderParser
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericDistributionProviderStatus
+class KalturaGenericDistributionProviderStatus extends KalturaEnumBase
 {
 	const ACTIVE = 2;
 	const DELETED = 3;
@@ -194,7 +194,7 @@ class KalturaGenericDistributionProviderStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaConfigurableDistributionProfileOrderBy
+class KalturaConfigurableDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -206,7 +206,7 @@ class KalturaConfigurableDistributionProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProfileOrderBy
+class KalturaDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -218,7 +218,7 @@ class KalturaDistributionProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProviderOrderBy
+class KalturaDistributionProviderOrderBy extends KalturaEnumBase
 {
 }
 
@@ -226,7 +226,7 @@ class KalturaDistributionProviderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDistributionProviderType
+class KalturaDistributionProviderType extends KalturaEnumBase
 {
 	const IDETIC = "ideticDistribution.IDETIC";
 	const YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API";
@@ -238,7 +238,7 @@ class KalturaDistributionProviderType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryDistributionOrderBy
+class KalturaEntryDistributionOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const SUBMITTED_AT_ASC = "+submittedAt";
@@ -256,7 +256,7 @@ class KalturaEntryDistributionOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericDistributionProfileOrderBy
+class KalturaGenericDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -268,7 +268,7 @@ class KalturaGenericDistributionProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericDistributionProviderActionOrderBy
+class KalturaGenericDistributionProviderActionOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -280,7 +280,7 @@ class KalturaGenericDistributionProviderActionOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaGenericDistributionProviderOrderBy
+class KalturaGenericDistributionProviderOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -292,7 +292,7 @@ class KalturaGenericDistributionProviderOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSyndicationDistributionProfileOrderBy
+class KalturaSyndicationDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
@@ -2535,7 +2535,6 @@ class KalturaDistributionProfileService extends KalturaServiceBase
 	 * Delete Distribution Profile by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -2547,7 +2546,6 @@ class KalturaDistributionProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2690,7 +2688,6 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	 * Delete Entry Distribution by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -2702,7 +2699,6 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -2834,6 +2830,9 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	 */
 	function serveSentData($id, $actionType)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "actionType", $actionType);
@@ -2852,6 +2851,9 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	 */
 	function serveReturnedData($id, $actionType)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "actionType", $actionType);
@@ -2971,7 +2973,6 @@ class KalturaGenericDistributionProviderService extends KalturaServiceBase
 	 * Delete Generic Distribution Provider by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -2983,7 +2984,6 @@ class KalturaGenericDistributionProviderService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3257,7 +3257,6 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 	 * Delete Generic Distribution Provider Action by id
 	 * 
 	 * @param int $id 
-	 * @return 
 	 */
 	function delete($id)
 	{
@@ -3269,7 +3268,6 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**
@@ -3277,7 +3275,6 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 	 * 
 	 * @param int $genericDistributionProviderId 
 	 * @param int $actionType 
-	 * @return 
 	 */
 	function deleteByProviderId($genericDistributionProviderId, $actionType)
 	{
@@ -3290,7 +3287,6 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-		return $resultObject;
 	}
 
 	/**

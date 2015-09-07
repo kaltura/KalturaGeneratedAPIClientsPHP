@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationAuthenticationMethod
+class KalturaHttpNotificationAuthenticationMethod extends KalturaEnumBase
 {
 	const ANYSAFE = -18;
 	const ANY = -17;
@@ -54,7 +54,7 @@ class KalturaHttpNotificationAuthenticationMethod
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationMethod
+class KalturaHttpNotificationMethod extends KalturaEnumBase
 {
 	const GET = 1;
 	const POST = 2;
@@ -66,7 +66,7 @@ class KalturaHttpNotificationMethod
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationSslVersion
+class KalturaHttpNotificationSslVersion extends KalturaEnumBase
 {
 	const V2 = 2;
 	const V3 = 3;
@@ -76,7 +76,7 @@ class KalturaHttpNotificationSslVersion
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationCertificateType
+class KalturaHttpNotificationCertificateType extends KalturaEnumBase
 {
 	const DER = "DER";
 	const ENG = "ENG";
@@ -87,7 +87,7 @@ class KalturaHttpNotificationCertificateType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationSslKeyType
+class KalturaHttpNotificationSslKeyType extends KalturaEnumBase
 {
 	const DER = "DER";
 	const ENG = "ENG";
@@ -98,7 +98,7 @@ class KalturaHttpNotificationSslKeyType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaHttpNotificationTemplateOrderBy
+class KalturaHttpNotificationTemplateOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";

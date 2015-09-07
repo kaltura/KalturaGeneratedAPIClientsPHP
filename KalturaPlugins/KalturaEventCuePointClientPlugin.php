@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventCuePointOrderBy
+class KalturaEventCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
@@ -58,7 +58,7 @@ class KalturaEventCuePointOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEventType
+class KalturaEventType extends KalturaEnumBase
 {
 	const BROADCAST_START = "1";
 	const BROADCAST_END = "2";
