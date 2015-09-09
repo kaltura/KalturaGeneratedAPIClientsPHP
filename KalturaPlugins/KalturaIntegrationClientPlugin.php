@@ -42,6 +42,7 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
  */
 class KalturaIntegrationProviderType extends KalturaEnumBase
 {
+	const CIELO24 = "cielo24.Cielo24";
 	const VOICEBASE = "voicebase.Voicebase";
 }
 
