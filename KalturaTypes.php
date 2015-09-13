@@ -21347,6 +21347,13 @@ class KalturaLiveEntryFilter extends KalturaLiveEntryBaseFilter
 	 */
 	public $isRecordedEntryIdEmpty = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hasMediaServerHostname = null;
+
 
 }
 
