@@ -16657,6 +16657,13 @@ class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
 	 */
 	public $rootDir = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $limitIpAddress = null;
+
 
 }
 
