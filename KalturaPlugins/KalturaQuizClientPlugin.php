@@ -335,6 +335,20 @@ abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFilter
 	 */
 	public $parentIdIn = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $quizUserEntryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $quizUserEntryIdIn = null;
+
 
 }
 
@@ -479,6 +493,25 @@ class KalturaQuizService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaQuizListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Creates a pdf from quiz object
+	 * 
+	 * @param string $entryId 
+	 * @return KalturaQuiz
+	 */
+	function servePdf($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("quiz_quiz", "servePdf", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaQuiz");
 		return $resultObject;
 	}
 }
