@@ -159,6 +159,13 @@ class KalturaQuiz extends KalturaObjectBase
 	 */
 	public $showCorrectAfterSubmission = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $allowDownload = null;
+
 
 }
 
@@ -500,19 +507,19 @@ class KalturaQuizService extends KalturaServiceBase
 	 * Creates a pdf from quiz object
 	 * 
 	 * @param string $entryId 
-	 * @return KalturaQuiz
+	 * @return file
 	 */
 	function servePdf($entryId)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->queueServiceActionCall("quiz_quiz", "servePdf", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaQuiz");
-		return $resultObject;
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
 	}
 }
 /**
