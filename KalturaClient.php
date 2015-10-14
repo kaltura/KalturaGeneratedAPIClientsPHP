@@ -4707,9 +4707,10 @@ class KalturaMediaService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Entry id
 	 * @param array $extendingItemsArray 
+	 * @param string $features 
 	 * @return string
 	 */
-	function getMrss($entryId, array $extendingItemsArray = null)
+	function getMrss($entryId, array $extendingItemsArray = null, $features = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -4718,6 +4719,7 @@ class KalturaMediaService extends KalturaServiceBase
 			{
 				$this->client->addParam($kparams, "extendingItemsArray:$index", $obj->toParams());
 			}
+		$this->client->addParam($kparams, "features", $features);
 		$this->client->queueServiceActionCall("media", "getMrss", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9327,7 +9329,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-10-13');
+		$this->setClientTag('php5:15-10-14');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
