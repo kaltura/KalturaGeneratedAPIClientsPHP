@@ -399,6 +399,14 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 	 */
 	public $isDefault = null;
 
+	/**
+	 * Is an error on this field going to trigger deletion of distributed content?
+	 *      
+	 *
+	 * @var bool
+	 */
+	public $triggerDeleteOnError = null;
+
 
 }
 
