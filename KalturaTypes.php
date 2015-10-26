@@ -4479,7 +4479,7 @@ class KalturaFlavorParams extends KalturaAssetParams
 	 * The frame rate of the Flavor Params
 	 * 	 
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $frameRate = null;
 
