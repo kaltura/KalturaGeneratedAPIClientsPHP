@@ -51,6 +51,15 @@ class KalturaCuePointStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaQuizFileType extends KalturaEnumBase
+{
+	const PDF = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaThumbCuePointSubType extends KalturaEnumBase
 {
 	const SLIDE = 1;

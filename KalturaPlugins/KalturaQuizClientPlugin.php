@@ -507,19 +507,42 @@ class KalturaQuizService extends KalturaServiceBase
 	 * Creates a pdf from quiz object
 	 * 
 	 * @param string $entryId 
+	 * @param int $quizFileType 
 	 * @return file
 	 */
-	function servePdf($entryId)
+	function serve($entryId, $quizFileType)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("quiz_quiz", "servePdf", $kparams);
+		$this->client->addParam($kparams, "quizFileType", $quizFileType);
+		$this->client->queueServiceActionCall("quiz_quiz", "serve", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
 		return $this->client->doQueue();
+	}
+
+	/**
+	 * Sends a with an api request for pdf from quiz object
+	 * 
+	 * @param string $entryId 
+	 * @param int $quizFileType 
+	 * @return string
+	 */
+	function getUrl($entryId, $quizFileType)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "quizFileType", $quizFileType);
+		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
 	}
 }
 /**
