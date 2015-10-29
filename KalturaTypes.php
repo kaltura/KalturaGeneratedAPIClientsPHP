@@ -3654,118 +3654,6 @@ class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServer extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * edgeServer name
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * edgeServer uniqe system name
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $systemName = null;
-
-	/**
-	 * edgeServer description
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaEdgeServerStatus
-	 */
-	public $status = null;
-
-	/**
-	 * edgeServer tags
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $tags = null;
-
-	/**
-	 * edgeServer host name
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $hostName = null;
-
-	/**
-	 * edgeServer playback hostName
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $playbackHostName = null;
-
-	/**
-	 * Delivery profile ids comma seperated
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $deliveryProfileIds = null;
-
-	/**
-	 * Id of the parent edge server
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $parentId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -6710,69 +6598,6 @@ class KalturaMediaInfo extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMediaServer extends KalturaObjectBase
-{
-	/**
-	 * Unique identifier
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Server data center id
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $dc = null;
-
-	/**
-	 * Server host name
-	 * 	 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $hostname = null;
-
-	/**
-	 * Server first registration date as Unix timestamp (In seconds)
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Server last update date as Unix timestamp (In seconds)
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMediaServerStatus extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMixEntry extends KalturaPlayableEntry
 {
 	/**
@@ -8878,6 +8703,127 @@ class KalturaSearchResultResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $needMediaInfo = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaServerNode extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $heartbeatTime = null;
+
+	/**
+	 * serverNode name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * serverNode uniqe system name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $systemName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * serverNode hostName
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hostName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaServerNodeStatus
+	 * @readonly
+	 */
+	public $status = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaServerNodeType
+	 * @readonly
+	 */
+	public $type = null;
+
+	/**
+	 * serverNode tags
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
+
+	/**
+	 * DC where the serverNode is located
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $dc = null;
+
+	/**
+	 * Id of the parent serverNode
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $parentId = null;
 
 
 }
@@ -13351,6 +13297,23 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaDeliveryServerNode extends KalturaServerNode
+{
+	/**
+	 * Delivery server playback Domain
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $playbackDomain = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDirectoryRestriction extends KalturaBaseRestriction
 {
 	/**
@@ -13378,193 +13341,6 @@ class KalturaDrmEntryContextPluginData extends KalturaPluginData
 	 * @var string
 	 */
 	public $flavorData = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaEdgeServerBaseFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $nameEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $nameIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaEdgeServerStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeAnd = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hostNameLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hostNameMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hostNameMultiLikeAnd = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackHostNameLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackHostNameMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackHostNameMultiLikeAnd = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $parentIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $parentIdIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEdgeServerListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaStorageProfile
-	 * @readonly
-	 */
-	public $objects;
 
 
 }
@@ -14958,43 +14734,6 @@ class KalturaMediaListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaMediaServerBaseFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMixListResponse extends KalturaListResponse
 {
 	/**
@@ -15853,6 +15592,214 @@ class KalturaSearchOperator extends KalturaSearchItem
 	 * @var array of KalturaSearchItem
 	 */
 	public $items;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaServerNodeBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $heartbeatTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $heartbeatTimeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nameIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostNameMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaServerNodeStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaServerNodeType
+	 */
+	public $typeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $typeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $dcEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $dcIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $parentIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaServerNode
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
@@ -18292,7 +18239,7 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerFilter extends KalturaEdgeServerBaseFilter
+class KalturaEdgeServerNode extends KalturaDeliveryServerNode
 {
 
 }
@@ -18885,6 +18832,39 @@ class KalturaMediaInfoFilter extends KalturaMediaInfoBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaMediaServerNode extends KalturaDeliveryServerNode
+{
+	/**
+	 * Media server application name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $applicationName = null;
+
+	/**
+	 * Media server playback port configuration by protocol and format
+	 * 	 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mediaServerPortConfig;
+
+	/**
+	 * Media server playback Domain configuration by protocol and format
+	 * 	 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mediaServerPlaybackDomainConfig;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaOperationResource extends KalturaContentResource
 {
 	/**
@@ -19409,6 +19389,15 @@ class KalturaSearchMatchCondition extends KalturaSearchCondition
 	 */
 	public $not = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeFilter extends KalturaServerNodeBaseFilter
+{
 
 }
 
@@ -20063,6 +20052,36 @@ abstract class KalturaDeliveryProfileLiveAppleHttpBaseFilter extends KalturaDeli
  */
 abstract class KalturaDeliveryProfileRtmpBaseFilter extends KalturaDeliveryProfileFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaDeliveryServerNodeBaseFilter extends KalturaServerNodeFilter
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeAnd = null;
+
 
 }
 
@@ -20831,6 +20850,15 @@ class KalturaDeliveryProfileRtmpFilter extends KalturaDeliveryProfileRtmpBaseFil
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDeliveryServerNodeFilter extends KalturaDeliveryServerNodeBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaFlavorAssetBaseFilter extends KalturaAssetFilter
 {
 	/**
@@ -21068,6 +21096,15 @@ abstract class KalturaDeliveryProfileGenericRtmpBaseFilter extends KalturaDelive
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaEdgeServerNodeBaseFilter extends KalturaDeliveryServerNodeFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFlavorAssetFilter extends KalturaFlavorAssetBaseFilter
 {
 
@@ -21096,6 +21133,15 @@ abstract class KalturaGenericXsltSyndicationFeedBaseFilter extends KalturaGeneri
  * @subpackage Client
  */
 class KalturaLiveStreamAdminEntry extends KalturaLiveStreamEntry
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaMediaServerNodeBaseFilter extends KalturaDeliveryServerNodeFilter
 {
 
 }
@@ -21139,6 +21185,15 @@ class KalturaThumbParamsFilter extends KalturaThumbParamsBaseFilter
  * @subpackage Client
  */
 class KalturaDeliveryProfileGenericRtmpFilter extends KalturaDeliveryProfileGenericRtmpBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEdgeServerNodeFilter extends KalturaEdgeServerNodeBaseFilter
 {
 
 }
@@ -21212,6 +21267,15 @@ abstract class KalturaLiveParamsBaseFilter extends KalturaFlavorParamsFilter
  * @subpackage Client
  */
 abstract class KalturaMediaFlavorParamsBaseFilter extends KalturaFlavorParamsFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMediaServerNodeFilter extends KalturaMediaServerNodeBaseFilter
 {
 
 }

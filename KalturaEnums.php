@@ -283,17 +283,6 @@ class KalturaDirectoryRestrictionType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerStatus extends KalturaEnumBase
-{
-	const ACTIVE = 1;
-	const DISABLED = 2;
-	const DELETED = 3;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEditorType extends KalturaEnumBase
 {
 	const SIMPLE = 1;
@@ -778,6 +767,18 @@ class KalturaSearchProviderType extends KalturaEnumBase
 	const METACAFE = 24;
 	const SEARCH_PROXY = 28;
 	const PARTNER_SPECIFIC = 100;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeStatus extends KalturaEnumBase
+{
+	const ACTIVE = 1;
+	const DISABLED = 2;
+	const DELETED = 3;
+	const NOT_REGISTERED = 4;
 }
 
 /**
@@ -2094,6 +2095,20 @@ class KalturaDeliveryProfileType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDeliveryServerNodeOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const HEARTBEAT_TIME_ASC = "+heartbeatTime";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const HEARTBEAT_TIME_DESC = "-heartbeatTime";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDocumentEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
@@ -2157,11 +2172,13 @@ class KalturaDynamicEnum extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerOrderBy extends KalturaEnumBase
+class KalturaEdgeServerNodeOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
+	const HEARTBEAT_TIME_ASC = "+heartbeatTime";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
+	const HEARTBEAT_TIME_DESC = "-heartbeatTime";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -3515,6 +3532,20 @@ class KalturaMediaParserType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMediaServerNodeOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const HEARTBEAT_TIME_ASC = "+heartbeatTime";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const HEARTBEAT_TIME_DESC = "-heartbeatTime";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMixEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
@@ -3979,6 +4010,30 @@ class KalturaSearchConditionComparison extends KalturaEnumBase
 	const LESS_THAN = "4";
 	const LESS_THAN_OR_EQUAL = "5";
 	const NOT_EQUAL = "6";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const HEARTBEAT_TIME_ASC = "+heartbeatTime";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const HEARTBEAT_TIME_DESC = "-heartbeatTime";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeType extends KalturaEnumBase
+{
+	const WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER";
+	const EDGE = "1";
 }
 
 /**

@@ -51,7 +51,7 @@ class KalturaCuePointStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaQuizFileType extends KalturaEnumBase
+class KalturaQuizOutputType extends KalturaEnumBase
 {
 	const PDF = 1;
 }

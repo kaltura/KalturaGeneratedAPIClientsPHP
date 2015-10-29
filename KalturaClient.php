@@ -2549,117 +2549,6 @@ class KalturaDocumentService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEdgeServerService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Adds a edge server to the Kaltura DB.
-	 * 
-	 * @param KalturaEdgeServer $edgeServer Sto
-	 * @return KalturaEdgeServer
-	 */
-	function add(KalturaEdgeServer $edgeServer)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "edgeServer", $edgeServer->toParams());
-		$this->client->queueServiceActionCall("edgeserver", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
-		return $resultObject;
-	}
-
-	/**
-	 * Get edge server by id
-	 * 
-	 * @param int $edgeServerId 
-	 * @return KalturaEdgeServer
-	 */
-	function get($edgeServerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
-		$this->client->queueServiceActionCall("edgeserver", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
-		return $resultObject;
-	}
-
-	/**
-	 * Update edge server by id
-	 * 
-	 * @param int $edgeServerId 
-	 * @param KalturaEdgeServer $edgeServer Id
-	 * @return KalturaEdgeServer
-	 */
-	function update($edgeServerId, KalturaEdgeServer $edgeServer)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
-		$this->client->addParam($kparams, "edgeServer", $edgeServer->toParams());
-		$this->client->queueServiceActionCall("edgeserver", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEdgeServer");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete edge server by id
-	 * 
-	 * @param string $edgeServerId 
-	 */
-	function delete($edgeServerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "edgeServerId", $edgeServerId);
-		$this->client->queueServiceActionCall("edgeserver", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaEdgeServerFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaEdgeServerListResponse
-	 */
-	function listAction(KalturaEdgeServerFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("edgeserver", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEdgeServerListResponse");
-		return $resultObject;
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEmailIngestionProfileService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -4410,58 +4299,6 @@ class KalturaMediaInfoService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaMediaInfoListResponse");
-		return $resultObject;
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMediaServerService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Get media server by hostname
-	 * 
-	 * @param string $hostname 
-	 * @return KalturaMediaServer
-	 */
-	function get($hostname)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "hostname", $hostname);
-		$this->client->queueServiceActionCall("mediaserver", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMediaServer");
-		return $resultObject;
-	}
-
-	/**
-	 * Update media server status
-	 * 
-	 * @param string $hostname 
-	 * @param KalturaMediaServerStatus $mediaServerStatus 
-	 * @return KalturaMediaServer
-	 */
-	function reportStatus($hostname, KalturaMediaServerStatus $mediaServerStatus)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "hostname", $hostname);
-		$this->client->addParam($kparams, "mediaServerStatus", $mediaServerStatus->toParams());
-		$this->client->queueServiceActionCall("mediaserver", "reportStatus", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMediaServer");
 		return $resultObject;
 	}
 }
@@ -6673,6 +6510,177 @@ class KalturaSearchService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaSearchAuthData");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaServerNodeService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Adds a server node to the Kaltura DB.
+	 * 
+	 * @param KalturaServerNode $serverNode 
+	 * @return KalturaServerNode
+	 */
+	function add(KalturaServerNode $serverNode)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->queueServiceActionCall("servernode", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * Get server node by id
+	 * 
+	 * @param int $serverNodeId 
+	 * @return KalturaServerNode
+	 */
+	function get($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * Update server node by id
+	 * 
+	 * @param int $serverNodeId 
+	 * @param KalturaServerNode $serverNode Id
+	 * @return KalturaServerNode
+	 */
+	function update($serverNodeId, KalturaServerNode $serverNode)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->queueServiceActionCall("servernode", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete server node by id
+	 * 
+	 * @param string $serverNodeId 
+	 */
+	function delete($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Disable server node by id
+	 * 
+	 * @param string $serverNodeId 
+	 * @return KalturaServerNode
+	 */
+	function disable($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "disable", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * Enable server node by id
+	 * 
+	 * @param string $serverNodeId 
+	 * @return KalturaServerNode
+	 */
+	function enable($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "enable", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaServerNodeFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaServerNodeListResponse
+	 */
+	function listAction(KalturaServerNodeFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("servernode", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNodeListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update server node status
+	 * 
+	 * @param string $hostName 
+	 * @param KalturaServerNode $serverNode 
+	 * @return KalturaServerNode
+	 */
+	function reportStatus($hostName, KalturaServerNode $serverNode = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hostName", $hostName);
+		if ($serverNode !== null)
+			$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->queueServiceActionCall("servernode", "reportStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
 		return $resultObject;
 	}
 }
@@ -9070,12 +9078,6 @@ class KalturaClient extends KalturaClientBase
 	public $document = null;
 
 	/**
-	 * Edge Server service
-	 * @var KalturaEdgeServerService
-	 */
-	public $edgeServer = null;
-
-	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
 	 * @var KalturaEmailIngestionProfileService
 	 */
@@ -9148,12 +9150,6 @@ class KalturaClient extends KalturaClientBase
 	public $mediaInfo = null;
 
 	/**
-	 * Manage media servers
-	 * @var KalturaMediaServerService
-	 */
-	public $mediaServer = null;
-
-	/**
 	 * Media service lets you upload and manage media files (images / videos & audio)
 	 * @var KalturaMediaService
 	 */
@@ -9221,6 +9217,12 @@ class KalturaClient extends KalturaClientBase
 	 * @var KalturaSearchService
 	 */
 	public $search = null;
+
+	/**
+	 * Server Node service
+	 * @var KalturaServerNodeService
+	 */
+	public $serverNode = null;
 
 	/**
 	 * Session service
@@ -9329,7 +9331,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-10-28');
+		$this->setClientTag('php5:15-10-29');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9346,7 +9348,6 @@ class KalturaClient extends KalturaClientBase
 		$this->data = new KalturaDataService($this);
 		$this->deliveryProfile = new KalturaDeliveryProfileService($this);
 		$this->document = new KalturaDocumentService($this);
-		$this->edgeServer = new KalturaEdgeServerService($this);
 		$this->EmailIngestionProfile = new KalturaEmailIngestionProfileService($this);
 		$this->fileAsset = new KalturaFileAssetService($this);
 		$this->flavorAsset = new KalturaFlavorAssetService($this);
@@ -9359,7 +9360,6 @@ class KalturaClient extends KalturaClientBase
 		$this->liveStats = new KalturaLiveStatsService($this);
 		$this->liveStream = new KalturaLiveStreamService($this);
 		$this->mediaInfo = new KalturaMediaInfoService($this);
-		$this->mediaServer = new KalturaMediaServerService($this);
 		$this->media = new KalturaMediaService($this);
 		$this->mixing = new KalturaMixingService($this);
 		$this->notification = new KalturaNotificationService($this);
@@ -9371,6 +9371,7 @@ class KalturaClient extends KalturaClientBase
 		$this->responseProfile = new KalturaResponseProfileService($this);
 		$this->schema = new KalturaSchemaService($this);
 		$this->search = new KalturaSearchService($this);
+		$this->serverNode = new KalturaServerNodeService($this);
 		$this->session = new KalturaSessionService($this);
 		$this->stats = new KalturaStatsService($this);
 		$this->storageProfile = new KalturaStorageProfileService($this);
