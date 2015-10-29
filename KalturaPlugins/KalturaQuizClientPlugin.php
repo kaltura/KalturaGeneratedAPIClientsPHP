@@ -505,6 +505,8 @@ class KalturaQuizService extends KalturaServiceBase
 
 	/**
 	 * Creates a pdf from quiz object
+	 The Output type defines the file format in which the quiz will be generated
+	 Currently only PDF files are supported
 	 * 
 	 * @param string $entryId 
 	 * @param int $quizOutputType 
