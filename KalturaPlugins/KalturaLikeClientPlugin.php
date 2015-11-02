@@ -65,6 +65,14 @@ class KalturaLike extends KalturaObjectBase
 	 */
 	public $userId = null;
 
+	/**
+	 * The date of the like's creation
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $createdAt = null;
+
 
 }
 
@@ -104,6 +112,20 @@ abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $userIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
 
 
 }
