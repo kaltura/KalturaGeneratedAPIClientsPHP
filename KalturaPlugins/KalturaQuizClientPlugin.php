@@ -166,6 +166,13 @@ class KalturaQuiz extends KalturaObjectBase
 	 */
 	public $allowDownload = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $showGradeAfterSubmission = null;
+
 
 }
 

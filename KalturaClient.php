@@ -1001,12 +1001,14 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * Clone an entry with optional attributes to apply to the clone
 	 * 
 	 * @param string $entryId Id of entry to clone
+	 * @param KalturaBaseEntryCloneOptions $cloneOptions 
 	 * @return KalturaBaseEntry
 	 */
-	function cloneAction($entryId)
+	function cloneAction($entryId, KalturaBaseEntryCloneOptions $cloneOptions)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "cloneOptions", $cloneOptions->toParams());
 		$this->client->queueServiceActionCall("baseentry", "clone", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
