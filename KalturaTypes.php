@@ -1248,22 +1248,6 @@ class KalturaBaseEntry extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBaseEntryCloneOptions extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $shouldCopyEntitlement = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaBaseResponseProfile extends KalturaObjectBase
 {
 
