@@ -1422,6 +1422,13 @@ abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase
 	 */
 	public $updatedAt = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useCategoryEntries = null;
+
 
 }
 
