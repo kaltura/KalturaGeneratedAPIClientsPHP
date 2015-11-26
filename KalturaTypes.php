@@ -18248,6 +18248,14 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
  */
 class KalturaEdgeServerNode extends KalturaDeliveryServerNode
 {
+	/**
+	 * Delivery profile ids
+	 * 	 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $deliveryProfileIds;
+
 
 }
 
