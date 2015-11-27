@@ -3954,6 +3954,7 @@ class KalturaReportType extends KalturaEnumBase
 	const BROWSERS = "23";
 	const LIVE = "24";
 	const TOP_PLAYBACK_CONTEXT = "25";
+	const VPAAS_USAGE = "26";
 	const PARTNER_USAGE = "201";
 }
 
