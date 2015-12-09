@@ -12556,6 +12556,13 @@ class KalturaConcatJobData extends KalturaJobData
 	 */
 	public $duration = null;
 
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $amfArray;
+
 
 }
 
@@ -12843,6 +12850,13 @@ class KalturaConvertLiveSegmentJobData extends KalturaJobData
 	 * @var float
 	 */
 	public $endTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $amfArray;
 
 
 }
@@ -18255,6 +18269,14 @@ class KalturaEdgeServerNode extends KalturaDeliveryServerNode
 	 * @var array of KalturaKeyValue
 	 */
 	public $deliveryProfileIds;
+
+	/**
+	 * Overdie edge server default configuration - json format
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $config = null;
 
 
 }
