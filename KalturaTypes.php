@@ -12557,11 +12557,12 @@ class KalturaConcatJobData extends KalturaJobData
 	public $duration = null;
 
 	/**
-	 * 
+	 * duration of the concated video
+	 * 	 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var float
 	 */
-	public $amfArray;
+	public $concatenatedDuration = null;
 
 
 }
@@ -12857,6 +12858,15 @@ class KalturaConvertLiveSegmentJobData extends KalturaJobData
 	 * @var array of KalturaKeyValue
 	 */
 	public $amfArray;
+
+	/**
+	 * Duration of the live segment.
+	 * 	 filled by the ConvertLiveSegment job
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $duration = null;
 
 
 }
