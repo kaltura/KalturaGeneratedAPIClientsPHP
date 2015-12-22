@@ -3458,6 +3458,14 @@ class KalturaDeliveryProfile extends KalturaObjectBase
 	 */
 	public $priority = null;
 
+	/**
+	 * Extra query string parameters that should be added to the url
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $extraParams = null;
+
 
 }
 
