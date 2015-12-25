@@ -12861,20 +12861,12 @@ class KalturaConvertLiveSegmentJobData extends KalturaJobData
 	public $endTime = null;
 
 	/**
-	 * 
-	 *
-	 * @var array of KalturaKeyValue
-	 */
-	public $amfArray;
-
-	/**
-	 * Duration of the live segment.
-	 * 	 filled by the ConvertLiveSegment job
+	 * The data output file
 	 * 	 
 	 *
-	 * @var float
+	 * @var string
 	 */
-	public $duration = null;
+	public $destDataFilePath = null;
 
 
 }
@@ -16948,6 +16940,23 @@ class KalturaUserRoleListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaValidateActiveEdgeCondition extends KalturaCondition
+{
+	/**
+	 * Comma separated list of edge servers to validate are active
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $edgeServerIds = null;
 
 
 }
