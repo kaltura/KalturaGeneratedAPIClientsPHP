@@ -228,6 +228,7 @@ class KalturaDistributionProviderOrderBy extends KalturaEnumBase
  */
 class KalturaDistributionProviderType extends KalturaEnumBase
 {
+	const FACEBOOK = "facebookDistribution.FACEBOOK";
 	const IDETIC = "ideticDistribution.IDETIC";
 	const YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API";
 	const GENERIC = "1";
