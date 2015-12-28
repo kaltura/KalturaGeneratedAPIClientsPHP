@@ -1248,6 +1248,15 @@ class KalturaBaseEntry extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaBaseEntryCloneOptionItem extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaBaseResponseProfile extends KalturaObjectBase
 {
 
@@ -11101,6 +11110,30 @@ class KalturaAuthenticatedCondition extends KalturaCondition
 	 * @var array of KalturaStringValue
 	 */
 	public $privileges;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBaseEntryCloneOptionComponent extends KalturaBaseEntryCloneOptionItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaBaseEntryCloneOptions
+	 */
+	public $itemType = null;
+
+	/**
+	 * condition rule (include/exclude)
+	 *      
+	 *
+	 * @var KalturaCloneComponentSelectorType
+	 */
+	public $rule = null;
 
 
 }

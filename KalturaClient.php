@@ -1001,12 +1001,18 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * Clone an entry with optional attributes to apply to the clone
 	 * 
 	 * @param string $entryId Id of entry to clone
+	 * @param array $cloneOptions 
 	 * @return KalturaBaseEntry
 	 */
-	function cloneAction($entryId)
+	function cloneAction($entryId, array $cloneOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		if ($cloneOptions !== null)
+			foreach($cloneOptions as $index => $obj)
+			{
+				$this->client->addParam($kparams, "cloneOptions:$index", $obj->toParams());
+			}
 		$this->client->queueServiceActionCall("baseentry", "clone", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9331,7 +9337,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-12-27');
+		$this->setClientTag('php5:15-12-28');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

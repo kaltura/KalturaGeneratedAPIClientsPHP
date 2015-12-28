@@ -1370,6 +1370,16 @@ class KalturaAudioCodec extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBaseEntryCloneOptions extends KalturaEnumBase
+{
+	const USERS = "1";
+	const CATEGORIES = "2";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBaseEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
@@ -1703,6 +1713,16 @@ class KalturaCategoryUserOrderBy extends KalturaEnumBase
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCloneComponentSelectorType extends KalturaEnumBase
+{
+	const INCLUDE_COMPONENT = "0";
+	const EXCLUDE_COMPONENT = "1";
 }
 
 /**
