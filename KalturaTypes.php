@@ -226,6 +226,22 @@ abstract class KalturaCondition extends KalturaObjectBase
 class KalturaRule extends KalturaObjectBase
 {
 	/**
+	 * Short Rule Description
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * Rule Custom Data to allow saving rule specific information 
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $ruleData = null;
+
+	/**
 	 * Message to be thrown to the player in case the rule is fulfilled
 	 * 	 
 	 *
@@ -4987,6 +5003,14 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 * @insertonly
 	 */
 	public $recordingOptions;
+
+	/**
+	 * the status of the entry of type LiveEntryStatus
+	 * 	 
+	 *
+	 * @var KalturaLiveEntryStatus
+	 */
+	public $liveStatus = null;
 
 
 }

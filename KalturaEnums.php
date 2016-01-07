@@ -437,6 +437,17 @@ class KalturaLimitFlavorsRestrictionType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveEntryStatus extends KalturaEnumBase
+{
+	const STOPPED = 0;
+	const PLAYABLE = 1;
+	const BROADCASTING = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLivePublishStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;

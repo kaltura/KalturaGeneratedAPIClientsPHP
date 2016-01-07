@@ -3718,15 +3718,17 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * @param string $hostname Media server host name
 	 * @param int $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
+	 * @param int $liveEntryStatus The new status KalturaLiveEntryStatus::PLAYABLE | KalturaLiveEntryStatus::BROADCASTING
 	 * @return KalturaLiveEntry
 	 */
-	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null)
+	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "hostname", $hostname);
 		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
 		$this->client->addParam($kparams, "applicationName", $applicationName);
+		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
 		$this->client->queueServiceActionCall("livechannel", "registerMediaServer", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -4194,15 +4196,17 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * @param string $hostname Media server host name
 	 * @param int $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
+	 * @param int $liveEntryStatus The new status KalturaLiveEntryStatus::PLAYABLE | KalturaLiveEntryStatus::BROADCASTING
 	 * @return KalturaLiveEntry
 	 */
-	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null)
+	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "hostname", $hostname);
 		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
 		$this->client->addParam($kparams, "applicationName", $applicationName);
+		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
 		$this->client->queueServiceActionCall("livestream", "registerMediaServer", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9337,7 +9341,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-01-06');
+		$this->setClientTag('php5:16-01-07');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
