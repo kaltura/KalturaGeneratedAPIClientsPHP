@@ -13986,6 +13986,14 @@ class KalturaEntryContextDataResult extends KalturaContextDataResult
 	public $flavorAssets;
 
 	/**
+	 * The duration of the entry in milliseconds
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $msDuration = null;
+
+	/**
 	 * Array of allowed flavor assets according to access control limitations and requested tags
 	 *      
 	 *
@@ -21078,6 +21086,13 @@ abstract class KalturaPlaylistBaseFilter extends KalturaBaseEntryFilter
  */
 class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAnonymous = null;
+
 
 }
 

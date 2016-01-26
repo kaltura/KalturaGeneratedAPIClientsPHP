@@ -1383,6 +1383,10 @@ class KalturaAudioCodec extends KalturaEnumBase
  */
 class KalturaBaseEntryCloneOptions extends KalturaEnumBase
 {
+	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
+	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
+	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
+	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 	const USERS = "1";
 	const CATEGORIES = "2";
 }
