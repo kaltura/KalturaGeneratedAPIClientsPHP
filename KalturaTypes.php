@@ -4588,6 +4588,13 @@ class KalturaFlavorParams extends KalturaAssetParams
 	 *
 	 * @var int
 	 */
+	public $isEncrypted = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
 	public $clipOffset = null;
 
 	/**
@@ -15332,7 +15339,7 @@ class KalturaQuizUserEntry extends KalturaUserEntry
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var float
 	 * @readonly
 	 */
 	public $score = null;

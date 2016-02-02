@@ -89,6 +89,36 @@ class KalturaTranscriptAsset extends KalturaAttachmentAsset
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryTranscriptAssetSearchItem extends KalturaSearchItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeAnd = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaTranscriptAssetListResponse extends KalturaListResponse
 {
 	/**
