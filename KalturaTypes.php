@@ -6117,7 +6117,21 @@ abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter
 	 *
 	 * @var string
 	 */
+	public $entitledUsersEditMatchOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $entitledUsersPublishMatchAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entitledUsersPublishMatchOr = null;
 
 	/**
 	 * 
@@ -19665,6 +19679,13 @@ class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
 	 */
 	public $userIdEqualCurrent = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAnonymous = null;
+
 
 }
 
@@ -21093,13 +21114,6 @@ abstract class KalturaPlaylistBaseFilter extends KalturaBaseEntryFilter
  */
 class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $isAnonymous = null;
-
 
 }
 
