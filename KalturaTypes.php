@@ -10733,6 +10733,13 @@ class KalturaWidget extends KalturaObjectBase
 	 */
 	public $addEmbedHtml5Support = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $roles = null;
+
 
 }
 
