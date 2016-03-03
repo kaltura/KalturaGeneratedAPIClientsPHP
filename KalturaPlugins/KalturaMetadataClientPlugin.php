@@ -754,6 +754,13 @@ abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $metadataProfileIdIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $metadataProfileVersionEqual = null;
