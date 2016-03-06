@@ -9790,6 +9790,13 @@ class KalturaThumbnailServeOptions extends KalturaObjectBase
 	 */
 	public $download = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
+
 
 }
 
