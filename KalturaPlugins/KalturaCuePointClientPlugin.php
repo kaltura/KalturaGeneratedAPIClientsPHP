@@ -654,6 +654,25 @@ class KalturaCuePointService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
 	}
+
+	/**
+	 * Update cuePoint status by id
+	 * 
+	 * @param string $id 
+	 * @param int $status 
+	 */
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
 }
 /**
  * @package Kaltura

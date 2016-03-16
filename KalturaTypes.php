@@ -4915,7 +4915,6 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 * 	 
 	 *
 	 * @var KalturaRecordStatus
-	 * @insertonly
 	 */
 	public $recordStatus = null;
 
@@ -5005,7 +5004,6 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 * 
 	 *
 	 * @var KalturaLiveEntryRecordingOptions
-	 * @insertonly
 	 */
 	public $recordingOptions;
 
