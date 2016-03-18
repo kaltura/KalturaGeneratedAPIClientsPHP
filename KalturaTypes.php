@@ -3868,6 +3868,80 @@ class KalturaEntryReplacementOptions extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaEntryServerNode extends KalturaObjectBase
+{
+	/**
+	 * unique auto-generated identifier
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $serverNodeId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeStatus
+	 * @readonly
+	 */
+	public $status = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeType
+	 * @readonly
+	 */
+	public $serverType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaObjectIdentifier extends KalturaObjectBase
 {
 	/**
@@ -5008,10 +5082,11 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	public $recordingOptions;
 
 	/**
-	 * the status of the entry of type LiveEntryStatus
+	 * the status of the entry of type EntryServerNodeStatus
 	 * 	 
 	 *
-	 * @var KalturaLiveEntryStatus
+	 * @var KalturaEntryServerNodeStatus
+	 * @readonly
 	 */
 	public $liveStatus = null;
 
@@ -5600,6 +5675,55 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 * @readonly
 	 */
 	public $streamUsername = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamParams extends KalturaObjectBase
+{
+	/**
+	 * Bit rate of the stream. (i.e. 900)
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $bitrate = null;
+
+	/**
+	 * flavor asset id
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $flavorId = null;
+
+	/**
+	 * Stream's width
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $width = null;
+
+	/**
+	 * Stream's height
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $height = null;
+
+	/**
+	 * Live stream's codec
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $codec = null;
 
 
 }
@@ -12912,7 +13036,7 @@ class KalturaConvertLiveSegmentJobData extends KalturaJobData
 	 * Primary or secondary media server
 	 * 	 
 	 *
-	 * @var KalturaMediaServerIndex
+	 * @var KalturaEntryServerNodeType
 	 */
 	public $mediaServerIndex = null;
 
@@ -14116,6 +14240,23 @@ class KalturaEntryLiveStats extends KalturaLiveStats
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryServerNodeListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaEntryServerNode
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaBooleanField extends KalturaBooleanValue
 {
 
@@ -14551,6 +14692,23 @@ class KalturaLiveChannelSegmentListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveEntryServerNode extends KalturaEntryServerNode
+{
+	/**
+	 * parameters of the stream we got
+	 * 	 
+	 *
+	 * @var array of KalturaLiveStreamParams
+	 */
+	public $streams;
 
 
 }
@@ -18486,6 +18644,120 @@ class KalturaEntryResource extends KalturaContentResource
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $serverNodeIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverNodeIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverNodeIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeType
+	 */
+	public $serverTypeEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaExtractMediaJobData extends KalturaConvartableJobData
 {
 	/**
@@ -20281,6 +20553,15 @@ class KalturaDocumentEntryMatchAttributeCondition extends KalturaSearchMatchAttr
 	 */
 	public $attribute = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntryServerNodeFilter extends KalturaEntryServerNodeBaseFilter
+{
 
 }
 

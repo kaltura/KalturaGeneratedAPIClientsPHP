@@ -2689,6 +2689,59 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryServerNodeService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaEntryServerNodeFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaEntryServerNodeListResponse
+	 */
+	function listAction(KalturaEntryServerNodeFilter $filter, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("entryservernode", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryServerNodeListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $id 
+	 * @return KalturaEntryServerNode
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("entryservernode", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryServerNode");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFileAssetService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -3687,7 +3740,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $assetId Live asset id
-	 * @param int $mediaServerIndex 
+	 * @param string $mediaServerIndex 
 	 * @param KalturaDataCenterContentResource $resource 
 	 * @param float $duration In seconds
 	 * @param bool $isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream stop event)
@@ -3716,9 +3769,9 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $hostname Media server host name
-	 * @param int $mediaServerIndex Media server index primary / secondary
+	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
-	 * @param int $liveEntryStatus The new status KalturaLiveEntryStatus::PLAYABLE | KalturaLiveEntryStatus::BROADCASTING
+	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
 	 * @return KalturaLiveEntry
 	 */
 	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
@@ -3743,7 +3796,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $hostname Media server host name
-	 * @param int $mediaServerIndex Media server index primary / secondary
+	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @return KalturaLiveEntry
 	 */
 	function unregisterMediaServer($entryId, $hostname, $mediaServerIndex)
@@ -4165,7 +4218,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $assetId Live asset id
-	 * @param int $mediaServerIndex 
+	 * @param string $mediaServerIndex 
 	 * @param KalturaDataCenterContentResource $resource 
 	 * @param float $duration In seconds
 	 * @param bool $isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream stop event)
@@ -4194,9 +4247,9 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $hostname Media server host name
-	 * @param int $mediaServerIndex Media server index primary / secondary
+	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
-	 * @param int $liveEntryStatus The new status KalturaLiveEntryStatus::PLAYABLE | KalturaLiveEntryStatus::BROADCASTING
+	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
 	 * @return KalturaLiveEntry
 	 */
 	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
@@ -4221,7 +4274,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $hostname Media server host name
-	 * @param int $mediaServerIndex Media server index primary / secondary
+	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @return KalturaLiveEntry
 	 */
 	function unregisterMediaServer($entryId, $hostname, $mediaServerIndex)
@@ -9102,6 +9155,12 @@ class KalturaClient extends KalturaClientBase
 	public $EmailIngestionProfile = null;
 
 	/**
+	 * Base class for entry server node
+	 * @var KalturaEntryServerNodeService
+	 */
+	public $entryServerNode = null;
+
+	/**
 	 * Manage file assets
 	 * @var KalturaFileAssetService
 	 */
@@ -9349,7 +9408,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-03-16');
+		$this->setClientTag('php5:16-03-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9367,6 +9426,7 @@ class KalturaClient extends KalturaClientBase
 		$this->deliveryProfile = new KalturaDeliveryProfileService($this);
 		$this->document = new KalturaDocumentService($this);
 		$this->EmailIngestionProfile = new KalturaEmailIngestionProfileService($this);
+		$this->entryServerNode = new KalturaEntryServerNodeService($this);
 		$this->fileAsset = new KalturaFileAssetService($this);
 		$this->flavorAsset = new KalturaFlavorAssetService($this);
 		$this->flavorParamsOutput = new KalturaFlavorParamsOutputService($this);

@@ -316,6 +316,18 @@ class KalturaEntryModerationStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryServerNodeStatus extends KalturaEnumBase
+{
+	const STOPPED = 0;
+	const PLAYABLE = 1;
+	const BROADCASTING = 2;
+	const AUTHENTICATED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFeatureStatusType extends KalturaEnumBase
 {
 	const LOCK_CATEGORY = 1;
@@ -437,17 +449,6 @@ class KalturaLimitFlavorsRestrictionType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveEntryStatus extends KalturaEnumBase
-{
-	const STOPPED = 0;
-	const PLAYABLE = 1;
-	const BROADCASTING = 2;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaLivePublishStatus extends KalturaEnumBase
 {
 	const DISABLED = 0;
@@ -490,16 +491,6 @@ class KalturaMailJobStatus extends KalturaEnumBase
 	const SENT = 2;
 	const ERROR = 3;
 	const QUEUED = 4;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMediaServerIndex extends KalturaEnumBase
-{
-	const PRIMARY = 0;
-	const SECONDARY = 1;
 }
 
 /**
@@ -2239,6 +2230,28 @@ class KalturaEntryReplacementStatus extends KalturaEnumBase
 	const READY_BUT_NOT_APPROVED = "2";
 	const NOT_READY_AND_NOT_APPROVED = "3";
 	const FAILED = "4";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntryServerNodeOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntryServerNodeType extends KalturaEnumBase
+{
+	const LIVE_PRIMARY = "0";
+	const LIVE_BACKUP = "1";
 }
 
 /**
