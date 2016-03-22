@@ -15107,14 +15107,6 @@ class KalturaMoveCategoryEntriesJobData extends KalturaJobData
 	public $moveFromChildren = null;
 
 	/**
-	 * Entries won't be deleted from the source entry
-	 *      
-	 *
-	 * @var bool
-	 */
-	public $copyOnly = null;
-
-	/**
 	 * Destination categories fallback ids
 	 *      
 	 *

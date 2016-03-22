@@ -120,6 +120,15 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 	public $password = null;
 
 	/**
+	 * Base url for service provider
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $baseUrl = null;
+
+	/**
 	 * Transcript content language
 	 * 	 
 	 *
