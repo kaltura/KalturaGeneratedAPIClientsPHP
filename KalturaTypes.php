@@ -4404,6 +4404,13 @@ class KalturaFlavorAssetUrlOptions extends KalturaObjectBase
 	 */
 	public $fileName = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
+
 
 }
 
