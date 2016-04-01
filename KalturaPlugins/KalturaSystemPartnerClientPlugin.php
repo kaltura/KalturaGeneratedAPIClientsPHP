@@ -913,14 +913,14 @@ class KalturaSystemPartnerService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param int $partnerId 
+	 * @param int $id 
 	 * @param int $status 
 	 * @param string $reason 
 	 */
-	function updateStatus($partnerId, $status, $reason)
+	function updateStatus($id, $status, $reason)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "partnerId", $partnerId);
+		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "status", $status);
 		$this->client->addParam($kparams, "reason", $reason);
 		$this->client->queueServiceActionCall("systempartner_systempartner", "updateStatus", $kparams);
