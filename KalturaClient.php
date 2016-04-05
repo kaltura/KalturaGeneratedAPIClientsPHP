@@ -2703,10 +2703,11 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
 	 * @param KalturaFilterPager $pager 
 	 * @return KalturaEntryServerNodeListResponse
 	 */
-	function listAction(KalturaEntryServerNodeFilter $filter, KalturaFilterPager $pager = null)
+	function listAction(KalturaEntryServerNodeFilter $filter = null, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("entryservernode", "list", $kparams);

@@ -18746,6 +18746,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var KalturaEntryServerNodeStatus
+	 */
+	public $statusIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaEntryServerNodeType
 	 */
 	public $serverTypeEqual = null;
