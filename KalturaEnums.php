@@ -1618,19 +1618,6 @@ class KalturaBulkUploadOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadResultObjectType extends KalturaEnumBase
-{
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const CATEGORY_USER = "4";
-	const CATEGORY_ENTRY = "5";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaBulkUploadResultStatus extends KalturaEnumBase
 {
 	const ERROR = "1";

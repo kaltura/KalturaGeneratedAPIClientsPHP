@@ -1257,6 +1257,15 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 */
 	public $capabilities = null;
 
+	/**
+	 * Template entry id 
+	 * 	 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $templateEntryId = null;
+
 
 }
 
@@ -1919,7 +1928,7 @@ class KalturaBulkUploadResult extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var KalturaBulkUploadResultObjectType
+	 * @var KalturaBulkUploadObjectType
 	 */
 	public $bulkUploadResultObjectType = null;
 
@@ -12340,6 +12349,20 @@ class KalturaBulkUploadResultEntry extends KalturaBulkUploadResult
 	 * @var string
 	 */
 	public $ownerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referenceId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryId = null;
 
 
 }
