@@ -4983,6 +4983,20 @@ class KalturaLiveEntryRecordingOptions extends KalturaObjectBase
 	 */
 	public $shouldCopyEntitlement = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $shouldCopyScheduling = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $shouldCopyThumbnail = null;
+
 
 }
 
