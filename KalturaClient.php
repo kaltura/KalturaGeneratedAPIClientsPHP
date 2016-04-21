@@ -4026,13 +4026,19 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live stream entry id
 	 * @param string $token Live stream broadcasting token
+	 * @param string $hostname Media server host name
+	 * @param string $mediaServerIndex Media server index primary / secondary
+	 * @param string $applicationName The application to which entry is being broadcast
 	 * @return KalturaLiveStreamEntry
 	 */
-	function authenticate($entryId, $token)
+	function authenticate($entryId, $token, $hostname = null, $mediaServerIndex = null, $applicationName = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "token", $token);
+		$this->client->addParam($kparams, "hostname", $hostname);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "applicationName", $applicationName);
 		$this->client->queueServiceActionCall("livestream", "authenticate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9409,7 +9415,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-04-20');
+		$this->setClientTag('php5:16-04-21');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

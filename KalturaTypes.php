@@ -5706,6 +5706,15 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 */
 	public $streamUsername = null;
 
+	/**
+	 * The Streams primary server node id 
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $primaryServerNodeId = null;
+
 
 }
 
