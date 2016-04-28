@@ -69,7 +69,7 @@ class KalturaShortLink extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 * @readonly
 	 */
 	public $id = null;

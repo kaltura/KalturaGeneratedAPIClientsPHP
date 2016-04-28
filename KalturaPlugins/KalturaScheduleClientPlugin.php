@@ -72,6 +72,16 @@ class KalturaScheduleEventStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaScheduleEventType extends KalturaEnumBase
+{
+	const RECORD = 1;
+	const LIVE_STREAM = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaScheduleResourceStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;

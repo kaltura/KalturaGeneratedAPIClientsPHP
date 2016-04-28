@@ -111,6 +111,13 @@ abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter
 	 *
 	 * @var string
 	 */
+	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $userIdEqual = null;
 
 	/**

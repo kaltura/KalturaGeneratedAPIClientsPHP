@@ -4676,6 +4676,13 @@ class KalturaFlavorParams extends KalturaAssetParams
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $subtitlesData = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $isEncrypted = null;
