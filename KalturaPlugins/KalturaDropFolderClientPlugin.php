@@ -142,6 +142,7 @@ class KalturaDropFolderFileErrorCode extends KalturaEnumBase
 class KalturaDropFolderFileHandlerType extends KalturaEnumBase
 {
 	const XML = "dropFolderXmlBulkUpload.XML";
+	const ICAL = "scheduleDropFolder.ICAL";
 	const CONTENT = "1";
 }
 

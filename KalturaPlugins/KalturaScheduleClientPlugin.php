@@ -1647,6 +1647,29 @@ class KalturaScheduleEventService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaScheduleEventListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Add new bulk upload batch job
+	 * 
+	 * @param file $fileData 
+	 * @param KalturaBulkUploadICalJobData $bulkUploadData 
+	 * @return KalturaBulkUpload
+	 */
+	function addFromBulkUpload($fileData, KalturaBulkUploadICalJobData $bulkUploadData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "addFromBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		return $resultObject;
+	}
 }
 
 /**
@@ -1758,6 +1781,29 @@ class KalturaScheduleResourceService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaScheduleResourceListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Add new bulk upload batch job
+	 * 
+	 * @param file $fileData 
+	 * @param KalturaBulkUploadCsvJobData $bulkUploadData 
+	 * @return KalturaBulkUpload
+	 */
+	function addFromBulkUpload($fileData, KalturaBulkUploadCsvJobData $bulkUploadData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleresource", "addFromBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
 		return $resultObject;
 	}
 }

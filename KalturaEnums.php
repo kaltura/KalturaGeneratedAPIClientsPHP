@@ -1585,6 +1585,7 @@ class KalturaBatchJobType extends KalturaEnumBase
  */
 class KalturaBulkUploadAction extends KalturaEnumBase
 {
+	const CANCEL = "scheduleBulkUpload.CANCEL";
 	const ADD = "1";
 	const UPDATE = "2";
 	const DELETE = "3";
@@ -1599,6 +1600,8 @@ class KalturaBulkUploadAction extends KalturaEnumBase
  */
 class KalturaBulkUploadObjectType extends KalturaEnumBase
 {
+	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
+	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const USER = "3";
@@ -1635,6 +1638,8 @@ class KalturaBulkUploadType extends KalturaEnumBase
 	const FILTER = "bulkUploadFilter.FILTER";
 	const XML = "bulkUploadXml.XML";
 	const DROP_FOLDER_XML = "dropFolderXmlBulkUpload.DROP_FOLDER_XML";
+	const ICAL = "scheduleBulkUpload.ICAL";
+	const DROP_FOLDER_ICAL = "scheduleDropFolder.DROP_FOLDER_ICAL";
 }
 
 /**
