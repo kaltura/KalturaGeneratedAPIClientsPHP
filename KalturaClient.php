@@ -358,6 +358,37 @@ class KalturaAdminUserService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAnalyticsService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Report query action allows to get a analytics data for specific query dimensions, metrics and filters.
+	 * 
+	 * @param KalturaAnalyticsFilter $filter The analytics query filter
+	 * @return KalturaReportResponse
+	 */
+	function query(KalturaAnalyticsFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("analytics", "query", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaReportResponse");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAppTokenService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -9089,6 +9120,12 @@ class KalturaClient extends KalturaClientBase
 	public $adminUser = null;
 
 	/**
+	 * Api for getting analytics data
+	 * @var KalturaAnalyticsService
+	 */
+	public $analytics = null;
+
+	/**
 	 * Manage application authentication tokens
 	 * @var KalturaAppTokenService
 	 */
@@ -9415,12 +9452,13 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-03');
+		$this->setClientTag('php5:16-05-04');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
 		$this->adminUser = new KalturaAdminUserService($this);
+		$this->analytics = new KalturaAnalyticsService($this);
 		$this->appToken = new KalturaAppTokenService($this);
 		$this->baseEntry = new KalturaBaseEntryService($this);
 		$this->bulkUpload = new KalturaBulkUploadService($this);

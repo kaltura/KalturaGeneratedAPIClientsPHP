@@ -281,6 +281,14 @@ class KalturaRule extends KalturaObjectBase
 	 */
 	public $stopProcessing = null;
 
+	/**
+	 * Indicates if we should force ks validation for admin ks users as well
+	 * 	 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $forceAdminValidation = null;
+
 
 }
 
@@ -452,6 +460,88 @@ class KalturaAccessControlScope extends KalturaObjectBase
 	 * @var array of KalturaKeyValue
 	 */
 	public $hashes;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportFilter extends KalturaObjectBase
+{
+	/**
+	 * The dimension whose values should be filtered
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $dimension = null;
+
+	/**
+	 * The (comma separated) values to include in the filter
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $values = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAnalyticsFilter extends KalturaObjectBase
+{
+	/**
+	 * Query start time (in local time)
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $from_time = null;
+
+	/**
+	 * Query end time (in local time)
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $to_time = null;
+
+	/**
+	 * Comma separated metrics list
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $metrics = null;
+
+	/**
+	 * Timezone offset from UTC (in minutes)
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $utcOffset = null;
+
+	/**
+	 * Comma separated dimensions list
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $dimensions = null;
+
+	/**
+	 * Array of filters
+	 * 	 
+	 *
+	 * @var array of KalturaReportFilter
+	 */
+	public $filters;
 
 
 }
@@ -17030,6 +17120,22 @@ class KalturaUrlTokenizerVelocix extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $tokenizationFormat = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserAgentRestriction extends KalturaBaseRestriction
 {
 	/**
@@ -18701,27 +18807,6 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idNotIn = null;
-
-	/**
-	 * 
-	 *
 	 * @var string
 	 */
 	public $entryIdEqual = null;
@@ -18736,37 +18821,9 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
-	 * @var string
-	 */
-	public $entryIdNotIn = null;
-
-	/**
-	 * 
-	 *
 	 * @var int
 	 */
 	public $serverNodeIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverNodeIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverNodeIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
 
 	/**
 	 * 
@@ -18780,7 +18837,7 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	 *
 	 * @var int
 	 */
-	public $updatedAtLessThanOrEqual = null;
+	public $createdAtLessThanOrEqual = null;
 
 	/**
 	 * 
@@ -18792,6 +18849,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaEntryServerNodeStatus
 	 */
 	public $statusEqual = null;
@@ -18799,7 +18863,7 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
-	 * @var KalturaEntryServerNodeStatus
+	 * @var string
 	 */
 	public $statusIn = null;
 
@@ -19798,15 +19862,6 @@ class KalturaRemoteStorageResources extends KalturaContentResource
 	 */
 	public $resources;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaReportFilter extends KalturaReportBaseFilter
-{
 
 }
 
