@@ -45,7 +45,6 @@ class KalturaExecuteMetadataXsltObjectTask extends KalturaObjectTask
 {
 	/**
 	 * Metadata profile id to lookup the metadata object
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -53,7 +52,6 @@ class KalturaExecuteMetadataXsltObjectTask extends KalturaObjectTask
 
 	/**
 	 * Metadata object type to lookup the metadata object
-	 * 	 
 	 *
 	 * @var KalturaMetadataObjectType
 	 */
@@ -61,7 +59,6 @@ class KalturaExecuteMetadataXsltObjectTask extends KalturaObjectTask
 
 	/**
 	 * The XSLT to execute
-	 * 	 
 	 *
 	 * @var string
 	 */

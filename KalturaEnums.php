@@ -1805,18 +1805,6 @@ class KalturaContextType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaControlPanelCommandOrderBy extends KalturaEnumBase
-{
-	const CREATED_AT_ASC = "+createdAt";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const UPDATED_AT_DESC = "-updatedAt";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaConversionProfileAssetParamsOrderBy extends KalturaEnumBase
 {
 }

@@ -87,7 +87,6 @@ class KalturaCodeCuePoint extends KalturaCuePoint
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

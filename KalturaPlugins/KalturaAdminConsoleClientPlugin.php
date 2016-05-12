@@ -66,6 +66,96 @@ class KalturaUiConfAdminOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaInvestigateFlavorAssetData extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaFlavorAsset
+	 * @readonly
+	 */
+	public $flavorAsset;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaFileSyncListResponse
+	 * @readonly
+	 */
+	public $fileSyncs;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaMediaInfoListResponse
+	 * @readonly
+	 */
+	public $mediaInfos;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaFlavorParams
+	 * @readonly
+	 */
+	public $flavorParams;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaFlavorParamsOutputListResponse
+	 * @readonly
+	 */
+	public $flavorParamsOutputs;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaInvestigateThumbAssetData extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaThumbAsset
+	 * @readonly
+	 */
+	public $thumbAsset;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaFileSyncListResponse
+	 * @readonly
+	 */
+	public $fileSyncs;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaThumbParams
+	 * @readonly
+	 */
+	public $thumbParams;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaThumbParamsOutputListResponse
+	 * @readonly
+	 */
+	public $thumbParamsOutputs;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaTrackEntry extends KalturaObjectBase
 {
 	/**
@@ -227,23 +317,6 @@ class KalturaTrackEntryListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfAdminListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaUiConfAdmin
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaUiConfAdminBaseFilter extends KalturaUiConfFilter
 {
 
@@ -361,105 +434,6 @@ class KalturaUiConfAdminService extends KalturaServiceBase
 	{
 		parent::__construct($client);
 	}
-
-	/**
-	 * Adds new UIConf with no partner limitation
-	 * 
-	 * @param KalturaUiConfAdmin $uiConf 
-	 * @return KalturaUiConfAdmin
-	 */
-	function add(KalturaUiConfAdmin $uiConf)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "uiConf", $uiConf->toParams());
-		$this->client->queueServiceActionCall("adminconsole_uiconfadmin", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaUiConfAdmin");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing UIConf with no partner limitation
-	 * 
-	 * @param int $id 
-	 * @param KalturaUiConfAdmin $uiConf 
-	 * @return KalturaUiConfAdmin
-	 */
-	function update($id, KalturaUiConfAdmin $uiConf)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "uiConf", $uiConf->toParams());
-		$this->client->queueServiceActionCall("adminconsole_uiconfadmin", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaUiConfAdmin");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieve a UIConf by id with no partner limitation
-	 * 
-	 * @param int $id 
-	 * @return KalturaUiConfAdmin
-	 */
-	function get($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("adminconsole_uiconfadmin", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaUiConfAdmin");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete an existing UIConf with no partner limitation
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("adminconsole_uiconfadmin", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Retrieve a list of available UIConfs  with no partner limitation
-	 * 
-	 * @param KalturaUiConfFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaUiConfAdminListResponse
-	 */
-	function listAction(KalturaUiConfFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("adminconsole_uiconfadmin", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaUiConfAdminListResponse");
-		return $resultObject;
-	}
 }
 
 /**
@@ -471,170 +445,6 @@ class KalturaReportAdminService extends KalturaServiceBase
 	function __construct(KalturaClient $client = null)
 	{
 		parent::__construct($client);
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaReport $report 
-	 * @return KalturaReport
-	 */
-	function add(KalturaReport $report)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "report", $report->toParams());
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaReport");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 * @return KalturaReport
-	 */
-	function get($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaReport");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaReportFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaReportListResponse
-	 */
-	function listAction(KalturaReportFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaReportListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 * @param KalturaReport $report 
-	 * @return KalturaReport
-	 */
-	function update($id, KalturaReport $report)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "report", $report->toParams());
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaReport");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 * @param array $params 
-	 * @return KalturaReportResponse
-	 */
-	function executeDebug($id, array $params = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		if ($params !== null)
-			foreach($params as $index => $obj)
-			{
-				$this->client->addParam($kparams, "params:$index", $obj->toParams());
-			}
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "executeDebug", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaReportResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 * @return array
-	 */
-	function getParameters($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "getParameters", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id 
-	 * @param int $reportPartnerId 
-	 * @return string
-	 */
-	function getCsvUrl($id, $reportPartnerId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "reportPartnerId", $reportPartnerId);
-		$this->client->queueServiceActionCall("adminconsole_reportadmin", "getCsvUrl", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
 	}
 }
 /**

@@ -45,7 +45,6 @@ class KalturaDropFolderICalBulkUploadFileHandlerConfig extends KalturaDropFolder
 {
 	/**
 	 * The type of the events that ill be created by this upload
-	 * 	 
 	 *
 	 * @var KalturaScheduleEventType
 	 */

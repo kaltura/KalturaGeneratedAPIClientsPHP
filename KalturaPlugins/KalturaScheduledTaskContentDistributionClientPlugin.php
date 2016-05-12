@@ -45,7 +45,6 @@ class KalturaDistributeObjectTask extends KalturaObjectTask
 {
 	/**
 	 * Distribution profile id
-	 * 	 
 	 *
 	 * @var string
 	 */

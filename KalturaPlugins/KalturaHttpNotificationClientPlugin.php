@@ -116,7 +116,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 {
 	/**
 	 * Object that triggered the notification
-	 * 	 
 	 *
 	 * @var KalturaObjectBase
 	 */
@@ -124,7 +123,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * Object type that triggered the notification
-	 * 	 
 	 *
 	 * @var KalturaEventNotificationEventObjectType
 	 */
@@ -132,7 +130,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * ID of the batch job that execute the notification
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -140,7 +137,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * ID of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -148,7 +144,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * Name of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -156,7 +151,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * System name of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -164,7 +158,6 @@ class KalturaHttpNotification extends KalturaObjectBase
 
 	/**
 	 * Ecent type that triggered the notification
-	 * 	 
 	 *
 	 * @var KalturaEventNotificationEventType
 	 */
@@ -215,7 +208,6 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 {
 	/**
 	 * Kaltura API object type
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -223,7 +215,6 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 
 	/**
 	 * Data format
-	 * 	 
 	 *
 	 * @var KalturaResponseType
 	 */
@@ -231,7 +222,6 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 
 	/**
 	 * Ignore null attributes during serialization
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -239,7 +229,6 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 
 	/**
 	 * PHP code
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -256,7 +245,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 {
 	/**
 	 * Remote server URL
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -264,7 +252,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Request method.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationMethod
 	 */
@@ -272,7 +259,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Data to send.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationData
 	 */
@@ -280,7 +266,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The maximum number of seconds to allow cURL functions to execute.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -289,7 +274,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 	/**
 	 * The number of seconds to wait while trying to connect.
 	 * 	 Must be larger than zero.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -297,7 +281,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * A username to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -305,7 +288,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * A password to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -313,7 +295,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The HTTP authentication method to use.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationAuthenticationMethod
 	 */
@@ -322,7 +303,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 	/**
 	 * The SSL version (2 or 3) to use.
 	 * 	 By default PHP will try to determine this itself, although in some cases this must be set manually.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationSslVersion
 	 */
@@ -330,7 +310,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * SSL certificate to verify the peer with.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -338,7 +317,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The format of the certificate.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationCertificateType
 	 */
@@ -346,7 +324,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The password required to use the certificate.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -354,7 +331,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The identifier for the crypto engine of the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -362,7 +338,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The identifier for the crypto engine used for asymmetric crypto operations.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -370,7 +345,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The key type of the private SSL key specified in ssl key - PEM / DER / ENG.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationSslKeyType
 	 */
@@ -378,7 +352,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Private SSL key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -386,7 +359,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * The secret password needed to use the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -394,7 +366,6 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -411,7 +382,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 {
 	/**
 	 * Remote server URL
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -419,7 +389,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * Request method.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationMethod
 	 */
@@ -427,7 +396,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * Data to send.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -435,7 +403,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The maximum number of seconds to allow cURL functions to execute.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -444,7 +411,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 	/**
 	 * The number of seconds to wait while trying to connect.
 	 * 	 Must be larger than zero.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -452,7 +418,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * A username to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -460,7 +425,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * A password to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -468,7 +432,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The HTTP authentication method to use.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationAuthenticationMethod
 	 */
@@ -477,7 +440,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 	/**
 	 * The SSL version (2 or 3) to use.
 	 * 	 By default PHP will try to determine this itself, although in some cases this must be set manually.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationSslVersion
 	 */
@@ -485,7 +447,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * SSL certificate to verify the peer with.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -493,7 +454,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The format of the certificate.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationCertificateType
 	 */
@@ -501,7 +461,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The password required to use the certificate.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -509,7 +468,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The identifier for the crypto engine of the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -517,7 +475,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The identifier for the crypto engine used for asymmetric crypto operations.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -525,7 +482,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The key type of the private SSL key specified in ssl key - PEM / DER / ENG.
-	 * 	 
 	 *
 	 * @var KalturaHttpNotificationSslKeyType
 	 */
@@ -533,7 +489,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * Private SSL key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -541,7 +496,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The secret password needed to use the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -549,7 +503,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -557,7 +510,6 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 
 	/**
 	 * The secret to sign the notification with
-	 * 	 
 	 *
 	 * @var string
 	 */

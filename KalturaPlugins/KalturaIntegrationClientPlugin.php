@@ -96,7 +96,6 @@ class KalturaIntegrationJobData extends KalturaJobData
 
 	/**
 	 * Additional data that relevant for the provider only
-	 * 	 
 	 *
 	 * @var KalturaIntegrationJobProviderData
 	 */
@@ -111,7 +110,6 @@ class KalturaIntegrationJobData extends KalturaJobData
 
 	/**
 	 * Additional data that relevant for the trigger only
-	 * 	 
 	 *
 	 * @var KalturaIntegrationJobTriggerData
 	 */

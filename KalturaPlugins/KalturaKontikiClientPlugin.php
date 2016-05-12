@@ -71,7 +71,6 @@ class KalturaKontikiStorageDeleteJobData extends KalturaStorageDeleteJobData
 {
 	/**
 	 * Unique Kontiki MOID for the content uploaded to Kontiki
-	 *      
 	 *
 	 * @var string
 	 */
@@ -95,7 +94,6 @@ class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData
 {
 	/**
 	 * Holds the id of the exported asset
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -103,7 +101,6 @@ class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData
 
 	/**
 	 * Unique Kontiki MOID for the content uploaded to Kontiki
-	 * 	 
 	 *
 	 * @var string
 	 */

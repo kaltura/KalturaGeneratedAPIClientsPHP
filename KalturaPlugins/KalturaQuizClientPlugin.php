@@ -125,7 +125,6 @@ class KalturaQuiz extends KalturaObjectBase
 
 	/**
 	 * Array of key value ui related objects
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -215,7 +214,6 @@ class KalturaAnswerCuePoint extends KalturaCuePoint
 
 	/**
 	 * Array of string
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 * @readonly
@@ -241,7 +239,6 @@ class KalturaQuestionCuePoint extends KalturaCuePoint
 {
 	/**
 	 * Array of key value answerKey->optionAnswer objects
-	 * 	 
 	 *
 	 * @var map
 	 */
@@ -312,7 +309,6 @@ class KalturaQuizFilter extends KalturaRelatedFilter
 {
 	/**
 	 * This filter should be in use for retrieving only a specific quiz entry (identified by its entryId).
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -320,7 +316,6 @@ class KalturaQuizFilter extends KalturaRelatedFilter
 
 	/**
 	 * This filter should be in use for retrieving few specific quiz entries (string should include comma separated list of entryId strings).
-	 * 	 
 	 *
 	 * @var string
 	 */

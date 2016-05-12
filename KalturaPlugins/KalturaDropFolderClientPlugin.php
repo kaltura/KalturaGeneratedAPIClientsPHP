@@ -370,7 +370,6 @@ class KalturaDropFolder extends KalturaObjectBase
 
 	/**
 	 * The ammount of time, in seconds, that should pass so that a file with no change in size we'll be treated as "finished uploading to folder"
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -924,7 +923,6 @@ class KalturaDropFolderContentFileHandlerConfig extends KalturaDropFolderFileHan
 	 * 	 The following might be extracted from the file name and used if defined:
 	 * 	 - (?P<referenceId>\w+) - will be used as the drop folder file's parsed slug.
 	 * 	 - (?P<flavorName>\w+)  - will be used as the drop folder file's parsed flavor.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1353,7 +1351,6 @@ class KalturaDropFolderFileResource extends KalturaDataCenterContentResource
 {
 	/**
 	 * Id of the drop folder file object
-	 * 	 
 	 *
 	 * @var int
 	 */

@@ -44,7 +44,6 @@ class KalturaCaptionAssetItem extends KalturaObjectBase
 {
 	/**
 	 * The Caption Asset object
-	 * 	 
 	 *
 	 * @var KalturaCaptionAsset
 	 */
@@ -52,7 +51,6 @@ class KalturaCaptionAssetItem extends KalturaObjectBase
 
 	/**
 	 * The entry object
-	 * 	 
 	 *
 	 * @var KalturaBaseEntry
 	 */
@@ -246,6 +244,23 @@ class KalturaCaptionAssetItemService extends KalturaServiceBase
 	function __construct(KalturaClient $client = null)
 	{
 		parent::__construct($client);
+	}
+
+	/**
+	 * Parse content of caption asset and index it
+	 * 
+	 * @param string $captionAssetId 
+	 */
+	function parse($captionAssetId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		$this->client->queueServiceActionCall("captionsearch_captionassetitem", "parse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**

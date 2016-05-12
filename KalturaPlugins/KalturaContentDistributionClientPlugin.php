@@ -305,6 +305,14 @@ class KalturaSyndicationDistributionProfileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSyndicationDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaAssetDistributionCondition extends KalturaObjectBase
 {
 
@@ -318,7 +326,6 @@ class KalturaAssetDistributionRule extends KalturaObjectBase
 {
 	/**
 	 * The validation error description that will be set on the "data" property on KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -326,7 +333,6 @@ class KalturaAssetDistributionRule extends KalturaObjectBase
 
 	/**
 	 * An array of asset distribution conditions
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionCondition
 	 */
@@ -344,7 +350,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 	/**
 	 * A value taken from a connector field enum which associates the current configuration to that connector field
 	 *      Field enum class should be returned by the provider's getFieldEnumClass function.
-	 *      
 	 *
 	 * @var string
 	 */
@@ -352,7 +357,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * A string that will be shown to the user as the field name in error messages related to the current field
-	 *      
 	 *
 	 * @var string
 	 */
@@ -361,7 +365,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 	/**
 	 * An XSLT string that extracts the right value from the Kaltura entry MRSS XML.
 	 *      The value of the current connector field will be the one that is returned from transforming the Kaltura entry MRSS XML using this XSLT string.
-	 *      
 	 *
 	 * @var string
 	 */
@@ -369,7 +372,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * Is the field required to have a value for submission ?
-	 *      
 	 *
 	 * @var KalturaDistributionFieldRequiredStatus
 	 */
@@ -377,7 +379,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * Trigger distribution update when this field changes or not ?
-	 *      
 	 *
 	 * @var bool
 	 */
@@ -385,7 +386,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * Entry column or metadata xpath that should trigger an update
-	 *      
 	 *
 	 * @var array of KalturaString
 	 */
@@ -393,7 +393,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * Is this field config is the default for the distribution provider?
-	 *      
 	 *
 	 * @var bool
 	 * @readonly
@@ -402,7 +401,6 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 
 	/**
 	 * Is an error on this field going to trigger deletion of distributed content?
-	 *      
 	 *
 	 * @var bool
 	 */
@@ -451,7 +449,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 {
 	/**
 	 * Auto generated unique id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -460,7 +457,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Profile creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -469,7 +465,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Profile last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -536,7 +531,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Comma separated flavor params ids that should be auto converted
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -544,7 +538,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Comma separated thumbnail params ids that should be auto generated
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -552,7 +545,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Comma separated flavor params ids that should be submitted if ready
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -560,7 +552,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Comma separated flavor params ids that required to be ready before submission
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -568,7 +559,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Thumbnail dimensions that should be submitted if ready
-	 * 	 
 	 *
 	 * @var array of KalturaDistributionThumbDimensions
 	 */
@@ -576,7 +566,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Thumbnail dimensions that required to be readt before submission
-	 * 	 
 	 *
 	 * @var array of KalturaDistributionThumbDimensions
 	 */
@@ -584,7 +573,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Asset Distribution Rules for assets that should be submitted if ready
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionRule
 	 */
@@ -592,7 +580,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * Assets Asset Distribution Rules for assets that are required to be ready before submission
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionRule
 	 */
@@ -600,7 +587,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * If entry distribution sunrise not specified that will be the default since entry creation time, in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -608,7 +594,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * If entry distribution sunset not specified that will be the default since entry creation time, in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -616,7 +601,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * The best external storage to be used to download the asset files from
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -624,7 +608,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * The best Kaltura data center to be used to download the asset files to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -632,7 +615,6 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 
 	/**
 	 * The best Kaltura data center to be used to execute the distribution job
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -782,7 +764,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 {
 	/**
 	 * Auto generated unique id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -791,7 +772,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Entry distribution creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -800,7 +780,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Entry distribution last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -809,7 +788,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Entry distribution submission date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -866,7 +844,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Comma separated thumbnail asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -874,7 +851,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Comma separated flavor asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -882,7 +858,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Comma separated asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -890,7 +865,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Entry distribution publish time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -898,7 +872,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * Entry distribution un-publish time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -906,7 +879,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * The id as returned from the distributed destination
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -915,7 +887,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * The plays as retrieved from the remote destination reports
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -924,7 +895,6 @@ class KalturaEntryDistribution extends KalturaObjectBase
 
 	/**
 	 * The views as retrieved from the remote destination reports
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1086,7 +1056,6 @@ class KalturaGenericDistributionProviderAction extends KalturaObjectBase
 {
 	/**
 	 * Auto generated
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1095,7 +1064,6 @@ class KalturaGenericDistributionProviderAction extends KalturaObjectBase
 
 	/**
 	 * Generic distribution provider action creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1104,7 +1072,6 @@ class KalturaGenericDistributionProviderAction extends KalturaObjectBase
 
 	/**
 	 * Generic distribution provider action last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1226,7 +1193,6 @@ class KalturaGenericDistributionProvider extends KalturaDistributionProvider
 {
 	/**
 	 * Auto generated
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1235,7 +1201,6 @@ class KalturaGenericDistributionProvider extends KalturaDistributionProvider
 
 	/**
 	 * Generic distribution provider creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1244,7 +1209,6 @@ class KalturaGenericDistributionProvider extends KalturaDistributionProvider
 
 	/**
 	 * Generic distribution provider last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -1328,7 +1292,6 @@ class KalturaAssetDistributionPropertyCondition extends KalturaAssetDistribution
 	/**
 	 * The property name to look for, this will match to a getter on the asset object.
 	 * 	 Should be camelCase naming convention (defining "myPropertyName" will look for getMyPropertyName())
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1336,7 +1299,6 @@ class KalturaAssetDistributionPropertyCondition extends KalturaAssetDistribution
 
 	/**
 	 * The value to compare
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1383,7 +1345,6 @@ abstract class KalturaConfigurableDistributionProfile extends KalturaDistributio
 
 	/**
 	 * When checking custom XSLT conditions using the fieldConfigArray - address only categories associated with the entry via the categoryEntry object
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -1442,7 +1403,6 @@ class KalturaContentDistributionSearchItem extends KalturaSearchItem
 
 	/**
 	 * Comma seperated validation error types
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1487,7 +1447,6 @@ class KalturaDistributionJobData extends KalturaJobData
 
 	/**
 	 * Id of the media in the remote system
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1502,7 +1461,6 @@ class KalturaDistributionJobData extends KalturaJobData
 
 	/**
 	 * Additional data that relevant for the provider only
-	 * 	 
 	 *
 	 * @var KalturaDistributionJobProviderData
 	 */
@@ -1510,7 +1468,6 @@ class KalturaDistributionJobData extends KalturaJobData
 
 	/**
 	 * The results as returned from the remote destination
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1518,7 +1475,6 @@ class KalturaDistributionJobData extends KalturaJobData
 
 	/**
 	 * The data as sent to the remote destination
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -1526,8 +1482,7 @@ class KalturaDistributionJobData extends KalturaJobData
 
 	/**
 	 * Stores array of media files that submitted to the destination site
-	 * 	 Could be used later for media update 
-	 * 	 
+	 * 	 Could be used later for media update
 	 *
 	 * @var array of KalturaDistributionRemoteMediaFile
 	 */
@@ -1697,7 +1652,6 @@ class KalturaDistributionValidationErrorInvalidData extends KalturaDistributionV
 	/**
 	 * Parameter of the validation error
 	 * 	 For example, minimum value for KalturaDistributionValidationErrorType::STRING_TOO_SHORT validation error
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -2030,7 +1984,6 @@ class KalturaDistributionDeleteJobData extends KalturaDistributionJobData
 {
 	/**
 	 * Flag signifying that the associated distribution item should not be moved to 'removed' status
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -2460,6 +2413,15 @@ class KalturaGenericDistributionProviderFilter extends KalturaGenericDistributio
  * @subpackage Client
  */
 class KalturaSyndicationDistributionProfileFilter extends KalturaSyndicationDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSyndicationDistributionProviderFilter extends KalturaSyndicationDistributionProviderBaseFilter
 {
 
 }
@@ -3337,6 +3299,67 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 		return $resultObject;
 	}
 }
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaContentDistributionBatchService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Updates entry distribution sun status in the search engine
+	 * 
+	 */
+	function updateSunStatus()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "updateSunStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Creates all required jobs according to entry distribution dirty flags
+	 * 
+	 */
+	function createRequiredJobs()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "createRequiredJobs", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Returns absolute valid url for asset file
+	 * 
+	 * @param string $assetId 
+	 * @return string
+	 */
+	function getAssetUrl($assetId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "getAssetUrl", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
@@ -3368,6 +3391,11 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 	 */
 	public $genericDistributionProviderAction = null;
 
+	/**
+	 * @var KalturaContentDistributionBatchService
+	 */
+	public $contentDistributionBatch = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
@@ -3376,6 +3404,7 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 		$this->distributionProvider = new KalturaDistributionProviderService($client);
 		$this->genericDistributionProvider = new KalturaGenericDistributionProviderService($client);
 		$this->genericDistributionProviderAction = new KalturaGenericDistributionProviderActionService($client);
+		$this->contentDistributionBatch = new KalturaContentDistributionBatchService($client);
 	}
 
 	/**
@@ -3397,6 +3426,7 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 			'distributionProvider' => $this->distributionProvider,
 			'genericDistributionProvider' => $this->genericDistributionProvider,
 			'genericDistributionProviderAction' => $this->genericDistributionProviderAction,
+			'contentDistributionBatch' => $this->contentDistributionBatch,
 		);
 		return $services;
 	}

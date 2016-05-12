@@ -45,7 +45,6 @@ class KalturaDispatchEventNotificationObjectTask extends KalturaObjectTask
 {
 	/**
 	 * The event notification template id to dispatch
-	 * 	 
 	 *
 	 * @var int
 	 */

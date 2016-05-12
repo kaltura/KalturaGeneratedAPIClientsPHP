@@ -34,29 +34,28 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolderFileOrderBy extends KalturaEnumBase
+class KalturaYouTubeApiDistributionCaptionAction extends KalturaEnumBase
+{
+	const UPDATE_ACTION = 1;
+	const SUBMIT_ACTION = 2;
+	const DELETE_ACTION = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYoutubeApiDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const FILE_NAME_ASC = "+fileName";
-	const FILE_SIZE_ASC = "+fileSize";
-	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
-	const ID_ASC = "+id";
-	const PARSED_FLAVOR_ASC = "+parsedFlavor";
-	const PARSED_SLUG_ASC = "+parsedSlug";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const FILE_NAME_DESC = "-fileName";
-	const FILE_SIZE_DESC = "-fileSize";
-	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
-	const ID_DESC = "-id";
-	const PARSED_FLAVOR_DESC = "-parsedFlavor";
-	const PARSED_SLUG_DESC = "-parsedSlug";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -64,86 +63,64 @@ class KalturaFeedDropFolderFileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolderOrderBy extends KalturaEnumBase
+class KalturaYoutubeApiDistributionProviderOrderBy extends KalturaEnumBase
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const NAME_ASC = "+name";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const NAME_DESC = "-name";
-	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedItemInfo extends KalturaObjectBase
+class KalturaYouTubeApiCaptionDistributionInfo extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemXPath = null;
+	public $language = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemPublishDateXPath = null;
+	public $label = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemUniqueIdentifierXPath = null;
+	public $filePath = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemContentFileSizeXPath = null;
+	public $remoteId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaYouTubeApiDistributionCaptionAction
+	 */
+	public $action = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemContentUrlXPath = null;
+	public $version = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $itemContentBitrateXPath = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $itemHashXPath = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $itemContentXpath = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentBitrateAttributeName = null;
+	public $assetId = null;
 
 
 }
@@ -152,44 +129,123 @@ class KalturaFeedItemInfo extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolder extends KalturaDropFolder
+class KalturaYoutubeApiDistributionProvider extends KalturaDistributionProvider
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYoutubeApiDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $videoAssetFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbAssetFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaYouTubeApiCaptionDistributionInfo
+	 */
+	public $captionsInfo;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYoutubeApiDistributionProfile extends KalturaConfigurableDistributionProfile
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $username = null;
+
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $itemHandlingLimit = null;
+	public $defaultCategory = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaFeedItemInfo
+	 * @var string
 	 */
-	public $feedItemInfo;
+	public $allowComments = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaFeedDropFolderFile extends KalturaDropFolderFile
-{
 	/**
-	 * MD5 or Sha1 encrypted string
+	 * 
 	 *
 	 * @var string
 	 */
-	public $hash = null;
+	public $allowEmbedding = null;
 
 	/**
-	 * Path of the original Feed content XML
+	 * 
 	 *
 	 * @var string
 	 */
-	public $feedXmlPath = null;
+	public $allowRatings = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowResponses = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $apiAuthorizeUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $googleClientId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $googleClientSecret = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $googleTokenData = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $assumeSuccess = null;
 
 
 }
@@ -198,7 +254,7 @@ class KalturaFeedDropFolderFile extends KalturaDropFolderFile
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaFeedDropFolderBaseFilter extends KalturaDropFolderFilter
+abstract class KalturaYoutubeApiDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
 
 }
@@ -207,7 +263,7 @@ abstract class KalturaFeedDropFolderBaseFilter extends KalturaDropFolderFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaFeedDropFolderFileBaseFilter extends KalturaDropFolderFileFilter
+class KalturaYoutubeApiDistributionProviderFilter extends KalturaYoutubeApiDistributionProviderBaseFilter
 {
 
 }
@@ -216,7 +272,7 @@ abstract class KalturaFeedDropFolderFileBaseFilter extends KalturaDropFolderFile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolderFileFilter extends KalturaFeedDropFolderFileBaseFilter
+abstract class KalturaYoutubeApiDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
 {
 
 }
@@ -225,7 +281,7 @@ class KalturaFeedDropFolderFileFilter extends KalturaFeedDropFolderFileBaseFilte
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolderFilter extends KalturaFeedDropFolderBaseFilter
+class KalturaYoutubeApiDistributionProfileFilter extends KalturaYoutubeApiDistributionProfileBaseFilter
 {
 
 }
@@ -234,7 +290,7 @@ class KalturaFeedDropFolderFilter extends KalturaFeedDropFolderBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFeedDropFolderClientPlugin extends KalturaClientPlugin
+class KalturaYoutubeApiDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -242,11 +298,11 @@ class KalturaFeedDropFolderClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaFeedDropFolderClientPlugin
+	 * @return KalturaYoutubeApiDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaFeedDropFolderClientPlugin($client);
+		return new KalturaYoutubeApiDistributionClientPlugin($client);
 	}
 
 	/**
@@ -264,7 +320,7 @@ class KalturaFeedDropFolderClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'FeedDropFolder';
+		return 'youtubeApiDistribution';
 	}
 }
 

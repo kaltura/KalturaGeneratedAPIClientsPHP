@@ -1058,6 +1058,30 @@ class KalturaBaseEntryService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBatchcontrolService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBatchService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBulkUploadService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -3524,6 +3548,18 @@ class KalturaGroupUserService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaGroupUserListResponse");
 		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaJobsService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
 	}
 }
 
@@ -9138,6 +9174,36 @@ class KalturaClient extends KalturaClientBase
 	public $baseEntry = null;
 
 	/**
+	 * Batch service lets you handle different batch process from remote machines.
+	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
+	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
+	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after 
+	 *  acuiring a batch objet properly (using  GetExclusiveXX).
+	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action 
+	 *  Terminology:
+	 *  LocationId
+	 *  ServerID
+	 *  ParternGroups
+	 * @var KalturaBatchcontrolService
+	 */
+	public $batchcontrol = null;
+
+	/**
+	 * Batch service lets you handle different batch process from remote machines.
+	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
+	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
+	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after
+	 *  acuiring a batch objet properly (using  GetExclusiveXX).
+	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action
+	 *  Terminology:
+	 *  LocationId
+	 *  ServerID
+	 *  ParternGroups
+	 * @var KalturaBatchService
+	 */
+	public $batch = null;
+
+	/**
 	 * Bulk upload service is used to upload & manage bulk uploads using CSV files.
 	 *  This service manages only entry bulk uploads.
 	 * @var KalturaBulkUploadService
@@ -9233,6 +9299,21 @@ class KalturaClient extends KalturaClientBase
 	 * @var KalturaGroupUserService
 	 */
 	public $groupUser = null;
+
+	/**
+	 * Batch service lets you handle different batch process from remote machines.
+	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
+	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
+	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after 
+	 *  acuiring a batch objet properly (using  GetExclusiveXX).
+	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action 
+	 *  Terminology:
+	 *  LocationId
+	 *  ServerID
+	 *  ParternGroups
+	 * @var KalturaJobsService
+	 */
+	public $jobs = null;
 
 	/**
 	 * Manage live channel segments
@@ -9452,7 +9533,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-11');
+		$this->setClientTag('php5:16-05-12');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9461,6 +9542,8 @@ class KalturaClient extends KalturaClientBase
 		$this->analytics = new KalturaAnalyticsService($this);
 		$this->appToken = new KalturaAppTokenService($this);
 		$this->baseEntry = new KalturaBaseEntryService($this);
+		$this->batchcontrol = new KalturaBatchcontrolService($this);
+		$this->batch = new KalturaBatchService($this);
 		$this->bulkUpload = new KalturaBulkUploadService($this);
 		$this->categoryEntry = new KalturaCategoryEntryService($this);
 		$this->category = new KalturaCategoryService($this);
@@ -9477,6 +9560,7 @@ class KalturaClient extends KalturaClientBase
 		$this->flavorParamsOutput = new KalturaFlavorParamsOutputService($this);
 		$this->flavorParams = new KalturaFlavorParamsService($this);
 		$this->groupUser = new KalturaGroupUserService($this);
+		$this->jobs = new KalturaJobsService($this);
 		$this->liveChannelSegment = new KalturaLiveChannelSegmentService($this);
 		$this->liveChannel = new KalturaLiveChannelService($this);
 		$this->liveReports = new KalturaLiveReportsService($this);

@@ -320,7 +320,6 @@ class KalturaSystemPartnerConfiguration extends KalturaObjectBase
 
 	/**
 	 * http/rtmp/hdnetwork
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -328,7 +327,6 @@ class KalturaSystemPartnerConfiguration extends KalturaObjectBase
 
 	/**
 	 * http/https, rtmp/rtmpe
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -343,7 +341,6 @@ class KalturaSystemPartnerConfiguration extends KalturaObjectBase
 
 	/**
 	 * Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -565,7 +562,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 {
 	/**
 	 * Partner ID
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -573,7 +569,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -581,7 +576,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner status
-	 * 	 
 	 *
 	 * @var KalturaPartnerStatus
 	 */
@@ -589,7 +583,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner package
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -597,7 +590,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner creation date (Unix timestamp)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -605,7 +597,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of player loads in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -613,7 +604,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of plays in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -621,7 +611,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -629,7 +618,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Total number of entries
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -637,7 +625,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new video entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -645,7 +632,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new image entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -653,7 +639,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new audio entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -661,7 +646,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new mix entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -669,7 +653,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The total bandwidth usage during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -677,7 +660,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The total storage consumption (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -685,7 +667,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The change in storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -693,7 +674,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The peak amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -701,7 +681,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The average amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -709,7 +688,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The combined amount of bandwidth and storage consumed during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -717,7 +695,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Amount of deleted storage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -725,7 +702,6 @@ class KalturaSystemPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Amount of transcoding usage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -765,7 +741,6 @@ class KalturaSystemPartnerUsageFilter extends KalturaFilter
 {
 	/**
 	 * Date range from
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -773,7 +748,6 @@ class KalturaSystemPartnerUsageFilter extends KalturaFilter
 
 	/**
 	 * Date range to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -781,7 +755,6 @@ class KalturaSystemPartnerUsageFilter extends KalturaFilter
 
 	/**
 	 * Time zone offset
-	 * 	 
 	 *
 	 * @var int
 	 */

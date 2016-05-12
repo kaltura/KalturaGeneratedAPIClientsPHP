@@ -84,7 +84,6 @@ class KalturaAttachmentAsset extends KalturaAsset
 {
 	/**
 	 * The filename of the attachment asset content
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -92,7 +91,6 @@ class KalturaAttachmentAsset extends KalturaAsset
 
 	/**
 	 * Attachment asset title
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -100,7 +98,6 @@ class KalturaAttachmentAsset extends KalturaAsset
 
 	/**
 	 * The attachment format
-	 * 	 
 	 *
 	 * @var KalturaAttachmentType
 	 */
@@ -108,7 +105,6 @@ class KalturaAttachmentAsset extends KalturaAsset
 
 	/**
 	 * The status of the asset
-	 * 	 
 	 *
 	 * @var KalturaAttachmentAssetStatus
 	 * @readonly

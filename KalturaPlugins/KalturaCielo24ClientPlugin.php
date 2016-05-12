@@ -65,7 +65,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 {
 	/**
 	 * Entry ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -73,7 +72,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Flavor ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -81,7 +79,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Caption formats
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -103,7 +100,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -112,7 +108,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -121,7 +116,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Base url for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -130,7 +124,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * Transcript content language
-	 * 	 
 	 *
 	 * @var KalturaLanguage
 	 */
@@ -138,7 +131,6 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 
 	/**
 	 * should replace remote media content
-	 * 	 
 	 *
 	 * @var bool
 	 */

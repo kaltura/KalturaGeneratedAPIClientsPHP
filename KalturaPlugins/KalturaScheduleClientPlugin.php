@@ -294,7 +294,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 
 	/**
 	 * Comma separated numbers between 0 to 59
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -302,7 +301,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 
 	/**
 	 * Comma separated numbers between 0 to 59
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -310,7 +308,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 
 	/**
 	 * Comma separated numbers between 0 to 23
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -323,7 +320,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	 * 	 For example, within a MONTHLY rule, +1MO (or simply 1MO) represents the first Monday within the month, whereas -1MO represents the last Monday of the month.
 	 * 	 If an integer modifier is not present, it means all days of this type within the specified frequency.
 	 * 	 For example, within a MONTHLY rule, MO represents all Mondays within the month.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -332,7 +328,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	/**
 	 * Comma separated of numbers between -31 to 31, excluding 0.
 	 * 	 For example, -10 represents the tenth to the last day of the month.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -341,7 +336,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	/**
 	 * Comma separated of numbers between -366 to 366, excluding 0.
 	 * 	 For example, -1 represents the last day of the year (December 31st) and -306 represents the 306th to the last day of the year (March 1st).
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -354,7 +348,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	 * 	 Week number one of the calendar year is the first week which contains at least four (4) days in that calendar year.
 	 * 	 This rule part is only valid for YEARLY frequency.
 	 * 	 For example, 3 represents the third week of the year.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -362,7 +355,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 
 	/**
 	 * Comma separated numbers between 1 to 12
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -375,7 +367,6 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	 * 	 For example "the last work day of the month" could be represented as: frequency=MONTHLY;byDay=MO,TU,WE,TH,FR;byOffset=-1
 	 * 	 Each byOffset value can include a positive (+n) or negative (-n) integer.
 	 * 	 If present, this indicates the nth occurrence of the specific occurrence within the set of events specified by the rule.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -399,7 +390,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 {
 	/**
 	 * Auto-generated unique identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -424,7 +414,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Defines a short summary or subject for the event
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -475,7 +464,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Specifies the global position for the activity
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -483,7 +471,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Specifies the global position for the activity
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -491,7 +478,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Defines the intended venue for the activity
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -513,7 +499,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * The value for the priority field.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -521,7 +506,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Defines the revision sequence number.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -537,7 +521,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Duration in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -545,7 +528,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Used to represent contact information or alternately a reference to contact information.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -553,7 +535,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Specifies non-processing information intended to provide a comment to the calendar user.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -568,7 +549,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -577,7 +557,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -626,7 +605,6 @@ class KalturaScheduleEventResource extends KalturaObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -635,7 +613,6 @@ class KalturaScheduleEventResource extends KalturaObjectBase
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -653,7 +630,6 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
 {
 	/**
 	 * Auto-generated unique identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -677,7 +653,6 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
 
 	/**
 	 * Defines a short name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -685,7 +660,6 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
 
 	/**
 	 * Defines a unique system-name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -715,7 +689,6 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -724,7 +697,6 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -742,7 +714,6 @@ class KalturaCameraScheduleResource extends KalturaScheduleResource
 {
 	/**
 	 * URL of the stream
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -759,7 +730,6 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
 {
 	/**
 	 * Entry to be used as template during content ingestion
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -767,7 +737,6 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
 
 	/**
 	 * Entries that associated with this event
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -775,7 +744,6 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
 
 	/**
 	 * Categories that associated with this event
-	 * 	 
 	 *
 	 * @var string
 	 */

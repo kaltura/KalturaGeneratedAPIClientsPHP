@@ -99,7 +99,6 @@ class KalturaThumbCuePoint extends KalturaCuePoint
 
 	/**
 	 * The sub type of the ThumbCuePoint
-	 * 	 
 	 *
 	 * @var KalturaThumbCuePointSubType
 	 */
@@ -116,7 +115,6 @@ class KalturaTimedThumbAsset extends KalturaThumbAsset
 {
 	/**
 	 * Associated thumb cue point ID
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly

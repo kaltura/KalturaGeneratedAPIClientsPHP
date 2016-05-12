@@ -92,7 +92,6 @@ class KalturaCaptionAsset extends KalturaAsset
 {
 	/**
 	 * The Caption Params used to create this Caption Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @insertonly
@@ -101,7 +100,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The language of the caption asset content
-	 * 	 
 	 *
 	 * @var KalturaLanguage
 	 */
@@ -109,7 +107,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The language of the caption asset content
-	 * 	 
 	 *
 	 * @var KalturaLanguageCode
 	 * @readonly
@@ -118,7 +115,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * Is default caption asset of the entry
-	 * 	 
 	 *
 	 * @var KalturaNullableBoolean
 	 */
@@ -126,7 +122,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * Friendly label
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -134,7 +129,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The caption format
-	 * 	 
 	 *
 	 * @var KalturaCaptionType
 	 * @insertonly
@@ -143,7 +137,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The status of the asset
-	 * 	 
 	 *
 	 * @var KalturaCaptionAssetStatus
 	 * @readonly
@@ -152,7 +145,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The parent id of the asset
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -161,7 +153,6 @@ class KalturaCaptionAsset extends KalturaAsset
 
 	/**
 	 * The Accuracy of the caption content
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -178,7 +169,6 @@ class KalturaCaptionParams extends KalturaAssetParams
 {
 	/**
 	 * The language of the caption content
-	 * 	 
 	 *
 	 * @var KalturaLanguage
 	 * @insertonly
@@ -187,7 +177,6 @@ class KalturaCaptionParams extends KalturaAssetParams
 
 	/**
 	 * Is default caption asset of the entry
-	 * 	 
 	 *
 	 * @var KalturaNullableBoolean
 	 */
@@ -195,7 +184,6 @@ class KalturaCaptionParams extends KalturaAssetParams
 
 	/**
 	 * Friendly label
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -203,7 +191,6 @@ class KalturaCaptionParams extends KalturaAssetParams
 
 	/**
 	 * The caption format
-	 * 	 
 	 *
 	 * @var KalturaCaptionType
 	 * @insertonly
@@ -212,7 +199,6 @@ class KalturaCaptionParams extends KalturaAssetParams
 
 	/**
 	 * Id of the caption params or the flavor params to be used as source for the caption creation
-	 * 	 
 	 *
 	 * @var int
 	 */

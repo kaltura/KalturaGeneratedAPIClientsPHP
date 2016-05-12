@@ -55,7 +55,6 @@ class KalturaBulkUploadCsvJobData extends KalturaBulkUploadJobData
 {
 	/**
 	 * The version of the csv file
-	 * 	 
 	 *
 	 * @var KalturaBulkUploadCsvVersion
 	 * @readonly
@@ -64,7 +63,6 @@ class KalturaBulkUploadCsvJobData extends KalturaBulkUploadJobData
 
 	/**
 	 * Array containing CSV headers
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 */

@@ -90,7 +90,6 @@ class KalturaEmailNotificationRecipient extends KalturaObjectBase
 {
 	/**
 	 * Recipient e-mail address
-	 * 	 
 	 *
 	 * @var KalturaStringValue
 	 */
@@ -98,7 +97,6 @@ class KalturaEmailNotificationRecipient extends KalturaObjectBase
 
 	/**
 	 * Recipient name
-	 * 	 
 	 *
 	 * @var KalturaStringValue
 	 */
@@ -115,7 +113,6 @@ abstract class KalturaEmailNotificationRecipientJobData extends KalturaObjectBas
 {
 	/**
 	 * Provider type of the job data.
-	 * 	  
 	 *
 	 * @var KalturaEmailNotificationRecipientProviderType
 	 * @readonly
@@ -251,7 +248,6 @@ class KalturaEmailNotificationCategoryRecipientProvider extends KalturaEmailNoti
 {
 	/**
 	 * The ID of the category whose subscribers should receive the email notification.
-	 * 	 
 	 *
 	 * @var KalturaStringValue
 	 */
@@ -284,7 +280,6 @@ class KalturaEmailNotificationStaticRecipientJobData extends KalturaEmailNotific
 {
 	/**
 	 * Email to emails and names
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -301,7 +296,6 @@ class KalturaEmailNotificationStaticRecipientProvider extends KalturaEmailNotifi
 {
 	/**
 	 * Email to emails and names
-	 * 	 
 	 *
 	 * @var array of KalturaEmailNotificationRecipient
 	 */
@@ -318,15 +312,13 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 {
 	/**
 	 * Define the email body format
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationFormat
 	 */
 	public $format = null;
 
 	/**
-	 * Define the email subject 
-	 * 	 
+	 * Define the email subject
 	 *
 	 * @var string
 	 */
@@ -334,7 +326,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Define the email body content
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -342,7 +333,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Define the email sender email
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -350,7 +340,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Define the email sender name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -358,7 +347,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientProvider
 	 */
@@ -366,7 +354,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientProvider
 	 */
@@ -374,15 +361,13 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientProvider
 	 */
 	public $bcc;
 
 	/**
-	 * Default email addresses to whom the reply should be sent. 
-	 * 	 
+	 * Default email addresses to whom the reply should be sent.
 	 *
 	 * @var KalturaEmailNotificationRecipientProvider
 	 */
@@ -390,7 +375,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Define the email priority
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationTemplatePriority
 	 */
@@ -398,7 +382,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Email address that a reading confirmation will be sent
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -407,7 +390,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 	/**
 	 * Hostname to use in Message-Id and Received headers and as default HELLO string. 
 	 * 	 If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -416,7 +398,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 	/**
 	 * Sets the message ID to be used in the Message-Id header.
 	 * 	 If empty, a unique id will be generated.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -424,7 +405,6 @@ class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -473,7 +453,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 {
 	/**
 	 * Define the email sender email
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -481,7 +460,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Define the email sender name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -489,7 +467,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Email recipient emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientJobData
 	 */
@@ -497,7 +474,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Email cc emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientJobData
 	 */
@@ -505,7 +481,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Email bcc emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientJobData
 	 */
@@ -513,7 +488,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Email addresses that a replies should be sent to, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationRecipientJobData
 	 */
@@ -521,7 +495,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Define the email priority
-	 * 	 
 	 *
 	 * @var KalturaEmailNotificationTemplatePriority
 	 */
@@ -529,7 +502,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Email address that a reading confirmation will be sent to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -538,7 +510,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 	/**
 	 * Hostname to use in Message-Id and Received headers and as default HELO string. 
 	 * 	 If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -547,7 +518,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 	/**
 	 * Sets the message ID to be used in the Message-Id header.
 	 * 	 If empty, a unique id will be generated.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -555,7 +525,6 @@ class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDi
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

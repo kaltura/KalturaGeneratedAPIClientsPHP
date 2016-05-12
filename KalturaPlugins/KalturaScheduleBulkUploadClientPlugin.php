@@ -126,7 +126,6 @@ class KalturaBulkUploadICalJobData extends KalturaBulkUploadJobData
 {
 	/**
 	 * The type of the events that ill be created by this upload
-	 * 	 
 	 *
 	 * @var KalturaScheduleEventType
 	 */

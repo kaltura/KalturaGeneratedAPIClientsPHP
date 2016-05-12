@@ -177,7 +177,6 @@ abstract class KalturaCuePoint extends KalturaObjectBase
 
 	/**
 	 * Start time in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */

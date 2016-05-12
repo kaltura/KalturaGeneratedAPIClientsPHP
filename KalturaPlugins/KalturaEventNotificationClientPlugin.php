@@ -152,7 +152,6 @@ class KalturaEventNotificationParameter extends KalturaObjectBase
 {
 	/**
 	 * The key in the subject and body to be replaced with the dynamic value
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -167,7 +166,6 @@ class KalturaEventNotificationParameter extends KalturaObjectBase
 
 	/**
 	 * The dynamic value to be placed in the final output
-	 * 	 
 	 *
 	 * @var KalturaStringValue
 	 */
@@ -253,7 +251,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define that the template could be dispatched manually from the API
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -261,7 +258,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define that the template could be dispatched automatically by the system
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -269,7 +265,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define the event that should trigger this notification
-	 * 	 
 	 *
 	 * @var KalturaEventNotificationEventType
 	 */
@@ -277,7 +272,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define the object that raied the event that should trigger this notification
-	 * 	 
 	 *
 	 * @var KalturaEventNotificationEventObjectType
 	 */
@@ -285,7 +279,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define the conditions that cause this notification to be triggered
-	 * 	 
 	 *
 	 * @var array of KalturaCondition
 	 */
@@ -293,7 +286,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define the content dynamic parameters
-	 * 	 
 	 *
 	 * @var array of KalturaEventNotificationParameter
 	 */
@@ -301,7 +293,6 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 
 	/**
 	 * Define the content dynamic parameters
-	 * 	 
 	 *
 	 * @var array of KalturaEventNotificationParameter
 	 */
@@ -318,7 +309,6 @@ class KalturaEventFieldCondition extends KalturaCondition
 {
 	/**
 	 * The field to be evaluated at runtime
-	 * 	 
 	 *
 	 * @var KalturaBooleanField
 	 */
@@ -342,7 +332,6 @@ class KalturaEventNotificationArrayParameter extends KalturaEventNotificationPar
 
 	/**
 	 * Used to restrict the values to close list
-	 * 	 
 	 *
 	 * @var array of KalturaStringValue
 	 */
@@ -366,7 +355,6 @@ class KalturaEventNotificationDispatchJobData extends KalturaJobData
 
 	/**
 	 * Define the content dynamic parameters
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -530,7 +518,6 @@ class KalturaEventObjectChangedCondition extends KalturaCondition
 {
 	/**
 	 * Comma seperated column names to be tested
-	 * 	 
 	 *
 	 * @var string
 	 */

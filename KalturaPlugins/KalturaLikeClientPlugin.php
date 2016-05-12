@@ -51,7 +51,6 @@ class KalturaLike extends KalturaObjectBase
 {
 	/**
 	 * The id of the entry that the like belongs to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -59,7 +58,6 @@ class KalturaLike extends KalturaObjectBase
 
 	/**
 	 * The id of user that the like belongs to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -67,7 +65,6 @@ class KalturaLike extends KalturaObjectBase
 
 	/**
 	 * The date of the like's creation
-	 * 	 
 	 *
 	 * @var int
 	 */

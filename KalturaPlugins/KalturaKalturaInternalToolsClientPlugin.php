@@ -176,12 +176,12 @@ class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
 	/**
 	 * @var KalturaKalturaInternalToolsSystemHelperService
 	 */
-	public $KalturaInternalToolsSystemHelper = null;
+	public $kalturaInternalToolsSystemHelper = null;
 
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->KalturaInternalToolsSystemHelper = new KalturaKalturaInternalToolsSystemHelperService($client);
+		$this->kalturaInternalToolsSystemHelper = new KalturaKalturaInternalToolsSystemHelperService($client);
 	}
 
 	/**
@@ -198,7 +198,7 @@ class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'KalturaInternalToolsSystemHelper' => $this->KalturaInternalToolsSystemHelper,
+			'kalturaInternalToolsSystemHelper' => $this->kalturaInternalToolsSystemHelper,
 		);
 		return $services;
 	}

@@ -81,7 +81,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * End time in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -89,7 +88,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -98,7 +96,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Depth in the tree
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -107,7 +104,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Number of all descendants
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -116,7 +112,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Number of children, first generation only.
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -125,7 +120,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Is the annotation public.
-	 * 	 
 	 *
 	 * @var KalturaNullableBoolean
 	 */
@@ -133,7 +127,6 @@ class KalturaAnnotation extends KalturaCuePoint
 
 	/**
 	 * Should the cue point get indexed on the entry.
-	 * 	 
 	 *
 	 * @var KalturaNullableBoolean
 	 */

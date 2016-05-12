@@ -43,7 +43,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 {
 	/**
 	 * Partner ID
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -51,7 +50,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -59,7 +57,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner status
-	 * 	 
 	 *
 	 * @var KalturaPartnerStatus
 	 */
@@ -67,7 +64,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner package
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -75,7 +71,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Partner creation date (Unix timestamp)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -83,7 +78,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of player loads in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -91,7 +85,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of plays in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -99,7 +92,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -107,7 +99,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Total number of entries
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -115,7 +106,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new video entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -123,7 +113,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new image entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -131,7 +120,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new audio entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -139,7 +127,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Number of new mix entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -147,7 +134,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The total bandwidth usage during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -155,7 +141,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The total storage consumption (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -163,7 +148,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The added storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -171,7 +155,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The deleted storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -179,7 +162,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The peak amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -187,7 +169,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The average amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -195,7 +176,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * The combined amount of bandwidth and storage consumed during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -203,7 +183,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * Amount of transcoding usage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -211,7 +190,6 @@ class KalturaVarPartnerUsageItem extends KalturaObjectBase
 
 	/**
 	 * TGhe date at which the report was taken - Unix Timestamp
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -249,39 +227,6 @@ class KalturaPartnerUsageListResponse extends KalturaListResponse
  */
 class KalturaVarPartnerUsageTotalItem extends KalturaVarPartnerUsageItem
 {
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVarConsolePartnerFilter extends KalturaPartnerFilter
-{
-	/**
-	 * Eq filter for the partner's group type
-	 *      
-	 *
-	 * @var KalturaPartnerGroupType
-	 */
-	public $groupTypeEq = null;
-
-	/**
-	 * In filter for the partner's group type
-	 *      
-	 *
-	 * @var string
-	 */
-	public $groupTypeIn = null;
-
-	/**
-	 * Filter for partner permissions- filter contains comma-separated string of permission names which the returned partners should have.
-	 *      
-	 *
-	 * @var string
-	 */
-	public $partnerPermissionsExist = null;
-
 
 }
 

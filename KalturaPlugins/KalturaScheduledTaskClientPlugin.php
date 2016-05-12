@@ -187,7 +187,6 @@ class KalturaScheduledTaskProfile extends KalturaObjectBase
 
 	/**
 	 * The type of engine to use to list objects using the given "objectFilter"
-	 * 	 
 	 *
 	 * @var KalturaObjectFilterEngineType
 	 */
@@ -195,7 +194,6 @@ class KalturaScheduledTaskProfile extends KalturaObjectBase
 
 	/**
 	 * A filter object (inherits KalturaFilter) that is used to list objects for scheduled tasks
-	 * 	 
 	 *
 	 * @var KalturaFilter
 	 */
@@ -203,7 +201,6 @@ class KalturaScheduledTaskProfile extends KalturaObjectBase
 
 	/**
 	 * A list of tasks to execute on the founded objects
-	 * 	 
 	 *
 	 * @var array of KalturaObjectTask
 	 */
@@ -234,7 +231,6 @@ class KalturaScheduledTaskProfile extends KalturaObjectBase
 
 	/**
 	 * The maximum number of result count allowed to be processed by this profile per execution
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -251,7 +247,6 @@ class KalturaConvertEntryFlavorsObjectTask extends KalturaObjectTask
 {
 	/**
 	 * Comma separated list of flavor param ids to convert
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -259,7 +254,6 @@ class KalturaConvertEntryFlavorsObjectTask extends KalturaObjectTask
 
 	/**
 	 * Should reconvert when flavor already exists?
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -276,7 +270,6 @@ class KalturaDeleteEntryFlavorsObjectTask extends KalturaObjectTask
 {
 	/**
 	 * The logic to use to choose the flavors for deletion
-	 * 	 
 	 *
 	 * @var KalturaDeleteFlavorsLogicType
 	 */
@@ -284,7 +277,6 @@ class KalturaDeleteEntryFlavorsObjectTask extends KalturaObjectTask
 
 	/**
 	 * Comma separated list of flavor param ids to delete or keep
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -319,7 +311,6 @@ class KalturaModifyCategoriesObjectTask extends KalturaObjectTask
 {
 	/**
 	 * Should the object task add or remove categories?
-	 * 	 
 	 *
 	 * @var KalturaScheduledTaskAddOrRemoveType
 	 */
@@ -327,7 +318,6 @@ class KalturaModifyCategoriesObjectTask extends KalturaObjectTask
 
 	/**
 	 * The list of category ids to add or remove
-	 * 	 
 	 *
 	 * @var array of KalturaIntegerValue
 	 */
@@ -498,7 +488,6 @@ class KalturaStorageExportObjectTask extends KalturaObjectTask
 {
 	/**
 	 * Storage profile id
-	 * 	 
 	 *
 	 * @var string
 	 */

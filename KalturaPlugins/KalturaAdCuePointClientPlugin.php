@@ -124,7 +124,6 @@ class KalturaAdCuePoint extends KalturaCuePoint
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */

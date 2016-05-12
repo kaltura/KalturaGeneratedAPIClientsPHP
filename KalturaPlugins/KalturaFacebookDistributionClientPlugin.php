@@ -34,21 +34,17 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaAttachmentClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAssetOrderBy extends KalturaEnumBase
+class KalturaFacebookDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const DELETED_AT_ASC = "+deletedAt";
-	const SIZE_ASC = "+size";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const DELETED_AT_DESC = "-deletedAt";
-	const SIZE_DESC = "-size";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -56,58 +52,57 @@ class KalturaTranscriptAssetOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAsset extends KalturaAttachmentAsset
+class KalturaFacebookDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFacebookCaptionDistributionInfo extends KalturaObjectBase
 {
 	/**
-	 * The accuracy of the transcript - values between 0 and 1
+	 * 
 	 *
-	 * @var float
-	 */
-	public $accuracy = null;
-
-	/**
-	 * Was verified by human or machine
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $humanVerified = null;
-
-	/**
-	 * The language of the transcript
-	 *
-	 * @var KalturaLanguage
+	 * @var string
 	 */
 	public $language = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEntryTranscriptAssetSearchItem extends KalturaSearchItem
-{
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $contentLike = null;
+	public $label = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $contentMultiLikeOr = null;
+	public $filePath = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $contentMultiLikeAnd = null;
+	public $remoteId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $version = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetId = null;
 
 
 }
@@ -116,15 +111,37 @@ class KalturaEntryTranscriptAssetSearchItem extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAssetListResponse extends KalturaListResponse
+class KalturaFacebookDistributionProvider extends KalturaDistributionProvider
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFacebookDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
 {
 	/**
 	 * 
 	 *
-	 * @var array of KalturaTranscriptAsset
-	 * @readonly
+	 * @var string
 	 */
-	public $objects;
+	public $videoAssetFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbAssetFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaFacebookCaptionDistributionInfo
+	 */
+	public $captionsInfo;
 
 
 }
@@ -133,7 +150,65 @@ class KalturaTranscriptAssetListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaTranscriptAssetBaseFilter extends KalturaAttachmentAssetFilter
+class KalturaFacebookDistributionProfile extends KalturaConfigurableDistributionProfile
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $apiAuthorizeUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pageId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pageAccessToken = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userAccessToken = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $state = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $permissions = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $reRequestPermissions = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaFacebookDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
 
 }
@@ -142,7 +217,7 @@ abstract class KalturaTranscriptAssetBaseFilter extends KalturaAttachmentAssetFi
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAssetFilter extends KalturaTranscriptAssetBaseFilter
+class KalturaFacebookDistributionProviderFilter extends KalturaFacebookDistributionProviderBaseFilter
 {
 
 }
@@ -151,7 +226,25 @@ class KalturaTranscriptAssetFilter extends KalturaTranscriptAssetBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptClientPlugin extends KalturaClientPlugin
+abstract class KalturaFacebookDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFacebookDistributionProfileFilter extends KalturaFacebookDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFacebookDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -159,11 +252,11 @@ class KalturaTranscriptClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaTranscriptClientPlugin
+	 * @return KalturaFacebookDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaTranscriptClientPlugin($client);
+		return new KalturaFacebookDistributionClientPlugin($client);
 	}
 
 	/**
@@ -181,7 +274,7 @@ class KalturaTranscriptClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'transcript';
+		return 'facebookDistribution';
 	}
 }
 

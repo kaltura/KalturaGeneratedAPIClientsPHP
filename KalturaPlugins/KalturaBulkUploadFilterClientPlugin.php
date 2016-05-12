@@ -43,8 +43,7 @@ require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
 class KalturaBulkServiceFilterData extends KalturaBulkServiceData
 {
 	/**
-	 * Filter for extracting the objects list to upload 
-	 * 	 
+	 * Filter for extracting the objects list to upload
 	 *
 	 * @var KalturaFilter
 	 */
@@ -52,7 +51,6 @@ class KalturaBulkServiceFilterData extends KalturaBulkServiceData
 
 	/**
 	 * Template object for new object creation
-	 * 	 
 	 *
 	 * @var KalturaObjectBase
 	 */
@@ -68,8 +66,7 @@ class KalturaBulkServiceFilterData extends KalturaBulkServiceData
 class KalturaBulkUploadFilterJobData extends KalturaBulkUploadJobData
 {
 	/**
-	 * Filter for extracting the objects list to upload 
-	 * 	 
+	 * Filter for extracting the objects list to upload
 	 *
 	 * @var KalturaFilter
 	 */
@@ -77,7 +74,6 @@ class KalturaBulkUploadFilterJobData extends KalturaBulkUploadJobData
 
 	/**
 	 * Template object for new object creation
-	 * 	 
 	 *
 	 * @var KalturaObjectBase
 	 */
