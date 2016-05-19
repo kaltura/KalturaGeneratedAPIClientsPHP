@@ -2284,6 +2284,38 @@ class KalturaPartner extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaValue extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBooleanValue extends KalturaValue
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBulkUploadPluginData extends KalturaObjectBase
 {
 	/**
@@ -3044,29 +3076,6 @@ class KalturaCategoryUser extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaClientConfiguration extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $clientTag = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $apiVersion = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaClientNotification extends KalturaObjectBase
 {
 	/**
@@ -3114,6 +3123,137 @@ class KalturaContextDataResult extends KalturaObjectBase
 	 * @var array of KalturaRuleAction
 	 */
 	public $actions;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaControlPanelCommand extends KalturaObjectBase
+{
+	/**
+	 * The id of the Category
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * Creator name
+	 *
+	 * @var string
+	 */
+	public $createdBy = null;
+
+	/**
+	 * Update date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * Updater name
+	 *
+	 * @var string
+	 */
+	public $updatedBy = null;
+
+	/**
+	 * Creator id
+	 *
+	 * @var int
+	 */
+	public $createdById = null;
+
+	/**
+	 * The id of the scheduler that the command refers to
+	 *
+	 * @var int
+	 */
+	public $schedulerId = null;
+
+	/**
+	 * The id of the scheduler worker that the command refers to
+	 *
+	 * @var int
+	 */
+	public $workerId = null;
+
+	/**
+	 * The id of the scheduler worker as configured in the ini file
+	 *
+	 * @var int
+	 */
+	public $workerConfiguredId = null;
+
+	/**
+	 * The name of the scheduler worker that the command refers to
+	 *
+	 * @var int
+	 */
+	public $workerName = null;
+
+	/**
+	 * The index of the batch process that the command refers to
+	 *
+	 * @var int
+	 */
+	public $batchIndex = null;
+
+	/**
+	 * The command type - stop / start / config
+	 *
+	 * @var KalturaControlPanelCommandType
+	 */
+	public $type = null;
+
+	/**
+	 * The command target type - data center / scheduler / job / job type
+	 *
+	 * @var KalturaControlPanelCommandTargetType
+	 */
+	public $targetType = null;
+
+	/**
+	 * The command status
+	 *
+	 * @var KalturaControlPanelCommandStatus
+	 */
+	public $status = null;
+
+	/**
+	 * The reason for the command
+	 *
+	 * @var string
+	 */
+	public $cause = null;
+
+	/**
+	 * Command description
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * Error description
+	 *
+	 * @var string
+	 */
+	public $errorDescription = null;
 
 
 }
@@ -4019,22 +4159,6 @@ class KalturaEmailIngestionProfile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaValue extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaStringValue extends KalturaValue
 {
 	/**
@@ -4132,36 +4256,6 @@ abstract class KalturaEntryServerNode extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $serverType = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaExclusiveLockKey extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $schedulerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $workerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $batchIndex = null;
 
 
 }
@@ -5036,6 +5130,114 @@ class KalturaSchedulerStatus extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSchedulerConfig extends KalturaObjectBase
+{
+	/**
+	 * The id of the Category
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * Creator name
+	 *
+	 * @var string
+	 */
+	public $createdBy = null;
+
+	/**
+	 * Updater name
+	 *
+	 * @var string
+	 */
+	public $updatedBy = null;
+
+	/**
+	 * Id of the control panel command that created this config item
+	 *
+	 * @var string
+	 */
+	public $commandId = null;
+
+	/**
+	 * The status of the control panel command
+	 *
+	 * @var string
+	 */
+	public $commandStatus = null;
+
+	/**
+	 * The id of the scheduler
+	 *
+	 * @var int
+	 */
+	public $schedulerId = null;
+
+	/**
+	 * The configured id of the scheduler
+	 *
+	 * @var int
+	 */
+	public $schedulerConfiguredId = null;
+
+	/**
+	 * The name of the scheduler
+	 *
+	 * @var string
+	 */
+	public $schedulerName = null;
+
+	/**
+	 * The id of the job worker
+	 *
+	 * @var int
+	 */
+	public $workerId = null;
+
+	/**
+	 * The configured id of the job worker
+	 *
+	 * @var int
+	 */
+	public $workerConfiguredId = null;
+
+	/**
+	 * The name of the job worker
+	 *
+	 * @var string
+	 */
+	public $workerName = null;
+
+	/**
+	 * The name of the variable
+	 *
+	 * @var string
+	 */
+	public $variable = null;
+
+	/**
+	 * The part of the variable
+	 *
+	 * @var string
+	 */
+	public $variablePart = null;
+
+	/**
+	 * The value of the variable
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSchedulerWorker extends KalturaObjectBase
 {
 	/**
@@ -5144,6 +5346,92 @@ class KalturaSchedulerWorker extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaScheduler extends KalturaObjectBase
+{
+	/**
+	 * The id of the Scheduler
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * The id as configured in the batch config
+	 *
+	 * @var int
+	 */
+	public $configuredId = null;
+
+	/**
+	 * The scheduler name
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * The host name
+	 *
+	 * @var string
+	 */
+	public $host = null;
+
+	/**
+	 * Array of the last statuses
+	 *
+	 * @var array of KalturaSchedulerStatus
+	 * @readonly
+	 */
+	public $statuses;
+
+	/**
+	 * Array of the last configs
+	 *
+	 * @var array of KalturaSchedulerConfig
+	 * @readonly
+	 */
+	public $configs;
+
+	/**
+	 * Array of the workers
+	 *
+	 * @var array of KalturaSchedulerWorker
+	 * @readonly
+	 */
+	public $workers;
+
+	/**
+	 * creation time
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * last status time
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastStatus = null;
+
+	/**
+	 * last status formated
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $lastStatusStr = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGroupUser extends KalturaObjectBase
 {
 	/**
@@ -5226,6 +5514,23 @@ class KalturaIntegerValue extends KalturaValue
 	 * @var int
 	 */
 	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBatchJobListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaBatchJob
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
@@ -5731,29 +6036,6 @@ class KalturaThumbParamsOutputListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaKeyBooleanValue extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $key = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $value = null;
 
 
 }
@@ -8111,36 +8393,6 @@ class KalturaReportTotal extends KalturaObjectBase
 	 * @var string
 	 */
 	public $data = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaRequestConfiguration extends KalturaObjectBase
-{
-	/**
-	 * Impersonated partner id
-	 *
-	 * @var int
-	 */
-	public $partnerId = null;
-
-	/**
-	 * Kaltura API session
-	 *
-	 * @var string
-	 */
-	public $ks = null;
-
-	/**
-	 * Response profile - this attribute will be automatically unset after every API call.
-	 *
-	 * @var KalturaBaseResponseProfile
-	 */
-	public $responseProfile;
 
 
 }
@@ -10994,22 +11246,6 @@ class KalturaBaseSyndicationFeedListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBooleanValue extends KalturaValue
-{
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $value = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaBulkDownloadJobData extends KalturaJobData
 {
 	/**
@@ -12142,6 +12378,23 @@ abstract class KalturaControlPanelCommandBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $statusIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaControlPanelCommandListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaControlPanelCommand
+	 * @readonly
+	 */
+	public $objects;
 
 
 }
@@ -14035,6 +14288,127 @@ class KalturaLiveStreamPushPublishRTMPConfiguration extends KalturaLiveStreamPus
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMailJobData extends KalturaJobData
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaMailType
+	 */
+	public $mailType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $mailPriority = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaMailJobStatus
+	 */
+	public $status = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientEmail = null;
+
+	/**
+	 * kuserId
+	 *
+	 * @var int
+	 */
+	public $recipientId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fromName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fromEmail = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $bodyParams = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $subjectParams = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templatePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaLanguageCode
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $campaignId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $minSendDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isHtml = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $separator = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaMatchCondition extends KalturaCondition
 {
 	/**
@@ -14711,6 +15085,23 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaReportListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReport
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaResponseProfileBaseFilter extends KalturaFilter
 {
 	/**
@@ -14819,6 +15210,40 @@ class KalturaResponseProfileListResponse extends KalturaListResponse
 	 * 
 	 *
 	 * @var array of KalturaResponseProfile
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSchedulerListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaScheduler
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSchedulerWorkerListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaSchedulerWorker
 	 * @readonly
 	 */
 	public $objects;
@@ -17119,6 +17544,15 @@ abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilter
 	 */
 	public $statusIn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaControlPanelCommandFilter extends KalturaControlPanelCommandBaseFilter
+{
 
 }
 

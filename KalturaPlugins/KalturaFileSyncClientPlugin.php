@@ -530,77 +530,15 @@ class KalturaFileSyncFilter extends KalturaFileSyncBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaFileSyncService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * List file syce objects by filter and pager
-	 * 
-	 * @param KalturaFileSyncFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaFileSyncListResponse
-	 */
-	function listAction(KalturaFileSyncFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("filesync_filesync", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaFileSyncListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Update file sync by id
-	 * 
-	 * @param int $id 
-	 * @param KalturaFileSync $fileSync 
-	 * @return KalturaFileSync
-	 */
-	function update($id, KalturaFileSync $fileSync)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "fileSync", $fileSync->toParams());
-		$this->client->queueServiceActionCall("filesync_filesync", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaFileSync");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaFileSyncClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaFileSyncService
-	 */
-	public $fileSync = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->fileSync = new KalturaFileSyncService($client);
 	}
 
 	/**
@@ -617,7 +555,6 @@ class KalturaFileSyncClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'fileSync' => $this->fileSync,
 		);
 		return $services;
 	}

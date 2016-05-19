@@ -247,6 +247,13 @@ class KalturaYoutubeApiDistributionProfile extends KalturaConfigurableDistributi
 	 */
 	public $assumeSuccess = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyStatus = null;
+
 
 }
 

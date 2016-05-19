@@ -3299,67 +3299,6 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 		return $resultObject;
 	}
 }
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaContentDistributionBatchService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Updates entry distribution sun status in the search engine
-	 * 
-	 */
-	function updateSunStatus()
-	{
-		$kparams = array();
-		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "updateSunStatus", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Creates all required jobs according to entry distribution dirty flags
-	 * 
-	 */
-	function createRequiredJobs()
-	{
-		$kparams = array();
-		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "createRequiredJobs", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Returns absolute valid url for asset file
-	 * 
-	 * @param string $assetId 
-	 * @return string
-	 */
-	function getAssetUrl($assetId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "assetId", $assetId);
-		$this->client->queueServiceActionCall("contentdistribution_contentdistributionbatch", "getAssetUrl", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
@@ -3391,11 +3330,6 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 	 */
 	public $genericDistributionProviderAction = null;
 
-	/**
-	 * @var KalturaContentDistributionBatchService
-	 */
-	public $contentDistributionBatch = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
@@ -3404,7 +3338,6 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 		$this->distributionProvider = new KalturaDistributionProviderService($client);
 		$this->genericDistributionProvider = new KalturaGenericDistributionProviderService($client);
 		$this->genericDistributionProviderAction = new KalturaGenericDistributionProviderActionService($client);
-		$this->contentDistributionBatch = new KalturaContentDistributionBatchService($client);
 	}
 
 	/**
@@ -3426,7 +3359,6 @@ class KalturaContentDistributionClientPlugin extends KalturaClientPlugin
 			'distributionProvider' => $this->distributionProvider,
 			'genericDistributionProvider' => $this->genericDistributionProvider,
 			'genericDistributionProviderAction' => $this->genericDistributionProviderAction,
-			'contentDistributionBatch' => $this->contentDistributionBatch,
 		);
 		return $services;
 	}

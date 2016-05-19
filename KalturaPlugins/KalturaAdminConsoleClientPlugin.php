@@ -66,96 +66,6 @@ class KalturaUiConfAdminOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaInvestigateFlavorAssetData extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaFlavorAsset
-	 * @readonly
-	 */
-	public $flavorAsset;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaFileSyncListResponse
-	 * @readonly
-	 */
-	public $fileSyncs;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaMediaInfoListResponse
-	 * @readonly
-	 */
-	public $mediaInfos;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaFlavorParams
-	 * @readonly
-	 */
-	public $flavorParams;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaFlavorParamsOutputListResponse
-	 * @readonly
-	 */
-	public $flavorParamsOutputs;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaInvestigateThumbAssetData extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaThumbAsset
-	 * @readonly
-	 */
-	public $thumbAsset;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaFileSyncListResponse
-	 * @readonly
-	 */
-	public $fileSyncs;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaThumbParams
-	 * @readonly
-	 */
-	public $thumbParams;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaThumbParamsOutputListResponse
-	 * @readonly
-	 */
-	public $thumbParamsOutputs;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaTrackEntry extends KalturaObjectBase
 {
 	/**
@@ -317,6 +227,23 @@ class KalturaTrackEntryListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUiConfAdminListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaUiConfAdmin
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaUiConfAdminBaseFilter extends KalturaUiConfFilter
 {
 
@@ -331,149 +258,15 @@ class KalturaUiConfAdminFilter extends KalturaUiConfAdminBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEntryAdminService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Get base entry by ID with no filters.
-	 * 
-	 * @param string $entryId Entry id
-	 * @param int $version Desired version of the data
-	 * @return KalturaBaseEntry
-	 */
-	function get($entryId, $version = -1)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("adminconsole_entryadmin", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBaseEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Get base entry by flavor ID with no filters.
-	 * 
-	 * @param string $flavorId 
-	 * @param int $version Desired version of the data
-	 * @return KalturaBaseEntry
-	 */
-	function getByFlavorId($flavorId, $version = -1)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "flavorId", $flavorId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("adminconsole_entryadmin", "getByFlavorId", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBaseEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Get base entry by ID with no filters.
-	 * 
-	 * @param string $entryId Entry id
-	 * @return KalturaTrackEntryListResponse
-	 */
-	function getTracks($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("adminconsole_entryadmin", "getTracks", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaTrackEntryListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Restore deleted entry.
-	 * 
-	 * @param string $entryId 
-	 * @return KalturaBaseEntry
-	 */
-	function restoreDeletedEntry($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("adminconsole_entryadmin", "restoreDeletedEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBaseEntry");
-		return $resultObject;
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUiConfAdminService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaReportAdminService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaAdminConsoleClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaEntryAdminService
-	 */
-	public $entryAdmin = null;
-
-	/**
-	 * @var KalturaUiConfAdminService
-	 */
-	public $uiConfAdmin = null;
-
-	/**
-	 * @var KalturaReportAdminService
-	 */
-	public $reportAdmin = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->entryAdmin = new KalturaEntryAdminService($client);
-		$this->uiConfAdmin = new KalturaUiConfAdminService($client);
-		$this->reportAdmin = new KalturaReportAdminService($client);
 	}
 
 	/**
@@ -490,9 +283,6 @@ class KalturaAdminConsoleClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'entryAdmin' => $this->entryAdmin,
-			'uiConfAdmin' => $this->uiConfAdmin,
-			'reportAdmin' => $this->reportAdmin,
 		);
 		return $services;
 	}

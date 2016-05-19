@@ -378,39 +378,6 @@ class KalturaMetadataProfileField extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTransformMetadataResponse extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaMetadata
-	 * @readonly
-	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $lowerVersionCount = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaImportMetadataJobData extends KalturaJobData
 {
 	/**
@@ -1568,72 +1535,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 		return $this->client->doQueue();
 	}
 }
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaMetadataBatchService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Batch getExclusiveTransformMetadataJob action allows to get a BatchJob of type METADATA_TRANSFORM
-	 * 
-	 * @param KalturaExclusiveLockKey $lockKey The unique lock key from the batch-process. Is used for the locking mechanism
-	 * @param int $maxExecutionTime The maximum time in seconds the job reguarly take. Is used for the locking mechanism when determining an unexpected termination of a batch-process.
-	 * @param int $numberOfJobs The maximum number of jobs to return.
-	 * @param KalturaBatchJobFilter $filter Set of rules to fetch only rartial list of jobs
-	 * @param int $maxOffset The maximum offset we accept for the distance from the best result.
-	 * @return array
-	 */
-	function getExclusiveTransformMetadataJobs(KalturaExclusiveLockKey $lockKey, $maxExecutionTime, $numberOfJobs, KalturaBatchJobFilter $filter = null, $maxOffset = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "lockKey", $lockKey->toParams());
-		$this->client->addParam($kparams, "maxExecutionTime", $maxExecutionTime);
-		$this->client->addParam($kparams, "numberOfJobs", $numberOfJobs);
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->addParam($kparams, "maxOffset", $maxOffset);
-		$this->client->queueServiceActionCall("metadata_metadatabatch", "getExclusiveTransformMetadataJobs", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
-	 * Batch getTransformMetadataObjects action retrieve all metadata objects that requires upgrade and the total count
-	 * 
-	 * @param int $metadataProfileId The id of the metadata profile
-	 * @param int $srcVersion The old metadata profile version
-	 * @param int $destVersion The new metadata profile version
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaTransformMetadataResponse
-	 */
-	function getTransformMetadataObjects($metadataProfileId, $srcVersion, $destVersion, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
-		$this->client->addParam($kparams, "srcVersion", $srcVersion);
-		$this->client->addParam($kparams, "destVersion", $destVersion);
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("metadata_metadatabatch", "getTransformMetadataObjects", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaTransformMetadataResponse");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
@@ -1650,17 +1551,11 @@ class KalturaMetadataClientPlugin extends KalturaClientPlugin
 	 */
 	public $metadataProfile = null;
 
-	/**
-	 * @var KalturaMetadataBatchService
-	 */
-	public $metadataBatch = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
 		$this->metadata = new KalturaMetadataService($client);
 		$this->metadataProfile = new KalturaMetadataProfileService($client);
-		$this->metadataBatch = new KalturaMetadataBatchService($client);
 	}
 
 	/**
@@ -1679,7 +1574,6 @@ class KalturaMetadataClientPlugin extends KalturaClientPlugin
 		$services = array(
 			'metadata' => $this->metadata,
 			'metadataProfile' => $this->metadataProfile,
-			'metadataBatch' => $this->metadataBatch,
 		);
 		return $services;
 	}

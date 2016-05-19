@@ -118,33 +118,15 @@ class KalturaWowzaMediaServerNodeFilter extends KalturaWowzaMediaServerNodeBaseF
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaLiveConversionProfileService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaWowzaClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaLiveConversionProfileService
-	 */
-	public $liveConversionProfile = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->liveConversionProfile = new KalturaLiveConversionProfileService($client);
 	}
 
 	/**
@@ -161,7 +143,6 @@ class KalturaWowzaClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'liveConversionProfile' => $this->liveConversionProfile,
 		);
 		return $services;
 	}

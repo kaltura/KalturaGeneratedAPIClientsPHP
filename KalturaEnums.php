@@ -79,20 +79,6 @@ class KalturaAssetParamsOrigin extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAssetStatus extends KalturaEnumBase
-{
-	const ERROR = -1;
-	const QUEUED = 0;
-	const READY = 2;
-	const DELETED = 3;
-	const IMPORTING = 7;
-	const EXPORTING = 9;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaBatchJobErrorTypes extends KalturaEnumBase
 {
 	const APP = 0;
@@ -968,18 +954,6 @@ class KalturaStorageProfileStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaStorageServePriority extends KalturaEnumBase
-{
-	const KALTURA_ONLY = 1;
-	const KALTURA_FIRST = 2;
-	const EXTERNAL_FIRST = 3;
-	const EXTERNAL_ONLY = 4;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaSyndicationFeedStatus extends KalturaEnumBase
 {
 	const DELETED = -1;
@@ -1805,6 +1779,18 @@ class KalturaContextType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaControlPanelCommandOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaConversionProfileAssetParamsOrderBy extends KalturaEnumBase
 {
 }
@@ -2165,14 +2151,6 @@ class KalturaDurationType extends KalturaEnumBase
 	const MEDIUM = "medium";
 	const NOT_AVAILABLE = "notavailable";
 	const SHORT = "short";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDynamicEnum extends KalturaEnumBase
-{
 }
 
 /**

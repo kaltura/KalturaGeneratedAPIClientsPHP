@@ -1058,30 +1058,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBatchcontrolService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaBatchService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaBulkUploadService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -2275,341 +2251,6 @@ class KalturaDeliveryProfileService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDocumentService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Add new document entry after the specific document file was uploaded and the upload token id exists
-	 * 
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata
-	 * @param string $uploadTokenId Upload token id
-	 * @return KalturaDocumentEntry
-	 */
-	function addFromUploadedFile(KalturaDocumentEntry $documentEntry, $uploadTokenId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
-		$this->client->queueServiceActionCall("document", "addFromUploadedFile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Copy entry into new entry
-	 * 
-	 * @param string $sourceEntryId Document entry id to copy from
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata
-	 * @param int $sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not specified
-	 * @return KalturaDocumentEntry
-	 */
-	function addFromEntry($sourceEntryId, KalturaDocumentEntry $documentEntry = null, $sourceFlavorParamsId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "sourceEntryId", $sourceEntryId);
-		if ($documentEntry !== null)
-			$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->addParam($kparams, "sourceFlavorParamsId", $sourceFlavorParamsId);
-		$this->client->queueServiceActionCall("document", "addFromEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Copy flavor asset into new entry
-	 * 
-	 * @param string $sourceFlavorAssetId Flavor asset id to be used as the new entry source
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata
-	 * @return KalturaDocumentEntry
-	 */
-	function addFromFlavorAsset($sourceFlavorAssetId, KalturaDocumentEntry $documentEntry = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "sourceFlavorAssetId", $sourceFlavorAssetId);
-		if ($documentEntry !== null)
-			$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->queueServiceActionCall("document", "addFromFlavorAsset", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Convert entry
-	 * 
-	 * @param string $entryId Document entry id
-	 * @param int $conversionProfileId 
-	 * @param array $dynamicConversionAttributes 
-	 * @return bigint
-	 */
-	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
-		if ($dynamicConversionAttributes !== null)
-			foreach($dynamicConversionAttributes as $index => $obj)
-			{
-				$this->client->addParam($kparams, "dynamicConversionAttributes:$index", $obj->toParams());
-			}
-		$this->client->queueServiceActionCall("document", "convert", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "double");
-		return $resultObject;
-	}
-
-	/**
-	 * Get document entry by ID.
-	 * 
-	 * @param string $entryId Document entry id
-	 * @param int $version Desired version of the data
-	 * @return KalturaDocumentEntry
-	 */
-	function get($entryId, $version = -1)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("document", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Update document entry. Only the properties that were set will be updated.
-	 * 
-	 * @param string $entryId Document entry id to update
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata to update
-	 * @return KalturaDocumentEntry
-	 */
-	function update($entryId, KalturaDocumentEntry $documentEntry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->queueServiceActionCall("document", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete a document entry.
-	 * 
-	 * @param string $entryId Document entry id to delete
-	 */
-	function delete($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * List document entries by filter with paging support.
-	 * 
-	 * @param KalturaDocumentEntryFilter $filter Document entry filter
-	 * @param KalturaFilterPager $pager Pager
-	 * @return KalturaDocumentListResponse
-	 */
-	function listAction(KalturaDocumentEntryFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("document", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Upload a document file to Kaltura, then the file can be used to create a document entry.
-	 * 
-	 * @param file $fileData The file data
-	 * @return string
-	 */
-	function upload($fileData)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		$this->client->queueServiceActionCall("document", "upload", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-
-	/**
-	 * This will queue a batch job for converting the document file to swf
-	 Returns the URL where the new swf will be available
-	 * 
-	 * @param string $entryId 
-	 * @return string
-	 */
-	function convertPptToSwf($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document", "convertPptToSwf", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-
-	/**
-	 * Serves the file content
-	 * 
-	 * @param string $entryId Document entry id
-	 * @param string $flavorAssetId Flavor asset id
-	 * @param bool $forceProxy Force to get the content without redirect
-	 * @return file
-	 */
-	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
-		$this->client->addParam($kparams, "forceProxy", $forceProxy);
-		$this->client->queueServiceActionCall("document", "serve", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
-	}
-
-	/**
-	 * Serves the file content
-	 * 
-	 * @param string $entryId Document entry id
-	 * @param string $flavorParamsId Flavor params id
-	 * @param bool $forceProxy Force to get the content without redirect
-	 * @return file
-	 */
-	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
-		$this->client->addParam($kparams, "forceProxy", $forceProxy);
-		$this->client->queueServiceActionCall("document", "serveByFlavorParamsId", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
-	}
-
-	/**
-	 * Replace content associated with the given document entry.
-	 * 
-	 * @param string $entryId Document entry id to update
-	 * @param KalturaResource $resource Resource to be used to replace entry doc content
-	 * @param int $conversionProfileId The conversion profile id to be used on the entry
-	 * @return KalturaDocumentEntry
-	 */
-	function updateContent($entryId, KalturaResource $resource, $conversionProfileId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "resource", $resource->toParams());
-		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
-		$this->client->queueServiceActionCall("document", "updateContent", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Approves document replacement
-	 * 
-	 * @param string $entryId Document entry id to replace
-	 * @return KalturaDocumentEntry
-	 */
-	function approveReplace($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document", "approveReplace", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Cancels document replacement
-	 * 
-	 * @param string $entryId Document entry id to cancel
-	 * @return KalturaDocumentEntry
-	 */
-	function cancelReplace($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document", "cancelReplace", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEmailIngestionProfileService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -3555,18 +3196,6 @@ class KalturaGroupUserService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaJobsService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaLiveChannelSegmentService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -4485,6 +4114,31 @@ class KalturaMediaService extends KalturaServiceBase
 		if ($resource !== null)
 			$this->client->addParam($kparams, "resource", $resource->toParams());
 		$this->client->queueServiceActionCall("media", "addContent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMediaEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * Adds new media entry by importing an HTTP or FTP URL.
+	 The entry will be queued for import and then for conversion.
+	 This action should be exposed only to the batches
+	 * 
+	 * @param KalturaMediaEntry $mediaEntry Media entry metadata
+	 * @param string $url An HTTP or FTP URL
+	 * @param int $bulkUploadId The id of the bulk upload job
+	 * @return KalturaMediaEntry
+	 */
+	function addFromBulk(KalturaMediaEntry $mediaEntry, $url, $bulkUploadId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->addParam($kparams, "bulkUploadId", $bulkUploadId);
+		$this->client->queueServiceActionCall("media", "addFromBulk", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -9174,36 +8828,6 @@ class KalturaClient extends KalturaClientBase
 	public $baseEntry = null;
 
 	/**
-	 * Batch service lets you handle different batch process from remote machines.
-	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
-	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
-	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after 
-	 *  acuiring a batch objet properly (using  GetExclusiveXX).
-	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action 
-	 *  Terminology:
-	 *  LocationId
-	 *  ServerID
-	 *  ParternGroups
-	 * @var KalturaBatchcontrolService
-	 */
-	public $batchcontrol = null;
-
-	/**
-	 * Batch service lets you handle different batch process from remote machines.
-	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
-	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
-	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after
-	 *  acuiring a batch objet properly (using  GetExclusiveXX).
-	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action
-	 *  Terminology:
-	 *  LocationId
-	 *  ServerID
-	 *  ParternGroups
-	 * @var KalturaBatchService
-	 */
-	public $batch = null;
-
-	/**
 	 * Bulk upload service is used to upload & manage bulk uploads using CSV files.
 	 *  This service manages only entry bulk uploads.
 	 * @var KalturaBulkUploadService
@@ -9253,12 +8877,6 @@ class KalturaClient extends KalturaClientBase
 	public $deliveryProfile = null;
 
 	/**
-	 * Document service
-	 * @var KalturaDocumentService
-	 */
-	public $document = null;
-
-	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
 	 * @var KalturaEmailIngestionProfileService
 	 */
@@ -9299,21 +8917,6 @@ class KalturaClient extends KalturaClientBase
 	 * @var KalturaGroupUserService
 	 */
 	public $groupUser = null;
-
-	/**
-	 * Batch service lets you handle different batch process from remote machines.
-	 *  As opposed to other objects in the system, locking mechanism is critical in this case.
-	 *  For this reason the GetExclusiveXX, UpdateExclusiveXX and FreeExclusiveXX actions are important for the system's intergity.
-	 *  In general - updating batch object should be done only using the UpdateExclusiveXX which in turn can be called only after 
-	 *  acuiring a batch objet properly (using  GetExclusiveXX).
-	 *  If an object was aquired and should be returned to the pool in it's initial state - use the FreeExclusiveXX action 
-	 *  Terminology:
-	 *  LocationId
-	 *  ServerID
-	 *  ParternGroups
-	 * @var KalturaJobsService
-	 */
-	public $jobs = null;
 
 	/**
 	 * Manage live channel segments
@@ -9533,7 +9136,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-12');
+		$this->setClientTag('php5:16-05-19');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9542,8 +9145,6 @@ class KalturaClient extends KalturaClientBase
 		$this->analytics = new KalturaAnalyticsService($this);
 		$this->appToken = new KalturaAppTokenService($this);
 		$this->baseEntry = new KalturaBaseEntryService($this);
-		$this->batchcontrol = new KalturaBatchcontrolService($this);
-		$this->batch = new KalturaBatchService($this);
 		$this->bulkUpload = new KalturaBulkUploadService($this);
 		$this->categoryEntry = new KalturaCategoryEntryService($this);
 		$this->category = new KalturaCategoryService($this);
@@ -9552,7 +9153,6 @@ class KalturaClient extends KalturaClientBase
 		$this->conversionProfile = new KalturaConversionProfileService($this);
 		$this->data = new KalturaDataService($this);
 		$this->deliveryProfile = new KalturaDeliveryProfileService($this);
-		$this->document = new KalturaDocumentService($this);
 		$this->EmailIngestionProfile = new KalturaEmailIngestionProfileService($this);
 		$this->entryServerNode = new KalturaEntryServerNodeService($this);
 		$this->fileAsset = new KalturaFileAssetService($this);
@@ -9560,7 +9160,6 @@ class KalturaClient extends KalturaClientBase
 		$this->flavorParamsOutput = new KalturaFlavorParamsOutputService($this);
 		$this->flavorParams = new KalturaFlavorParamsService($this);
 		$this->groupUser = new KalturaGroupUserService($this);
-		$this->jobs = new KalturaJobsService($this);
 		$this->liveChannelSegment = new KalturaLiveChannelSegmentService($this);
 		$this->liveChannel = new KalturaLiveChannelService($this);
 		$this->liveReports = new KalturaLiveReportsService($this);
