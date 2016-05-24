@@ -2936,6 +2936,20 @@ class KalturaCategory extends KalturaObjectBase
 	 */
 	public $pendingEntriesCount = null;
 
+	/**
+	 * Flag indicating that the category is an aggregation category
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAggregationCategory = null;
+
+	/**
+	 * List of aggregation channels the category belongs to
+	 *
+	 * @var string
+	 */
+	public $aggregationCategories = null;
+
 
 }
 
@@ -12618,36 +12632,6 @@ class KalturaConvertProfileJobData extends KalturaJobData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCopyJobData extends KalturaJobData
-{
-	/**
-	 * The filter should return the list of objects that need to be copied.
-	 *
-	 * @var KalturaFilter
-	 */
-	public $filter;
-
-	/**
-	 * Indicates the last id that copied, used when the batch crached, to re-run from the last crash point.
-	 *
-	 * @var int
-	 */
-	public $lastCopyId = null;
-
-	/**
-	 * Template object to overwrite attributes on the copied object
-	 *
-	 * @var KalturaObjectBase
-	 */
-	public $templateObject;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaCopyPartnerJobData extends KalturaJobData
 {
 	/**
@@ -17472,6 +17456,20 @@ abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter
 	 */
 	public $partnerSortValueLessThanOrEqual = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeAnd = null;
+
 
 }
 
@@ -20361,22 +20359,6 @@ class KalturaTimeContextField extends KalturaIntegerField
  */
 abstract class KalturaTubeMogulSyndicationFeedBaseFilter extends KalturaBaseSyndicationFeedFilter
 {
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUploadedFileResource extends KalturaDataCenterContentResource
-{
-	/**
-	 * Represents the $_FILE
-	 *
-	 * @var file
-	 */
-	public $fileData;
-
 
 }
 
