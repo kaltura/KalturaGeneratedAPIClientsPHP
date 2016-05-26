@@ -2936,20 +2936,6 @@ class KalturaCategory extends KalturaObjectBase
 	 */
 	public $pendingEntriesCount = null;
 
-	/**
-	 * Flag indicating that the category is an aggregation category
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $isAggregationCategory = null;
-
-	/**
-	 * List of aggregation channels the category belongs to
-	 *
-	 * @var string
-	 */
-	public $aggregationCategories = null;
-
 
 }
 
@@ -3082,6 +3068,29 @@ class KalturaCategoryUser extends KalturaObjectBase
 	 * @var string
 	 */
 	public $permissionNames = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaClientConfiguration extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $clientTag = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $apiVersion = null;
 
 
 }
@@ -3542,6 +3551,13 @@ class KalturaConversionProfileAssetParams extends KalturaObjectBase
 	 * @var KalturaAssetParamsDeletePolicy
 	 */
 	public $deletePolicy = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isEncrypted = null;
 
 
 }
@@ -8407,6 +8423,36 @@ class KalturaReportTotal extends KalturaObjectBase
 	 * @var string
 	 */
 	public $data = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRequestConfiguration extends KalturaObjectBase
+{
+	/**
+	 * Impersonated partner id
+	 *
+	 * @var int
+	 */
+	public $partnerId = null;
+
+	/**
+	 * Kaltura API session
+	 *
+	 * @var string
+	 */
+	public $ks = null;
+
+	/**
+	 * Response profile - this attribute will be automatically unset after every API call.
+	 *
+	 * @var KalturaBaseResponseProfile
+	 */
+	public $responseProfile;
 
 
 }
@@ -17455,20 +17501,6 @@ abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter
 	 * @var int
 	 */
 	public $partnerSortValueLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $aggregationCategoriesMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $aggregationCategoriesMultiLikeAnd = null;
 
 
 }

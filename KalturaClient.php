@@ -2395,6 +2395,27 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
+	 * @param int $id 
+	 * @param KalturaEntryServerNode $entryServerNode 
+	 * @return KalturaEntryServerNode
+	 */
+	function update($id, KalturaEntryServerNode $entryServerNode)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entryServerNode", $entryServerNode->toParams());
+		$this->client->queueServiceActionCall("entryservernode", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
 	 * @param KalturaEntryServerNodeFilter $filter 
 	 * @param KalturaFilterPager $pager 
 	 * @return KalturaEntryServerNodeListResponse
@@ -9136,7 +9157,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-24');
+		$this->setClientTag('php5:16-05-26');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
