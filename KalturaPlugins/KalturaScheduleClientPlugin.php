@@ -781,7 +781,76 @@ class KalturaLocationScheduleResource extends KalturaScheduleResource
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaScheduleEventBaseFilter extends KalturaFilter
+class KalturaScheduleEventListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaScheduleEvent
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaScheduleEventResourceListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaScheduleEventResource
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaScheduleResourceListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaScheduleResource
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveStreamScheduleEvent extends KalturaEntryScheduleEvent
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRecordScheduleEvent extends KalturaEntryScheduleEvent
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaScheduleEventBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
@@ -993,24 +1062,7 @@ abstract class KalturaScheduleEventBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduleEventListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaScheduleEvent
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaScheduleEventResourceBaseFilter extends KalturaFilter
+abstract class KalturaScheduleEventResourceBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
@@ -1075,24 +1127,7 @@ abstract class KalturaScheduleEventResourceBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaScheduleEventResourceListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaScheduleEventResource
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaScheduleResourceBaseFilter extends KalturaFilter
+abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
@@ -1206,41 +1241,6 @@ abstract class KalturaScheduleResourceBaseFilter extends KalturaFilter
 	 */
 	public $updatedAtLessThanOrEqual = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaScheduleResourceListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaScheduleResource
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaLiveStreamScheduleEvent extends KalturaEntryScheduleEvent
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaRecordScheduleEvent extends KalturaEntryScheduleEvent
-{
 
 }
 

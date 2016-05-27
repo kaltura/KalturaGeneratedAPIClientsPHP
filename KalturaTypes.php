@@ -2936,6 +2936,20 @@ class KalturaCategory extends KalturaObjectBase
 	 */
 	public $pendingEntriesCount = null;
 
+	/**
+	 * Flag indicating that the category is an aggregation category
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAggregationCategory = null;
+
+	/**
+	 * List of aggregation channels the category belongs to
+	 *
+	 * @var string
+	 */
+	public $aggregationCategories = null;
+
 
 }
 
@@ -11062,7 +11076,7 @@ abstract class KalturaAppTokenBaseFilter extends KalturaFilter
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $idEqual = null;
 
@@ -11100,6 +11114,20 @@ abstract class KalturaAppTokenBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaAppTokenStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
 
 
 }
@@ -16425,120 +16453,6 @@ class KalturaUserAgentRestriction extends KalturaBaseRestriction
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaUserEntryBaseFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryType
-	 */
-	public $typeEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaUserEntryListResponse extends KalturaListResponse
 {
 	/**
@@ -17260,6 +17174,13 @@ abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $idNotIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $parentIdEqual = null;
@@ -17501,6 +17422,20 @@ abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter
 	 * @var int
 	 */
 	public $partnerSortValueLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeAnd = null;
 
 
 }
@@ -19285,21 +19220,112 @@ class KalturaUploadTokenFilter extends KalturaUploadTokenBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
+abstract class KalturaUserEntryBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaNullableBoolean
+	 * @var int
 	 */
-	public $userIdEqualCurrent = null;
+	public $idEqual = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaNullableBoolean
+	 * @var string
 	 */
-	public $isAnonymous = null;
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryType
+	 */
+	public $typeEqual = null;
 
 
 }
@@ -20318,15 +20344,6 @@ class KalturaPlaylistMatchAttributeCondition extends KalturaSearchMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaQuizUserEntryBaseFilter extends KalturaUserEntryFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaServerFileResource extends KalturaDataCenterContentResource
 {
 	/**
@@ -20434,6 +20451,29 @@ class KalturaUserAgentContextField extends KalturaStringField
  */
 class KalturaUserEmailContextField extends KalturaStringField
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $userIdEqualCurrent = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAnonymous = null;
+
 
 }
 
@@ -20724,7 +20764,7 @@ abstract class KalturaPlaylistBaseFilter extends KalturaBaseEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
+abstract class KalturaQuizUserEntryBaseFilter extends KalturaUserEntryFilter
 {
 
 }
@@ -20920,6 +20960,15 @@ abstract class KalturaMediaServerNodeBaseFilter extends KalturaDeliveryServerNod
  * @subpackage Client
  */
 class KalturaPlaylistFilter extends KalturaPlaylistBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
 
 }
