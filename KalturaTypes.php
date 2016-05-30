@@ -16423,6 +16423,13 @@ class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer
 	 */
 	public $tokenizationFormat = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldIncludeClientIp = null;
+
 
 }
 
