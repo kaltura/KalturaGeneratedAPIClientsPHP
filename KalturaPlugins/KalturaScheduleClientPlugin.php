@@ -1292,6 +1292,48 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
 	 */
 	public $parentResourceIdsMultiLikeAnd = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesLike = null;
+
 
 }
 

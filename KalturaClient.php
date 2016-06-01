@@ -8769,47 +8769,6 @@ class KalturaWidgetService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaXInternalService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Creates new download job for multiple entry ids (comma separated), an email will be sent when the job is done
-	 This sevice support the following entries: 
-	 - MediaEntry
-	 - Video will be converted using the flavor params id
-	 - Audio will be downloaded as MP3
-	 - Image will be downloaded as Jpeg
-	 - MixEntry will be flattened using the flavor params id
-	 - Other entry types are not supported
-	 Returns the admin email that the email message will be sent to
-	 * 
-	 * @param string $entryIds Comma separated list of entry ids
-	 * @param string $flavorParamsId 
-	 * @return string
-	 */
-	function xAddBulkDownload($entryIds, $flavorParamsId = "")
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryIds", $entryIds);
-		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
-		$this->client->queueServiceActionCall("xinternal", "xAddBulkDownload", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaClient extends KalturaClientBase
 {
 	/**
@@ -9143,12 +9102,6 @@ class KalturaClient extends KalturaClientBase
 	public $widget = null;
 
 	/**
-	 * Internal Service is used for actions that are used internally in Kaltura applications and might be changed in the future without any notice.
-	 * @var KalturaXInternalService
-	 */
-	public $xInternal = null;
-
-	/**
 	 * Kaltura client constructor
 	 *
 	 * @param KalturaConfiguration $config
@@ -9157,7 +9110,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-31');
+		$this->setClientTag('php5:16-06-01');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
@@ -9214,7 +9167,6 @@ class KalturaClient extends KalturaClientBase
 		$this->userRole = new KalturaUserRoleService($this);
 		$this->user = new KalturaUserService($this);
 		$this->widget = new KalturaWidgetService($this);
-		$this->xInternal = new KalturaXInternalService($this);
 	}
 	
 	/**
