@@ -2454,6 +2454,23 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaEntryServerNode");
 		return $resultObject;
 	}
+
+	/**
+	 * Validates server node still registered on entry
+	 * 
+	 * @param int $id Entry server node id
+	 */
+	function validateRegisteredEntryServerNode($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("entryservernode", "validateRegisteredEntryServerNode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
 }
 
 /**
@@ -9110,7 +9127,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-06-03');
+		$this->setClientTag('php5:16-06-04');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
