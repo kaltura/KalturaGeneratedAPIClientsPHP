@@ -1311,6 +1311,13 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
 	 *
 	 * @var string
 	 */
+	public $resourceSystemNamesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $templateEntryCategoriesIdsLike = null;
 
 	/**
@@ -1318,21 +1325,21 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
 	 *
 	 * @var string
 	 */
-	public $systemNamesMultiLikeOr = null;
+	public $resourceSystemNamesMultiLikeAnd = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $systemNamesMultiLikeAnd = null;
+	public $resourceSystemNamesLike = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $systemNamesLike = null;
+	public $templateEntryIdEqual = null;
 
 
 }
@@ -1370,6 +1377,13 @@ abstract class KalturaCameraScheduleResourceBaseFilter extends KalturaScheduleRe
  */
 abstract class KalturaEntryScheduleEventBaseFilter extends KalturaScheduleEventFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryIdEqual = null;
+
 	/**
 	 * 
 	 *
