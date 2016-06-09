@@ -11011,6 +11011,20 @@ class KalturaAmazonS3StorageProfile extends KalturaStorageProfile
 	 */
 	public $s3Region = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sseType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sseKmsKeyId = null;
+
 
 }
 
@@ -19527,6 +19541,20 @@ class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData
 	 * @var string
 	 */
 	public $s3Region = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sseType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sseKmsKeyId = null;
 
 
 }

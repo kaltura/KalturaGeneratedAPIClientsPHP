@@ -7487,6 +7487,27 @@ class KalturaThumbAssetService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaRemotePathListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Manually export an asset
+	 * 
+	 * @param string $assetId 
+	 * @param int $storageProfileId 
+	 * @return KalturaFlavorAsset
+	 */
+	function export($assetId, $storageProfileId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->addParam($kparams, "storageProfileId", $storageProfileId);
+		$this->client->queueServiceActionCall("thumbasset", "export", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaFlavorAsset");
+		return $resultObject;
+	}
 }
 
 /**
@@ -9127,7 +9148,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-06-08');
+		$this->setClientTag('php5:16-06-09');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
