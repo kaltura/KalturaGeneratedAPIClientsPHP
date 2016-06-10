@@ -3573,6 +3573,20 @@ class KalturaConversionProfileAssetParams extends KalturaObjectBase
 	 */
 	public $isEncrypted = null;
 
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $contentAwareness = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $twoPass = null;
+
 
 }
 
@@ -5007,6 +5021,13 @@ class KalturaFlavorParams extends KalturaAssetParams
 	/**
 	 * 
 	 *
+	 * @var float
+	 */
+	public $contentAwareness = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $clipOffset = null;
@@ -5816,6 +5837,13 @@ class KalturaMediaInfo extends KalturaObjectBase
 	 * @var string
 	 */
 	public $contentStreams = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $complexityValue = null;
 
 
 }
