@@ -14141,6 +14141,13 @@ class KalturaIndexAdvancedFilter extends KalturaSearchItem
 	 */
 	public $indexIdGreaterThan = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $depthGreaterThanEqual = null;
+
 
 }
 
@@ -14163,6 +14170,13 @@ class KalturaIndexJobData extends KalturaJobData
 	 * @var int
 	 */
 	public $lastIndexId = null;
+
+	/**
+	 * Indicates the last depth that reindexed, used when the batch crached, to re-run from the last crash point.
+	 *
+	 * @var int
+	 */
+	public $lastIndexDepth = null;
 
 	/**
 	 * Indicates that the object columns and attributes values should be recalculated before reindexed.
