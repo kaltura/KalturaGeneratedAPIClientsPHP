@@ -10925,6 +10925,15 @@ class KalturaAccessControlLimitFlavorsAction extends KalturaRuleAction
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlLimitThumbnailCaptureAction extends KalturaRuleAction
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAccessControlListResponse extends KalturaListResponse
 {
 	/**

@@ -1334,13 +1334,6 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
 	 */
 	public $resourceSystemNamesLike = null;
 
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $templateEntryIdEqual = null;
-
 
 }
 
