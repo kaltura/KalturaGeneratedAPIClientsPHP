@@ -10967,6 +10967,13 @@ class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRuleAction
 	 */
 	public $replacement = null;
 
+	/**
+	 * serverNodeId to generate replacment host from
+	 *
+	 * @var int
+	 */
+	public $replacmenServerNodeId = null;
+
 
 }
 
