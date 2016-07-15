@@ -40,6 +40,46 @@ require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaFeedDropFolderFileOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const FILE_NAME_ASC = "+fileName";
+	const FILE_SIZE_ASC = "+fileSize";
+	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
+	const ID_ASC = "+id";
+	const PARSED_FLAVOR_ASC = "+parsedFlavor";
+	const PARSED_SLUG_ASC = "+parsedSlug";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const FILE_NAME_DESC = "-fileName";
+	const FILE_SIZE_DESC = "-fileSize";
+	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
+	const ID_DESC = "-id";
+	const PARSED_FLAVOR_DESC = "-parsedFlavor";
+	const PARSED_SLUG_DESC = "-parsedSlug";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFeedDropFolderOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const ID_ASC = "+id";
+	const NAME_ASC = "+name";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const ID_DESC = "-id";
+	const NAME_DESC = "-name";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFeedItemInfo extends KalturaObjectBase
 {
 	/**
@@ -151,6 +191,42 @@ class KalturaFeedDropFolderFile extends KalturaDropFolderFile
 	 */
 	public $feedXmlPath = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaFeedDropFolderBaseFilter extends KalturaDropFolderFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaFeedDropFolderFileBaseFilter extends KalturaDropFolderFileFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFeedDropFolderFileFilter extends KalturaFeedDropFolderFileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFeedDropFolderFilter extends KalturaFeedDropFolderBaseFilter
+{
 
 }
 
