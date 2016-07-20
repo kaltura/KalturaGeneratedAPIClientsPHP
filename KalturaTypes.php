@@ -9553,6 +9553,13 @@ class KalturaStorageProfile extends KalturaObjectBase
 	 */
 	public $passPhrase = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldExportThumbs = null;
+
 
 }
 
