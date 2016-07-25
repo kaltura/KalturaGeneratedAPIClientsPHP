@@ -3752,6 +3752,184 @@ class KalturaUrlTokenizer extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaSearchItem extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaFilter extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $orderBy = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaSearchItem
+	 */
+	public $advancedSearch;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaRelatedFilter extends KalturaFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaAssetBaseFilter extends KalturaRelatedFilter
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $sizeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $sizeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tagsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $deletedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $deletedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAssetFilter extends KalturaAssetBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDeliveryProfile extends KalturaObjectBase
 {
 	/**
@@ -3894,6 +4072,13 @@ class KalturaDeliveryProfile extends KalturaObjectBase
 	 */
 	public $extraParams = null;
 
+	/**
+	 * A filter that can be used to include additional assets in the URL (e.g. captions)
+	 *
+	 * @var KalturaAssetFilter
+	 */
+	public $supplementaryAssetsFilter;
+
 
 }
 
@@ -3932,47 +4117,6 @@ class KalturaFileSyncDescriptor extends KalturaObjectBase
  * @subpackage Client
  */
 class KalturaDestFileSyncDescriptor extends KalturaFileSyncDescriptor
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaSearchItem extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaFilter extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $orderBy = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaSearchItem
-	 */
-	public $advancedSearch;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaRelatedFilter extends KalturaFilter
 {
 
 }
@@ -17056,134 +17200,6 @@ class KalturaAppTokenFilter extends KalturaAppTokenBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaAssetBaseFilter extends KalturaRelatedFilter
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $partnerIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $sizeGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $sizeLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeAnd = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $deletedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $deletedAtLessThanOrEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaAssetParamsBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -19657,15 +19673,6 @@ class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData
  * @subpackage Client
  */
 abstract class KalturaAmazonS3StorageProfileBaseFilter extends KalturaStorageProfileFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAssetFilter extends KalturaAssetBaseFilter
 {
 
 }
