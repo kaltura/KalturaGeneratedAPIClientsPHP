@@ -2633,13 +2633,13 @@ class KalturaLanguage extends KalturaEnumBase
 	const GN = "Guarani";
 	const GU = "Gujarati";
 	const HA = "Hausa";
-	const HE = "Hebrew";
 	const IW = "Hebrew";
+	const HE = "Hebrew";
 	const HI = "Hindi";
 	const HU = "Hungarian";
 	const IS = "Icelandic";
-	const ID = "Indonesian";
 	const IN = "Indonesian";
+	const ID = "Indonesian";
 	const IA = "Interlingua";
 	const IE = "Interlingue";
 	const IU = "Inuktitut";
@@ -2719,6 +2719,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const TW = "Twi";
 	const UG = "Uighur";
 	const UK = "Ukrainian";
+	const UN = "Undefined";
 	const UR = "Urdu";
 	const UZ = "Uzbek";
 	const VI = "Vietnamese";
