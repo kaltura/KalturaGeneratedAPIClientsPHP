@@ -594,6 +594,22 @@ class KalturaMetadataProfileListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataReplacementOptionsItem extends KalturaPluginReplacementOptionsItem
+{
+	/**
+	 * If true custom-metadata transferred to temp entry on entry replacement
+	 *
+	 * @var bool
+	 */
+	public $shouldCopyMetadata = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMetadataResponseProfileMapping extends KalturaResponseProfileMapping
 {
 

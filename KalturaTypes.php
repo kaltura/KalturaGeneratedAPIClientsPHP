@@ -3923,6 +3923,13 @@ abstract class KalturaAssetBaseFilter extends KalturaRelatedFilter
  */
 class KalturaAssetFilter extends KalturaAssetBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $typeIn = null;
+
 
 }
 
@@ -4377,6 +4384,15 @@ class KalturaStringValue extends KalturaValue
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaPluginReplacementOptionsItem extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryReplacementOptions extends KalturaObjectBase
 {
 	/**
@@ -4385,6 +4401,13 @@ class KalturaEntryReplacementOptions extends KalturaObjectBase
 	 * @var int
 	 */
 	public $keepManualThumbnails = null;
+
+	/**
+	 * Array of plugin replacement options
+	 *
+	 * @var array of KalturaPluginReplacementOptionsItem
+	 */
+	public $pluginOptionItems;
 
 
 }
@@ -14583,6 +14606,50 @@ class KalturaLiveStreamPushPublishRTMPConfiguration extends KalturaLiveStreamPus
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveToVodJobData extends KalturaJobData
+{
+	/**
+	 * $vod Entry Id
+	 *
+	 * @var string
+	 */
+	public $vodEntryId = null;
+
+	/**
+	 * live Entry Id
+	 *
+	 * @var string
+	 */
+	public $liveEntryId = null;
+
+	/**
+	 * total VOD Duration
+	 *
+	 * @var float
+	 */
+	public $totalVodDuration = null;
+
+	/**
+	 * last Segment Duration
+	 *
+	 * @var float
+	 */
+	public $lastSegmentDuration = null;
+
+	/**
+	 * amf Array File Path
+	 *
+	 * @var string
+	 */
+	public $amfArray = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMailJobData extends KalturaJobData
 {
 	/**
@@ -21114,13 +21181,6 @@ class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
  */
 class KalturaThumbAssetFilter extends KalturaThumbAssetBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $typeIn = null;
-
 
 }
 

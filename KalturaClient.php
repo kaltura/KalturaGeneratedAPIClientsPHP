@@ -2971,6 +2971,25 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
 	}
+
+	/**
+	 * Serve cmd line to transcode the ad
+	 * 
+	 * @param string $assetId 
+	 * @param string $mediaInfoJson 
+	 */
+	function serveAdStitchCmd($assetId, $mediaInfoJson)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->addParam($kparams, "mediaInfoJson", $mediaInfoJson);
+		$this->client->queueServiceActionCall("flavorasset", "serveAdStitchCmd", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
 }
 
 /**
@@ -9148,7 +9167,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-08-07');
+		$this->setClientTag('php5:16-08-08');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
