@@ -14606,50 +14606,6 @@ class KalturaLiveStreamPushPublishRTMPConfiguration extends KalturaLiveStreamPus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaLiveToVodJobData extends KalturaJobData
-{
-	/**
-	 * $vod Entry Id
-	 *
-	 * @var string
-	 */
-	public $vodEntryId = null;
-
-	/**
-	 * live Entry Id
-	 *
-	 * @var string
-	 */
-	public $liveEntryId = null;
-
-	/**
-	 * total VOD Duration
-	 *
-	 * @var float
-	 */
-	public $totalVodDuration = null;
-
-	/**
-	 * last Segment Duration
-	 *
-	 * @var float
-	 */
-	public $lastSegmentDuration = null;
-
-	/**
-	 * amf Array File Path
-	 *
-	 * @var string
-	 */
-	public $amfArray = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaMailJobData extends KalturaJobData
 {
 	/**
