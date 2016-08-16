@@ -3745,6 +3745,13 @@ class KalturaUrlTokenizer extends KalturaObjectBase
 	 */
 	public $key = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $limitIpAddress = null;
+
 
 }
 
@@ -16590,13 +16597,6 @@ class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
 	 * @var string
 	 */
 	public $rootDir = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $limitIpAddress = null;
 
 
 }
