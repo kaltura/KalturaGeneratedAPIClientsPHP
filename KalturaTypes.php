@@ -1426,6 +1426,13 @@ abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase
 	 */
 	public $useCategoryEntries = null;
 
+	/**
+	 * Feed content-type header value
+	 *
+	 * @var string
+	 */
+	public $feedContentTypeHeader = null;
+
 
 }
 

@@ -515,7 +515,6 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 	 * 
 	 *
 	 * @var KalturaScheduleEventRecurrenceType
-	 * @insertonly
 	 */
 	public $recurrenceType = null;
 
