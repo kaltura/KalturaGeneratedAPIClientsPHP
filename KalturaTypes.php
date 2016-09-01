@@ -13376,11 +13376,11 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
 abstract class KalturaDeliveryServerNode extends KalturaServerNode
 {
 	/**
-	 * Delivery server playback Domain
+	 * Delivery profile ids
 	 *
-	 * @var string
+	 * @var array of KalturaKeyValue
 	 */
-	public $playbackDomain = null;
+	public $deliveryProfileIds;
 
 
 }
@@ -17998,6 +17998,13 @@ class KalturaCountryCondition extends KalturaMatchCondition
  */
 class KalturaDeliveryProfileFilter extends KalturaDeliveryProfileBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isLive = null;
+
 
 }
 
@@ -18031,11 +18038,11 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
 class KalturaEdgeServerNode extends KalturaDeliveryServerNode
 {
 	/**
-	 * Delivery profile ids
+	 * Delivery server playback Domain
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var string
 	 */
-	public $deliveryProfileIds;
+	public $playbackDomain = null;
 
 	/**
 	 * Overdie edge server default configuration - json format
