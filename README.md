@@ -2,8 +2,8 @@
 ####Please note that you should not make pull requests to the repo as the clientlibs are auto generated upon every Core release.
 ####Instead, please submit pulls to:
 
-https://github.com/kaltura/server/
-code is under generator/sources/php5
+https://github.com/kaltura/clients-generator
+code is under sources/php5
 
 ####Also, note that we have 2 additional PHP clients libs: generator/sources/php53, generator/sources/zend so your changes may be relevant to them too.
 
