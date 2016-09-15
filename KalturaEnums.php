@@ -289,6 +289,18 @@ class KalturaEmailIngestionProfileStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryDisplayInSearchType extends KalturaEnumBase
+{
+	const SYSTEM = -1;
+	const NONE = 0;
+	const PARTNER_ONLY = 1;
+	const KALTURA_NETWORK = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryModerationStatus extends KalturaEnumBase
 {
 	const PENDING_MODERATION = 1;
@@ -1551,6 +1563,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const SYNC_CATEGORY_PRIVACY_CONTEXT = "39";
 	const LIVE_REPORT_EXPORT = "40";
 	const RECALCULATE_CACHE = "41";
+	const LIVE_TO_VOD = "42";
 }
 
 /**

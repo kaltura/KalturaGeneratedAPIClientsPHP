@@ -672,6 +672,27 @@ class KalturaCuePointService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
 	}
+
+	/**
+	 * Clone cuePoint with id to given entry
+	 * 
+	 * @param string $id 
+	 * @param string $entryId 
+	 * @return KalturaCuePoint
+	 */
+	function cloneAction($id, $entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "clone", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCuePoint");
+		return $resultObject;
+	}
 }
 /**
  * @package Kaltura

@@ -1240,6 +1240,13 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 */
 	public $templateEntryId = null;
 
+	/**
+	 * should we display this entry in search
+	 *
+	 * @var KalturaEntryDisplayInSearchType
+	 */
+	public $displayInSearch = null;
+
 
 }
 
@@ -6393,6 +6400,13 @@ class KalturaLiveEntryRecordingOptions extends KalturaObjectBase
 	 * @var KalturaNullableBoolean
 	 */
 	public $shouldCopyThumbnail = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $shouldMakeHidden = null;
 
 
 }
@@ -14612,6 +14626,50 @@ class KalturaLiveStreamPushPublishRTMPConfiguration extends KalturaLiveStreamPus
 	 * @var string
 	 */
 	public $applicationName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveToVodJobData extends KalturaJobData
+{
+	/**
+	 * $vod Entry Id
+	 *
+	 * @var string
+	 */
+	public $vodEntryId = null;
+
+	/**
+	 * live Entry Id
+	 *
+	 * @var string
+	 */
+	public $liveEntryId = null;
+
+	/**
+	 * total VOD Duration
+	 *
+	 * @var float
+	 */
+	public $totalVodDuration = null;
+
+	/**
+	 * last Segment Duration
+	 *
+	 * @var float
+	 */
+	public $lastSegmentDuration = null;
+
+	/**
+	 * amf Array File Path
+	 *
+	 * @var string
+	 */
+	public $amfArray = null;
 
 
 }

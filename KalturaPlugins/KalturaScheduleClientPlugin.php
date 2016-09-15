@@ -1342,6 +1342,13 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
  */
 class KalturaScheduleEventResourceFilter extends KalturaScheduleEventResourceBaseFilter
 {
+	/**
+	 * Find event-resource objects that associated with the event, if none found, find by its parent event
+	 *
+	 * @var int
+	 */
+	public $eventIdOrItsParentIdEqual = null;
+
 
 }
 
