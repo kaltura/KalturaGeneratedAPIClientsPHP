@@ -12318,6 +12318,13 @@ class KalturaBulkUploadResultUser extends KalturaBulkUploadResult
 	 */
 	public $lastName = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $group = null;
+
 
 }
 
