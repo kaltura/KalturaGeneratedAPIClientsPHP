@@ -13394,6 +13394,22 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfile
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowFairplayOffline = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaDeliveryServerNode extends KalturaServerNode
 {
 	/**
