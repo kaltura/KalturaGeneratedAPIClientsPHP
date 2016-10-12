@@ -3976,6 +3976,23 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
+	 * Regenerate new secure token for liveStream
+	 * 
+	 * @param string $entryId Live stream entry id to regenerate secure token for
+	 */
+	function regenrateSecureToken($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("livestream", "regenrateSecureToken", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Append recorded video to live entry
 	 * 
 	 * @param string $entryId Live entry id
@@ -9169,7 +9186,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-10-11');
+		$this->setClientTag('php5:16-10-12');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
