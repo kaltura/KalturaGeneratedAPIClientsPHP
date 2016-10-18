@@ -8532,9 +8532,10 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param int $partnerId The identifier of the partner account
 	 * @param int $expiry The requested time (in seconds) before the generated KS expires (By default, a KS expires after 24 hours).
 	 * @param string $privileges Special privileges
+	 * @param string $otp The user's one-time password
 	 * @return string
 	 */
-	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*")
+	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*", $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "loginId", $loginId);
@@ -8542,6 +8543,7 @@ class KalturaUserService extends KalturaServiceBase
 		$this->client->addParam($kparams, "partnerId", $partnerId);
 		$this->client->addParam($kparams, "expiry", $expiry);
 		$this->client->addParam($kparams, "privileges", $privileges);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("user", "loginByLoginId", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9186,7 +9188,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-10-17');
+		$this->setClientTag('php5:16-10-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
