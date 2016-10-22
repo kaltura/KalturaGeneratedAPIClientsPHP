@@ -3980,11 +3980,11 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Live stream entry id to regenerate secure token for
 	 */
-	function regenrateSecureToken($entryId)
+	function regenerateStreamToken($entryId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("livestream", "regenrateSecureToken", $kparams);
+		$this->client->queueServiceActionCall("livestream", "regenerateStreamToken", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -9188,7 +9188,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-10-21');
+		$this->setClientTag('php5:16-10-22');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
