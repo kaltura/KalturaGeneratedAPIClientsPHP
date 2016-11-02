@@ -320,6 +320,7 @@ class KalturaEntryServerNodeStatus extends KalturaEnumBase
 	const PLAYABLE = 1;
 	const BROADCASTING = 2;
 	const AUTHENTICATED = 3;
+	const MARKED_FOR_DELETION = 4;
 }
 
 /**
@@ -4081,6 +4082,7 @@ class KalturaSourceType extends KalturaEnumBase
 	const LIVE_CHANNEL = "33";
 	const RECORDED_LIVE = "34";
 	const CLIP = "35";
+	const KALTURA_RECORDED_LIVE = "36";
 	const LIVE_STREAM_ONTEXTDATA_CAPTIONS = "42";
 }
 

@@ -2978,6 +2978,7 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 	 * @param string $assetId 
 	 * @param string $ffprobeJson 
 	 * @param string $duration 
+	 * @return string
 	 */
 	function serveAdStitchCmd($assetId, $ffprobeJson = null, $duration = null)
 	{
@@ -2990,7 +2991,8 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
 	}
 }
 
@@ -3586,6 +3588,31 @@ class KalturaLiveChannelService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
 	}
+
+	/**
+	 * Sey recorded video to live entry
+	 * 
+	 * @param string $entryId Live entry id
+	 * @param string $mediaServerIndex 
+	 * @param KalturaDataCenterContentResource $resource 
+	 * @param float $duration In seconds
+	 * @return KalturaLiveEntry
+	 */
+	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->addParam($kparams, "duration", $duration);
+		$this->client->queueServiceActionCall("livechannel", "setRecordedContent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveEntry");
+		return $resultObject;
+	}
 }
 
 /**
@@ -4086,6 +4113,31 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Sey recorded video to live entry
+	 * 
+	 * @param string $entryId Live entry id
+	 * @param string $mediaServerIndex 
+	 * @param KalturaDataCenterContentResource $resource 
+	 * @param float $duration In seconds
+	 * @return KalturaLiveEntry
+	 */
+	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->addParam($kparams, "duration", $duration);
+		$this->client->queueServiceActionCall("livestream", "setRecordedContent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveEntry");
+		return $resultObject;
 	}
 
 	/**
@@ -9188,7 +9240,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-11-01');
+		$this->setClientTag('php5:16-11-02');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
