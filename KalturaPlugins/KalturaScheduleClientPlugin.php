@@ -287,6 +287,13 @@ class KalturaScheduleEventRecurrence extends KalturaObjectBase
 	public $until = null;
 
 	/**
+	 * TimeZone String
+	 *
+	 * @var string
+	 */
+	public $timeZone = null;
+
+	/**
 	 * 
 	 *
 	 * @var int

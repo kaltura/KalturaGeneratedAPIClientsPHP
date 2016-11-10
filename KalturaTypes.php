@@ -4628,6 +4628,57 @@ class KalturaPlayableEntry extends KalturaBaseEntry
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaStreamContainer extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $trackIndex = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $channelIndex = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $label = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $channelLayout = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaEntry extends KalturaPlayableEntry
 {
 	/**
@@ -4715,6 +4766,13 @@ class KalturaMediaEntry extends KalturaPlayableEntry
 	 * @readonly
 	 */
 	public $isTrimDisabled = null;
+
+	/**
+	 * Array of streams that exists on the entry
+	 *
+	 * @var array of KalturaStreamContainer
+	 */
+	public $streams;
 
 
 }
@@ -4928,6 +4986,14 @@ class KalturaFlavorAsset extends KalturaAsset
 	 * @var KalturaLanguage
 	 */
 	public $language = null;
+
+	/**
+	 * The label of the flavor asset
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $label = null;
 
 
 }
@@ -13394,14 +13460,14 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfile
+class KalturaDeliveryProfileVodPackagerPlayServer extends KalturaDeliveryProfile
 {
 	/**
 	 * 
 	 *
 	 * @var bool
 	 */
-	public $allowFairplayOffline = null;
+	public $adStitchingEnabled = null;
 
 
 }
@@ -18108,6 +18174,22 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
 	 * @var string
 	 */
 	public $rendererClass = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfileVodPackagerPlayServer
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowFairplayOffline = null;
 
 
 }
