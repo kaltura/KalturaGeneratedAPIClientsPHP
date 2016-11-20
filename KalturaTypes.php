@@ -7278,6 +7278,13 @@ abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter
 	 *
 	 * @var string
 	 */
+	public $userIdNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $creatorIdEqual = null;
 
 	/**
