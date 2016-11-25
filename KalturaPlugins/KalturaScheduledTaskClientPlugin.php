@@ -93,6 +93,7 @@ class KalturaObjectTaskType extends KalturaEnumBase
 	const CONVERT_ENTRY_FLAVORS = "4";
 	const DELETE_LOCAL_CONTENT = "5";
 	const STORAGE_EXPORT = "6";
+	const MODIFY_ENTRY = "7";
 }
 
 /**
@@ -322,6 +323,64 @@ class KalturaModifyCategoriesObjectTask extends KalturaObjectTask
 	 * @var array of KalturaIntegerValue
 	 */
 	public $categoryIds;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaModifyEntryObjectTask extends KalturaObjectTask
+{
+	/**
+	 * The input metadata profile id
+	 *
+	 * @var int
+	 */
+	public $inputMetadataProfileId = null;
+
+	/**
+	 * array of {input metadata xpath location,entry field} objects
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $inputMetadata;
+
+	/**
+	 * The output metadata profile id
+	 *
+	 * @var int
+	 */
+	public $outputMetadataProfileId = null;
+
+	/**
+	 * array of {output metadata xpath location,entry field} objects
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $outputMetadata;
+
+	/**
+	 * The input user id to set on the entry
+	 *
+	 * @var string
+	 */
+	public $inputUserId = null;
+
+	/**
+	 * The input entitled users edit to set on the entry
+	 *
+	 * @var string
+	 */
+	public $inputEntitledUsersEdit = null;
+
+	/**
+	 * The input entitled users publish to set on the entry
+	 *
+	 * @var string
+	 */
+	public $inputEntitledUsersPublish = null;
 
 
 }

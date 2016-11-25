@@ -3011,6 +3011,14 @@ class KalturaCategoryEntry extends KalturaObjectBase
 	 */
 	public $status = null;
 
+	/**
+	 * CategroyEntry creator puser ID
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $creatorUserId = null;
+
 
 }
 
@@ -7186,6 +7194,20 @@ class KalturaLiveStreamParams extends KalturaObjectBase
 	 * @var string
 	 */
 	public $codec = null;
+
+	/**
+	 * Live stream's farme rate
+	 *
+	 * @var int
+	 */
+	public $frameRate = null;
+
+	/**
+	 * Live stream's key frame interval
+	 *
+	 * @var float
+	 */
+	public $keyFrameInterval = null;
 
 
 }
@@ -17808,6 +17830,20 @@ abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $creatorUserIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $creatorUserIdIn = null;
 
 
 }
