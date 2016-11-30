@@ -369,12 +369,15 @@ class KalturaAnalyticsService extends KalturaServiceBase
 	 * Report query action allows to get a analytics data for specific query dimensions, metrics and filters.
 	 * 
 	 * @param KalturaAnalyticsFilter $filter The analytics query filter
+	 * @param KalturaFilterPager $pager The analytics query result pager
 	 * @return KalturaReportResponse
 	 */
-	function query(KalturaAnalyticsFilter $filter)
+	function query(KalturaAnalyticsFilter $filter, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("analytics", "query", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9240,7 +9243,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-11-29');
+		$this->setClientTag('php5:16-11-30');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

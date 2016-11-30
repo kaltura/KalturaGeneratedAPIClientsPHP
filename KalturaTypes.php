@@ -460,14 +460,14 @@ class KalturaReportFilter extends KalturaObjectBase
 class KalturaAnalyticsFilter extends KalturaObjectBase
 {
 	/**
-	 * Query start time (in local time)
+	 * Query start time (in local time) MM/dd/yyyy HH:mi
 	 *
 	 * @var string
 	 */
 	public $from_time = null;
 
 	/**
-	 * Query end time (in local time)
+	 * Query end time (in local time) MM/dd/yyyy HH:mi
 	 *
 	 * @var string
 	 */
@@ -500,6 +500,13 @@ class KalturaAnalyticsFilter extends KalturaObjectBase
 	 * @var array of KalturaReportFilter
 	 */
 	public $filters;
+
+	/**
+	 * Query order by metric/dimension
+	 *
+	 * @var string
+	 */
+	public $orderBy = null;
 
 
 }
@@ -3527,6 +3534,13 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 * @var KalturaMediaParserType
 	 */
 	public $mediaParserType = null;
+
+	/**
+	 * Should calculate file conversion complexity
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $calculateComplexity = null;
 
 
 }
@@ -14789,6 +14803,20 @@ class KalturaLiveToVodJobData extends KalturaJobData
 	 */
 	public $amfArray = null;
 
+	/**
+	 * last live to vod sync time
+	 *
+	 * @var int
+	 */
+	public $lastCuePointSyncTime = null;
+
+	/**
+	 * last segment drift
+	 *
+	 * @var int
+	 */
+	public $lastSegmentDrift = null;
+
 
 }
 
@@ -18427,6 +18455,27 @@ class KalturaExtractMediaJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $flavorAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $calculateComplexity = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $extractId3Tags = null;
+
+	/**
+	 * The data output file
+	 *
+	 * @var string
+	 */
+	public $destDataFilePath = null;
 
 
 }
