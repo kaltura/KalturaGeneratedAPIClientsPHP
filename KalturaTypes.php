@@ -236,6 +236,13 @@ class KalturaRule extends KalturaObjectBase
 	public $message = null;
 
 	/**
+	 * Code to be thrown to the player in case the rule is fulfilled
+	 *
+	 * @var string
+	 */
+	public $code = null;
+
+	/**
 	 * Actions to be performed by the player in case the rule is fulfilled
 	 *
 	 * @var array of KalturaRuleAction
@@ -8402,6 +8409,163 @@ abstract class KalturaPermissionItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPluginData extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmEntryPlayingPluginData extends KalturaPluginData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $scheme = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $licenseURL = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackSource extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $deliveryProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $format = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $priority = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $protocols;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $flavors;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $url = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaDrmEntryPlayingPluginData
+	 */
+	public $drm;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackRestriction extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $message = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $code = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackContextResult extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaPlaybackSource
+	 */
+	public $sources;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaFlavorAsset
+	 */
+	public $flavorAssets;
+
+	/**
+	 * Array of messages as received from the rules that invalidated
+	 *
+	 * @var array of KalturaString
+	 */
+	public $messages;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaRuleAction
+	 */
+	public $actions;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaPlaybackRestriction
+	 */
+	public $restrictions;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPlaylist extends KalturaBaseEntry
 {
 	/**
@@ -8467,15 +8631,6 @@ class KalturaPlaylist extends KalturaBaseEntry
 	 */
 	public $executeUrl = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaPluginData extends KalturaObjectBase
-{
 
 }
 
@@ -16793,6 +16948,15 @@ class KalturaUrlTokenizerBitGravity extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerCht extends KalturaUrlTokenizer
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
 {
 	/**
@@ -18476,6 +18640,22 @@ class KalturaExtractMediaJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $destDataFilePath = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFairPlayEntryPlayingPluginData extends KalturaDrmEntryPlayingPluginData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $certificate = null;
 
 
 }
