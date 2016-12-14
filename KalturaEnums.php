@@ -3841,6 +3841,7 @@ class KalturaPlaybackProtocol extends KalturaEnumBase
 	const RTMP = "rtmp";
 	const RTSP = "rtsp";
 	const SILVER_LIGHT = "sl";
+	const URL = "url";
 }
 
 /**

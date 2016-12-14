@@ -1060,10 +1060,10 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * This action delivers all data relevant for player
 	 * 
 	 * @param string $entryId 
-	 * @param KalturaEntryContextDataParams $contextDataParams 
-	 * @return KalturaPlaybackContextResult
+	 * @param KalturaPlaybackContextOptions $contextDataParams 
+	 * @return KalturaPlaybackContextOptions
 	 */
-	function getPlaybackContext($entryId, KalturaEntryContextDataParams $contextDataParams)
+	function getPlaybackContext($entryId, KalturaPlaybackContextOptions $contextDataParams)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -1073,7 +1073,7 @@ class KalturaBaseEntryService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaPlaybackContextResult");
+		$this->client->validateObjectType($resultObject, "KalturaPlaybackContextOptions");
 		return $resultObject;
 	}
 }
@@ -9268,7 +9268,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-12-13');
+		$this->setClientTag('php5:16-12-14');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

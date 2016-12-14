@@ -8418,7 +8418,7 @@ class KalturaPluginData extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmEntryPlayingPluginData extends KalturaPluginData
+class KalturaDrmPlaybackPluginData extends KalturaPluginData
 {
 	/**
 	 * 
@@ -8433,131 +8433,6 @@ class KalturaDrmEntryPlayingPluginData extends KalturaPluginData
 	 * @var string
 	 */
 	public $licenseURL = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaPlaybackSource extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $deliveryProfileId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $format = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $priority = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaString
-	 */
-	public $protocols;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaString
-	 */
-	public $flavors;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $url = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaDrmEntryPlayingPluginData
-	 */
-	public $drm;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaPlaybackRestriction extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $message = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $code = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaPlaybackContextResult extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaPlaybackSource
-	 */
-	public $sources;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaFlavorAsset
-	 */
-	public $flavorAssets;
-
-	/**
-	 * Array of messages as received from the rules that invalidated
-	 *
-	 * @var array of KalturaString
-	 */
-	public $messages;
-
-	/**
-	 * Array of actions as received from the rules that invalidated
-	 *
-	 * @var array of KalturaRuleAction
-	 */
-	public $actions;
-
-	/**
-	 * Array of actions as received from the rules that invalidated
-	 *
-	 * @var array of KalturaPlaybackRestriction
-	 */
-	public $restrictions;
 
 
 }
@@ -18648,7 +18523,7 @@ class KalturaExtractMediaJobData extends KalturaConvartableJobData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFairPlayEntryPlayingPluginData extends KalturaDrmEntryPlayingPluginData
+class KalturaFairPlayPlaybackPluginData extends KalturaDrmPlaybackPluginData
 {
 	/**
 	 * 
@@ -19448,6 +19323,15 @@ abstract class KalturaPermissionItemBaseFilter extends KalturaRelatedFilter
 	 */
 	public $updatedAtLessThanOrEqual = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackContextOptions extends KalturaEntryContextDataParams
+{
 
 }
 
