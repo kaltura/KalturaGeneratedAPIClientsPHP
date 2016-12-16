@@ -16855,6 +16855,22 @@ class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerKs extends KalturaUrlTokenizer
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $usePath = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlTokenizerLevel3 extends KalturaUrlTokenizer
 {
 	/**

@@ -959,6 +959,39 @@ class KalturaMetadataSearchItem extends KalturaSearchOperator
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataField extends KalturaStringField
+{
+	/**
+	 * May contain the full xpath to the field in three formats
+	 * 	 1. Slashed xPath, e.g. /metadata/myElementName
+	 * 	 2. Using local-name function, e.g. /[local-name()='metadata']/[local-name()='myElementName']
+	 * 	 3. Using only the field name, e.g. myElementName, it will be searched as //myElementName
+	 *
+	 * @var string
+	 */
+	public $xPath = null;
+
+	/**
+	 * Metadata profile id
+	 *
+	 * @var int
+	 */
+	public $profileId = null;
+
+	/**
+	 * Metadata profile system name
+	 *
+	 * @var string
+	 */
+	public $profileSystemName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMetadataFilter extends KalturaMetadataBaseFilter
 {
 
