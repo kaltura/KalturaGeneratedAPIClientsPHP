@@ -305,6 +305,14 @@ class KalturaSyndicationDistributionProfileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSyndicationDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaAssetDistributionCondition extends KalturaObjectBase
 {
 
@@ -2405,6 +2413,15 @@ class KalturaGenericDistributionProviderFilter extends KalturaGenericDistributio
  * @subpackage Client
  */
 class KalturaSyndicationDistributionProfileFilter extends KalturaSyndicationDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSyndicationDistributionProviderFilter extends KalturaSyndicationDistributionProviderBaseFilter
 {
 
 }
