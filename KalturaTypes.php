@@ -164,6 +164,29 @@ class KalturaAccessControlContextTypeHolder extends KalturaContextTypeHolder
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAccessControlMessage extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $message = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $code = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaRuleAction extends KalturaObjectBase
 {
 	/**
@@ -3549,6 +3572,14 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 */
 	public $calculateComplexity = null;
 
+	/**
+	 * Defines the tags that should be used to define 'collective'/group/multi-flavor processing,
+	 * 	 like 'mbr' or 'ism'
+	 *
+	 * @var string
+	 */
+	public $collectionTags = null;
+
 
 }
 
@@ -3629,6 +3660,13 @@ class KalturaConversionProfileAssetParams extends KalturaObjectBase
 	 * @var KalturaNullableBoolean
 	 */
 	public $twoPass = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
 
 
 }
@@ -8423,7 +8461,7 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaDrmSchemeName
 	 */
 	public $scheme = null;
 
@@ -8433,6 +8471,94 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
 	 * @var string
 	 */
 	public $licenseURL = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackSource extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $deliveryProfileId = null;
+
+	/**
+	 * source format according to delivery profile streamer type (applehttp, mpegdash etc.)
+	 *
+	 * @var string
+	 */
+	public $format = null;
+
+	/**
+	 * comma separated string according to deliveryProfile media protocols ('http,https' etc.)
+	 *
+	 * @var string
+	 */
+	public $protocols = null;
+
+	/**
+	 * comma separated string of flavor ids
+	 *
+	 * @var string
+	 */
+	public $flavorIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $url = null;
+
+	/**
+	 * drm data object containing relevant license url ,scheme name and certificate
+	 *
+	 * @var array of KalturaDrmPlaybackPluginData
+	 */
+	public $drm;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlaybackContext extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaPlaybackSource
+	 */
+	public $sources;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaFlavorAsset
+	 */
+	public $flavorAssets;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaRuleAction
+	 */
+	public $actions;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaAccessControlMessage
+	 */
+	public $messages;
 
 
 }

@@ -1061,7 +1061,7 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId 
 	 * @param KalturaPlaybackContextOptions $contextDataParams 
-	 * @return KalturaPlaybackContextOptions
+	 * @return KalturaPlaybackContext
 	 */
 	function getPlaybackContext($entryId, KalturaPlaybackContextOptions $contextDataParams)
 	{
@@ -1073,7 +1073,7 @@ class KalturaBaseEntryService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaPlaybackContextOptions");
+		$this->client->validateObjectType($resultObject, "KalturaPlaybackContext");
 		return $resultObject;
 	}
 }
@@ -9268,7 +9268,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-12-22');
+		$this->setClientTag('php5:16-12-23');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

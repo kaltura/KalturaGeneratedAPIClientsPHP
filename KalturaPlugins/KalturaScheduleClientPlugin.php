@@ -1687,6 +1687,27 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	}
 
 	/**
+	 * List conflicting events for resourcesIds by event's dates
+	 * 
+	 * @param string $resourceIds 
+	 * @param KalturaScheduleEvent $scheduleEvent 
+	 * @return array
+	 */
+	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "resourceIds", $resourceIds);
+		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "array");
+		return $resultObject;
+	}
+
+	/**
 	 * Add new bulk upload batch job
 	 * 
 	 * @param file $fileData 
