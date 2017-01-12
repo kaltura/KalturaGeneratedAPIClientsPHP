@@ -1689,7 +1689,7 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	/**
 	 * List conflicting events for resourcesIds by event's dates
 	 * 
-	 * @param string $resourceIds 
+	 * @param string $resourceIds Comma separated
 	 * @param KalturaScheduleEvent $scheduleEvent 
 	 * @return array
 	 */
