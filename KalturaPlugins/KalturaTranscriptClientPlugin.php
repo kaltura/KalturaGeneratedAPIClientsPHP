@@ -56,6 +56,16 @@ class KalturaTranscriptAssetOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaTranscriptProviderType extends KalturaEnumBase
+{
+	const CIELO24 = "cielo24.Cielo24";
+	const VOICEBASE = "voicebase.Voicebase";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaTranscriptAsset extends KalturaAttachmentAsset
 {
 	/**
@@ -78,6 +88,13 @@ class KalturaTranscriptAsset extends KalturaAttachmentAsset
 	 * @var KalturaLanguage
 	 */
 	public $language = null;
+
+	/**
+	 * The provider of the transcript
+	 *
+	 * @var KalturaTranscriptProviderType
+	 */
+	public $providerType = null;
 
 
 }
