@@ -136,6 +136,15 @@ class KalturaAttachmentAssetListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAttachmentServeOptions extends KalturaAssetServeOptions
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaAttachmentAssetBaseFilter extends KalturaAssetFilter
 {
 	/**
@@ -304,15 +313,18 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 	 * Serves attachment by its id
 	 * 
 	 * @param string $attachmentAssetId 
+	 * @param KalturaAttachmentServeOptions $serveOptions 
 	 * @return file
 	 */
-	function serve($attachmentAssetId)
+	function serve($attachmentAssetId, KalturaAttachmentServeOptions $serveOptions = null)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
+		if ($serveOptions !== null)
+			$this->client->addParam($kparams, "serveOptions", $serveOptions->toParams());
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "serve", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();

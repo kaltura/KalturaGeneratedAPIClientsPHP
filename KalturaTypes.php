@@ -944,6 +944,29 @@ class KalturaAssetParamsResourceContainer extends KalturaResource
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAssetServeOptions extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $download = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaOperationAttributes extends KalturaObjectBase
 {
 
@@ -10057,29 +10080,6 @@ class KalturaSyndicationFeedEntryCount extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaThumbnailServeOptions extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $download = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $referrer = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaUiConf extends KalturaObjectBase
 {
 	/**
@@ -16504,6 +16504,15 @@ class KalturaThumbParamsListResponse extends KalturaListResponse
 	 */
 	public $objects;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaThumbnailServeOptions extends KalturaAssetServeOptions
+{
 
 }
 
