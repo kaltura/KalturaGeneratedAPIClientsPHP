@@ -6674,6 +6674,13 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 */
 	public $liveStatus = null;
 
+	/**
+	 * The chunk duration value in milliseconds
+	 *
+	 * @var int
+	 */
+	public $segmentDuration = null;
+
 
 }
 

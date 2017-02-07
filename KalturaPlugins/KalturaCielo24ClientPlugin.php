@@ -137,6 +137,13 @@ class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData
 	 */
 	public $replaceMediaContent = null;
 
+	/**
+	 * additional parameters to send to Cielo24
+	 *
+	 * @var string
+	 */
+	public $additionalParameters = null;
+
 
 }
 
