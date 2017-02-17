@@ -159,44 +159,6 @@ class KalturaLikeService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param string $entryId 
-	 * @return bool
-	 */
-	function like($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("like_like", "like", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$resultObject = (bool) $resultObject;
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $entryId 
-	 * @return bool
-	 */
-	function unlike($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("like_like", "unlike", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$resultObject = (bool) $resultObject;
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $entryId 
 	 * @param string $userId 
 	 * @return bool
 	 */
@@ -206,6 +168,25 @@ class KalturaLikeService extends KalturaServiceBase
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "userId", $userId);
 		$this->client->queueServiceActionCall("like_like", "checkLikeExists", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $entryId 
+	 * @return bool
+	 */
+	function like($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("like_like", "like", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -234,6 +215,25 @@ class KalturaLikeService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaLikeListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $entryId 
+	 * @return bool
+	 */
+	function unlike($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("like_like", "unlike", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
 		return $resultObject;
 	}
 }

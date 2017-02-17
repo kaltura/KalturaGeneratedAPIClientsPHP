@@ -1586,37 +1586,39 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	}
 
 	/**
-	 * Retrieve a KalturaScheduleEvent object by ID
+	 * Add new bulk upload batch job
 	 * 
-	 * @param int $scheduleEventId 
-	 * @return KalturaScheduleEvent
+	 * @param file $fileData 
+	 * @param KalturaBulkUploadICalJobData $bulkUploadData 
+	 * @return KalturaBulkUpload
 	 */
-	function get($scheduleEventId)
+	function addFromBulkUpload($fileData, KalturaBulkUploadICalJobData $bulkUploadData = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "get", $kparams);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "addFromBulkUpload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaScheduleEvent");
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
 		return $resultObject;
 	}
 
 	/**
-	 * Update an existing KalturaScheduleEvent object
+	 * Mark the KalturaScheduleEvent object as cancelled
 	 * 
 	 * @param int $scheduleEventId 
-	 * @param KalturaScheduleEvent $scheduleEvent Id
 	 * @return KalturaScheduleEvent
 	 */
-	function update($scheduleEventId, KalturaScheduleEvent $scheduleEvent)
+	function cancel($scheduleEventId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
-		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "update", $kparams);
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "cancel", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -1645,21 +1647,42 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	}
 
 	/**
-	 * Mark the KalturaScheduleEvent object as cancelled
+	 * Retrieve a KalturaScheduleEvent object by ID
 	 * 
 	 * @param int $scheduleEventId 
 	 * @return KalturaScheduleEvent
 	 */
-	function cancel($scheduleEventId)
+	function get($scheduleEventId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "cancel", $kparams);
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "get", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaScheduleEvent");
+		return $resultObject;
+	}
+
+	/**
+	 * List conflicting events for resourcesIds by event's dates
+	 * 
+	 * @param string $resourceIds Comma separated
+	 * @param KalturaScheduleEvent $scheduleEvent 
+	 * @return array
+	 */
+	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "resourceIds", $resourceIds);
+		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "array");
 		return $resultObject;
 	}
 
@@ -1687,46 +1710,23 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	}
 
 	/**
-	 * List conflicting events for resourcesIds by event's dates
+	 * Update an existing KalturaScheduleEvent object
 	 * 
-	 * @param string $resourceIds Comma separated
-	 * @param KalturaScheduleEvent $scheduleEvent 
-	 * @return array
+	 * @param int $scheduleEventId 
+	 * @param KalturaScheduleEvent $scheduleEvent Id
+	 * @return KalturaScheduleEvent
 	 */
-	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent)
+	function update($scheduleEventId, KalturaScheduleEvent $scheduleEvent)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "resourceIds", $resourceIds);
+		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
 		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", $kparams);
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
-	 * Add new bulk upload batch job
-	 * 
-	 * @param file $fileData 
-	 * @param KalturaBulkUploadICalJobData $bulkUploadData 
-	 * @return KalturaBulkUpload
-	 */
-	function addFromBulkUpload($fileData, KalturaBulkUploadICalJobData $bulkUploadData = null)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		if ($bulkUploadData !== null)
-			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "addFromBulkUpload", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "KalturaScheduleEvent");
 		return $resultObject;
 	}
 }
@@ -1762,42 +1762,25 @@ class KalturaScheduleResourceService extends KalturaServiceBase
 	}
 
 	/**
-	 * Retrieve a KalturaScheduleResource object by ID
+	 * Add new bulk upload batch job
 	 * 
-	 * @param int $scheduleResourceId 
-	 * @return KalturaScheduleResource
+	 * @param file $fileData 
+	 * @param KalturaBulkUploadCsvJobData $bulkUploadData 
+	 * @return KalturaBulkUpload
 	 */
-	function get($scheduleResourceId)
+	function addFromBulkUpload($fileData, KalturaBulkUploadCsvJobData $bulkUploadData = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
-		$this->client->queueServiceActionCall("schedule_scheduleresource", "get", $kparams);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleresource", "addFromBulkUpload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaScheduleResource");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing KalturaScheduleResource object
-	 * 
-	 * @param int $scheduleResourceId 
-	 * @param KalturaScheduleResource $scheduleResource Id
-	 * @return KalturaScheduleResource
-	 */
-	function update($scheduleResourceId, KalturaScheduleResource $scheduleResource)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
-		$this->client->addParam($kparams, "scheduleResource", $scheduleResource->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleresource", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaScheduleResource");
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
 		return $resultObject;
 	}
 
@@ -1812,6 +1795,25 @@ class KalturaScheduleResourceService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
 		$this->client->queueServiceActionCall("schedule_scheduleresource", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaScheduleResource");
+		return $resultObject;
+	}
+
+	/**
+	 * Retrieve a KalturaScheduleResource object by ID
+	 * 
+	 * @param int $scheduleResourceId 
+	 * @return KalturaScheduleResource
+	 */
+	function get($scheduleResourceId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
+		$this->client->queueServiceActionCall("schedule_scheduleresource", "get", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -1844,25 +1846,23 @@ class KalturaScheduleResourceService extends KalturaServiceBase
 	}
 
 	/**
-	 * Add new bulk upload batch job
+	 * Update an existing KalturaScheduleResource object
 	 * 
-	 * @param file $fileData 
-	 * @param KalturaBulkUploadCsvJobData $bulkUploadData 
-	 * @return KalturaBulkUpload
+	 * @param int $scheduleResourceId 
+	 * @param KalturaScheduleResource $scheduleResource Id
+	 * @return KalturaScheduleResource
 	 */
-	function addFromBulkUpload($fileData, KalturaBulkUploadCsvJobData $bulkUploadData = null)
+	function update($scheduleResourceId, KalturaScheduleResource $scheduleResource)
 	{
 		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		if ($bulkUploadData !== null)
-			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleresource", "addFromBulkUpload", $kparams, $kfiles);
+		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
+		$this->client->addParam($kparams, "scheduleResource", $scheduleResource->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleresource", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "KalturaScheduleResource");
 		return $resultObject;
 	}
 }
@@ -1898,6 +1898,25 @@ class KalturaScheduleEventResourceService extends KalturaServiceBase
 	}
 
 	/**
+	 * Mark the KalturaScheduleEventResource object as deleted
+	 * 
+	 * @param int $scheduleEventId 
+	 * @param int $scheduleResourceId 
+	 */
+	function delete($scheduleEventId, $scheduleResourceId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
+		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
+		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Retrieve a KalturaScheduleEventResource object by ID
 	 * 
 	 * @param int $scheduleEventId 
@@ -1915,6 +1934,29 @@ class KalturaScheduleEventResourceService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaScheduleEventResource");
+		return $resultObject;
+	}
+
+	/**
+	 * List KalturaScheduleEventResource objects
+	 * 
+	 * @param KalturaScheduleEventResourceFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaScheduleEventResourceListResponse
+	 */
+	function listAction(KalturaScheduleEventResourceFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaScheduleEventResourceListResponse");
 		return $resultObject;
 	}
 
@@ -1938,48 +1980,6 @@ class KalturaScheduleEventResourceService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaScheduleEventResource");
-		return $resultObject;
-	}
-
-	/**
-	 * Mark the KalturaScheduleEventResource object as deleted
-	 * 
-	 * @param int $scheduleEventId 
-	 * @param int $scheduleResourceId 
-	 */
-	function delete($scheduleEventId, $scheduleResourceId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "scheduleEventId", $scheduleEventId);
-		$this->client->addParam($kparams, "scheduleResourceId", $scheduleResourceId);
-		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * List KalturaScheduleEventResource objects
-	 * 
-	 * @param KalturaScheduleEventResourceFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaScheduleEventResourceListResponse
-	 */
-	function listAction(KalturaScheduleEventResourceFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaScheduleEventResourceListResponse");
 		return $resultObject;
 	}
 }

@@ -1035,6 +1035,32 @@ class KalturaMetadataService extends KalturaServiceBase
 	}
 
 	/**
+	 * Allows you to add a metadata xml data from remote URL.
+	 Enables different permissions than addFromUrl action.
+	 * 
+	 * @param int $metadataProfileId 
+	 * @param string $objectType 
+	 * @param string $objectId 
+	 * @param string $url XML metadata remote url
+	 * @return KalturaMetadata
+	 */
+	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->queueServiceActionCall("metadata_metadata", "addFromBulk", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadata");
+		return $resultObject;
+	}
+
+	/**
 	 * Allows you to add a metadata object and metadata file associated with Kaltura object
 	 * 
 	 * @param int $metadataProfileId 
@@ -1086,29 +1112,20 @@ class KalturaMetadataService extends KalturaServiceBase
 	}
 
 	/**
-	 * Allows you to add a metadata xml data from remote URL.
-	 Enables different permissions than addFromUrl action.
+	 * Delete an existing metadata
 	 * 
-	 * @param int $metadataProfileId 
-	 * @param string $objectType 
-	 * @param string $objectId 
-	 * @param string $url XML metadata remote url
-	 * @return KalturaMetadata
+	 * @param int $id 
 	 */
-	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
+	function delete($id)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->addParam($kparams, "url", $url);
-		$this->client->queueServiceActionCall("metadata_metadata", "addFromBulk", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("metadata_metadata", "delete", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadata");
-		return $resultObject;
+		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -1128,6 +1145,89 @@ class KalturaMetadataService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaMetadata");
 		return $resultObject;
+	}
+
+	/**
+	 * Index metadata by id, will also index the related object
+	 * 
+	 * @param string $id 
+	 * @param bool $shouldUpdate 
+	 * @return int
+	 */
+	function index($id, $shouldUpdate)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
+		$this->client->queueServiceActionCall("metadata_metadata", "index", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
+	 * Mark existing metadata as invalid
+	 Used by batch metadata transform
+	 * 
+	 * @param int $id 
+	 * @param int $version Enable update only if the metadata object version did not change by other process
+	 */
+	function invalidate($id, $version = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("metadata_metadata", "invalidate", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * List metadata objects by filter and pager
+	 * 
+	 * @param KalturaMetadataFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaMetadataListResponse
+	 */
+	function listAction(KalturaMetadataFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("metadata_metadata", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadataListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Serves metadata XML file
+	 * 
+	 * @param int $id 
+	 * @return file
+	 */
+	function serve($id)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("metadata_metadata", "serve", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
 	}
 
 	/**
@@ -1173,106 +1273,6 @@ class KalturaMetadataService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaMetadata");
 		return $resultObject;
-	}
-
-	/**
-	 * List metadata objects by filter and pager
-	 * 
-	 * @param KalturaMetadataFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaMetadataListResponse
-	 */
-	function listAction(KalturaMetadataFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("metadata_metadata", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadataListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete an existing metadata
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("metadata_metadata", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Mark existing metadata as invalid
-	 Used by batch metadata transform
-	 * 
-	 * @param int $id 
-	 * @param int $version Enable update only if the metadata object version did not change by other process
-	 */
-	function invalidate($id, $version = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("metadata_metadata", "invalidate", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Index metadata by id, will also index the related object
-	 * 
-	 * @param string $id 
-	 * @param bool $shouldUpdate 
-	 * @return int
-	 */
-	function index($id, $shouldUpdate)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
-		$this->client->queueServiceActionCall("metadata_metadata", "index", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
-		return $resultObject;
-	}
-
-	/**
-	 * Serves metadata XML file
-	 * 
-	 * @param int $id 
-	 * @return file
-	 */
-	function serve($id)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("metadata_metadata", "serve", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
 	}
 
 	/**
@@ -1357,6 +1357,23 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete an existing metadata profile
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("metadata_metadataprofile", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Retrieve a metadata profile object by id
 	 * 
 	 * @param int $id 
@@ -1367,31 +1384,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing metadata object
-	 * 
-	 * @param int $id 
-	 * @param KalturaMetadataProfile $metadataProfile 
-	 * @param string $xsdData XSD metadata definition
-	 * @param string $viewsData UI views definition
-	 * @return KalturaMetadataProfile
-	 */
-	function update($id, KalturaMetadataProfile $metadataProfile, $xsdData = null, $viewsData = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "metadataProfile", $metadataProfile->toParams());
-		$this->client->addParam($kparams, "xsdData", $xsdData);
-		$this->client->addParam($kparams, "viewsData", $viewsData);
-		$this->client->queueServiceActionCall("metadata_metadataprofile", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -1443,23 +1435,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Delete an existing metadata profile
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("metadata_metadataprofile", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
 	 * Update an existing metadata object definition file
 	 * 
 	 * @param int $id 
@@ -1472,72 +1447,6 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "toVersion", $toVersion);
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "revert", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing metadata object definition file
-	 * 
-	 * @param int $id 
-	 * @param file $xsdFile XSD metadata definition
-	 * @return KalturaMetadataProfile
-	 */
-	function updateDefinitionFromFile($id, $xsdFile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$kfiles = array();
-		$this->client->addParam($kfiles, "xsdFile", $xsdFile);
-		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateDefinitionFromFile", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing metadata object views file
-	 * 
-	 * @param int $id 
-	 * @param file $viewsFile UI views file
-	 * @return KalturaMetadataProfile
-	 */
-	function updateViewsFromFile($id, $viewsFile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$kfiles = array();
-		$this->client->addParam($kfiles, "viewsFile", $viewsFile);
-		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateViewsFromFile", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing metadata object xslt file
-	 * 
-	 * @param int $id 
-	 * @param file $xsltFile XSLT file, will be executed on every metadata add/update
-	 * @return KalturaMetadataProfile
-	 */
-	function updateTransformationFromFile($id, $xsltFile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$kfiles = array();
-		$this->client->addParam($kfiles, "xsltFile", $xsltFile);
-		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateTransformationFromFile", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -1582,6 +1491,97 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
 		return $this->client->doQueue();
+	}
+
+	/**
+	 * Update an existing metadata object
+	 * 
+	 * @param int $id 
+	 * @param KalturaMetadataProfile $metadataProfile 
+	 * @param string $xsdData XSD metadata definition
+	 * @param string $viewsData UI views definition
+	 * @return KalturaMetadataProfile
+	 */
+	function update($id, KalturaMetadataProfile $metadataProfile, $xsdData = null, $viewsData = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "metadataProfile", $metadataProfile->toParams());
+		$this->client->addParam($kparams, "xsdData", $xsdData);
+		$this->client->addParam($kparams, "viewsData", $viewsData);
+		$this->client->queueServiceActionCall("metadata_metadataprofile", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing metadata object definition file
+	 * 
+	 * @param int $id 
+	 * @param file $xsdFile XSD metadata definition
+	 * @return KalturaMetadataProfile
+	 */
+	function updateDefinitionFromFile($id, $xsdFile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "xsdFile", $xsdFile);
+		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateDefinitionFromFile", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing metadata object xslt file
+	 * 
+	 * @param int $id 
+	 * @param file $xsltFile XSLT file, will be executed on every metadata add/update
+	 * @return KalturaMetadataProfile
+	 */
+	function updateTransformationFromFile($id, $xsltFile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "xsltFile", $xsltFile);
+		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateTransformationFromFile", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing metadata object views file
+	 * 
+	 * @param int $id 
+	 * @param file $viewsFile UI views file
+	 * @return KalturaMetadataProfile
+	 */
+	function updateViewsFromFile($id, $viewsFile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "viewsFile", $viewsFile);
+		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateViewsFromFile", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaMetadataProfile");
+		return $resultObject;
 	}
 }
 /**

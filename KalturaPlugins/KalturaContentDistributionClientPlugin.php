@@ -2441,6 +2441,23 @@ class KalturaDistributionProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete Distribution Profile by id
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Get Distribution Profile by id
 	 * 
 	 * @param int $id 
@@ -2457,65 +2474,6 @@ class KalturaDistributionProfileService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaDistributionProfile");
 		return $resultObject;
-	}
-
-	/**
-	 * Update Distribution Profile by id
-	 * 
-	 * @param int $id 
-	 * @param KalturaDistributionProfile $distributionProfile 
-	 * @return KalturaDistributionProfile
-	 */
-	function update($id, KalturaDistributionProfile $distributionProfile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "distributionProfile", $distributionProfile->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDistributionProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update Distribution Profile status by id
-	 * 
-	 * @param int $id 
-	 * @param int $status 
-	 * @return KalturaDistributionProfile
-	 */
-	function updateStatus($id, $status)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status);
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "updateStatus", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDistributionProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete Distribution Profile by id
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -2563,6 +2521,48 @@ class KalturaDistributionProfileService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaDistributionProfileListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Update Distribution Profile by id
+	 * 
+	 * @param int $id 
+	 * @param KalturaDistributionProfile $distributionProfile 
+	 * @return KalturaDistributionProfile
+	 */
+	function update($id, KalturaDistributionProfile $distributionProfile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "distributionProfile", $distributionProfile->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDistributionProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * Update Distribution Profile status by id
+	 * 
+	 * @param int $id 
+	 * @param int $status 
+	 * @return KalturaDistributionProfile
+	 */
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDistributionProfile");
+		return $resultObject;
+	}
 }
 
 /**
@@ -2596,6 +2596,23 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete Entry Distribution by id
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Get Entry Distribution by id
 	 * 
 	 * @param int $id 
@@ -2615,16 +2632,159 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	}
 
 	/**
-	 * Validates Entry Distribution by id for submission
+	 * List all distribution providers
+	 * 
+	 * @param KalturaEntryDistributionFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaEntryDistributionListResponse
+	 */
+	function listAction(KalturaEntryDistributionFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryDistributionListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Retries last submit action
 	 * 
 	 * @param int $id 
 	 * @return KalturaEntryDistribution
 	 */
-	function validate($id)
+	function retrySubmit($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "validate", $kparams);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "retrySubmit", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
+		return $resultObject;
+	}
+
+	/**
+	 * Serves entry distribution returned data
+	 * 
+	 * @param int $id 
+	 * @param int $actionType 
+	 * @return file
+	 */
+	function serveReturnedData($id, $actionType)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "serveReturnedData", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
+	 * Serves entry distribution sent data
+	 * 
+	 * @param int $id 
+	 * @param int $actionType 
+	 * @return file
+	 */
+	function serveSentData($id, $actionType)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "serveSentData", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
+	 * Submits Entry Distribution to the remote destination
+	 * 
+	 * @param int $id 
+	 * @param bool $submitWhenReady 
+	 * @return KalturaEntryDistribution
+	 */
+	function submitAdd($id, $submitWhenReady = false)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "submitWhenReady", $submitWhenReady);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitAdd", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
+		return $resultObject;
+	}
+
+	/**
+	 * Deletes Entry Distribution from the remote destination
+	 * 
+	 * @param int $id 
+	 * @return KalturaEntryDistribution
+	 */
+	function submitDelete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitDelete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
+		return $resultObject;
+	}
+
+	/**
+	 * Submits Entry Distribution report request
+	 * 
+	 * @param int $id 
+	 * @return KalturaEntryDistribution
+	 */
+	function submitFetchReport($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitFetchReport", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
+		return $resultObject;
+	}
+
+	/**
+	 * Submits Entry Distribution changes to the remote destination
+	 * 
+	 * @param int $id 
+	 * @return KalturaEntryDistribution
+	 */
+	function submitUpdate($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitUpdate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -2655,182 +2815,22 @@ class KalturaEntryDistributionService extends KalturaServiceBase
 	}
 
 	/**
-	 * Delete Entry Distribution by id
+	 * Validates Entry Distribution by id for submission
 	 * 
 	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * List all distribution providers
-	 * 
-	 * @param KalturaEntryDistributionFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaEntryDistributionListResponse
-	 */
-	function listAction(KalturaEntryDistributionFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEntryDistributionListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Submits Entry Distribution to the remote destination
-	 * 
-	 * @param int $id 
-	 * @param bool $submitWhenReady 
 	 * @return KalturaEntryDistribution
 	 */
-	function submitAdd($id, $submitWhenReady = false)
+	function validate($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "submitWhenReady", $submitWhenReady);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitAdd", $kparams);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "validate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
 		return $resultObject;
-	}
-
-	/**
-	 * Submits Entry Distribution changes to the remote destination
-	 * 
-	 * @param int $id 
-	 * @return KalturaEntryDistribution
-	 */
-	function submitUpdate($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitUpdate", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
-		return $resultObject;
-	}
-
-	/**
-	 * Submits Entry Distribution report request
-	 * 
-	 * @param int $id 
-	 * @return KalturaEntryDistribution
-	 */
-	function submitFetchReport($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitFetchReport", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
-		return $resultObject;
-	}
-
-	/**
-	 * Deletes Entry Distribution from the remote destination
-	 * 
-	 * @param int $id 
-	 * @return KalturaEntryDistribution
-	 */
-	function submitDelete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitDelete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
-		return $resultObject;
-	}
-
-	/**
-	 * Retries last submit action
-	 * 
-	 * @param int $id 
-	 * @return KalturaEntryDistribution
-	 */
-	function retrySubmit($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "retrySubmit", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEntryDistribution");
-		return $resultObject;
-	}
-
-	/**
-	 * Serves entry distribution sent data
-	 * 
-	 * @param int $id 
-	 * @param int $actionType 
-	 * @return file
-	 */
-	function serveSentData($id, $actionType)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "serveSentData", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
-	}
-
-	/**
-	 * Serves entry distribution returned data
-	 * 
-	 * @param int $id 
-	 * @param int $actionType 
-	 * @return file
-	 */
-	function serveReturnedData($id, $actionType)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "serveReturnedData", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
 	}
 }
 
@@ -2900,6 +2900,23 @@ class KalturaGenericDistributionProviderService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete Generic Distribution Provider by id
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Get Generic Distribution Provider by id
 	 * 
 	 * @param int $id 
@@ -2916,44 +2933,6 @@ class KalturaGenericDistributionProviderService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProvider");
 		return $resultObject;
-	}
-
-	/**
-	 * Update Generic Distribution Provider by id
-	 * 
-	 * @param int $id 
-	 * @param KalturaGenericDistributionProvider $genericDistributionProvider 
-	 * @return KalturaGenericDistributionProvider
-	 */
-	function update($id, KalturaGenericDistributionProvider $genericDistributionProvider)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "genericDistributionProvider", $genericDistributionProvider->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProvider");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete Generic Distribution Provider by id
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -2976,6 +2955,27 @@ class KalturaGenericDistributionProviderService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProviderListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update Generic Distribution Provider by id
+	 * 
+	 * @param int $id 
+	 * @param KalturaGenericDistributionProvider $genericDistributionProvider 
+	 * @return KalturaGenericDistributionProvider
+	 */
+	function update($id, KalturaGenericDistributionProvider $genericDistributionProvider)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "genericDistributionProvider", $genericDistributionProvider->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProvider");
 		return $resultObject;
 	}
 }
@@ -3140,6 +3140,42 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete Generic Distribution Provider Action by id
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Delete Generic Distribution Provider Action by provider id
+	 * 
+	 * @param int $genericDistributionProviderId 
+	 * @param int $actionType 
+	 */
+	function deleteByProviderId($genericDistributionProviderId, $actionType)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Get Generic Distribution Provider Action by id
 	 * 
 	 * @param int $id 
@@ -3180,25 +3216,25 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update Generic Distribution Provider Action by provider id
+	 * List all distribution providers
 	 * 
-	 * @param int $genericDistributionProviderId 
-	 * @param int $actionType 
-	 * @param KalturaGenericDistributionProviderAction $genericDistributionProviderAction 
-	 * @return KalturaGenericDistributionProviderAction
+	 * @param KalturaGenericDistributionProviderActionFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaGenericDistributionProviderActionListResponse
 	 */
-	function updateByProviderId($genericDistributionProviderId, $actionType, KalturaGenericDistributionProviderAction $genericDistributionProviderAction)
+	function listAction(KalturaGenericDistributionProviderActionFilter $filter = null, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->addParam($kparams, "genericDistributionProviderAction", $genericDistributionProviderAction->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "list", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProviderAction");
+		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProviderActionListResponse");
 		return $resultObject;
 	}
 
@@ -3224,61 +3260,25 @@ class KalturaGenericDistributionProviderActionService extends KalturaServiceBase
 	}
 
 	/**
-	 * Delete Generic Distribution Provider Action by id
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Delete Generic Distribution Provider Action by provider id
+	 * Update Generic Distribution Provider Action by provider id
 	 * 
 	 * @param int $genericDistributionProviderId 
 	 * @param int $actionType 
+	 * @param KalturaGenericDistributionProviderAction $genericDistributionProviderAction 
+	 * @return KalturaGenericDistributionProviderAction
 	 */
-	function deleteByProviderId($genericDistributionProviderId, $actionType)
+	function updateByProviderId($genericDistributionProviderId, $actionType, KalturaGenericDistributionProviderAction $genericDistributionProviderAction)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
 		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", $kparams);
+		$this->client->addParam($kparams, "genericDistributionProviderAction", $genericDistributionProviderAction->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * List all distribution providers
-	 * 
-	 * @param KalturaGenericDistributionProviderActionFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaGenericDistributionProviderActionListResponse
-	 */
-	function listAction(KalturaGenericDistributionProviderActionFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProviderActionListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaGenericDistributionProviderAction");
 		return $resultObject;
 	}
 }

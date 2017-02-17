@@ -443,27 +443,6 @@ class KalturaQuizService extends KalturaServiceBase
 	}
 
 	/**
-	 * Allows to update a quiz
-	 * 
-	 * @param string $entryId 
-	 * @param KalturaQuiz $quiz 
-	 * @return KalturaQuiz
-	 */
-	function update($entryId, KalturaQuiz $quiz)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quiz", $quiz->toParams());
-		$this->client->queueServiceActionCall("quiz_quiz", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaQuiz");
-		return $resultObject;
-	}
-
-	/**
 	 * Allows to get a quiz
 	 * 
 	 * @param string $entryId 
@@ -479,6 +458,27 @@ class KalturaQuizService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaQuiz");
+		return $resultObject;
+	}
+
+	/**
+	 * Sends a with an api request for pdf from quiz object
+	 * 
+	 * @param string $entryId 
+	 * @param int $quizOutputType 
+	 * @return string
+	 */
+	function getUrl($entryId, $quizOutputType)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
+		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 
@@ -529,23 +529,23 @@ class KalturaQuizService extends KalturaServiceBase
 	}
 
 	/**
-	 * Sends a with an api request for pdf from quiz object
+	 * Allows to update a quiz
 	 * 
 	 * @param string $entryId 
-	 * @param int $quizOutputType 
-	 * @return string
+	 * @param KalturaQuiz $quiz 
+	 * @return KalturaQuiz
 	 */
-	function getUrl($entryId, $quizOutputType)
+	function update($entryId, KalturaQuiz $quiz)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
-		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", $kparams);
+		$this->client->addParam($kparams, "quiz", $quiz->toParams());
+		$this->client->queueServiceActionCall("quiz_quiz", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
+		$this->client->validateObjectType($resultObject, "KalturaQuiz");
 		return $resultObject;
 	}
 }

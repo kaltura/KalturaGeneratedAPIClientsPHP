@@ -532,26 +532,61 @@ class KalturaCuePointService extends KalturaServiceBase
 	}
 
 	/**
-	 * Download multiple cue points objects as XML definitions
+	 * Clone cuePoint with id to given entry
+	 * 
+	 * @param string $id 
+	 * @param string $entryId 
+	 * @return KalturaCuePoint
+	 */
+	function cloneAction($id, $entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "clone", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCuePoint");
+		return $resultObject;
+	}
+
+	/**
+	 * Count cue point objects by filter
 	 * 
 	 * @param KalturaCuePointFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return file
+	 * @return int
 	 */
-	function serveBulk(KalturaCuePointFilter $filter = null, KalturaFilterPager $pager = null)
+	function count(KalturaCuePointFilter $filter = null)
 	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("cuepoint_cuepoint", "serveBulk", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "count", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete cue point by id, and delete all children cue points
+	 * 
+	 * @param string $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -597,23 +632,26 @@ class KalturaCuePointService extends KalturaServiceBase
 	}
 
 	/**
-	 * Count cue point objects by filter
+	 * Download multiple cue points objects as XML definitions
 	 * 
 	 * @param KalturaCuePointFilter $filter 
-	 * @return int
+	 * @param KalturaFilterPager $pager 
+	 * @return file
 	 */
-	function count(KalturaCuePointFilter $filter = null)
+	function serveBulk(KalturaCuePointFilter $filter = null, KalturaFilterPager $pager = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("cuepoint_cuepoint", "count", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
-		return $resultObject;
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "serveBulk", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
 	}
 
 	/**
@@ -638,23 +676,6 @@ class KalturaCuePointService extends KalturaServiceBase
 	}
 
 	/**
-	 * Delete cue point by id, and delete all children cue points
-	 * 
-	 * @param string $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("cuepoint_cuepoint", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
 	 * Update cuePoint status by id
 	 * 
 	 * @param string $id 
@@ -671,27 +692,6 @@ class KalturaCuePointService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * Clone cuePoint with id to given entry
-	 * 
-	 * @param string $id 
-	 * @param string $entryId 
-	 * @return KalturaCuePoint
-	 */
-	function cloneAction($id, $entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("cuepoint_cuepoint", "clone", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCuePoint");
-		return $resultObject;
 	}
 }
 /**

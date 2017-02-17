@@ -569,27 +569,6 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
-	 * Add new document entry after the specific document file was uploaded and the upload token id exists
-	 * 
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata
-	 * @param string $uploadTokenId Upload token id
-	 * @return KalturaDocumentEntry
-	 */
-	function addFromUploadedFile(KalturaDocumentEntry $documentEntry, $uploadTokenId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
-		$this->client->queueServiceActionCall("document_documents", "addFromUploadedFile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
 	 * Copy entry into new entry
 	 * 
 	 * @param string $sourceEntryId Document entry id to copy from
@@ -636,6 +615,65 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
+	 * Add new document entry after the specific document file was uploaded and the upload token id exists
+	 * 
+	 * @param KalturaDocumentEntry $documentEntry Document entry metadata
+	 * @param string $uploadTokenId Upload token id
+	 * @return KalturaDocumentEntry
+	 */
+	function addFromUploadedFile(KalturaDocumentEntry $documentEntry, $uploadTokenId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
+		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
+		$this->client->queueServiceActionCall("document_documents", "addFromUploadedFile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * Approves document replacement
+	 * 
+	 * @param string $entryId Document entry id to replace
+	 * @return KalturaDocumentEntry
+	 */
+	function approveReplace($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("document_documents", "approveReplace", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * Cancels document replacement
+	 * 
+	 * @param string $entryId Document entry id to cancel
+	 * @return KalturaDocumentEntry
+	 */
+	function cancelReplace($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("document_documents", "cancelReplace", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Convert entry
 	 * 
 	 * @param string $entryId Document entry id
@@ -663,44 +701,22 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
-	 * Get document entry by ID.
+	 * This will queue a batch job for converting the document file to swf
+	 Returns the URL where the new swf will be available
 	 * 
-	 * @param string $entryId Document entry id
-	 * @param int $version Desired version of the data
-	 * @return KalturaDocumentEntry
+	 * @param string $entryId 
+	 * @return string
 	 */
-	function get($entryId, $version = -1)
+	function convertPptToSwf($entryId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("document_documents", "get", $kparams);
+		$this->client->queueServiceActionCall("document_documents", "convertPptToSwf", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Update document entry. Only the properties that were set will be updated.
-	 * 
-	 * @param string $entryId Document entry id to update
-	 * @param KalturaDocumentEntry $documentEntry Document entry metadata to update
-	 * @return KalturaDocumentEntry
-	 */
-	function update($entryId, KalturaDocumentEntry $documentEntry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->queueServiceActionCall("document_documents", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 
@@ -719,6 +735,27 @@ class KalturaDocumentsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Get document entry by ID.
+	 * 
+	 * @param string $entryId Document entry id
+	 * @param int $version Desired version of the data
+	 * @return KalturaDocumentEntry
+	 */
+	function get($entryId, $version = -1)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("document_documents", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
 	}
 
 	/**
@@ -741,46 +778,6 @@ class KalturaDocumentsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaDocumentListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Upload a document file to Kaltura, then the file can be used to create a document entry.
-	 * 
-	 * @param file $fileData The file data
-	 * @return string
-	 */
-	function upload($fileData)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		$this->client->queueServiceActionCall("document_documents", "upload", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-
-	/**
-	 * This will queue a batch job for converting the document file to swf
-	 Returns the URL where the new swf will be available
-	 * 
-	 * @param string $entryId 
-	 * @return string
-	 */
-	function convertPptToSwf($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document_documents", "convertPptToSwf", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 
@@ -831,6 +828,27 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
+	 * Update document entry. Only the properties that were set will be updated.
+	 * 
+	 * @param string $entryId Document entry id to update
+	 * @param KalturaDocumentEntry $documentEntry Document entry metadata to update
+	 * @return KalturaDocumentEntry
+	 */
+	function update($entryId, KalturaDocumentEntry $documentEntry)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
+		$this->client->queueServiceActionCall("document_documents", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Replace content associated with the given document entry.
 	 * 
 	 * @param string $entryId Document entry id to update
@@ -854,40 +872,22 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
-	 * Approves document replacement
+	 * Upload a document file to Kaltura, then the file can be used to create a document entry.
 	 * 
-	 * @param string $entryId Document entry id to replace
-	 * @return KalturaDocumentEntry
+	 * @param file $fileData The file data
+	 * @return string
 	 */
-	function approveReplace($entryId)
+	function upload($fileData)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document_documents", "approveReplace", $kparams);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		$this->client->queueServiceActionCall("document_documents", "upload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Cancels document replacement
-	 * 
-	 * @param string $entryId Document entry id to cancel
-	 * @return KalturaDocumentEntry
-	 */
-	function cancelReplace($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document_documents", "cancelReplace", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
 	}
 }

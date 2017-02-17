@@ -204,28 +204,6 @@ class KalturaTagService extends KalturaServiceBase
 	}
 
 	/**
-	 * 
-	 * 
-	 * @param KalturaTagFilter $tagFilter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaTagListResponse
-	 */
-	function search(KalturaTagFilter $tagFilter, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "tagFilter", $tagFilter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("tagsearch_tag", "search", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaTagListResponse");
-		return $resultObject;
-	}
-
-	/**
 	 * Action goes over all tags with instanceCount==0 and checks whether they need to be removed from the DB. Returns number of removed tags.
 	 * 
 	 * @return int
@@ -261,6 +239,28 @@ class KalturaTagService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaTagFilter $tagFilter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaTagListResponse
+	 */
+	function search(KalturaTagFilter $tagFilter, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "tagFilter", $tagFilter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("tagsearch_tag", "search", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaTagListResponse");
+		return $resultObject;
 	}
 }
 /**

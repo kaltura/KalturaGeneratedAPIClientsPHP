@@ -589,6 +589,44 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete an event notification template object
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Dispatch event notification object by id
+	 * 
+	 * @param int $id 
+	 * @param KalturaEventNotificationScope $scope 
+	 * @return int
+	 */
+	function dispatch($id, KalturaEventNotificationScope $scope)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "scope", $scope->toParams());
+		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "dispatch", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieve an event notification template object by id
 	 * 
 	 * @param int $id 
@@ -605,65 +643,6 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplate");
 		return $resultObject;
-	}
-
-	/**
-	 * Update an existing event notification template object
-	 * 
-	 * @param int $id 
-	 * @param KalturaEventNotificationTemplate $eventNotificationTemplate 
-	 * @return KalturaEventNotificationTemplate
-	 */
-	function update($id, KalturaEventNotificationTemplate $eventNotificationTemplate)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "eventNotificationTemplate", $eventNotificationTemplate->toParams());
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplate");
-		return $resultObject;
-	}
-
-	/**
-	 * Update event notification template status by id
-	 * 
-	 * @param int $id 
-	 * @param int $status 
-	 * @return KalturaEventNotificationTemplate
-	 */
-	function updateStatus($id, $status)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status);
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "updateStatus", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplate");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete an event notification template object
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -713,27 +692,6 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 	}
 
 	/**
-	 * Dispatch event notification object by id
-	 * 
-	 * @param int $id 
-	 * @param KalturaEventNotificationScope $scope 
-	 * @return int
-	 */
-	function dispatch($id, KalturaEventNotificationScope $scope)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "scope", $scope->toParams());
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "dispatch", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
-		return $resultObject;
-	}
-
-	/**
 	 * Action lists the template partner event notification templates.
 	 * 
 	 * @param KalturaEventNotificationTemplateFilter $filter 
@@ -753,6 +711,48 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplateListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing event notification template object
+	 * 
+	 * @param int $id 
+	 * @param KalturaEventNotificationTemplate $eventNotificationTemplate 
+	 * @return KalturaEventNotificationTemplate
+	 */
+	function update($id, KalturaEventNotificationTemplate $eventNotificationTemplate)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "eventNotificationTemplate", $eventNotificationTemplate->toParams());
+		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplate");
+		return $resultObject;
+	}
+
+	/**
+	 * Update event notification template status by id
+	 * 
+	 * @param int $id 
+	 * @param int $status 
+	 * @return KalturaEventNotificationTemplate
+	 */
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplate");
 		return $resultObject;
 	}
 }

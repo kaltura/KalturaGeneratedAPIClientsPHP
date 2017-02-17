@@ -205,42 +205,22 @@ class KalturaExternalMediaService extends KalturaServiceBase
 	}
 
 	/**
-	 * Get external media entry by ID.
+	 * Count media entries by filter.
 	 * 
-	 * @param string $id External media entry id
-	 * @return KalturaExternalMediaEntry
+	 * @param KalturaExternalMediaEntryFilter $filter External media entry filter
+	 * @return int
 	 */
-	function get($id)
+	function count(KalturaExternalMediaEntryFilter $filter = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "get", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "count", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaExternalMediaEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * Update external media entry. Only the properties that were set will be updated.
-	 * 
-	 * @param string $id External media entry id to update
-	 * @param KalturaExternalMediaEntry $entry External media entry object to update
-	 * @return KalturaExternalMediaEntry
-	 */
-	function update($id, KalturaExternalMediaEntry $entry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "entry", $entry->toParams());
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaExternalMediaEntry");
+		$this->client->validateObjectType($resultObject, "integer");
 		return $resultObject;
 	}
 
@@ -259,6 +239,25 @@ class KalturaExternalMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Get external media entry by ID.
+	 * 
+	 * @param string $id External media entry id
+	 * @return KalturaExternalMediaEntry
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaExternalMediaEntry");
+		return $resultObject;
 	}
 
 	/**
@@ -285,22 +284,23 @@ class KalturaExternalMediaService extends KalturaServiceBase
 	}
 
 	/**
-	 * Count media entries by filter.
+	 * Update external media entry. Only the properties that were set will be updated.
 	 * 
-	 * @param KalturaExternalMediaEntryFilter $filter External media entry filter
-	 * @return int
+	 * @param string $id External media entry id to update
+	 * @param KalturaExternalMediaEntry $entry External media entry object to update
+	 * @return KalturaExternalMediaEntry
 	 */
-	function count(KalturaExternalMediaEntryFilter $filter = null)
+	function update($id, KalturaExternalMediaEntry $entry)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "count", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entry", $entry->toParams());
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "KalturaExternalMediaEntry");
 		return $resultObject;
 	}
 }

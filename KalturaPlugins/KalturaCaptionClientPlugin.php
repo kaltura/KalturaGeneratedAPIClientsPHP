@@ -404,18 +404,33 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update content of caption asset
 	 * 
-	 * @param string $id 
-	 * @param KalturaContentResource $contentResource 
-	 * @return KalturaCaptionAsset
+	 * 
+	 * @param string $captionAssetId 
 	 */
-	function setContent($id, KalturaContentResource $contentResource)
+	function delete($captionAssetId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "contentResource", $contentResource->toParams());
-		$this->client->queueServiceActionCall("caption_captionasset", "setContent", $kparams);
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		$this->client->queueServiceActionCall("caption_captionasset", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $captionAssetId 
+	 * @return KalturaCaptionAsset
+	 */
+	function get($captionAssetId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		$this->client->queueServiceActionCall("caption_captionasset", "get", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -425,45 +440,22 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update caption asset
+	 * Get remote storage existing paths for the asset
 	 * 
 	 * @param string $id 
-	 * @param KalturaCaptionAsset $captionAsset 
-	 * @return KalturaCaptionAsset
+	 * @return KalturaRemotePathListResponse
 	 */
-	function update($id, KalturaCaptionAsset $captionAsset)
+	function getRemotePaths($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "captionAsset", $captionAsset->toParams());
-		$this->client->queueServiceActionCall("caption_captionasset", "update", $kparams);
+		$this->client->queueServiceActionCall("caption_captionasset", "getRemotePaths", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCaptionAsset");
+		$this->client->validateObjectType($resultObject, "KalturaRemotePathListResponse");
 		return $resultObject;
-	}
-
-	/**
-	 * Serves caption by entry id and thumnail params id
-	 * 
-	 * @param string $entryId 
-	 * @param int $captionParamId If not set, default caption will be used.
-	 * @return file
-	 */
-	function serveByEntryId($entryId, $captionParamId = null)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "captionParamId", $captionParamId);
-		$this->client->queueServiceActionCall("caption_captionasset", "serveByEntryId", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
 	}
 
 	/**
@@ -488,21 +480,25 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
-	 * Get remote storage existing paths for the asset
+	 * List caption Assets by filter and pager
 	 * 
-	 * @param string $id 
-	 * @return KalturaRemotePathListResponse
+	 * @param KalturaAssetFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaCaptionAssetListResponse
 	 */
-	function getRemotePaths($id)
+	function listAction(KalturaAssetFilter $filter = null, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("caption_captionasset", "getRemotePaths", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("caption_captionasset", "list", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaRemotePathListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaCaptionAssetListResponse");
 		return $resultObject;
 	}
 
@@ -520,6 +516,27 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
 		$this->client->queueServiceActionCall("caption_captionasset", "serve", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
+	 * Serves caption by entry id and thumnail params id
+	 * 
+	 * @param string $entryId 
+	 * @param int $captionParamId If not set, default caption will be used.
+	 * @return file
+	 */
+	function serveByEntryId($entryId, $captionParamId = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "captionParamId", $captionParamId);
+		$this->client->queueServiceActionCall("caption_captionasset", "serveByEntryId", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
 		return $this->client->doQueue();
@@ -568,16 +585,18 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
+	 * Update content of caption asset
 	 * 
-	 * 
-	 * @param string $captionAssetId 
+	 * @param string $id 
+	 * @param KalturaContentResource $contentResource 
 	 * @return KalturaCaptionAsset
 	 */
-	function get($captionAssetId)
+	function setContent($id, KalturaContentResource $contentResource)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
-		$this->client->queueServiceActionCall("caption_captionasset", "get", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "contentResource", $contentResource->toParams());
+		$this->client->queueServiceActionCall("caption_captionasset", "setContent", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -587,43 +606,24 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
-	 * List caption Assets by filter and pager
+	 * Update caption asset
 	 * 
-	 * @param KalturaAssetFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaCaptionAssetListResponse
+	 * @param string $id 
+	 * @param KalturaCaptionAsset $captionAsset 
+	 * @return KalturaCaptionAsset
 	 */
-	function listAction(KalturaAssetFilter $filter = null, KalturaFilterPager $pager = null)
+	function update($id, KalturaCaptionAsset $captionAsset)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("caption_captionasset", "list", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "captionAsset", $captionAsset->toParams());
+		$this->client->queueServiceActionCall("caption_captionasset", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCaptionAssetListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaCaptionAsset");
 		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $captionAssetId 
-	 */
-	function delete($captionAssetId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
-		$this->client->queueServiceActionCall("caption_captionasset", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 }
 
@@ -658,6 +658,23 @@ class KalturaCaptionParamsService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete Caption Params by ID
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("caption_captionparams", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Get Caption Params by ID
 	 * 
 	 * @param int $id 
@@ -674,44 +691,6 @@ class KalturaCaptionParamsService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaCaptionParams");
 		return $resultObject;
-	}
-
-	/**
-	 * Update Caption Params by ID
-	 * 
-	 * @param int $id 
-	 * @param KalturaCaptionParams $captionParams 
-	 * @return KalturaCaptionParams
-	 */
-	function update($id, KalturaCaptionParams $captionParams)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "captionParams", $captionParams->toParams());
-		$this->client->queueServiceActionCall("caption_captionparams", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCaptionParams");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete Caption Params by ID
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("caption_captionparams", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -734,6 +713,27 @@ class KalturaCaptionParamsService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaCaptionParamsListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update Caption Params by ID
+	 * 
+	 * @param int $id 
+	 * @param KalturaCaptionParams $captionParams 
+	 * @return KalturaCaptionParams
+	 */
+	function update($id, KalturaCaptionParams $captionParams)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "captionParams", $captionParams->toParams());
+		$this->client->queueServiceActionCall("caption_captionparams", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCaptionParams");
 		return $resultObject;
 	}
 }

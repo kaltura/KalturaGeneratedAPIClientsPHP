@@ -228,6 +228,127 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param string $attachmentAssetId 
+	 */
+	function delete($attachmentAssetId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $attachmentAssetId 
+	 * @return KalturaAttachmentAsset
+	 */
+	function get($attachmentAssetId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAttachmentAsset");
+		return $resultObject;
+	}
+
+	/**
+	 * Get remote storage existing paths for the asset
+	 * 
+	 * @param string $id 
+	 * @return KalturaRemotePathListResponse
+	 */
+	function getRemotePaths($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "getRemotePaths", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaRemotePathListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Get download URL for the asset
+	 * 
+	 * @param string $id 
+	 * @param int $storageId 
+	 * @return string
+	 */
+	function getUrl($id, $storageId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "storageId", $storageId);
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "getUrl", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
+	 * List attachment Assets by filter and pager
+	 * 
+	 * @param KalturaAssetFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaAttachmentAssetListResponse
+	 */
+	function listAction(KalturaAssetFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAttachmentAssetListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Serves attachment by its id
+	 * 
+	 * @param string $attachmentAssetId 
+	 * @param KalturaAttachmentServeOptions $serveOptions 
+	 * @return file
+	 */
+	function serve($attachmentAssetId, KalturaAttachmentServeOptions $serveOptions = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
+		if ($serveOptions !== null)
+			$this->client->addParam($kparams, "serveOptions", $serveOptions->toParams());
+		$this->client->queueServiceActionCall("attachment_attachmentasset", "serve", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
 	 * Update content of attachment asset
 	 * 
 	 * @param string $id 
@@ -267,127 +388,6 @@ class KalturaAttachmentAssetService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaAttachmentAsset");
 		return $resultObject;
-	}
-
-	/**
-	 * Get download URL for the asset
-	 * 
-	 * @param string $id 
-	 * @param int $storageId 
-	 * @return string
-	 */
-	function getUrl($id, $storageId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "storageId", $storageId);
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "getUrl", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-
-	/**
-	 * Get remote storage existing paths for the asset
-	 * 
-	 * @param string $id 
-	 * @return KalturaRemotePathListResponse
-	 */
-	function getRemotePaths($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "getRemotePaths", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaRemotePathListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Serves attachment by its id
-	 * 
-	 * @param string $attachmentAssetId 
-	 * @param KalturaAttachmentServeOptions $serveOptions 
-	 * @return file
-	 */
-	function serve($attachmentAssetId, KalturaAttachmentServeOptions $serveOptions = null)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
-		if ($serveOptions !== null)
-			$this->client->addParam($kparams, "serveOptions", $serveOptions->toParams());
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "serve", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $attachmentAssetId 
-	 * @return KalturaAttachmentAsset
-	 */
-	function get($attachmentAssetId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaAttachmentAsset");
-		return $resultObject;
-	}
-
-	/**
-	 * List attachment Assets by filter and pager
-	 * 
-	 * @param KalturaAssetFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaAttachmentAssetListResponse
-	 */
-	function listAction(KalturaAssetFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaAttachmentAssetListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $attachmentAssetId 
-	 */
-	function delete($attachmentAssetId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
-		$this->client->queueServiceActionCall("attachment_attachmentasset", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 }
 /**

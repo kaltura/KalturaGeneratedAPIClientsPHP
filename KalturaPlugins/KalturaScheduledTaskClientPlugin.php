@@ -596,6 +596,23 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Delete a scheduled task profile
+	 * 
+	 * @param int $id 
+	 */
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Retrieve a scheduled task profile by id
 	 * 
 	 * @param int $id 
@@ -615,41 +632,22 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update an existing scheduled task profile
 	 * 
-	 * @param int $id 
-	 * @param KalturaScheduledTaskProfile $scheduledTaskProfile 
-	 * @return KalturaScheduledTaskProfile
+	 * 
+	 * @param int $requestId 
+	 * @return KalturaObjectListResponse
 	 */
-	function update($id, KalturaScheduledTaskProfile $scheduledTaskProfile)
+	function getDryRunResults($requestId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "scheduledTaskProfile", $scheduledTaskProfile->toParams());
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "update", $kparams);
+		$this->client->addParam($kparams, "requestId", $requestId);
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaScheduledTaskProfile");
+		$this->client->validateObjectType($resultObject, "KalturaObjectListResponse");
 		return $resultObject;
-	}
-
-	/**
-	 * Delete a scheduled task profile
-	 * 
-	 * @param int $id 
-	 */
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
@@ -697,21 +695,23 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Update an existing scheduled task profile
 	 * 
-	 * 
-	 * @param int $requestId 
-	 * @return KalturaObjectListResponse
+	 * @param int $id 
+	 * @param KalturaScheduledTaskProfile $scheduledTaskProfile 
+	 * @return KalturaScheduledTaskProfile
 	 */
-	function getDryRunResults($requestId)
+	function update($id, KalturaScheduledTaskProfile $scheduledTaskProfile)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "requestId", $requestId);
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "scheduledTaskProfile", $scheduledTaskProfile->toParams());
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaObjectListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaScheduledTaskProfile");
 		return $resultObject;
 	}
 }

@@ -57,6 +57,25 @@ class KalturaBulkService extends KalturaServiceBase
 	}
 
 	/**
+	 * Aborts the bulk upload and all its child jobs
+	 * 
+	 * @param int $id Job id
+	 * @return KalturaBulkUpload
+	 */
+	function abort($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("bulkupload_bulk", "abort", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		return $resultObject;
+	}
+
+	/**
 	 * Get bulk upload batch job by id
 	 * 
 	 * @param int $id 
@@ -134,25 +153,6 @@ class KalturaBulkService extends KalturaServiceBase
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
 		return $this->client->doQueue();
-	}
-
-	/**
-	 * Aborts the bulk upload and all its child jobs
-	 * 
-	 * @param int $id Job id
-	 * @return KalturaBulkUpload
-	 */
-	function abort($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("bulkupload_bulk", "abort", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
-		return $resultObject;
 	}
 }
 /**

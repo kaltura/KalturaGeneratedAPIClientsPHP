@@ -303,29 +303,6 @@ class KalturaShortLinkService extends KalturaServiceBase
 	}
 
 	/**
-	 * List short link objects by filter and pager
-	 * 
-	 * @param KalturaShortLinkFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaShortLinkListResponse
-	 */
-	function listAction(KalturaShortLinkFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("shortlink_shortlink", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaShortLinkListResponse");
-		return $resultObject;
-	}
-
-	/**
 	 * Allows you to add a short link object
 	 * 
 	 * @param KalturaShortLink $shortLink 
@@ -336,46 +313,6 @@ class KalturaShortLinkService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "shortLink", $shortLink->toParams());
 		$this->client->queueServiceActionCall("shortlink_shortlink", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaShortLink");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieve an short link object by id
-	 * 
-	 * @param string $id 
-	 * @return KalturaShortLink
-	 */
-	function get($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("shortlink_shortlink", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaShortLink");
-		return $resultObject;
-	}
-
-	/**
-	 * Update exisitng short link
-	 * 
-	 * @param string $id 
-	 * @param KalturaShortLink $shortLink 
-	 * @return KalturaShortLink
-	 */
-	function update($id, KalturaShortLink $shortLink)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "shortLink", $shortLink->toParams());
-		$this->client->queueServiceActionCall("shortlink_shortlink", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -404,6 +341,25 @@ class KalturaShortLinkService extends KalturaServiceBase
 	}
 
 	/**
+	 * Retrieve an short link object by id
+	 * 
+	 * @param string $id 
+	 * @return KalturaShortLink
+	 */
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("shortlink_shortlink", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaShortLink");
+		return $resultObject;
+	}
+
+	/**
 	 * Serves short link
 	 * 
 	 * @param string $id 
@@ -422,6 +378,50 @@ class KalturaShortLinkService extends KalturaServiceBase
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
 		return $this->client->doQueue();
+	}
+
+	/**
+	 * List short link objects by filter and pager
+	 * 
+	 * @param KalturaShortLinkFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaShortLinkListResponse
+	 */
+	function listAction(KalturaShortLinkFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("shortlink_shortlink", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaShortLinkListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update exisitng short link
+	 * 
+	 * @param string $id 
+	 * @param KalturaShortLink $shortLink 
+	 * @return KalturaShortLink
+	 */
+	function update($id, KalturaShortLink $shortLink)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shortLink", $shortLink->toParams());
+		$this->client->queueServiceActionCall("shortlink_shortlink", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaShortLink");
+		return $resultObject;
 	}
 }
 /**

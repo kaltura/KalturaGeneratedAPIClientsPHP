@@ -366,29 +366,6 @@ class KalturaVirusScanProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * List virus scan profile objects by filter and pager
-	 * 
-	 * @param KalturaVirusScanProfileFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaVirusScanProfileListResponse
-	 */
-	function listAction(KalturaVirusScanProfileFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfileListResponse");
-		return $resultObject;
-	}
-
-	/**
 	 * Allows you to add an virus scan profile object and virus scan profile content associated with Kaltura object
 	 * 
 	 * @param KalturaVirusScanProfile $virusScanProfile 
@@ -399,46 +376,6 @@ class KalturaVirusScanProfileService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "virusScanProfile", $virusScanProfile->toParams());
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieve an virus scan profile object by id
-	 * 
-	 * @param int $virusScanProfileId 
-	 * @return KalturaVirusScanProfile
-	 */
-	function get($virusScanProfileId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "virusScanProfileId", $virusScanProfileId);
-		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Update exisitng virus scan profile, it is possible to update the virus scan profile id too
-	 * 
-	 * @param int $virusScanProfileId 
-	 * @param KalturaVirusScanProfile $virusScanProfile Id
-	 * @return KalturaVirusScanProfile
-	 */
-	function update($virusScanProfileId, KalturaVirusScanProfile $virusScanProfile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "virusScanProfileId", $virusScanProfileId);
-		$this->client->addParam($kparams, "virusScanProfile", $virusScanProfile->toParams());
-		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -467,6 +404,48 @@ class KalturaVirusScanProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Retrieve an virus scan profile object by id
+	 * 
+	 * @param int $virusScanProfileId 
+	 * @return KalturaVirusScanProfile
+	 */
+	function get($virusScanProfileId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "virusScanProfileId", $virusScanProfileId);
+		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfile");
+		return $resultObject;
+	}
+
+	/**
+	 * List virus scan profile objects by filter and pager
+	 * 
+	 * @param KalturaVirusScanProfileFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaVirusScanProfileListResponse
+	 */
+	function listAction(KalturaVirusScanProfileFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfileListResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Scan flavor asset according to virus scan profile
 	 * 
 	 * @param string $flavorAssetId 
@@ -484,6 +463,27 @@ class KalturaVirusScanProfileService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
+	 * Update exisitng virus scan profile, it is possible to update the virus scan profile id too
+	 * 
+	 * @param int $virusScanProfileId 
+	 * @param KalturaVirusScanProfile $virusScanProfile Id
+	 * @return KalturaVirusScanProfile
+	 */
+	function update($virusScanProfileId, KalturaVirusScanProfile $virusScanProfile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "virusScanProfileId", $virusScanProfileId);
+		$this->client->addParam($kparams, "virusScanProfile", $virusScanProfile->toParams());
+		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaVirusScanProfile");
 		return $resultObject;
 	}
 }
