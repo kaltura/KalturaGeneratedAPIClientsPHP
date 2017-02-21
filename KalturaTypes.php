@@ -3603,6 +3603,20 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 */
 	public $collectionTags = null;
 
+	/**
+	 * JSON string with array of "condition,profile-id" pairs.
+	 *
+	 * @var string
+	 */
+	public $conditionalProfiles = null;
+
+	/**
+	 * When set, the ExtractMedia job should detect the source file GOP using this value as the max calculated period
+	 *
+	 * @var int
+	 */
+	public $detectGOP = null;
+
 
 }
 
@@ -5311,6 +5325,13 @@ class KalturaFlavorParams extends KalturaAssetParams
 	 *
 	 * @var int
 	 */
+	public $forcedKeyFramesMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
 	public $isCropIMX = null;
 
 	/**
@@ -6188,6 +6209,13 @@ class KalturaMediaInfo extends KalturaObjectBase
 	 * @var int
 	 */
 	public $complexityValue = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $maxGOP = null;
 
 
 }
@@ -18673,6 +18701,13 @@ class KalturaExtractMediaJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $destDataFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $detectGOP = null;
 
 
 }
