@@ -17034,6 +17034,13 @@ class KalturaUrlTokenizerKs extends KalturaUrlTokenizer
 	 */
 	public $usePath = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $additionalUris = null;
+
 
 }
 
