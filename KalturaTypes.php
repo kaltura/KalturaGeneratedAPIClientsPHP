@@ -2324,7 +2324,7 @@ class KalturaPartner extends KalturaObjectBase
 	 * 
 	 *
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $partnerParentId = null;
 
@@ -14506,6 +14506,20 @@ class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed
 	 * @var string
 	 */
 	public $feedLandingPage = null;
+
+	/**
+	 * entry filter
+	 *
+	 * @var KalturaBaseEntryFilter
+	 */
+	public $entryFilter;
+
+	/**
+	 * page size
+	 *
+	 * @var int
+	 */
+	public $pageSize = null;
 
 
 }
