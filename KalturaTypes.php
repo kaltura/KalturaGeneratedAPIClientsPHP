@@ -20382,6 +20382,15 @@ class KalturaCategoryFilter extends KalturaCategoryBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaConstantXsltSyndicationFeed extends KalturaGenericXsltSyndicationFeed
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaConversionProfileFilter extends KalturaConversionProfileBaseFilter
 {
 
@@ -21058,6 +21067,13 @@ class KalturaServerFileResource extends KalturaDataCenterContentResource
 	 */
 	public $localFilePath = null;
 
+	/**
+	 * Should keep original file (false = mv, true = cp)
+	 *
+	 * @var bool
+	 */
+	public $keepOriginalFile = null;
+
 
 }
 
@@ -21460,6 +21476,15 @@ class KalturaITunesSyndicationFeedFilter extends KalturaITunesSyndicationFeedBas
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaOperaSyndicationFeed extends KalturaConstantXsltSyndicationFeed
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaPlaylistBaseFilter extends KalturaBaseEntryFilter
 {
 
@@ -21470,6 +21495,15 @@ abstract class KalturaPlaylistBaseFilter extends KalturaBaseEntryFilter
  * @subpackage Client
  */
 abstract class KalturaQuizUserEntryBaseFilter extends KalturaUserEntryFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRokuSyndicationFeed extends KalturaConstantXsltSyndicationFeed
 {
 
 }
