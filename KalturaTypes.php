@@ -17685,6 +17685,20 @@ abstract class KalturaAssetParamsBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $systemNameEqual = null;
