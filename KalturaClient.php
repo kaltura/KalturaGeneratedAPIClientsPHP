@@ -3560,9 +3560,10 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * @param KalturaDataCenterContentResource $resource 
 	 * @param float $duration In seconds
 	 * @param string $recordedEntryId Recorded entry Id
+	 * @param int $flavorParamsId Recorded entry Id
 	 * @return KalturaLiveEntry
 	 */
-	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration, $recordedEntryId = null)
+	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -3570,6 +3571,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 		$this->client->addParam($kparams, "resource", $resource->toParams());
 		$this->client->addParam($kparams, "duration", $duration);
 		$this->client->addParam($kparams, "recordedEntryId", $recordedEntryId);
+		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
 		$this->client->queueServiceActionCall("livechannel", "setRecordedContent", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -4066,9 +4068,10 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * @param KalturaDataCenterContentResource $resource 
 	 * @param float $duration In seconds
 	 * @param string $recordedEntryId Recorded entry Id
+	 * @param int $flavorParamsId Recorded entry Id
 	 * @return KalturaLiveEntry
 	 */
-	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration, $recordedEntryId = null)
+	function setRecordedContent($entryId, $mediaServerIndex, KalturaDataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -4076,6 +4079,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$this->client->addParam($kparams, "resource", $resource->toParams());
 		$this->client->addParam($kparams, "duration", $duration);
 		$this->client->addParam($kparams, "recordedEntryId", $recordedEntryId);
+		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
 		$this->client->queueServiceActionCall("livestream", "setRecordedContent", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -8194,6 +8198,25 @@ class KalturaUserEntryService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
+	 * @param KalturaUserEntryFilter $filter 
+	 * @return int
+	 */
+	function bulkDelete(KalturaUserEntryFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("userentry", "bulkDelete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
 	 * @param int $id 
 	 * @return KalturaUserEntry
 	 */
@@ -9268,7 +9291,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-05-11');
+		$this->setClientTag('php5:17-05-12');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

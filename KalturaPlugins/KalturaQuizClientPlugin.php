@@ -409,6 +409,15 @@ class KalturaQuestionCuePointFilter extends KalturaQuestionCuePointBaseFilter
 
 }
 
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
+{
+
+}
+
 
 /**
  * @package Kaltura

@@ -316,6 +316,7 @@ class KalturaEntryModerationStatus extends KalturaEnumBase
 	const PENDING_MODERATION = 1;
 	const APPROVED = 2;
 	const REJECTED = 3;
+	const DELETED = 4;
 	const FLAGGED_FOR_REVIEW = 5;
 	const AUTO_APPROVED = 6;
 }
@@ -1751,6 +1752,7 @@ class KalturaConditionType extends KalturaEnumBase
 	const HASH = "12";
 	const DELIVERY_PROFILE = "13";
 	const ACTIVE_EDGE_VALIDATE = "14";
+	const ANONYMOUS_IP = "15";
 }
 
 /**
@@ -2465,6 +2467,7 @@ class KalturaGenericXsltSyndicationFeedOrderBy extends KalturaEnumBase
 class KalturaGeoCoderType extends KalturaEnumBase
 {
 	const KALTURA = "1";
+	const MAX_MIND = "2";
 }
 
 /**
@@ -3448,6 +3451,16 @@ class KalturaMailType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMatchConditionType extends KalturaEnumBase
+{
+	const MATCH_ANY = "1";
+	const MATCH_ALL = "2";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaEntryCompareAttribute extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
@@ -4249,6 +4262,17 @@ class KalturaUploadTokenOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUserEntryExtendedStatus extends KalturaEnumBase
+{
+	const PLAYBACK_COMPLETE = "viewHistory.PLAYBACK_COMPLETE";
+	const PLAYBACK_STARTED = "viewHistory.PLAYBACK_STARTED";
+	const VIEWED = "viewHistory.VIEWED";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -4275,6 +4299,7 @@ class KalturaUserEntryStatus extends KalturaEnumBase
 class KalturaUserEntryType extends KalturaEnumBase
 {
 	const QUIZ = "quiz.QUIZ";
+	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";
 }
 
 /**

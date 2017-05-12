@@ -7324,6 +7324,13 @@ class KalturaLiveStreamParams extends KalturaObjectBase
 	 */
 	public $keyFrameInterval = null;
 
+	/**
+	 * Live stream's language
+	 *
+	 * @var string
+	 */
+	public $language = null;
+
 
 }
 
@@ -10796,6 +10803,13 @@ abstract class KalturaUserEntry extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryExtendedStatus
+	 */
+	public $extendedStatus = null;
 
 
 }
@@ -15157,6 +15171,13 @@ abstract class KalturaMatchCondition extends KalturaCondition
 	 */
 	public $values;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaMatchConditionType
+	 */
+	public $matchType = null;
+
 
 }
 
@@ -17692,6 +17713,22 @@ class KalturaAkamaiUniversalProvisionJobData extends KalturaProvisionJobData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAnonymousIPCondition extends KalturaMatchCondition
+{
+	/**
+	 * The ip geo coder engine to be used
+	 *
+	 * @var KalturaGeoCoderType
+	 */
+	public $geoCoderType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAppTokenFilter extends KalturaAppTokenBaseFilter
 {
 
@@ -20048,6 +20085,27 @@ abstract class KalturaUserEntryBaseFilter extends KalturaRelatedFilter
 	 */
 	public $typeEqual = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryExtendedStatus
+	 */
+	public $extendedStatusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusNotIn = null;
+
 
 }
 
@@ -20279,6 +20337,22 @@ class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData
  */
 abstract class KalturaAmazonS3StorageProfileBaseFilter extends KalturaStorageProfileFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAnonymousIPContextField extends KalturaStringField
+{
+	/**
+	 * The ip geo coder engine to be used
+	 *
+	 * @var KalturaGeoCoderType
+	 */
+	public $geoCoderType = null;
+
 
 }
 
@@ -21230,6 +21304,20 @@ class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
 	 */
 	public $isAnonymous = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyContextEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyContextIn = null;
+
 
 }
 
@@ -21734,15 +21822,6 @@ abstract class KalturaMediaServerNodeBaseFilter extends KalturaDeliveryServerNod
  * @subpackage Client
  */
 class KalturaPlaylistFilter extends KalturaPlaylistBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
 
 }

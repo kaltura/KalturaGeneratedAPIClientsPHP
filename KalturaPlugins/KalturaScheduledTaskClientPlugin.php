@@ -94,6 +94,7 @@ class KalturaObjectTaskType extends KalturaEnumBase
 	const DELETE_LOCAL_CONTENT = "5";
 	const STORAGE_EXPORT = "6";
 	const MODIFY_ENTRY = "7";
+	const MAIL_NOTIFICATION = "8";
 }
 
 /**
@@ -301,6 +302,36 @@ class KalturaDeleteEntryObjectTask extends KalturaObjectTask
  */
 class KalturaDeleteLocalContentObjectTask extends KalturaObjectTask
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMailNotificationObjectTask extends KalturaObjectTask
+{
+	/**
+	 * The mail to send the notification to
+	 *
+	 * @var string
+	 */
+	public $mailAddress = null;
+
+	/**
+	 * The message to send in the notification mail
+	 *
+	 * @var string
+	 */
+	public $message = null;
+
+	/**
+	 * Send the mail to each user
+	 *
+	 * @var bool
+	 */
+	public $sendToUsers = null;
+
 
 }
 

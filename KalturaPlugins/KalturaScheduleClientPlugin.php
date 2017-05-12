@@ -1670,7 +1670,7 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	 * 
 	 * @param string $resourceIds Comma separated
 	 * @param KalturaScheduleEvent $scheduleEvent 
-	 * @return array
+	 * @return KalturaScheduleEventListResponse
 	 */
 	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent)
 	{
@@ -1682,7 +1682,7 @@ class KalturaScheduleEventService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
+		$this->client->validateObjectType($resultObject, "KalturaScheduleEventListResponse");
 		return $resultObject;
 	}
 
