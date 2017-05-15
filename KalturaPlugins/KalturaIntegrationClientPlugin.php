@@ -43,6 +43,7 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
 class KalturaIntegrationProviderType extends KalturaEnumBase
 {
 	const CIELO24 = "cielo24.Cielo24";
+	const EXAMPLE = "exampleIntegration.Example";
 	const VOICEBASE = "voicebase.Voicebase";
 }
 
@@ -52,6 +53,7 @@ class KalturaIntegrationProviderType extends KalturaEnumBase
  */
 class KalturaIntegrationTriggerType extends KalturaEnumBase
 {
+	const BPM_EVENT_NOTIFICATION = "bpmEventNotificationIntegration.BpmEventNotification";
 	const MANUAL = "1";
 }
 

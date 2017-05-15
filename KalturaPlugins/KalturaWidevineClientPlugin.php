@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaDrmClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidevineRepositorySyncMode
+class KalturaWidevineRepositorySyncMode extends KalturaEnumBase
 {
 	const MODIFY = 0;
 }
@@ -49,7 +49,7 @@ class KalturaWidevineRepositorySyncMode
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidevineFlavorAssetOrderBy
+class KalturaWidevineFlavorAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -65,7 +65,7 @@ class KalturaWidevineFlavorAssetOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidevineFlavorParamsOrderBy
+class KalturaWidevineFlavorParamsOrderBy extends KalturaEnumBase
 {
 }
 
@@ -73,7 +73,7 @@ class KalturaWidevineFlavorParamsOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidevineFlavorParamsOutputOrderBy
+class KalturaWidevineFlavorParamsOutputOrderBy extends KalturaEnumBase
 {
 }
 
@@ -81,7 +81,7 @@ class KalturaWidevineFlavorParamsOutputOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWidevineProfileOrderBy
+class KalturaWidevineProfileOrderBy extends KalturaEnumBase
 {
 	const ID_ASC = "+id";
 	const NAME_ASC = "+name";
@@ -184,8 +184,7 @@ class KalturaWidevineRepositorySyncJobData extends KalturaJobData
 class KalturaWidevineFlavorAsset extends KalturaFlavorAsset
 {
 	/**
-	 * License distribution window start date 
-	 * 	 
+	 * License distribution window start date
 	 *
 	 * @var int
 	 */
@@ -193,7 +192,6 @@ class KalturaWidevineFlavorAsset extends KalturaFlavorAsset
 
 	/**
 	 * License distribution window end date
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -201,7 +199,6 @@ class KalturaWidevineFlavorAsset extends KalturaFlavorAsset
 
 	/**
 	 * Widevine unique asset id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -226,8 +223,7 @@ class KalturaWidevineFlavorParams extends KalturaFlavorParams
 class KalturaWidevineFlavorParamsOutput extends KalturaFlavorParamsOutput
 {
 	/**
-	 * License distribution window start date 
-	 * 	 
+	 * License distribution window start date
 	 *
 	 * @var int
 	 */
@@ -235,7 +231,6 @@ class KalturaWidevineFlavorParamsOutput extends KalturaFlavorParamsOutput
 
 	/**
 	 * License distribution window end date
-	 * 	 
 	 *
 	 * @var int
 	 */

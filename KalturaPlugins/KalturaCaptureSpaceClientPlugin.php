@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
+class KalturaCaptureSpaceClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +47,11 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaMultiCentersClientPlugin
+	 * @return KalturaCaptureSpaceClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaMultiCentersClientPlugin($client);
+		return new KalturaCaptureSpaceClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +69,7 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'multiCenters';
+		return 'captureSpace';
 	}
 }
 

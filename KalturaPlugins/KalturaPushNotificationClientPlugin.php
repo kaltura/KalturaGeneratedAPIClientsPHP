@@ -34,29 +34,28 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
+class KalturaPushNotificationCommandType extends KalturaEnumBase
+{
+	const CLEAR_QUEUE = "CLEAR_QUEUE";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPushNotificationTemplateOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const FILE_NAME_ASC = "+fileName";
-	const FILE_SIZE_ASC = "+fileSize";
-	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
 	const ID_ASC = "+id";
-	const PARSED_FLAVOR_ASC = "+parsedFlavor";
-	const PARSED_SLUG_ASC = "+parsedSlug";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const FILE_NAME_DESC = "-fileName";
-	const FILE_SIZE_DESC = "-fileSize";
-	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
 	const ID_DESC = "-id";
-	const PARSED_FLAVOR_DESC = "-parsedFlavor";
-	const PARSED_SLUG_DESC = "-parsedSlug";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -64,65 +63,107 @@ class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderOrderBy extends KalturaEnumBase
+class KalturaPushEventNotificationParameter extends KalturaEventNotificationParameter
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const NAME_ASC = "+name";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const NAME_DESC = "-name";
-	const UPDATED_AT_DESC = "-updatedAt";
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $queueKeyToken = null;
+
+
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolder extends KalturaDropFolder
+class KalturaPushNotificationData extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
-	public $webexUserId = null;
+	public $queueName = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
-	public $webexPassword = null;
+	public $queueKey = null;
 
 	/**
 	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $url = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPushNotificationParams extends KalturaObjectBase
+{
+	/**
+	 * User params
+	 *
+	 * @var array of KalturaPushEventNotificationParameter
+	 */
+	public $userParams;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPushNotificationTemplate extends KalturaEventNotificationTemplate
+{
+	/**
+	 * Define the content dynamic parameters
+	 *
+	 * @var array of KalturaPushEventNotificationParameter
+	 */
+	public $queueNameParameters;
+
+	/**
+	 * Define the content dynamic parameters
+	 *
+	 * @var array of KalturaPushEventNotificationParameter
+	 */
+	public $queueKeyParameters;
+
+	/**
+	 * Kaltura API object type
+	 *
+	 * @var string
+	 */
+	public $apiObjectType = null;
+
+	/**
+	 * Kaltura Object format
+	 *
+	 * @var KalturaResponseType
+	 */
+	public $objectFormat = null;
+
+	/**
+	 * Kaltura response-profile id
 	 *
 	 * @var int
 	 */
-	public $webexSiteId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexPartnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexServiceUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostIdMetadataFieldName = null;
+	public $responseProfileId = null;
 
 
 }
@@ -131,74 +172,7 @@ class KalturaWebexDropFolder extends KalturaDropFolder
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFile extends KalturaDropFolderFile
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $recordingId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $confId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentUrl = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderContentProcessorJobData extends KalturaDropFolderContentProcessorJobData
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
+abstract class KalturaPushNotificationTemplateBaseFilter extends KalturaEventNotificationTemplateFilter
 {
 
 }
@@ -207,7 +181,7 @@ abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFileFilter
+class KalturaPushNotificationTemplateFilter extends KalturaPushNotificationTemplateBaseFilter
 {
 
 }
@@ -216,25 +190,7 @@ abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFil
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileFilter extends KalturaWebexDropFolderFileBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderFilter extends KalturaWebexDropFolderBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
+class KalturaPushNotificationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -242,11 +198,11 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaWebexDropFolderClientPlugin
+	 * @return KalturaPushNotificationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaWebexDropFolderClientPlugin($client);
+		return new KalturaPushNotificationClientPlugin($client);
 	}
 
 	/**
@@ -264,7 +220,7 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'WebexDropFolder';
+		return 'pushNotification';
 	}
 }
 

@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmLicenseExpirationPolicy
+class KalturaDrmLicenseExpirationPolicy extends KalturaEnumBase
 {
 	const FIXED_DURATION = 1;
 	const ENTRY_SCHEDULING_END = 2;
@@ -50,7 +50,7 @@ class KalturaDrmLicenseExpirationPolicy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmPolicyStatus
+class KalturaDrmPolicyStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const DELETED = 2;
@@ -60,7 +60,7 @@ class KalturaDrmPolicyStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmProfileStatus
+class KalturaDrmProfileStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const DELETED = 2;
@@ -70,17 +70,7 @@ class KalturaDrmProfileStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmDeviceOrderBy
-{
-	const CREATED_AT_ASC = "+createdAt";
-	const CREATED_AT_DESC = "-createdAt";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmLicenseScenario
+class KalturaDrmLicenseScenario extends KalturaEnumBase
 {
 	const PROTECTION = "playReady.PROTECTION";
 	const PURCHASE = "playReady.PURCHASE";
@@ -92,7 +82,7 @@ class KalturaDrmLicenseScenario
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmLicenseType
+class KalturaDrmLicenseType extends KalturaEnumBase
 {
 	const NON_PERSISTENT = "playReady.NON_PERSISTENT";
 	const PERSISTENT = "playReady.PERSISTENT";
@@ -102,7 +92,7 @@ class KalturaDrmLicenseType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmPolicyOrderBy
+class KalturaDrmPolicyOrderBy extends KalturaEnumBase
 {
 }
 
@@ -110,7 +100,7 @@ class KalturaDrmPolicyOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmProfileOrderBy
+class KalturaDrmProfileOrderBy extends KalturaEnumBase
 {
 	const ID_ASC = "+id";
 	const NAME_ASC = "+name";
@@ -122,10 +112,62 @@ class KalturaDrmProfileOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmProviderType
+class KalturaDrmProviderType extends KalturaEnumBase
 {
+	const FAIRPLAY = "fairplay.FAIRPLAY";
 	const PLAY_READY = "playReady.PLAY_READY";
 	const WIDEVINE = "widevine.WIDEVINE";
+	const CENC = "1";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmSchemeName extends KalturaEnumBase
+{
+	const PLAYREADY_CENC = "drm.PLAYREADY_CENC";
+	const WIDEVINE_CENC = "drm.WIDEVINE_CENC";
+	const FAIRPLAY = "fairplay.FAIRPLAY";
+	const PLAYREADY = "playReady.PLAYREADY";
+	const WIDEVINE = "widevine.WIDEVINE";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmLicenseAccessDetails extends KalturaObjectBase
+{
+	/**
+	 * Drm policy name
+	 *
+	 * @var string
+	 */
+	public $policy = null;
+
+	/**
+	 * movie duration in seconds
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+	/**
+	 * playback window in seconds
+	 *
+	 * @var int
+	 */
+	public $absolute_duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $licenseParams;
+
+
 }
 
 /**
@@ -208,7 +250,6 @@ class KalturaDrmPolicy extends KalturaObjectBase
 
 	/**
 	 * Duration in days the license is effective
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -230,30 +271,12 @@ class KalturaDrmPolicy extends KalturaObjectBase
 	 */
 	public $updatedAt = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmPolicyListResponse extends KalturaObjectBase
-{
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDrmPolicy
-	 * @readonly
+	 * @var array of KalturaKeyValue
 	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
+	public $licenseParams;
 
 
 }
@@ -338,30 +361,12 @@ class KalturaDrmProfile extends KalturaObjectBase
 	 */
 	public $updatedAt = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmProfileListResponse extends KalturaObjectBase
-{
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDrmProfile
-	 * @readonly
+	 * @var string
 	 */
-	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
+	public $signingKey = null;
 
 
 }
@@ -370,42 +375,14 @@ class KalturaDrmProfileListResponse extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaDrmDeviceBaseFilter extends KalturaFilter
+class KalturaAccessControlDrmPolicyAction extends KalturaRuleAction
 {
 	/**
-	 * 
+	 * Drm policy id
 	 *
 	 * @var int
 	 */
-	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $partnerIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $deviceIdLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaDrmProviderType
-	 */
-	public $providerEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $providerIn = null;
+	public $policyId = null;
 
 
 }
@@ -493,6 +470,23 @@ abstract class KalturaDrmPolicyBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDrmPolicyListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaDrmPolicy
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaDrmProfileBaseFilter extends KalturaFilter
 {
 	/**
@@ -565,8 +559,16 @@ abstract class KalturaDrmProfileBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDrmDeviceFilter extends KalturaDrmDeviceBaseFilter
+class KalturaDrmProfileListResponse extends KalturaListResponse
 {
+	/**
+	 * 
+	 *
+	 * @var array of KalturaDrmProfile
+	 * @readonly
+	 */
+	public $objects;
+
 
 }
 
@@ -620,46 +622,6 @@ class KalturaDrmPolicyService extends KalturaServiceBase
 	}
 
 	/**
-	 * Retrieve a KalturaDrmPolicy object by ID
-	 * 
-	 * @param int $drmPolicyId 
-	 * @return KalturaDrmPolicy
-	 */
-	function get($drmPolicyId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "drmPolicyId", $drmPolicyId);
-		$this->client->queueServiceActionCall("drm_drmpolicy", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDrmPolicy");
-		return $resultObject;
-	}
-
-	/**
-	 * Update an existing KalturaDrmPolicy object
-	 * 
-	 * @param int $drmPolicyId 
-	 * @param KalturaDrmPolicy $drmPolicy Id
-	 * @return KalturaDrmPolicy
-	 */
-	function update($drmPolicyId, KalturaDrmPolicy $drmPolicy)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "drmPolicyId", $drmPolicyId);
-		$this->client->addParam($kparams, "drmPolicy", $drmPolicy->toParams());
-		$this->client->queueServiceActionCall("drm_drmpolicy", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDrmPolicy");
-		return $resultObject;
-	}
-
-	/**
 	 * Mark the KalturaDrmPolicy object as deleted
 	 * 
 	 * @param int $drmPolicyId 
@@ -670,6 +632,25 @@ class KalturaDrmPolicyService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "drmPolicyId", $drmPolicyId);
 		$this->client->queueServiceActionCall("drm_drmpolicy", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDrmPolicy");
+		return $resultObject;
+	}
+
+	/**
+	 * Retrieve a KalturaDrmPolicy object by ID
+	 * 
+	 * @param int $drmPolicyId 
+	 * @return KalturaDrmPolicy
+	 */
+	function get($drmPolicyId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "drmPolicyId", $drmPolicyId);
+		$this->client->queueServiceActionCall("drm_drmpolicy", "get", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -698,6 +679,27 @@ class KalturaDrmPolicyService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaDrmPolicyListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing KalturaDrmPolicy object
+	 * 
+	 * @param int $drmPolicyId 
+	 * @param KalturaDrmPolicy $drmPolicy Id
+	 * @return KalturaDrmPolicy
+	 */
+	function update($drmPolicyId, KalturaDrmPolicy $drmPolicy)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "drmPolicyId", $drmPolicyId);
+		$this->client->addParam($kparams, "drmPolicy", $drmPolicy->toParams());
+		$this->client->queueServiceActionCall("drm_drmpolicy", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDrmPolicy");
 		return $resultObject;
 	}
 }
@@ -733,6 +735,25 @@ class KalturaDrmProfileService extends KalturaServiceBase
 	}
 
 	/**
+	 * Mark the KalturaDrmProfile object as deleted
+	 * 
+	 * @param int $drmProfileId 
+	 * @return KalturaDrmProfile
+	 */
+	function delete($drmProfileId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "drmProfileId", $drmProfileId);
+		$this->client->queueServiceActionCall("drm_drmprofile", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDrmProfile");
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieve a KalturaDrmProfile object by ID
 	 * 
 	 * @param int $drmProfileId 
@@ -752,37 +773,16 @@ class KalturaDrmProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update an existing KalturaDrmProfile object
+	 * Retrieve a KalturaDrmProfile object by provider, if no specific profile defined return default profile
 	 * 
-	 * @param int $drmProfileId 
-	 * @param KalturaDrmProfile $drmProfile Id
+	 * @param string $provider 
 	 * @return KalturaDrmProfile
 	 */
-	function update($drmProfileId, KalturaDrmProfile $drmProfile)
+	function getByProvider($provider)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "drmProfileId", $drmProfileId);
-		$this->client->addParam($kparams, "drmProfile", $drmProfile->toParams());
-		$this->client->queueServiceActionCall("drm_drmprofile", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaDrmProfile");
-		return $resultObject;
-	}
-
-	/**
-	 * Mark the KalturaDrmProfile object as deleted
-	 * 
-	 * @param int $drmProfileId 
-	 * @return KalturaDrmProfile
-	 */
-	function delete($drmProfileId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "drmProfileId", $drmProfileId);
-		$this->client->queueServiceActionCall("drm_drmprofile", "delete", $kparams);
+		$this->client->addParam($kparams, "provider", $provider);
+		$this->client->queueServiceActionCall("drm_drmprofile", "getByProvider", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -815,21 +815,60 @@ class KalturaDrmProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Retrieve a KalturaDrmProfile object by provider, if no specific profile defined return default profile
+	 * Update an existing KalturaDrmProfile object
 	 * 
-	 * @param string $provider 
+	 * @param int $drmProfileId 
+	 * @param KalturaDrmProfile $drmProfile Id
 	 * @return KalturaDrmProfile
 	 */
-	function getByProvider($provider)
+	function update($drmProfileId, KalturaDrmProfile $drmProfile)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "provider", $provider);
-		$this->client->queueServiceActionCall("drm_drmprofile", "getByProvider", $kparams);
+		$this->client->addParam($kparams, "drmProfileId", $drmProfileId);
+		$this->client->addParam($kparams, "drmProfile", $drmProfile->toParams());
+		$this->client->queueServiceActionCall("drm_drmprofile", "update", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaDrmProfile");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmLicenseAccessService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * GetAccessAction
+     input: flavor ids, drmProvider
+     Get Access Action
+	 * 
+	 * @param string $entryId 
+	 * @param string $flavorIds 
+	 * @param string $referrer 
+	 * @return KalturaDrmLicenseAccessDetails
+	 */
+	function getAccess($entryId, $flavorIds, $referrer)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "flavorIds", $flavorIds);
+		$this->client->addParam($kparams, "referrer", $referrer);
+		$this->client->queueServiceActionCall("drm_drmlicenseaccess", "getAccess", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDrmLicenseAccessDetails");
 		return $resultObject;
 	}
 }
@@ -849,11 +888,17 @@ class KalturaDrmClientPlugin extends KalturaClientPlugin
 	 */
 	public $drmProfile = null;
 
+	/**
+	 * @var KalturaDrmLicenseAccessService
+	 */
+	public $drmLicenseAccess = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
 		$this->drmPolicy = new KalturaDrmPolicyService($client);
 		$this->drmProfile = new KalturaDrmProfileService($client);
+		$this->drmLicenseAccess = new KalturaDrmLicenseAccessService($client);
 	}
 
 	/**
@@ -872,6 +917,7 @@ class KalturaDrmClientPlugin extends KalturaClientPlugin
 		$services = array(
 			'drmPolicy' => $this->drmPolicy,
 			'drmProfile' => $this->drmProfile,
+			'drmLicenseAccess' => $this->drmLicenseAccess,
 		);
 		return $services;
 	}

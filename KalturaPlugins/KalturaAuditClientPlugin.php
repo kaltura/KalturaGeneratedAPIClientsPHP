@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -39,7 +39,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailChangeXmlNodeType
+class KalturaAuditTrailChangeXmlNodeType extends KalturaEnumBase
 {
 	const CHANGED = 1;
 	const ADDED = 2;
@@ -50,7 +50,7 @@ class KalturaAuditTrailChangeXmlNodeType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailContext
+class KalturaAuditTrailContext extends KalturaEnumBase
 {
 	const CLIENT = -1;
 	const SCRIPT = 0;
@@ -62,7 +62,7 @@ class KalturaAuditTrailContext
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailFileSyncType
+class KalturaAuditTrailFileSyncType extends KalturaEnumBase
 {
 	const FILE = 1;
 	const LINK = 2;
@@ -73,7 +73,7 @@ class KalturaAuditTrailFileSyncType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailStatus
+class KalturaAuditTrailStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
 	const READY = 2;
@@ -84,7 +84,7 @@ class KalturaAuditTrailStatus
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailAction
+class KalturaAuditTrailAction extends KalturaEnumBase
 {
 	const CHANGED = "CHANGED";
 	const CONTENT_VIEWED = "CONTENT_VIEWED";
@@ -101,7 +101,7 @@ class KalturaAuditTrailAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailObjectType
+class KalturaAuditTrailObjectType extends KalturaEnumBase
 {
 	const BATCH_JOB = "BatchJob";
 	const EMAIL_INGESTION_PROFILE = "EmailIngestionProfile";
@@ -139,7 +139,7 @@ class KalturaAuditTrailObjectType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailOrderBy
+class KalturaAuditTrailOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARSED_AT_ASC = "+parsedAt";
@@ -180,7 +180,6 @@ class KalturaAuditTrail extends KalturaObjectBase
 
 	/**
 	 * Indicates when the data was parsed
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -293,7 +292,6 @@ class KalturaAuditTrail extends KalturaObjectBase
 
 	/**
 	 * The API service and action that called and caused this audit
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -383,7 +381,83 @@ class KalturaAuditTrailChangeItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAuditTrailListResponse extends KalturaObjectBase
+class KalturaAuditTrailChangeInfo extends KalturaAuditTrailInfo
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaAuditTrailChangeItem
+	 */
+	public $changedItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAuditTrailChangeXmlNode extends KalturaAuditTrailChangeItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaAuditTrailChangeXmlNodeType
+	 */
+	public $type = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAuditTrailFileSyncCreateInfo extends KalturaAuditTrailInfo
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $version = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $objectSubType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $dc = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $original = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaAuditTrailFileSyncType
+	 */
+	public $fileType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAuditTrailListResponse extends KalturaListResponse
 {
 	/**
 	 * 
@@ -393,13 +467,21 @@ class KalturaAuditTrailListResponse extends KalturaObjectBase
 	 */
 	public $objects;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAuditTrailTextInfo extends KalturaAuditTrailInfo
+{
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $totalCount = null;
+	public $info = null;
 
 
 }
@@ -408,7 +490,7 @@ class KalturaAuditTrailListResponse extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaAuditTrailBaseFilter extends KalturaFilter
+abstract class KalturaAuditTrailBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
@@ -668,98 +750,6 @@ abstract class KalturaAuditTrailBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $clientTagEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAuditTrailChangeInfo extends KalturaAuditTrailInfo
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaAuditTrailChangeItem
-	 */
-	public $changedItems;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAuditTrailChangeXmlNode extends KalturaAuditTrailChangeItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaAuditTrailChangeXmlNodeType
-	 */
-	public $type = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAuditTrailFileSyncCreateInfo extends KalturaAuditTrailInfo
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $version = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $objectSubType = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $dc = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $original = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaAuditTrailFileSyncType
-	 */
-	public $fileType = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAuditTrailTextInfo extends KalturaAuditTrailInfo
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $info = null;
 
 
 }

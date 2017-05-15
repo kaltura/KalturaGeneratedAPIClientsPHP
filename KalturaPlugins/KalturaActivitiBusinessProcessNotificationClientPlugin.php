@@ -34,12 +34,97 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaBusinessProcessNotificationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
+class KalturaActivitiBusinessProcessServerOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaActivitiBusinessProcessServerProtocol extends KalturaEnumBase
+{
+	const HTTP = "http";
+	const HTTPS = "https";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaActivitiBusinessProcessServer extends KalturaBusinessProcessServer
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $host = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $port = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaActivitiBusinessProcessServerProtocol
+	 */
+	public $protocol = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $username = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $password = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaActivitiBusinessProcessServerBaseFilter extends KalturaBusinessProcessServerFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaActivitiBusinessProcessServerFilter extends KalturaActivitiBusinessProcessServerBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaActivitiBusinessProcessNotificationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +132,11 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaMultiCentersClientPlugin
+	 * @return KalturaActivitiBusinessProcessNotificationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaMultiCentersClientPlugin($client);
+		return new KalturaActivitiBusinessProcessNotificationClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +154,7 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'multiCenters';
+		return 'activitiBusinessProcessNotification';
 	}
 }
 

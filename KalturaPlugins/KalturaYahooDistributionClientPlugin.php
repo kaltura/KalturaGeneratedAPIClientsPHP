@@ -34,29 +34,27 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
+class KalturaYahooDistributionProcessFeedActionStatus extends KalturaEnumBase
+{
+	const MANUAL = 0;
+	const AUTOMATIC = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYahooDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const FILE_NAME_ASC = "+fileName";
-	const FILE_SIZE_ASC = "+fileSize";
-	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
-	const ID_ASC = "+id";
-	const PARSED_FLAVOR_ASC = "+parsedFlavor";
-	const PARSED_SLUG_ASC = "+parsedSlug";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const FILE_NAME_DESC = "-fileName";
-	const FILE_SIZE_DESC = "-fileSize";
-	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
-	const ID_DESC = "-id";
-	const PARSED_FLAVOR_DESC = "-parsedFlavor";
-	const PARSED_SLUG_DESC = "-parsedSlug";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -64,141 +62,15 @@ class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderOrderBy extends KalturaEnumBase
+class KalturaYahooDistributionProviderOrderBy extends KalturaEnumBase
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const NAME_ASC = "+name";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const NAME_DESC = "-name";
-	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolder extends KalturaDropFolder
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexUserId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexPassword = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $webexSiteId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexPartnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexServiceUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostIdMetadataFieldName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderFile extends KalturaDropFolderFile
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $recordingId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $confId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentUrl = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderContentProcessorJobData extends KalturaDropFolderContentProcessorJobData
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
+class KalturaYahooDistributionProvider extends KalturaDistributionProvider
 {
 
 }
@@ -207,7 +79,95 @@ abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFileFilter
+class KalturaYahooDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $smallThumbPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $largeThumbPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $videoAssetFilePath = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYahooDistributionProfile extends KalturaConfigurableDistributionProfile
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ftpPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ftpUsername = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ftpPassword = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ftpHost = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contactTelephone = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contactEmail = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaYahooDistributionProcessFeedActionStatus
+	 */
+	public $processFeed = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaYahooDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
 
 }
@@ -216,7 +176,7 @@ abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFil
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileFilter extends KalturaWebexDropFolderFileBaseFilter
+class KalturaYahooDistributionProviderFilter extends KalturaYahooDistributionProviderBaseFilter
 {
 
 }
@@ -225,7 +185,7 @@ class KalturaWebexDropFolderFileFilter extends KalturaWebexDropFolderFileBaseFil
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFilter extends KalturaWebexDropFolderBaseFilter
+abstract class KalturaYahooDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
 {
 
 }
@@ -234,7 +194,16 @@ class KalturaWebexDropFolderFilter extends KalturaWebexDropFolderBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
+class KalturaYahooDistributionProfileFilter extends KalturaYahooDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaYahooDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -242,11 +211,11 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaWebexDropFolderClientPlugin
+	 * @return KalturaYahooDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaWebexDropFolderClientPlugin($client);
+		return new KalturaYahooDistributionClientPlugin($client);
 	}
 
 	/**
@@ -264,7 +233,7 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'WebexDropFolder';
+		return 'yahooDistribution';
 	}
 }
 

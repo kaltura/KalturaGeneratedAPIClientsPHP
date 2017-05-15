@@ -34,12 +34,44 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaIntegrationClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaBusinessProcessNotificationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
+class KalturaBpmEventNotificationIntegrationJobTriggerData extends KalturaIntegrationJobTriggerData
+{
+	/**
+	 * KalturaBusinessProcessNotificationTemplate id
+	 *
+	 * @var int
+	 */
+	public $templateId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $businessProcessId = null;
+
+	/**
+	 * Execution unique id
+	 *
+	 * @var string
+	 */
+	public $caseId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBpmEventNotificationIntegrationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +79,11 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaMultiCentersClientPlugin
+	 * @return KalturaBpmEventNotificationIntegrationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaMultiCentersClientPlugin($client);
+		return new KalturaBpmEventNotificationIntegrationClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +101,7 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'multiCenters';
+		return 'bpmEventNotificationIntegration';
 	}
 }
 

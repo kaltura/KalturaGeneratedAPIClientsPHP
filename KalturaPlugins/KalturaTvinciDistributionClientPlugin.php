@@ -34,29 +34,17 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
+class KalturaTvinciDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const FILE_NAME_ASC = "+fileName";
-	const FILE_SIZE_ASC = "+fileSize";
-	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
-	const ID_ASC = "+id";
-	const PARSED_FLAVOR_ASC = "+parsedFlavor";
-	const PARSED_SLUG_ASC = "+parsedSlug";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const FILE_NAME_DESC = "-fileName";
-	const FILE_SIZE_DESC = "-fileSize";
-	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
-	const ID_DESC = "-id";
-	const PARSED_FLAVOR_DESC = "-parsedFlavor";
-	const PARSED_SLUG_DESC = "-parsedSlug";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -64,65 +52,57 @@ class KalturaWebexDropFolderFileOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderOrderBy extends KalturaEnumBase
+class KalturaTvinciDistributionProviderOrderBy extends KalturaEnumBase
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const NAME_ASC = "+name";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const NAME_DESC = "-name";
-	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolder extends KalturaDropFolder
+class KalturaTvinciDistributionTag extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $webexUserId = null;
+	public $tagname = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $webexPassword = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $webexSiteId = null;
+	public $extension = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $webexPartnerId = null;
+	public $protocol = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $webexServiceUrl = null;
+	public $format = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $webexHostIdMetadataFieldName = null;
+	public $filename = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ppvmodule = null;
 
 
 }
@@ -131,74 +111,7 @@ class KalturaWebexDropFolder extends KalturaDropFolder
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFile extends KalturaDropFolderFile
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $recordingId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $confId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentUrl = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWebexDropFolderContentProcessorJobData extends KalturaDropFolderContentProcessorJobData
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $webexHostId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
+class KalturaTvinciDistributionProvider extends KalturaDistributionProvider
 {
 
 }
@@ -207,7 +120,67 @@ abstract class KalturaWebexDropFolderBaseFilter extends KalturaDropFolderFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFileFilter
+class KalturaTvinciDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xml = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionProfile extends KalturaConfigurableDistributionProfile
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ingestUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $username = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $password = null;
+
+	/**
+	 * Tags array for Tvinci distribution
+	 *
+	 * @var array of KalturaTvinciDistributionTag
+	 */
+	public $tags;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xsltFile = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaTvinciDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
 
 }
@@ -216,7 +189,7 @@ abstract class KalturaWebexDropFolderFileBaseFilter extends KalturaDropFolderFil
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFileFilter extends KalturaWebexDropFolderFileBaseFilter
+class KalturaTvinciDistributionProviderFilter extends KalturaTvinciDistributionProviderBaseFilter
 {
 
 }
@@ -225,7 +198,7 @@ class KalturaWebexDropFolderFileFilter extends KalturaWebexDropFolderFileBaseFil
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderFilter extends KalturaWebexDropFolderBaseFilter
+abstract class KalturaTvinciDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
 {
 
 }
@@ -234,7 +207,16 @@ class KalturaWebexDropFolderFilter extends KalturaWebexDropFolderBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
+class KalturaTvinciDistributionProfileFilter extends KalturaTvinciDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -242,11 +224,11 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaWebexDropFolderClientPlugin
+	 * @return KalturaTvinciDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaWebexDropFolderClientPlugin($client);
+		return new KalturaTvinciDistributionClientPlugin($client);
 	}
 
 	/**
@@ -264,7 +246,7 @@ class KalturaWebexDropFolderClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'WebexDropFolder';
+		return 'tvinciDistribution';
 	}
 }
 

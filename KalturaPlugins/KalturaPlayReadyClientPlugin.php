@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2017  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaDrmClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyAnalogVideoOPL
+class KalturaPlayReadyAnalogVideoOPL extends KalturaEnumBase
 {
 	const MIN_100 = 100;
 	const MIN_150 = 150;
@@ -51,7 +51,7 @@ class KalturaPlayReadyAnalogVideoOPL
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyCompressedDigitalVideoOPL
+class KalturaPlayReadyCompressedDigitalVideoOPL extends KalturaEnumBase
 {
 	const MIN_400 = 400;
 	const MIN_500 = 500;
@@ -61,7 +61,7 @@ class KalturaPlayReadyCompressedDigitalVideoOPL
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyDigitalAudioOPL
+class KalturaPlayReadyDigitalAudioOPL extends KalturaEnumBase
 {
 	const MIN_100 = 100;
 	const MIN_150 = 150;
@@ -74,7 +74,7 @@ class KalturaPlayReadyDigitalAudioOPL
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyLicenseRemovalPolicy
+class KalturaPlayReadyLicenseRemovalPolicy extends KalturaEnumBase
 {
 	const FIXED_FROM_EXPIRATION = 1;
 	const ENTRY_SCHEDULING_END = 2;
@@ -85,7 +85,7 @@ class KalturaPlayReadyLicenseRemovalPolicy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyMinimumLicenseSecurityLevel
+class KalturaPlayReadyMinimumLicenseSecurityLevel extends KalturaEnumBase
 {
 	const NON_COMMERCIAL_QUALITY = 150;
 	const COMMERCIAL_QUALITY = 2000;
@@ -95,7 +95,7 @@ class KalturaPlayReadyMinimumLicenseSecurityLevel
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyUncompressedDigitalVideoOPL
+class KalturaPlayReadyUncompressedDigitalVideoOPL extends KalturaEnumBase
 {
 	const MIN_100 = 100;
 	const MIN_250 = 250;
@@ -107,7 +107,7 @@ class KalturaPlayReadyUncompressedDigitalVideoOPL
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyAnalogVideoOPId
+class KalturaPlayReadyAnalogVideoOPId extends KalturaEnumBase
 {
 	const EXPLICIT_ANALOG_TV = "2098DE8D-7DDD-4BAB-96C6-32EBB6FABEA3";
 	const BEST_EFFORT_EXPLICIT_ANALOG_TV = "225CD36F-F132-49EF-BA8C-C91EA28E4369";
@@ -120,7 +120,7 @@ class KalturaPlayReadyAnalogVideoOPId
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyCopyEnablerType
+class KalturaPlayReadyCopyEnablerType extends KalturaEnumBase
 {
 	const CSS = "3CAF2814-A7AB-467C-B4DF-54ACC56C66DC";
 	const PRINTER = "3CF2E054-F4D5-46cd-85A6-FCD152AD5FBE";
@@ -140,7 +140,7 @@ class KalturaPlayReadyCopyEnablerType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyDigitalAudioOPId
+class KalturaPlayReadyDigitalAudioOPId extends KalturaEnumBase
 {
 	const SCMS = "6D5CFA59-C250-4426-930E-FAC72C8FCFA6";
 }
@@ -149,7 +149,7 @@ class KalturaPlayReadyDigitalAudioOPId
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyPlayEnablerType
+class KalturaPlayReadyPlayEnablerType extends KalturaEnumBase
 {
 	const HELIX = "002F9772-38A0-43E5-9F79-0F6361DCC62A";
 	const HDCP_WIVU = "1B4542E3-B5CF-4C99-B3BA-829AF46C92F8";
@@ -164,7 +164,7 @@ class KalturaPlayReadyPlayEnablerType
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyPolicyOrderBy
+class KalturaPlayReadyPolicyOrderBy extends KalturaEnumBase
 {
 }
 
@@ -172,7 +172,7 @@ class KalturaPlayReadyPolicyOrderBy
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPlayReadyProfileOrderBy
+class KalturaPlayReadyProfileOrderBy extends KalturaEnumBase
 {
 	const ID_ASC = "+id";
 	const NAME_ASC = "+name";
@@ -188,7 +188,6 @@ class KalturaPlayReadyAnalogVideoOPIdHolder extends KalturaObjectBase
 {
 	/**
 	 * The type of the play enabler
-	 * 	 
 	 *
 	 * @var KalturaPlayReadyAnalogVideoOPId
 	 */
@@ -204,8 +203,7 @@ class KalturaPlayReadyAnalogVideoOPIdHolder extends KalturaObjectBase
 class KalturaPlayReadyContentKey extends KalturaObjectBase
 {
 	/**
-	 * Guid - key id of the specific content 
-	 * 	 
+	 * Guid - key id of the specific content
 	 *
 	 * @var string
 	 */
@@ -213,7 +211,6 @@ class KalturaPlayReadyContentKey extends KalturaObjectBase
 
 	/**
 	 * License content key 64 bit encoded
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -230,7 +227,6 @@ class KalturaPlayReadyCopyEnablerHolder extends KalturaObjectBase
 {
 	/**
 	 * The type of the copy enabler
-	 * 	 
 	 *
 	 * @var KalturaPlayReadyCopyEnablerType
 	 */
@@ -247,7 +243,6 @@ class KalturaPlayReadyDigitalAudioOPIdHolder extends KalturaObjectBase
 {
 	/**
 	 * The type of the play enabler
-	 * 	 
 	 *
 	 * @var KalturaPlayReadyDigitalAudioOPId
 	 */
@@ -317,7 +312,6 @@ class KalturaPlayReadyLicenseDetails extends KalturaObjectBase
 {
 	/**
 	 * PlayReady policy object
-	 * 	 
 	 *
 	 * @var KalturaPlayReadyPolicy
 	 */
@@ -325,7 +319,6 @@ class KalturaPlayReadyLicenseDetails extends KalturaObjectBase
 
 	/**
 	 * License begin date
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -333,7 +326,6 @@ class KalturaPlayReadyLicenseDetails extends KalturaObjectBase
 
 	/**
 	 * License expiration date
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -341,7 +333,6 @@ class KalturaPlayReadyLicenseDetails extends KalturaObjectBase
 
 	/**
 	 * License removal date
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -358,28 +349,10 @@ class KalturaPlayReadyPlayEnablerHolder extends KalturaObjectBase
 {
 	/**
 	 * The type of the play enabler
-	 * 	 
 	 *
 	 * @var KalturaPlayReadyPlayEnablerType
 	 */
 	public $type = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAccessControlPlayReadyPolicyAction extends KalturaRuleAction
-{
-	/**
-	 * Play ready policy id 
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $policyId = null;
 
 
 }

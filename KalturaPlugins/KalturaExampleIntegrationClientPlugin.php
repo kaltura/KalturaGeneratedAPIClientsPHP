@@ -34,12 +34,29 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaIntegrationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
+class KalturaExampleIntegrationJobProviderData extends KalturaIntegrationJobProviderData
+{
+	/**
+	 * Just an example
+	 *
+	 * @var string
+	 */
+	public $exampleUrl = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaExampleIntegrationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +64,11 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaMultiCentersClientPlugin
+	 * @return KalturaExampleIntegrationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaMultiCentersClientPlugin($client);
+		return new KalturaExampleIntegrationClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +86,7 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'multiCenters';
+		return 'exampleIntegration';
 	}
 }
 

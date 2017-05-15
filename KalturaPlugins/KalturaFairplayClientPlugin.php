@@ -34,12 +34,46 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaDrmClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
+class KalturaFairplayDrmProfile extends KalturaDrmProfile
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $publicCertificate = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFairplayEntryContextPluginData extends KalturaPluginData
+{
+	/**
+	 * For fairplay (and maybe in the future other drm providers) we need to return a public certificate to encrypt
+	 * 	 the request from the player to the server.
+	 *
+	 * @var string
+	 */
+	public $publicCertificate = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFairplayClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +81,11 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaMultiCentersClientPlugin
+	 * @return KalturaFairplayClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaMultiCentersClientPlugin($client);
+		return new KalturaFairplayClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +103,7 @@ class KalturaMultiCentersClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'multiCenters';
+		return 'fairplay';
 	}
 }
 
