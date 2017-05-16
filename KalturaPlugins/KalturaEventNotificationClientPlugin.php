@@ -105,7 +105,6 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
  */
 class KalturaEventNotificationEventType extends KalturaEnumBase
 {
-	const INTEGRATION_JOB_CLOSED = "integrationEventNotifications.INTEGRATION_JOB_CLOSED";
 	const BATCH_JOB_STATUS = "1";
 	const OBJECT_ADDED = "2";
 	const OBJECT_CHANGED = "3";
@@ -141,12 +140,8 @@ class KalturaEventNotificationTemplateOrderBy extends KalturaEnumBase
  */
 class KalturaEventNotificationTemplateType extends KalturaEnumBase
 {
-	const BPM_ABORT = "businessProcessNotification.BusinessProcessAbort";
-	const BPM_SIGNAL = "businessProcessNotification.BusinessProcessSignal";
-	const BPM_START = "businessProcessNotification.BusinessProcessStart";
 	const EMAIL = "emailNotification.Email";
 	const HTTP = "httpNotification.Http";
-	const PUSH = "pushNotification.Push";
 }
 
 /**
@@ -717,48 +712,6 @@ class KalturaEventNotificationTemplateService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaEventNotificationTemplateListResponse");
 		return $resultObject;
-	}
-
-	/**
-	 * Register to a queue from which event messages will be provided according to given template. Queue will be created if not already exists
-	 * 
-	 * @param string $notificationTemplateSystemName Existing push notification template system name
-	 * @param KalturaPushNotificationParams $pushNotificationParams 
-	 * @return KalturaPushNotificationData
-	 */
-	function register($notificationTemplateSystemName, KalturaPushNotificationParams $pushNotificationParams)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "notificationTemplateSystemName", $notificationTemplateSystemName);
-		$this->client->addParam($kparams, "pushNotificationParams", $pushNotificationParams->toParams());
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "register", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaPushNotificationData");
-		return $resultObject;
-	}
-
-	/**
-	 * Clear queue messages
-	 * 
-	 * @param string $notificationTemplateSystemName Existing push notification template system name
-	 * @param KalturaPushNotificationParams $pushNotificationParams 
-	 * @param string $command Command to be sent to push server
-	 */
-	function sendCommand($notificationTemplateSystemName, KalturaPushNotificationParams $pushNotificationParams, $command)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "notificationTemplateSystemName", $notificationTemplateSystemName);
-		$this->client->addParam($kparams, "pushNotificationParams", $pushNotificationParams->toParams());
-		$this->client->addParam($kparams, "command", $command);
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "sendCommand", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**

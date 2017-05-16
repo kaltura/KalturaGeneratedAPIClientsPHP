@@ -289,6 +289,23 @@ class KalturaFileSync extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaFileSyncListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaFileSync
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaFileSyncBaseFilter extends KalturaFilter
 {
 	/**
@@ -493,23 +510,6 @@ abstract class KalturaFileSyncBaseFilter extends KalturaFilter
 	 * @var float
 	 */
 	public $fileSizeLessThanOrEqual = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaFileSyncListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaFileSync
-	 * @readonly
-	 */
-	public $objects;
 
 
 }

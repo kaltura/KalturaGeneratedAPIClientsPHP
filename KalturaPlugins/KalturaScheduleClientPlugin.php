@@ -1183,6 +1183,13 @@ abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFilter
 	 *
 	 * @var string
 	 */
+	public $nameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $systemNameEqual = null;
 
 	/**
@@ -1347,6 +1354,13 @@ class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter
 	 * @var string
 	 */
 	public $resourceSystemNamesLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $resourceIdEqual = null;
 
 
 }
