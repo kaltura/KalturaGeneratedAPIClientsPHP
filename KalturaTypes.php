@@ -3615,6 +3615,13 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 */
 	public $detectGOP = null;
 
+	/**
+	 * XSL to transform ingestion Media Info XML
+	 *
+	 * @var string
+	 */
+	public $mediaInfoXslTransformation = null;
+
 
 }
 
