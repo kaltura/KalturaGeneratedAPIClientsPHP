@@ -71,7 +71,7 @@ class KalturaPollService extends KalturaServiceBase
 	 * 
 	 * @param string $pollId 
 	 * @param string $answerIds 
-	 * @param string $otherDCVotes 
+	 * @param string $otherDCVotes Json
 	 * @return string
 	 */
 	function getVotes($pollId, $answerIds, $otherDCVotes = null)
