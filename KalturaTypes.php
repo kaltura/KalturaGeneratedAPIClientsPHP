@@ -9478,7 +9478,7 @@ abstract class KalturaServerNode extends KalturaObjectBase
 	/**
 	 * Id of the parent serverNode
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $parentId = null;
 
@@ -14407,6 +14407,85 @@ class KalturaEntryLiveStats extends KalturaLiveStats
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $serverNodeIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeType
+	 */
+	public $serverTypeEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryServerNodeListResponse extends KalturaListResponse
 {
 	/**
@@ -16241,16 +16320,23 @@ abstract class KalturaServerNodeBaseFilter extends KalturaFilter
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
-	public $parentIdEqual = null;
+	public $parentIdLike = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $parentIdIn = null;
+	public $parentIdMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdMultiLikeAnd = null;
 
 
 }
@@ -18693,78 +18779,8 @@ class KalturaEntryResource extends KalturaContentResource
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter
+class KalturaEntryServerNodeFilter extends KalturaEntryServerNodeBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $serverNodeIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaEntryServerNodeStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaEntryServerNodeType
-	 */
-	public $serverTypeEqual = null;
-
 
 }
 
@@ -20686,27 +20702,6 @@ abstract class KalturaDeliveryProfileRtmpBaseFilter extends KalturaDeliveryProfi
  */
 abstract class KalturaDeliveryServerNodeBaseFilter extends KalturaServerNodeFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackDomainLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackDomainMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $playbackDomainMultiLikeAnd = null;
-
 
 }
 
@@ -20739,15 +20734,6 @@ class KalturaDocumentEntryMatchAttributeCondition extends KalturaSearchMatchAttr
 	 */
 	public $attribute = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEntryServerNodeFilter extends KalturaEntryServerNodeBaseFilter
-{
 
 }
 
@@ -21776,6 +21762,27 @@ abstract class KalturaDeliveryProfileGenericRtmpBaseFilter extends KalturaDelive
  */
 abstract class KalturaEdgeServerNodeBaseFilter extends KalturaDeliveryServerNodeFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeAnd = null;
+
 
 }
 
