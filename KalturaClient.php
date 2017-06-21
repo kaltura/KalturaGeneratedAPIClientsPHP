@@ -6862,6 +6862,23 @@ referrer
 	}
 
 	/**
+	 * Use this action to report device capabilities to the kaltura server.
+	 * 
+	 * @param string $data 
+	 */
+	function reportDeviceCapabilities($data)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data);
+		$this->client->queueServiceActionCall("stats", "reportDeviceCapabilities", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Use this action to report errors to the kaltura server.
 	 * 
 	 * @param string $errorCode 
@@ -9291,7 +9308,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-06-20');
+		$this->setClientTag('php5:17-06-21');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
