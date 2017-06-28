@@ -111,6 +111,25 @@ class KalturaPollService extends KalturaServiceBase
 	}
 
 	/**
+	 * Get resetVotes Action
+	 * 
+	 * @param string $pollId 
+	 * @param string $answerIds 
+	 */
+	function resetVotes($pollId, $answerIds)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "pollId", $pollId);
+		$this->client->addParam($kparams, "answerIds", $answerIds);
+		$this->client->queueServiceActionCall("poll_poll", "resetVotes", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Vote Action
 	 * 
 	 * @param string $pollId 
