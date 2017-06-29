@@ -92,15 +92,13 @@ class KalturaPollService extends KalturaServiceBase
 	 * 
 	 * @param string $pollId 
 	 * @param string $answerIds 
-	 * @param string $otherDCVotes Json
 	 * @return string
 	 */
-	function getVotes($pollId, $answerIds, $otherDCVotes = null)
+	function getVotes($pollId, $answerIds)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "pollId", $pollId);
 		$this->client->addParam($kparams, "answerIds", $answerIds);
-		$this->client->addParam($kparams, "otherDCVotes", $otherDCVotes);
 		$this->client->queueServiceActionCall("poll_poll", "getVotes", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -114,13 +112,11 @@ class KalturaPollService extends KalturaServiceBase
 	 * Get resetVotes Action
 	 * 
 	 * @param string $pollId 
-	 * @param string $answerIds 
 	 */
-	function resetVotes($pollId, $answerIds)
+	function resetVotes($pollId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "pollId", $pollId);
-		$this->client->addParam($kparams, "answerIds", $answerIds);
 		$this->client->queueServiceActionCall("poll_poll", "resetVotes", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
