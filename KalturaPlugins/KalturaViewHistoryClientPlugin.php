@@ -55,6 +55,13 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
 	 */
 	public $lastTimeReached = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lastUpdateTime = null;
+
 
 }
 
