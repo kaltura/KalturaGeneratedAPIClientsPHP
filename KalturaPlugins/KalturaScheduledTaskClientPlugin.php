@@ -317,7 +317,21 @@ class KalturaMailNotificationObjectTask extends KalturaObjectTask
 	 *
 	 * @var string
 	 */
-	public $mailAddress = null;
+	public $mailTo = null;
+
+	/**
+	 * The sender in the mail
+	 *
+	 * @var string
+	 */
+	public $sender = null;
+
+	/**
+	 * The subject of the entry
+	 *
+	 * @var string
+	 */
+	public $subject = null;
 
 	/**
 	 * The message to send in the notification mail
@@ -325,6 +339,13 @@ class KalturaMailNotificationObjectTask extends KalturaObjectTask
 	 * @var string
 	 */
 	public $message = null;
+
+	/**
+	 * The basic link for the KMC site
+	 *
+	 * @var string
+	 */
+	public $link = null;
 
 	/**
 	 * Send the mail to each user

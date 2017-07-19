@@ -1347,22 +1347,6 @@ abstract class KalturaSshDropFolder extends KalturaRemoteDropFolder
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderFileResource extends KalturaDataCenterContentResource
-{
-	/**
-	 * Id of the drop folder file object
-	 *
-	 * @var int
-	 */
-	public $dropFolderFileId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaDropFolderImportJobData extends KalturaSshImportJobData
 {
 	/**
@@ -1399,6 +1383,22 @@ class KalturaScpDropFolder extends KalturaSshDropFolder
  */
 class KalturaSftpDropFolder extends KalturaSshDropFolder
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDropFolderFileResource extends KalturaGenericDataCenterContentResource
+{
+	/**
+	 * Id of the drop folder file object
+	 *
+	 * @var int
+	 */
+	public $dropFolderFileId = null;
+
 
 }
 

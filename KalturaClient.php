@@ -2052,6 +2052,27 @@ class KalturaDataService extends KalturaServiceBase
 	}
 
 	/**
+	 * Update the dataContent of data entry using a resource
+	 * 
+	 * @param string $entryId 
+	 * @param KalturaGenericDataCenterContentResource $resource 
+	 * @return string
+	 */
+	function addContent($entryId, KalturaGenericDataCenterContentResource $resource)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->queueServiceActionCall("data", "addContent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete a data entry.
 	 * 
 	 * @param string $entryId Data entry id to delete
@@ -9308,7 +9329,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-07-18');
+		$this->setClientTag('php5:17-07-19');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

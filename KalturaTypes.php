@@ -20813,6 +20813,15 @@ class KalturaFileAssetFilter extends KalturaFileAssetBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaGenericDataCenterContentResource extends KalturaDataCenterContentResource
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaGenericSyndicationFeedBaseFilter extends KalturaBaseSyndicationFeedFilter
 {
 
@@ -21159,29 +21168,6 @@ class KalturaPlaylistMatchAttributeCondition extends KalturaSearchMatchAttribute
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaServerFileResource extends KalturaDataCenterContentResource
-{
-	/**
-	 * Full path to the local file
-	 *
-	 * @var string
-	 */
-	public $localFilePath = null;
-
-	/**
-	 * Should keep original file (false = mv, true = cp)
-	 *
-	 * @var bool
-	 */
-	public $keepOriginalFile = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaSshUrlResource extends KalturaUrlResource
 {
 	/**
@@ -21230,22 +21216,6 @@ class KalturaTimeContextField extends KalturaIntegerField
  */
 abstract class KalturaTubeMogulSyndicationFeedBaseFilter extends KalturaBaseSyndicationFeedFilter
 {
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUploadedFileTokenResource extends KalturaDataCenterContentResource
-{
-	/**
-	 * Token that returned from upload.upload action or uploadToken.add action.
-	 *
-	 * @var string
-	 */
-	public $token = null;
-
 
 }
 
@@ -21627,6 +21597,29 @@ class KalturaRokuSyndicationFeed extends KalturaConstantXsltSyndicationFeed
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaServerFileResource extends KalturaGenericDataCenterContentResource
+{
+	/**
+	 * Full path to the local file
+	 *
+	 * @var string
+	 */
+	public $localFilePath = null;
+
+	/**
+	 * Should keep original file (false = mv, true = cp)
+	 *
+	 * @var bool
+	 */
+	public $keepOriginalFile = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaThumbAssetBaseFilter extends KalturaAssetFilter
 {
 	/**
@@ -21689,6 +21682,22 @@ abstract class KalturaThumbParamsBaseFilter extends KalturaAssetParamsFilter
  */
 class KalturaTubeMogulSyndicationFeedFilter extends KalturaTubeMogulSyndicationFeedBaseFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUploadedFileTokenResource extends KalturaGenericDataCenterContentResource
+{
+	/**
+	 * Token that returned from upload.upload action or uploadToken.add action.
+	 *
+	 * @var string
+	 */
+	public $token = null;
+
 
 }
 
