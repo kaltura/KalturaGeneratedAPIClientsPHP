@@ -3699,6 +3699,13 @@ class KalturaConversionProfileAssetParams extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $chunkedEncodeMode = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaNullableBoolean
 	 */
 	public $twoPass = null;
@@ -5393,6 +5400,13 @@ class KalturaFlavorParams extends KalturaAssetParams
 	 * @var float
 	 */
 	public $contentAwareness = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $chunkedEncodeMode = null;
 
 	/**
 	 * 
