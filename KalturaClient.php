@@ -8297,10 +8297,11 @@ class KalturaUserEntryService extends KalturaServiceBase
 	 * @param KalturaFilterPager $pager 
 	 * @return KalturaUserEntryListResponse
 	 */
-	function listAction(KalturaUserEntryFilter $filter, KalturaFilterPager $pager = null)
+	function listAction(KalturaUserEntryFilter $filter = null, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("userentry", "list", $kparams);
@@ -9329,7 +9330,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-08-01');
+		$this->setClientTag('php5:17-08-02');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
