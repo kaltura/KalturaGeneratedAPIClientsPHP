@@ -4269,7 +4269,7 @@ class KalturaDestFileSyncDescriptor extends KalturaFileSyncDescriptor
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaFilterPager extends KalturaObjectBase
+class KalturaPager extends KalturaObjectBase
 {
 	/**
 	 * The number of objects to retrieve. (Default is 30, maximum page size is 500).
@@ -4285,6 +4285,15 @@ class KalturaFilterPager extends KalturaObjectBase
 	 */
 	public $pageIndex = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaFilterPager extends KalturaPager
+{
 
 }
 
