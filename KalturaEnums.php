@@ -2180,6 +2180,14 @@ class KalturaDocumentEntryMatchAttribute extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDrmSchemeName extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDurationType extends KalturaEnumBase
 {
 	const LONG = "long";
