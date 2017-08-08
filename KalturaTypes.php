@@ -18762,6 +18762,15 @@ class KalturaEndUserReportInputFilter extends KalturaReportInputFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryIndexAdvancedFilter extends KalturaIndexAdvancedFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryReferrerLiveStats extends KalturaEntryLiveStats
 {
 	/**
