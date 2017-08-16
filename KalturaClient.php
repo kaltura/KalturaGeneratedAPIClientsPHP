@@ -3469,6 +3469,29 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param string $entryId Live entry id
+	 * @param string $mediaServerIndex Media server index primary / secondary
+	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
+	 * @return KalturaLiveEntry
+	 */
+	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->queueServiceActionCall("livechannel", "createRecordedEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete a live channel.
 	 * 
 	 * @param string $id Live channel id to delete
@@ -3554,9 +3577,10 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
 	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
+	 * @param bool $shouldCreateRecordedEntry 
 	 * @return KalturaLiveEntry
 	 */
-	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
+	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -3564,6 +3588,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
 		$this->client->addParam($kparams, "applicationName", $applicationName);
 		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->addParam($kparams, "shouldCreateRecordedEntry", $shouldCreateRecordedEntry);
 		$this->client->queueServiceActionCall("livechannel", "registerMediaServer", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -3935,6 +3960,29 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param string $entryId Live entry id
+	 * @param string $mediaServerIndex Media server index primary / secondary
+	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
+	 * @return KalturaLiveEntry
+	 */
+	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->queueServiceActionCall("livestream", "createRecordedEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete a live stream entry.
 	 * 
 	 * @param string $entryId Live stream entry id to delete
@@ -4041,9 +4089,10 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * @param string $mediaServerIndex Media server index primary / secondary
 	 * @param string $applicationName The application to which entry is being broadcast
 	 * @param int $liveEntryStatus The status KalturaEntryServerNodeStatus::PLAYABLE | KalturaEntryServerNodeStatus::BROADCASTING
+	 * @param bool $shouldCreateRecordedEntry 
 	 * @return KalturaLiveEntry
 	 */
-	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
+	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -4051,6 +4100,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
 		$this->client->addParam($kparams, "applicationName", $applicationName);
 		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->addParam($kparams, "shouldCreateRecordedEntry", $shouldCreateRecordedEntry);
 		$this->client->queueServiceActionCall("livestream", "registerMediaServer", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9330,7 +9380,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-08-15');
+		$this->setClientTag('php5:17-08-16');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
