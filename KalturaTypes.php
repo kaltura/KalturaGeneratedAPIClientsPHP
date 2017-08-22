@@ -4389,38 +4389,6 @@ class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPluginData extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmPlaybackPluginData extends KalturaPluginData
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaDrmSchemeName
-	 */
-	public $scheme = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $licenseURL = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -6917,6 +6885,29 @@ class KalturaLiveChannelSegment extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveEntryServerNodeRecordingInfo extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recordedEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveReportExportParams extends KalturaObjectBase
 {
 	/**
@@ -8563,6 +8554,38 @@ abstract class KalturaPermissionItem extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPluginData extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmPlaybackPluginData extends KalturaPluginData
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDrmSchemeName
+	 */
+	public $scheme = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $licenseURL = null;
 
 
 }
@@ -14969,6 +14992,13 @@ class KalturaLiveEntryServerNode extends KalturaEntryServerNode
 	 * @var array of KalturaLiveStreamParams
 	 */
 	public $streams;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaLiveEntryServerNodeRecordingInfo
+	 */
+	public $recordingInfo;
 
 
 }
