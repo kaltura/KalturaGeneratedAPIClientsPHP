@@ -2551,7 +2551,7 @@ class KalturaFileAssetService extends KalturaServiceBase
 	/**
 	 * Delete file asset by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 */
 	function delete($id)
 	{
@@ -2568,7 +2568,7 @@ class KalturaFileAssetService extends KalturaServiceBase
 	/**
 	 * Get file asset by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return KalturaFileAsset
 	 */
 	function get($id)
@@ -2609,7 +2609,7 @@ class KalturaFileAssetService extends KalturaServiceBase
 	/**
 	 * Serve file asset by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return file
 	 */
 	function serve($id)
@@ -2628,7 +2628,7 @@ class KalturaFileAssetService extends KalturaServiceBase
 	/**
 	 * Set content of file asset
 	 * 
-	 * @param string $id 
+	 * @param bigint $id 
 	 * @param KalturaContentResource $contentResource 
 	 * @return KalturaFileAsset
 	 */
@@ -2649,7 +2649,7 @@ class KalturaFileAssetService extends KalturaServiceBase
 	/**
 	 * Update file asset by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param KalturaFileAsset $fileAsset 
 	 * @return KalturaFileAsset
 	 */
@@ -3331,7 +3331,7 @@ class KalturaLiveChannelSegmentService extends KalturaServiceBase
 	/**
 	 * Delete live channel segment by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 */
 	function delete($id)
 	{
@@ -3348,7 +3348,7 @@ class KalturaLiveChannelSegmentService extends KalturaServiceBase
 	/**
 	 * Get live channel segment by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return KalturaLiveChannelSegment
 	 */
 	function get($id)
@@ -3390,7 +3390,7 @@ class KalturaLiveChannelSegmentService extends KalturaServiceBase
 	/**
 	 * Update live channel segment by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param KalturaLiveChannelSegment $liveChannelSegment 
 	 * @return KalturaLiveChannelSegment
 	 */
@@ -6266,7 +6266,7 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	/**
 	 * Clone an existing response profile
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param KalturaResponseProfile $profile 
 	 * @return KalturaResponseProfile
 	 */
@@ -6287,7 +6287,7 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	/**
 	 * Delete response profile by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 */
 	function delete($id)
 	{
@@ -6304,7 +6304,7 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	/**
 	 * Get response profile by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return KalturaResponseProfile
 	 */
 	function get($id)
@@ -6365,7 +6365,7 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	/**
 	 * Update response profile by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param KalturaResponseProfile $updateResponseProfile 
 	 * @return KalturaResponseProfile
 	 */
@@ -6386,7 +6386,7 @@ class KalturaResponseProfileService extends KalturaServiceBase
 	/**
 	 * Update response profile status by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param int $status 
 	 * @return KalturaResponseProfile
 	 */
@@ -9380,7 +9380,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-08-28');
+		$this->setClientTag('php5:17-08-29');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

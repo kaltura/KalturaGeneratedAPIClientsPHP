@@ -6771,7 +6771,7 @@ class KalturaLiveChannelSegment extends KalturaObjectBase
 	/**
 	 * Unique identifier
 	 *
-	 * @var string
+	 * @var int
 	 * @readonly
 	 */
 	public $id = null;
@@ -6860,7 +6860,7 @@ class KalturaLiveChannelSegment extends KalturaObjectBase
 	/**
 	 * Live channel segment that the trigger relates to
 	 *
-	 * @var string
+	 * @var int
 	 */
 	public $triggerSegmentId = null;
 
