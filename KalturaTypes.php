@@ -3446,6 +3446,38 @@ class KalturaCropDimensions extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaPluginReplacementOptionsItem extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntryReplacementOptions extends KalturaObjectBase
+{
+	/**
+	 * If true manually created thumbnails will not be deleted on entry replacement
+	 *
+	 * @var int
+	 */
+	public $keepManualThumbnails = null;
+
+	/**
+	 * Array of plugin replacement options
+	 *
+	 * @var array of KalturaPluginReplacementOptionsItem
+	 */
+	public $pluginOptionItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaConversionProfile extends KalturaObjectBase
 {
 	/**
@@ -3621,6 +3653,13 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 * @var string
 	 */
 	public $mediaInfoXslTransformation = null;
+
+	/**
+	 * Default replacement options to be applied to entries
+	 *
+	 * @var KalturaEntryReplacementOptions
+	 */
+	public $defaultReplacementOptions;
 
 
 }
@@ -4522,38 +4561,6 @@ class KalturaStringValue extends KalturaValue
 	 * @var string
 	 */
 	public $value = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaPluginReplacementOptionsItem extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEntryReplacementOptions extends KalturaObjectBase
-{
-	/**
-	 * If true manually created thumbnails will not be deleted on entry replacement
-	 *
-	 * @var int
-	 */
-	public $keepManualThumbnails = null;
-
-	/**
-	 * Array of plugin replacement options
-	 *
-	 * @var array of KalturaPluginReplacementOptionsItem
-	 */
-	public $pluginOptionItems;
 
 
 }
