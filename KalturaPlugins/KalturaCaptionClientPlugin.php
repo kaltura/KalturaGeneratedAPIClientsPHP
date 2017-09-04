@@ -246,6 +246,50 @@ class KalturaCaptionParamsListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaCopyCaptionsJobData extends KalturaJobData
+{
+	/**
+	 * source entry Id
+	 *
+	 * @var string
+	 */
+	public $sourceEntryId = null;
+
+	/**
+	 * entry Id
+	 *
+	 * @var string
+	 */
+	public $entryId = null;
+
+	/**
+	 * clip offset
+	 *
+	 * @var int
+	 */
+	public $offset = null;
+
+	/**
+	 * clip duration
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $fullCopy = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaParseMultiLanguageCaptionAssetJobData extends KalturaJobData
 {
 	/**

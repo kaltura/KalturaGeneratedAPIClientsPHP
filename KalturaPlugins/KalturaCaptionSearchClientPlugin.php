@@ -247,6 +247,31 @@ class KalturaCaptionAssetItemService extends KalturaServiceBase
 	}
 
 	/**
+	 * List caption asset items by filter and pager
+	 * 
+	 * @param string $captionAssetId 
+	 * @param KalturaCaptionAssetItemFilter $captionAssetItemFilter 
+	 * @param KalturaFilterPager $captionAssetItemPager 
+	 * @return KalturaCaptionAssetItemListResponse
+	 */
+	function listAction($captionAssetId, KalturaCaptionAssetItemFilter $captionAssetItemFilter = null, KalturaFilterPager $captionAssetItemPager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		if ($captionAssetItemFilter !== null)
+			$this->client->addParam($kparams, "captionAssetItemFilter", $captionAssetItemFilter->toParams());
+		if ($captionAssetItemPager !== null)
+			$this->client->addParam($kparams, "captionAssetItemPager", $captionAssetItemPager->toParams());
+		$this->client->queueServiceActionCall("captionsearch_captionassetitem", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCaptionAssetItemListResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Search caption asset items by filter, pager and free text
 	 * 
 	 * @param KalturaBaseEntryFilter $entryFilter 

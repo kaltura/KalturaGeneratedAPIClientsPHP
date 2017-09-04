@@ -12918,6 +12918,30 @@ class KalturaCategoryUserListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaClearBeaconsJobData extends KalturaJobData
+{
+	/**
+	 * Beacon object Id to clear info for
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $objectId = null;
+
+	/**
+	 * Beacon object Type to clear info for
+	 *
+	 * @var int
+	 */
+	public $relatedObjectType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaClipAttributes extends KalturaOperationAttributes
 {
 	/**
