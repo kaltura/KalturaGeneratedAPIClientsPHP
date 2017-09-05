@@ -325,6 +325,18 @@ class KalturaEntryModerationStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryServerNodeRecordingStatus extends KalturaEnumBase
+{
+	const STOPPED = 0;
+	const ON_GOING = 1;
+	const DONE = 2;
+	const DISMISSED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryServerNodeStatus extends KalturaEnumBase
 {
 	const STOPPED = 0;
@@ -2974,7 +2986,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const NE = "Nepali";
 	const NEW_ = "Newari Nepal Bhasa";
 	const NIO = "Nganasan";
-	const NCG = "Nisga'a";
+	const NCG = "Nisgaa";
 	const NIU = "Niuean";
 	const NOG = "Nogai";
 	const NON = "Norse Old";
@@ -3018,7 +3030,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const PRG = "Prussian";
 	const FUC = "Pulaar";
 	const PA = "Punjabi";
-	const QXQ = "Qashqa'i";
+	const QXQ = "Qashqai";
 	const ALC = "Qawasqar";
 	const QU = "Quechua";
 	const QUC = "Quich Central";
@@ -3122,7 +3134,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const TI = "Tigrinya";
 	const TLI = "Tlingit";
 	const TCX = "Toda";
-	const OOD = "Tohono O'odham";
+	const OOD = "Tohono Oodham";
 	const TPI = "Tok Pisin";
 	const TO = "Tonga";
 	const TOG = "Tonga (Nyasa)";

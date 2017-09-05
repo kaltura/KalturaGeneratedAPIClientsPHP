@@ -6908,6 +6908,13 @@ class KalturaLiveEntryServerNodeRecordingInfo extends KalturaObjectBase
 	 */
 	public $duration = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryServerNodeRecordingStatus
+	 */
+	public $recordingStatus = null;
+
 
 }
 
