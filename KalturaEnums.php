@@ -1355,7 +1355,6 @@ class KalturaAssetType extends KalturaEnumBase
 	const SWF = "document.SWF";
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
-	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
 	const FLAVOR = "1";
 	const THUMBNAIL = "2";
 	const LIVE = "3";
@@ -1538,6 +1537,7 @@ class KalturaBatchJobOrderBy extends KalturaEnumBase
  */
 class KalturaBatchJobType extends KalturaEnumBase
 {
+	const CONVERT = "0";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
@@ -1547,7 +1547,6 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
-	const CONVERT = "0";
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
@@ -1556,7 +1555,6 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
-	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 	const IMPORT = "1";
 	const DELETE = "2";
 	const FLATTEN = "3";
@@ -2122,6 +2120,7 @@ class KalturaDeliveryProfileType extends KalturaEnumBase
 	const VOD_PACKAGER_HDS = "63";
 	const VOD_PACKAGER_MSS = "67";
 	const VOD_PACKAGER_DASH = "68";
+	const VOD_PACKAGER_HLS_MANIFEST = "69";
 	const LIVE_HLS = "1001";
 	const LIVE_HDS = "1002";
 	const LIVE_DASH = "1003";
@@ -2197,11 +2196,6 @@ class KalturaDocumentEntryMatchAttribute extends KalturaEnumBase
  */
 class KalturaDrmSchemeName extends KalturaEnumBase
 {
-	const PLAYREADY_CENC = "drm.PLAYREADY_CENC";
-	const WIDEVINE_CENC = "drm.WIDEVINE_CENC";
-	const FAIRPLAY = "fairplay.FAIRPLAY";
-	const PLAYREADY = "playReady.PLAYREADY";
-	const WIDEVINE = "widevine.WIDEVINE";
 }
 
 /**
@@ -2787,9 +2781,9 @@ class KalturaLanguage extends KalturaEnumBase
 	const EEE = "E";
 	const EGL = "Emilian";
 	const EN = "English";
-	const ENM = "English	 Middle (1100-1500)";
 	const EN_US = "English (American)";
 	const EN_GB = "English (British)";
+	const ENM = "English Middle (1100-1500)";
 	const MYV = "Erzya";
 	const EO = "Esperanto";
 	const ET = "Estonian";
@@ -2997,7 +2991,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const NIU = "Niuean";
 	const NOG = "Nogai";
 	const NON = "Norse Old";
-	const NSO = "Northern Sotho	 Pedi Sepedi";
+	const NSO = "Northern Sotho Pedi Sepedi";
 	const NO = "Norwegian";
 	const NOV = "Novial";
 	const NYM = "Nyamwezi";
@@ -3125,9 +3119,9 @@ class KalturaLanguage extends KalturaEnumBase
 	const TLY = "Talysh";
 	const TTQ = "Tamajaq Tawallammat";
 	const TAQ = "Tamasheq";
-	const TZM = "Tamazight	 Central Atlas";
+	const TZM = "Tamazight Central Atlas";
 	const TA = "Tamil";
-	const TAR = "Tarahumara	 Central";
+	const TAR = "Tarahumara Central";
 	const TTT = "Tat Muslim";
 	const TT = "Tatar";
 	const TE = "Telugu";
@@ -3154,7 +3148,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const TPN = "Tupinamb";
 	const TUV = "Turkana";
 	const TR = "Turkish";
-	const OTA = "Turkish	 Ottoman";
+	const OTA = "Turkish Ottoman";
 	const TK = "Turkmen";
 	const TUS = "Tuscarora";
 	const TVL = "Tuvalu";
@@ -4457,7 +4451,6 @@ class KalturaResponseProfileOrderBy extends KalturaEnumBase
  */
 class KalturaRuleActionType extends KalturaEnumBase
 {
-	const DRM_POLICY = "drm.DRM_POLICY";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";
@@ -4526,7 +4519,6 @@ class KalturaServerNodeType extends KalturaEnumBase
  */
 class KalturaSourceType extends KalturaEnumBase
 {
-	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
 	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
 	const WEBCAM = "2";
