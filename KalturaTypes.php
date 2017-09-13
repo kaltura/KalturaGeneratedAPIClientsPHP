@@ -4428,6 +4428,55 @@ class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPluginData extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmPlaybackPluginData extends KalturaPluginData
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDrmSchemeName
+	 */
+	public $scheme = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $licenseURL = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaObject extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var map
+	 * @readonly
+	 */
+	public $relatedObjects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -5945,23 +5994,6 @@ class KalturaGroupUser extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaObject extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var map
-	 * @readonly
-	 */
-	public $relatedObjects;
 
 
 }
@@ -8568,38 +8600,6 @@ abstract class KalturaPermissionItem extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaPluginData extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmPlaybackPluginData extends KalturaPluginData
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaDrmSchemeName
-	 */
-	public $scheme = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $licenseURL = null;
 
 
 }
