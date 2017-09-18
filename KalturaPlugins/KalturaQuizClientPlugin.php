@@ -240,7 +240,7 @@ class KalturaQuestionCuePoint extends KalturaCuePoint
 	/**
 	 * Array of key value answerKey->optionAnswer objects
 	 *
-	 * @var map
+	 * @var array of KalturaOptionalAnswer
 	 */
 	public $optionalAnswers;
 

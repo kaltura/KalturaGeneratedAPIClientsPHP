@@ -8791,6 +8791,25 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * Loges a user to the destination account as long the ks user id exists in the desc acount and the loginData id match for both accounts
+	 * 
+	 * @param int $requestedPartnerId 
+	 * @return KalturaSessionResponse
+	 */
+	function loginByKs($requestedPartnerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "requestedPartnerId", $requestedPartnerId);
+		$this->client->queueServiceActionCall("user", "loginByKs", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaSessionResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Logs a user into a partner account with a user login ID and a user password.
 	 * 
 	 * @param string $loginId The user's email address that identifies the user for login
@@ -9382,7 +9401,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-09-17');
+		$this->setClientTag('php5:17-09-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

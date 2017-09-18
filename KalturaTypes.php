@@ -16428,6 +16428,15 @@ class KalturaServerNodeListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSessionResponse extends KalturaStartWidgetSessionResponse
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSessionRestriction extends KalturaBaseRestriction
 {
 
