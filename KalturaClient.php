@@ -643,10 +643,9 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * 
 	 * @param string $entryId Id of entry to clone
 	 * @param array $cloneOptions 
-	 * @param bool $setSourceAsRootEntryId Should we set the original entryId as the rootEntryId of the new entry
 	 * @return KalturaBaseEntry
 	 */
-	function cloneAction($entryId, array $cloneOptions = null, $setSourceAsRootEntryId = false)
+	function cloneAction($entryId, array $cloneOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -655,7 +654,6 @@ class KalturaBaseEntryService extends KalturaServiceBase
 			{
 				$this->client->addParam($kparams, "cloneOptions:$index", $obj->toParams());
 			}
-		$this->client->addParam($kparams, "setSourceAsRootEntryId", $setSourceAsRootEntryId);
 		$this->client->queueServiceActionCall("baseentry", "clone", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9401,7 +9399,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-09-18');
+		$this->setClientTag('php5:17-09-19');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
