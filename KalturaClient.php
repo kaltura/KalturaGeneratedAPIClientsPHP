@@ -2900,6 +2900,25 @@ class KalturaFlavorAssetService extends KalturaServiceBase
 	}
 
 	/**
+	 * Get volume map by entry id
+	 * 
+	 * @param string $flavorId Flavor id
+	 * @return file
+	 */
+	function getVolumeMap($flavorId)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "flavorId", $flavorId);
+		$this->client->queueServiceActionCall("flavorasset", "getVolumeMap", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
 	 * Get web playable Flavor Assets for Entry
 	 * 
 	 * @param string $entryId 
@@ -4748,17 +4767,15 @@ class KalturaMediaService extends KalturaServiceBase
 	 * Get volume map by entry id
 	 * 
 	 * @param string $entryId Entry id
-	 * @param string $flavorId Flavor id
 	 * @return file
 	 */
-	function getVolumeMap($entryId, $flavorId = null)
+	function getVolumeMap($entryId)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorId", $flavorId);
 		$this->client->queueServiceActionCall("media", "getVolumeMap", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
@@ -9420,7 +9437,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-10-16');
+		$this->setClientTag('php5:17-10-17');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

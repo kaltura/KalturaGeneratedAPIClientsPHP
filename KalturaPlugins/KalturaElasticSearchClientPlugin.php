@@ -675,6 +675,13 @@ class KalturaESearchMetadataItemData extends KalturaESearchItemData
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $valueText = null;
@@ -797,6 +804,13 @@ class KalturaESearchMetadataItem extends KalturaESearchItem
 	 * @var int
 	 */
 	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
 
 
 }
