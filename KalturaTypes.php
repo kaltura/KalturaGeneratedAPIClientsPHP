@@ -10547,6 +10547,14 @@ class KalturaUploadToken extends KalturaObjectBase
 	 */
 	public $uploadUrl = null;
 
+	/**
+	 * autoFinalize - Should the upload be finalized once the file size on disk matches the file size reproted when adding the upload token.
+	 *
+	 * @var KalturaNullableBoolean
+	 * @insertonly
+	 */
+	public $autoFinalize = null;
+
 
 }
 
