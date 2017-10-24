@@ -3488,7 +3488,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	}
 
 	/**
-	 * 
+	 * Create recorded entry id if it doesn't exist and make sure it happens on the DC that the live entry was created on.
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $mediaServerIndex Media server index primary / secondary
@@ -3618,7 +3618,7 @@ class KalturaLiveChannelService extends KalturaServiceBase
 	}
 
 	/**
-	 * Sey recorded video to live entry
+	 * Set recorded video to live entry
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $mediaServerIndex 
@@ -3979,7 +3979,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
-	 * 
+	 * Create recorded entry id if it doesn't exist and make sure it happens on the DC that the live entry was created on.
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $mediaServerIndex Media server index primary / secondary
@@ -4151,7 +4151,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
-	 * Sey recorded video to live entry
+	 * Set recorded video to live entry
 	 * 
 	 * @param string $entryId Live entry id
 	 * @param string $mediaServerIndex 
@@ -9437,7 +9437,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-10-23');
+		$this->setClientTag('php5:17-10-24');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
