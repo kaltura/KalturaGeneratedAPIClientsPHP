@@ -583,6 +583,13 @@ class KalturaESearchCuePointItemData extends KalturaESearchItemData
 	 *
 	 * @var string
 	 */
+	public $question = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $answers = null;
 
 	/**
