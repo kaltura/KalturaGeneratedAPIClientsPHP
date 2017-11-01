@@ -281,6 +281,15 @@ class KalturaESearchItemDataResult extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaESearchObject extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaESearchOrderByItem extends KalturaObjectBase
 {
 	/**
@@ -305,59 +314,6 @@ class KalturaESearchOrderBy extends KalturaObjectBase
 	 * @var array of KalturaESearchOrderByItem
 	 */
 	public $orderItems;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchOperator extends KalturaESearchBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperatorType
-	 */
-	public $operator = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchBaseItem
-	 */
-	public $searchItems;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchParams extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperator
-	 */
-	public $searchOperator;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $objectStatuses = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOrderBy
-	 */
-	public $orderBy;
 
 
 }
@@ -712,6 +668,59 @@ class KalturaESearchMetadataItemData extends KalturaESearchItemData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchOperator extends KalturaESearchBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchBaseItem
+	 */
+	public $searchItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchParams extends KalturaESearchObject
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperator
+	 */
+	public $searchOperator;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectStatuses = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOrderBy
+	 */
+	public $orderBy;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchUserOrderByItem extends KalturaESearchOrderByItem
 {
 	/**
@@ -886,11 +895,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchParams $searchParams 
+	 * @param KalturaESearchObject $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchCategory(KalturaESearchParams $searchParams, KalturaPager $pager = null)
+	function searchCategory(KalturaESearchObject $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -908,11 +917,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchParams $searchParams 
+	 * @param KalturaESearchObject $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchEntry(KalturaESearchParams $searchParams, KalturaPager $pager = null)
+	function searchEntry(KalturaESearchObject $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -930,11 +939,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchParams $searchParams 
+	 * @param KalturaESearchObject $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchUser(KalturaESearchParams $searchParams, KalturaPager $pager = null)
+	function searchUser(KalturaESearchObject $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
