@@ -721,6 +721,22 @@ class KalturaESearchParams extends KalturaESearchObject
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchQuery extends KalturaESearchObject
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $eSerachQuery = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchUserOrderByItem extends KalturaESearchOrderByItem
 {
 	/**
