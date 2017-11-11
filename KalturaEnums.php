@@ -712,6 +712,18 @@ class KalturaRecordStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaRecordingStatus extends KalturaEnumBase
+{
+	const STOPPED = 0;
+	const PAUSED = 1;
+	const ACTIVE = 2;
+	const DISABLED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaResponseProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
@@ -1165,6 +1177,16 @@ class KalturaUserType extends KalturaEnumBase
 {
 	const USER = 0;
 	const GROUP = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaViewMode extends KalturaEnumBase
+{
+	const PREVIEW = 0;
+	const ALLOW_ALL = 1;
 }
 
 /**

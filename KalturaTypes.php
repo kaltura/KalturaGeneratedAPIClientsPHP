@@ -4286,6 +4286,13 @@ class KalturaFileSyncDescriptor extends KalturaObjectBase
 	public $fileSyncLocalPath = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileEncryptionKey = null;
+
+	/**
 	 * The translated path as used by the scheduler
 	 *
 	 * @var string
@@ -6781,6 +6788,27 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 * @var int
 	 */
 	public $segmentDuration = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $explicitLive = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaViewMode
+	 */
+	public $viewMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaRecordingStatus
+	 */
+	public $recordingStatus = null;
 
 
 }

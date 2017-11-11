@@ -313,6 +313,13 @@ class KalturaParseMultiLanguageCaptionAssetJobData extends KalturaJobData
 	 */
 	public $fileLocation = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileEncryptionKey = null;
+
 
 }
 

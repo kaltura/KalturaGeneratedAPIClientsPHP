@@ -1534,7 +1534,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	 * 
 	 * @param string $categoryIds 
 	 * @param int $targetCategoryParentId 
-	 * @return KalturaCategoryListResponse
+	 * @return bool
 	 */
 	function move($categoryIds, $targetCategoryParentId)
 	{
@@ -1546,7 +1546,7 @@ class KalturaCategoryService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCategoryListResponse");
+		$resultObject = (bool) $resultObject;
 		return $resultObject;
 	}
 
@@ -9437,7 +9437,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:17-11-09');
+		$this->setClientTag('php5:17-11-11');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

@@ -341,6 +341,13 @@ class KalturaMailNotificationObjectTask extends KalturaObjectTask
 	public $message = null;
 
 	/**
+	 * The footer of the message to send in the notification mail
+	 *
+	 * @var string
+	 */
+	public $footer = null;
+
+	/**
 	 * The basic link for the KMC site
 	 *
 	 * @var string

@@ -728,7 +728,7 @@ class KalturaESearchQuery extends KalturaESearchObject
 	 *
 	 * @var string
 	 */
-	public $eSerachQuery = null;
+	public $eSearchQuery = null;
 
 
 }
