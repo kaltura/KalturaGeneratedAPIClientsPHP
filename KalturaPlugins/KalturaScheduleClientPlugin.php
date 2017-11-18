@@ -848,6 +848,13 @@ class KalturaScheduleResourceListResponse extends KalturaListResponse
  */
 class KalturaLiveStreamScheduleEvent extends KalturaEntryScheduleEvent
 {
+	/**
+	 * Defines the expected audience.
+	 *
+	 * @var int
+	 */
+	public $projectedAudience = null;
+
 
 }
 

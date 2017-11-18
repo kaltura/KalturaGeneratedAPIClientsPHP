@@ -5189,6 +5189,13 @@ class KalturaFlavorAsset extends KalturaAsset
 	 */
 	public $label = null;
 
+	/**
+	 * Is default flavor asset of the entry (This field will be taken into account selectign which audio flavor will be selected as default)
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isDefault = null;
+
 
 }
 
@@ -10821,7 +10828,7 @@ class KalturaUser extends KalturaObjectBase
 	 * 
 	 *
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $loginEnabled = null;
 
@@ -10844,7 +10851,7 @@ class KalturaUser extends KalturaObjectBase
 	 * 
 	 *
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $isAccountOwner = null;
 
