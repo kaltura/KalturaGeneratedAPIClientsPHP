@@ -195,9 +195,9 @@ class KalturaVirusScanJobData extends KalturaJobData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaFileContainer
 	 */
-	public $srcFilePath = null;
+	public $fileContainer;
 
 	/**
 	 * 

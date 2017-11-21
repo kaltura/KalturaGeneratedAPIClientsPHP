@@ -99,6 +99,13 @@ class KalturaYouTubeApiCaptionDistributionInfo extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
+	public $encryptionKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $remoteId = null;
 
 	/**

@@ -5093,6 +5093,36 @@ class KalturaFileAsset extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaFileContainer extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $filePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $encryptionKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $fileSize = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFlavorAsset extends KalturaAsset
 {
 	/**
