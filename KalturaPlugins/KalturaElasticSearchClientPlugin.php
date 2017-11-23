@@ -144,23 +144,24 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const ENTRY_ACCESS_CONTROL_ID = "access_control_id";
 	const ENTRY_ADMIN_TAGS = "admin_tags";
 	const ENTRY_CATEGORIES = "categories";
+	const ENTRY_CATEGORY_NAME = "categories.name";
 	const ENTRY_CATEGORY_IDS = "category_ids";
 	const ENTRY_CONVERSION_PROFILE_ID = "conversion_profile_id";
 	const ENTRY_CREATED_AT = "created_at";
-	const ENTRY_CREATOR_ID = "creator_puser_id";
+	const ENTRY_CREATOR_ID = "creator_kuser_id";
 	const ENTRY_CREDIT = "credit";
 	const ENTRY_DESCRIPTION = "description";
 	const ENTRY_DISPLAY_IN_SEARCH = "display_in_search";
 	const ENTRY_END_DATE = "end_date";
-	const ENTRY_ENTITLED_USER_EDIT = "entitled_pusers_edit";
-	const ENTRY_ENTITLED_USER_PUBLISH = "entitled_pusers_publish";
+	const ENTRY_ENTITLED_USER_EDIT = "entitled_kusers_edit";
+	const ENTRY_ENTITLED_USER_PUBLISH = "entitled_kusers_publish";
 	const ENTRY_TYPE = "entry_type";
+	const ENTRY_USER_ID = "kuser_id";
 	const ENTRY_LENGTH_IN_MSECS = "length_in_msecs";
 	const ENTRY_MEDIA_TYPE = "media_type";
 	const ENTRY_MODERATION_STATUS = "moderation_status";
 	const ENTRY_NAME = "name";
 	const ENTRY_PARENT_ENTRY_ID = "parent_id";
-	const ENTRY_USER_ID = "puser_id";
 	const ENTRY_PUSH_PUBLISH = "push_publish";
 	const ENTRY_RECORDED_ENTRY_ID = "recorded_entry_id";
 	const ENTRY_REDIRECT_ENTRY_ID = "redirect_entry_id";
@@ -244,6 +245,13 @@ abstract class KalturaESearchBaseItem extends KalturaObjectBase
  */
 abstract class KalturaESearchItemData extends KalturaObjectBase
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $highlight = null;
+
 
 }
 
@@ -281,15 +289,6 @@ class KalturaESearchItemDataResult extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaESearchObject extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaESearchOrderByItem extends KalturaObjectBase
 {
 	/**
@@ -314,6 +313,73 @@ class KalturaESearchOrderBy extends KalturaObjectBase
 	 * @var array of KalturaESearchOrderByItem
 	 */
 	public $orderItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchOperator extends KalturaESearchBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchBaseItem
+	 */
+	public $searchItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchParams extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperator
+	 */
+	public $searchOperator;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectStatuses = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOrderBy
+	 */
+	public $orderBy;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useHighlight = null;
 
 
 }
@@ -367,6 +433,13 @@ abstract class KalturaESearchResult extends KalturaObjectBase
 	 * @var KalturaObjectBase
 	 */
 	public $object;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $highlight = null;
 
 	/**
 	 * 
@@ -668,60 +741,7 @@ class KalturaESearchMetadataItemData extends KalturaESearchItemData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchOperator extends KalturaESearchBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperatorType
-	 */
-	public $operator = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchBaseItem
-	 */
-	public $searchItems;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchParams extends KalturaESearchObject
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperator
-	 */
-	public $searchOperator;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $objectStatuses = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOrderBy
-	 */
-	public $orderBy;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchQuery extends KalturaESearchObject
+class KalturaESearchQuery extends KalturaESearchBaseItem
 {
 	/**
 	 * 
@@ -911,11 +931,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchObject $searchParams 
+	 * @param KalturaESearchParams $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchCategory(KalturaESearchObject $searchParams, KalturaPager $pager = null)
+	function searchCategory(KalturaESearchParams $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -933,11 +953,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchObject $searchParams 
+	 * @param KalturaESearchParams $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchEntry(KalturaESearchObject $searchParams, KalturaPager $pager = null)
+	function searchEntry(KalturaESearchParams $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -955,11 +975,11 @@ class KalturaESearchService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchObject $searchParams 
+	 * @param KalturaESearchParams $searchParams 
 	 * @param KalturaPager $pager 
 	 * @return KalturaESearchResponse
 	 */
-	function searchUser(KalturaESearchObject $searchParams, KalturaPager $pager = null)
+	function searchUser(KalturaESearchParams $searchParams, KalturaPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());

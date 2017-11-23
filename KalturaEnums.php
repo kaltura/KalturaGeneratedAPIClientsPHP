@@ -2247,6 +2247,47 @@ class KalturaDurationType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchLanguage extends KalturaEnumBase
+{
+	const ARABIC = "Arabic";
+	const BASQUE = "Basque";
+	const BRAZILIAN = "Brazilian";
+	const BULGARIAN = "Bulgarian";
+	const CATALAN = "Catalan";
+	const CHINESE = "Chinese";
+	const CZECH = "Czech";
+	const DANISH = "Danish";
+	const DUTCH = "Dutch";
+	const ENGLISH = "English";
+	const FINNISH = "Finnish";
+	const FRENCH = "French";
+	const GALICIAN = "Galician";
+	const GERMAN = "German";
+	const GREEK = "Greek";
+	const HINDI = "Hindi";
+	const HUNGRIAN = "Hungarian";
+	const INDONESIAN = "Indonesian";
+	const ITALIAN = "Italian";
+	const JAPANESE = "Japanese";
+	const KOREAN = "Korean";
+	const LATVIAN = "Latvian";
+	const LITHUANIAN = "Lithuanian";
+	const NORWEGIAN = "Norwegian";
+	const PERSIAN = "Persian";
+	const PORTUGUESE = "Prtuguese";
+	const ROMANIAN = "Romanian";
+	const RUSSIAN = "Russian";
+	const SORANI = "Sorani";
+	const SPANISH = "Spanish";
+	const SWEDISH = "Swedish";
+	const THAI = "Thai";
+	const TURKISH = "Turkish";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEdgeServerNodeOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";

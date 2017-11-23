@@ -660,6 +660,13 @@ class KalturaAppToken extends KalturaObjectBase
 	 */
 	public $hashType = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
 
 }
 
@@ -1960,6 +1967,22 @@ class KalturaPlayerEmbedCodeType extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchLanguageItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchLanguage
+	 */
+	public $eSerachLanguage = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPartner extends KalturaObjectBase
 {
 	/**
@@ -2355,6 +2378,13 @@ class KalturaPartner extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $timeAlignedRenditions = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchLanguageItem
+	 */
+	public $eSearchLanguages;
 
 
 }
@@ -6829,7 +6859,7 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	/**
 	 * 
 	 *
-	 * @var bool
+	 * @var KalturaNullableBoolean
 	 */
 	public $explicitLive = null;
 
@@ -11883,6 +11913,13 @@ abstract class KalturaAppTokenBaseFilter extends KalturaFilter
 	 */
 	public $statusIn = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sessionUserIdEqual = null;
+
 
 }
 
@@ -12826,9 +12863,9 @@ class KalturaCaptureThumbJobData extends KalturaJobData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaFileContainer
 	 */
-	public $srcFileSyncLocalPath = null;
+	public $fileContainer;
 
 	/**
 	 * The translated path as used by the scheduler

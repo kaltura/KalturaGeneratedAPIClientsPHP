@@ -254,6 +254,13 @@ class KalturaEmailNotificationCategoryRecipientProvider extends KalturaEmailNoti
 	public $categoryId;
 
 	/**
+	 * The IDs of the categories whose subscribers should receive the email notification.
+	 *
+	 * @var KalturaStringValue
+	 */
+	public $categoryIds;
+
+	/**
 	 * 
 	 *
 	 * @var KalturaCategoryUserProviderFilter
