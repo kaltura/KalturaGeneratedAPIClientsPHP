@@ -234,6 +234,13 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 	 */
 	public $code = null;
 
+	/**
+	 * An array of pattern-replacement pairs used for data string regex replacements
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $dataStringReplacements;
+
 
 }
 
