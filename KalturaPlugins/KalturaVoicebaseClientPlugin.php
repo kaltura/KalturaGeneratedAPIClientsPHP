@@ -109,6 +109,14 @@ class KalturaVoicebaseJobProviderData extends KalturaIntegrationJobProviderData
 	 */
 	public $replaceMediaContent = null;
 
+	/**
+	 * additional parameters to send to VoiceBase
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $additionalParameters = null;
+
 
 }
 
