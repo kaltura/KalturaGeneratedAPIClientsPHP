@@ -626,9 +626,9 @@ class KalturaTransformMetadataJobData extends KalturaJobData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaFileContainer
 	 */
-	public $srcXslPath = null;
+	public $srcXsl;
 
 	/**
 	 * 

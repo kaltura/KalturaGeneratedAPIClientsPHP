@@ -16680,6 +16680,13 @@ class KalturaStorageJobData extends KalturaJobData
 	 *
 	 * @var string
 	 */
+	public $srcFileEncryptionKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $srcFileSyncId = null;
 
 	/**

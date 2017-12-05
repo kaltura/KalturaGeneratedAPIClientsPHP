@@ -131,7 +131,6 @@ class KalturaESearchCuePointFieldName extends KalturaEnumBase
 	const CUE_POINT_SUB_TYPE = "cue_points.cue_point_sub_type";
 	const CUE_POINT_TAGS = "cue_points.cue_point_tags";
 	const CUE_POINT_TEXT = "cue_points.cue_point_text";
-	const CUE_POINT_TYPE = "cue_points.cue_point_type";
 }
 
 /**
@@ -822,6 +821,13 @@ class KalturaESearchCuePointItem extends KalturaESearchItem
 	 * @var KalturaESearchCuePointFieldName
 	 */
 	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCuePointType
+	 */
+	public $cuePointType = null;
 
 
 }
