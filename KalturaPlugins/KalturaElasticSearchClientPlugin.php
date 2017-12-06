@@ -242,14 +242,37 @@ abstract class KalturaESearchBaseItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaESearchItemData extends KalturaObjectBase
+class KalturaESearchHighlight extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $highlight = null;
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $hits;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchItemData extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchHighlight
+	 */
+	public $highlight;
 
 
 }
@@ -436,9 +459,9 @@ abstract class KalturaESearchResult extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaESearchHighlight
 	 */
-	public $highlight = null;
+	public $highlight;
 
 	/**
 	 * 

@@ -8316,6 +8316,13 @@ class KalturaMediaEntryFilterForPlaylist extends KalturaMediaEntryFilter
 	 */
 	public $limit = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
 
 }
 
