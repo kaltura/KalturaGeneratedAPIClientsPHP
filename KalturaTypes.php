@@ -4999,6 +4999,20 @@ class KalturaMediaEntry extends KalturaPlayableEntry
 	 */
 	public $streams;
 
+	/**
+	 * True if the entry is a sequence entry
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isSequenceEntry = null;
+
+	/**
+	 * The sequence entries of the entry
+	 *
+	 * @var string
+	 */
+	public $sequenceEntryIds = null;
+
 
 }
 
@@ -8300,6 +8314,20 @@ abstract class KalturaMediaEntryBaseFilter extends KalturaPlayableEntryFilter
  */
 class KalturaMediaEntryFilter extends KalturaMediaEntryBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isSequenceEntry = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sequenceEntryIdsIn = null;
+
 
 }
 
