@@ -2386,6 +2386,30 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $eSearchLanguages;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $publisherEnvironmentType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $ovpEnvironmentUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $ottEnvironmentUrl = null;
+
 
 }
 
@@ -8314,20 +8338,6 @@ abstract class KalturaMediaEntryBaseFilter extends KalturaPlayableEntryFilter
  */
 class KalturaMediaEntryFilter extends KalturaMediaEntryBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $isSequenceEntry = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $sequenceEntryIdsIn = null;
-
 
 }
 
