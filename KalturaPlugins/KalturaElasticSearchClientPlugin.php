@@ -74,6 +74,19 @@ class KalturaESearchCaptionFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchCategoryEntryFieldName extends KalturaEnumBase
+{
+	const ANCESTOR_ID = "ancestor_id";
+	const ANCESTOR_NAME = "ancestor_name";
+	const FULL_IDS = "full_ids";
+	const ID = "id";
+	const NAME = "name";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCategoryFieldName extends KalturaEnumBase
 {
 	const CONTRIBUTION_POLICY = "contribution_policy";
@@ -141,9 +154,6 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "access_control_id";
 	const ADMIN_TAGS = "admin_tags";
-	const CATEGORIES = "categories";
-	const CATEGORY_IDS = "category_ids";
-	const CATEGORY_NAME = "category_name";
 	const CONVERSION_PROFILE_ID = "conversion_profile_id";
 	const CREATED_AT = "created_at";
 	const CREATOR_ID = "creator_kuser_id";
@@ -1050,6 +1060,29 @@ class KalturaESearchCaptionItem extends KalturaESearchAbstractEntryItem
 	 * @var KalturaESearchCaptionFieldName
 	 */
 	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCategoryEntryItem extends KalturaESearchAbstractEntryItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCategoryEntryFieldName
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCategoryEntryStatus
+	 */
+	public $categoryEntryStatus = null;
 
 
 }
