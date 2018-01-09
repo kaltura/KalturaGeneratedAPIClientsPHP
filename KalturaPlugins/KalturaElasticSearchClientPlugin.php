@@ -396,13 +396,6 @@ abstract class KalturaESearchParams extends KalturaObjectBase
 	 */
 	public $orderBy;
 
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $useHighlight = null;
-
 
 }
 
@@ -937,6 +930,13 @@ abstract class KalturaESearchAbstractCategoryItem extends KalturaESearchCategory
 	 */
 	public $range;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
+
 
 }
 
@@ -967,6 +967,13 @@ abstract class KalturaESearchAbstractEntryItem extends KalturaESearchEntryBaseIt
 	 */
 	public $range;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
+
 
 }
 
@@ -996,6 +1003,13 @@ abstract class KalturaESearchAbstractUserItem extends KalturaESearchUserBaseItem
 	 * @var KalturaESearchRange
 	 */
 	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
 
 
 }
