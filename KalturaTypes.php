@@ -12042,6 +12042,22 @@ class KalturaAssetPropertiesCompareCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAssetTypeCondition extends KalturaCondition
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetTypes = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAssetsParamsResourceContainers extends KalturaResource
 {
 	/**
