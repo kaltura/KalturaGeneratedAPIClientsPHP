@@ -6702,6 +6702,25 @@ class KalturaServerNodeService extends KalturaServiceBase
 	}
 
 	/**
+	 * Mark server node offline
+	 * 
+	 * @param string $serverNodeId 
+	 * @return KalturaServerNode
+	 */
+	function markOffline($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "markOffline", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaServerNode");
+		return $resultObject;
+	}
+
+	/**
 	 * Update server node status
 	 * 
 	 * @param string $hostName 
@@ -9437,7 +9456,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-01-15');
+		$this->setClientTag('php5:18-01-16');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
