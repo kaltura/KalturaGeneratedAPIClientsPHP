@@ -183,8 +183,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const TAGS = "tags";
 	const TEMPLATE_ENTRY_ID = "template_entry_id";
 	const UPDATED_AT = "updated_at";
-	const VIEWS = "views";
-	const VOTES = "votes";
+	const USER_NAMES = "user_names";
 }
 
 /**
@@ -195,7 +194,9 @@ class KalturaESearchEntryOrderByFieldName extends KalturaEnumBase
 {
 	const CREATED_AT = "created_at";
 	const END_DATE = "end_date";
+	const LAST_PLAYED_AT = "last_played_at";
 	const NAME = "name";
+	const PLAYS = "plays";
 	const START_DATE = "start_date";
 	const UPDATED_AT = "updated_at";
 	const VIEWS = "views";
