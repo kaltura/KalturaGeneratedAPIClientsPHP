@@ -265,6 +265,13 @@ class KalturaQuestionCuePoint extends KalturaCuePoint
 	 */
 	public $explanation = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaQuestionType
+	 */
+	public $questionType = null;
+
 
 }
 

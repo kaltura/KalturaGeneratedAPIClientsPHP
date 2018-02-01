@@ -144,6 +144,7 @@ class KalturaESearchCuePointFieldName extends KalturaEnumBase
 	const SUB_TYPE = "sub_type";
 	const TAGS = "tags";
 	const TEXT = "text";
+	const TYPE = "type";
 }
 
 /**
@@ -265,6 +266,24 @@ abstract class KalturaESearchCategoryBaseItem extends KalturaESearchBaseItem
  * @subpackage Client
  */
 abstract class KalturaESearchEntryBaseItem extends KalturaESearchBaseItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryBaseNestedObject extends KalturaESearchEntryBaseItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryNestedBaseItem extends KalturaESearchEntryBaseNestedObject
 {
 
 }
@@ -646,9 +665,9 @@ class KalturaESearchCuePointItemData extends KalturaESearchItemData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaString
 	 */
-	public $tags = null;
+	public $tags;
 
 	/**
 	 * 
@@ -681,9 +700,9 @@ class KalturaESearchCuePointItemData extends KalturaESearchItemData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaString
 	 */
-	public $answers = null;
+	public $answers;
 
 	/**
 	 * 
@@ -1067,22 +1086,6 @@ class KalturaESearchUserQuery extends KalturaESearchUserBaseItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchCaptionItem extends KalturaESearchAbstractEntryItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchCaptionFieldName
-	 */
-	public $fieldName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchCategoryEntryItem extends KalturaESearchAbstractEntryItem
 {
 	/**
@@ -1152,29 +1155,6 @@ class KalturaESearchCategoryMetadataItem extends KalturaESearchAbstractCategoryI
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchCuePointItem extends KalturaESearchAbstractEntryItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchCuePointFieldName
-	 */
-	public $fieldName = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaCuePointType
-	 */
-	public $cuePointType = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchEntryItem extends KalturaESearchAbstractEntryItem
 {
 	/**
@@ -1183,36 +1163,6 @@ class KalturaESearchEntryItem extends KalturaESearchAbstractEntryItem
 	 * @var KalturaESearchEntryFieldName
 	 */
 	public $fieldName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchEntryMetadataItem extends KalturaESearchAbstractEntryItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $xpath = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataProfileId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $metadataFieldId = null;
 
 
 }
@@ -1247,6 +1197,128 @@ class KalturaESearchUserItem extends KalturaESearchAbstractUserItem
  * @subpackage Client
  */
 class KalturaESearchUserMetadataItem extends KalturaESearchAbstractUserItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xpath = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryAbstractNestedItem extends KalturaESearchEntryNestedBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $searchTerm = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchItemType
+	 */
+	public $itemType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchRange
+	 */
+	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchNestedOperator extends KalturaESearchEntryNestedBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchEntryNestedBaseItem
+	 */
+	public $searchItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCaptionItem extends KalturaESearchEntryAbstractNestedItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCaptionFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCuePointItem extends KalturaESearchEntryAbstractNestedItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCuePointFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchEntryMetadataItem extends KalturaESearchEntryAbstractNestedItem
 {
 	/**
 	 * 
