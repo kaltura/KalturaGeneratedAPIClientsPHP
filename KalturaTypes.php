@@ -3912,6 +3912,29 @@ class KalturaCoordinate extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaCsvAdditionalFieldInfo extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xpath = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDataEntry extends KalturaBaseEntry
 {
 	/**
@@ -17656,6 +17679,57 @@ class KalturaUserRoleListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUsersCsvJobData extends KalturaJobData
+{
+	/**
+	 * The filter should return the list of users that need to be specified in the csv.
+	 *
+	 * @var KalturaUserFilter
+	 */
+	public $filter;
+
+	/**
+	 * The metadata profile we should look the xpath in
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * The xpath to look in the metadataProfileId  and the wanted csv field name
+	 *
+	 * @var array of KalturaCsvAdditionalFieldInfo
+	 */
+	public $additionalFields;
+
+	/**
+	 * The users name
+	 *
+	 * @var string
+	 */
+	public $userName = null;
+
+	/**
+	 * The users email
+	 *
+	 * @var string
+	 */
+	public $userMail = null;
+
+	/**
+	 * The file location
+	 *
+	 * @var string
+	 */
+	public $outputPath = null;
 
 
 }

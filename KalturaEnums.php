@@ -1572,8 +1572,8 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
-	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const CONVERT = "0";
+	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
 	const INTEGRATION = "integration.Integration";
@@ -1623,6 +1623,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const COPY_CAPTIONS = "43";
 	const CHUNKED_ENCODE_JOB_SCHEDULER = "44";
 	const SERVER_NODE_MONITOR = "45";
+	const USERS_CSV = "46";
 }
 
 /**
@@ -3945,6 +3946,7 @@ class KalturaMailType extends KalturaEnumBase
 	const MAIL_TYPE_LIVE_REPORT_EXPORT_SUCCESS = "130";
 	const MAIL_TYPE_LIVE_REPORT_EXPORT_FAILURE = "131";
 	const MAIL_TYPE_LIVE_REPORT_EXPORT_ABORT = "132";
+	const MAIL_TYPE_USERS_CSV = "133";
 }
 
 /**

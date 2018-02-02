@@ -8734,6 +8734,33 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * Add batch job that sends an email with a link to download an updated CSV that contains list of users
+	 * 
+	 * @param KalturaUserFilter $filter A filter used to exclude specific types of users
+	 * @param int $metadataProfileId 
+	 * @param array $additionalFields 
+	 * @return string
+	 */
+	function exportToCsv(KalturaUserFilter $filter, $metadataProfileId = null, array $additionalFields = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		if ($additionalFields !== null)
+			foreach($additionalFields as $index => $obj)
+			{
+				$this->client->addParam($kparams, "additionalFields:$index", $obj->toParams());
+			}
+		$this->client->queueServiceActionCall("user", "exportToCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieves a user object for a specified user ID.
 	 * 
 	 * @param string $userId The user's unique identifier in the partner's system
@@ -8925,6 +8952,25 @@ class KalturaUserService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Will serve a requested csv
+	 * 
+	 * @param string $id - the requested file id
+	 * @return string
+	 */
+	function serveCsv($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("user", "serveCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
 	}
 
 	/**
@@ -9456,7 +9502,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-02-01');
+		$this->setClientTag('php5:18-02-02');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

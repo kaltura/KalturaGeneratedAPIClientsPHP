@@ -561,6 +561,13 @@ class KalturaESearchCaptionItemData extends KalturaESearchItemData
 	 */
 	public $captionAssetId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $label = null;
+
 
 }
 
