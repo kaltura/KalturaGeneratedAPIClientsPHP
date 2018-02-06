@@ -647,9 +647,9 @@ class KalturaTransformMetadataJobData extends KalturaJobData
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaFileContainer
 	 */
-	public $destXsdPath = null;
+	public $destXsd;
 
 	/**
 	 * 
