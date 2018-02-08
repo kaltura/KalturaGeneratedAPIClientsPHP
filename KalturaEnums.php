@@ -2818,8 +2818,6 @@ class KalturaLanguage extends KalturaEnumBase
 	const CIC = "Chickasaw";
 	const CLC = "Chilcotin";
 	const ZH = "Chinese";
-	const ZH_HANS = "Chinese (Simplified)";
-	const ZH_HANT = "Chinese (Traditional)";
 	const CHN = "Chinook jargon";
 	const CHP = "Chipewyan";
 	const CIW = "Chippewa";
@@ -3264,8 +3262,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const JI = "Yiddish";
 	const YI = "Yiddish";
+	const JI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";
@@ -3423,8 +3421,6 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const YI = "yi";
 	const YO = "yo";
 	const ZH = "zh";
-	const ZH_HANS = "zh_s";
-	const ZH_HANT = "zh_t";
 	const ZU = "zu";
 }
 
