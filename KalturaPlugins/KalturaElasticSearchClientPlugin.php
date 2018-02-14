@@ -178,6 +178,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const RECORDED_ENTRY_ID = "recorded_entry_id";
 	const REDIRECT_ENTRY_ID = "redirect_entry_id";
 	const REFERENCE_ID = "reference_id";
+	const ROOT_ID = "root_id";
 	const SITE_URL = "site_url";
 	const SOURCE_TYPE = "source_type";
 	const START_DATE = "start_date";
