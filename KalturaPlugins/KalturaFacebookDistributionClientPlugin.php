@@ -134,7 +134,7 @@ class KalturaFacebookDistributionJobProviderData extends KalturaConfigurableDist
 	 *
 	 * @var string
 	 */
-	public $thumbAssetFilePath = null;
+	public $thumbAssetId = null;
 
 	/**
 	 * 
