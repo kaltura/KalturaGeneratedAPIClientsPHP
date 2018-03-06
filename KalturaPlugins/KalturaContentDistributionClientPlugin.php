@@ -386,6 +386,13 @@ class KalturaDistributionFieldConfig extends KalturaObjectBase
 	public $isRequired = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $type = null;
+
+	/**
 	 * Trigger distribution update when this field changes or not ?
 	 *
 	 * @var bool
