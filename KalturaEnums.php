@@ -2441,6 +2441,7 @@ class KalturaExternalMediaEntryMatchAttribute extends KalturaEnumBase
 class KalturaFileAssetObjectType extends KalturaEnumBase
 {
 	const UI_CONF = "2";
+	const ENTRY = "3";
 }
 
 /**
