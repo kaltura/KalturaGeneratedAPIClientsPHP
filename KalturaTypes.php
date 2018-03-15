@@ -14747,6 +14747,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter
 	 */
 	public $serverTypeEqual = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverTypeIn = null;
+
 
 }
 
@@ -21299,6 +21306,15 @@ class KalturaLiveEntryMatchAttributeCondition extends KalturaSearchMatchAttribut
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaLiveEntryServerNodeBaseFilter extends KalturaEntryServerNodeFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveStreamAdminEntryCompareAttributeCondition extends KalturaSearchComparableAttributeCondition
 {
 	/**
@@ -21912,6 +21928,15 @@ class KalturaGoogleVideoSyndicationFeedFilter extends KalturaGoogleVideoSyndicat
  * @subpackage Client
  */
 class KalturaITunesSyndicationFeedFilter extends KalturaITunesSyndicationFeedBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveEntryServerNodeFilter extends KalturaLiveEntryServerNodeBaseFilter
 {
 
 }

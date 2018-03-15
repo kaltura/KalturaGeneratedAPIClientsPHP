@@ -279,6 +279,13 @@ class KalturaQuestionCuePoint extends KalturaCuePoint
 	 */
 	public $presentationOrder = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $excludeFromScore = null;
+
 
 }
 
