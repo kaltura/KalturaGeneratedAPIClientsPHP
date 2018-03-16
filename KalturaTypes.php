@@ -3722,6 +3722,13 @@ class KalturaConversionProfile extends KalturaObjectBase
 	 */
 	public $defaultReplacementOptions;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaLanguage
+	 */
+	public $defaultAudioLang = null;
+
 
 }
 

@@ -124,6 +124,9 @@ class KalturaESearchCategoryFieldName extends KalturaEnumBase
 class KalturaESearchCategoryOrderByFieldName extends KalturaEnumBase
 {
 	const CREATED_AT = "created_at";
+	const ENTRIES_COUNT = "entries_count";
+	const MEMBERS_COUNT = "members_count";
+	const NAME = "name";
 	const UPDATED_AT = "updated_at";
 }
 
