@@ -50,6 +50,16 @@ class KalturaDeleteFlavorsLogicType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDryRunFileType extends KalturaEnumBase
+{
+	const LIST_RESPONSE = 1;
+	const CSV = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaScheduledTaskAddOrRemoveType extends KalturaEnumBase
 {
 	const ADD = 1;
@@ -461,6 +471,20 @@ class KalturaScheduledTaskJobData extends KalturaJobData
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $totalCount = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaDryRunFileType
+	 */
+	public $fileFormat = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $resultsFilePath = null;
@@ -752,6 +776,25 @@ class KalturaScheduledTaskProfileService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "integer");
 		return $resultObject;
+	}
+
+	/**
+	 * Serves dry run results by its request id
+	 * 
+	 * @param int $requestId 
+	 * @return file
+	 */
+	function serveDryRunResults($requestId)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "requestId", $requestId);
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "serveDryRunResults", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
 	}
 
 	/**
