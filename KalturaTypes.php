@@ -21313,7 +21313,7 @@ class KalturaLiveEntryMatchAttributeCondition extends KalturaSearchMatchAttribut
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaLiveEntryServerNodeBaseFilter extends KalturaEntryServerNodeFilter
+class KalturaLiveEntryServerNodeBaseFilter extends KalturaEntryServerNodeFilter
 {
 
 }
