@@ -8741,10 +8741,11 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param array $additionalFields 
 	 * @return string
 	 */
-	function exportToCsv(KalturaUserFilter $filter, $metadataProfileId = null, array $additionalFields = null)
+	function exportToCsv(KalturaUserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
 		if ($additionalFields !== null)
 			foreach($additionalFields as $index => $obj)
@@ -9502,7 +9503,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-03-27');
+		$this->setClientTag('php5:18-03-28');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

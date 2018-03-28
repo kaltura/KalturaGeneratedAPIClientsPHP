@@ -99,6 +99,7 @@ class KalturaESearchCategoryFieldName extends KalturaEnumBase
 	const ENTRIES_COUNT = "entries_count";
 	const FULL_IDS = "full_ids";
 	const FULL_NAME = "full_name";
+	const ID = "id";
 	const INHERITANCE_TYPE = "inheritance_type";
 	const INHERITED_PARENT_ID = "inherited_parent_id";
 	const MEMBERS_COUNT = "members_count";
@@ -469,13 +470,6 @@ abstract class KalturaESearchResult extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var KalturaObjectBase
-	 */
-	public $object;
-
-	/**
-	 * 
-	 *
 	 * @var array of KalturaESearchHighlight
 	 */
 	public $highlight;
@@ -636,6 +630,13 @@ class KalturaESearchCategoryParams extends KalturaESearchParams
  */
 class KalturaESearchCategoryResult extends KalturaESearchResult
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaCategory
+	 */
+	public $object;
+
 
 }
 
@@ -800,6 +801,13 @@ class KalturaESearchEntryParams extends KalturaESearchParams
  */
 class KalturaESearchEntryResult extends KalturaESearchResult
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaBaseEntry
+	 */
+	public $object;
+
 
 }
 
@@ -931,6 +939,13 @@ class KalturaESearchUserParams extends KalturaESearchParams
  */
 class KalturaESearchUserResult extends KalturaESearchResult
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaUser
+	 */
+	public $object;
+
 
 }
 

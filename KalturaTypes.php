@@ -4558,23 +4558,6 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaObject extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var map
-	 * @readonly
-	 */
-	public $relatedObjects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -6129,6 +6112,23 @@ class KalturaGroupUser extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaObject extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var map
+	 * @readonly
+	 */
+	public $relatedObjects;
 
 
 }
