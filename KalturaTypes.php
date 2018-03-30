@@ -6931,6 +6931,14 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 */
 	public $recordingStatus = null;
 
+	/**
+	 * The time the last broadcast finished.
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastBroadcastEndTime = null;
+
 
 }
 
