@@ -436,6 +436,29 @@ class KalturaAnnotationService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param string $id 
+	 * @param int $startTime 
+	 * @param int $endTime 
+	 * @return KalturaCuePoint
+	 */
+	function updateCuePointsTimes($id, $startTime, $endTime = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "startTime", $startTime);
+		$this->client->addParam($kparams, "endTime", $endTime);
+		$this->client->queueServiceActionCall("annotation_annotation", "updateCuePointsTimes", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCuePoint");
+		return $resultObject;
+	}
+
+	/**
 	 * Update cuePoint status by id
 	 * 
 	 * @param string $id 

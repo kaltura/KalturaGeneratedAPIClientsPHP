@@ -13165,6 +13165,43 @@ class KalturaClipAttributes extends KalturaOperationAttributes
 	 */
 	public $duration = null;
 
+	/**
+	 * global Offset In Destination in milliseconds
+	 *
+	 * @var int
+	 */
+	public $globalOffsetInDestination = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaClipConcatJobData extends KalturaJobData
+{
+	/**
+	 * $partnerId
+	 *
+	 * @var int
+	 */
+	public $partnerId = null;
+
+	/**
+	 * $priority
+	 *
+	 * @var int
+	 */
+	public $priority = null;
+
+	/**
+	 * clip operations
+	 *
+	 * @var array of KalturaObject
+	 */
+	public $operationAttributes;
+
 
 }
 
@@ -13263,6 +13300,13 @@ class KalturaConcatJobData extends KalturaJobData
 	 * @var float
 	 */
 	public $concatenatedDuration = null;
+
+	/**
+	 * Should Sort the clip parts
+	 *
+	 * @var bool
+	 */
+	public $shouldSort = null;
 
 
 }
