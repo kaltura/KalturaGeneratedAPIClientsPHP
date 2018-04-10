@@ -3277,6 +3277,43 @@ class KalturaClientNotification extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaClipDescription extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sourceEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $startTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $offsetInDestination = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaContext extends KalturaObjectBase
 {
 

@@ -249,13 +249,6 @@ class KalturaCaptionParamsListResponse extends KalturaListResponse
 class KalturaCopyCaptionsJobData extends KalturaJobData
 {
 	/**
-	 * source entry Id
-	 *
-	 * @var string
-	 */
-	public $sourceEntryId = null;
-
-	/**
 	 * entry Id
 	 *
 	 * @var string
@@ -263,18 +256,11 @@ class KalturaCopyCaptionsJobData extends KalturaJobData
 	public $entryId = null;
 
 	/**
-	 * clip offset
+	 * an array of source start time and duration
 	 *
-	 * @var int
+	 * @var array of KalturaClipDescription
 	 */
-	public $offset = null;
-
-	/**
-	 * clip duration
-	 *
-	 * @var int
-	 */
-	public $duration = null;
+	public $clipsDescriptionArray;
 
 	/**
 	 * 
