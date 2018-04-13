@@ -141,6 +141,13 @@ class KalturaWebexDropFolder extends KalturaDropFolder
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $webexSiteName = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $deleteFromTimestamp = null;
