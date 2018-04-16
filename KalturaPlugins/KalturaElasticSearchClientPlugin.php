@@ -115,7 +115,6 @@ class KalturaESearchCategoryFieldName extends KalturaEnumBase
 	const TAGS = "tags";
 	const UPDATED_AT = "updated_at";
 	const USER_ID = "user_id";
-	const USER_IDS = "user_ids";
 }
 
 /**
@@ -129,6 +128,15 @@ class KalturaESearchCategoryOrderByFieldName extends KalturaEnumBase
 	const MEMBERS_COUNT = "members_count";
 	const NAME = "name";
 	const UPDATED_AT = "updated_at";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCategoryUserFieldName extends KalturaEnumBase
+{
+	const USER_ID = "user_id";
 }
 
 /**
@@ -1173,6 +1181,36 @@ class KalturaESearchCategoryMetadataItem extends KalturaESearchAbstractCategoryI
 	 * @var int
 	 */
 	public $metadataFieldId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCategoryUserItem extends KalturaESearchAbstractCategoryItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCategoryUserFieldName
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCategoryUserPermissionLevel
+	 */
+	public $permissionLevel = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $permissionName = null;
 
 
 }
