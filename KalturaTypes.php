@@ -15120,6 +15120,13 @@ class KalturaITunesSyndicationFeed extends KalturaBaseSyndicationFeed
 	public $feedAuthor = null;
 
 	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $enforceFeedAuthor = null;
+
+	/**
 	 * true in case you want to enfore the palylist order on the
 	 *
 	 * @var KalturaNullableBoolean
