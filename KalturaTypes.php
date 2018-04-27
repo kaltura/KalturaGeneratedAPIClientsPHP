@@ -4595,6 +4595,29 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEffect extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaEffectType
+	 */
+	public $effectType = null;
+
+	/**
+	 * value
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEmailIngestionProfile extends KalturaObjectBase
 {
 	/**
@@ -13208,6 +13231,13 @@ class KalturaClipAttributes extends KalturaOperationAttributes
 	 * @var int
 	 */
 	public $globalOffsetInDestination = null;
+
+	/**
+	 * global Offset In Destination in milliseconds
+	 *
+	 * @var array of KalturaEffect
+	 */
+	public $effectArray;
 
 
 }

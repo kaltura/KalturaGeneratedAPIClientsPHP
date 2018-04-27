@@ -289,6 +289,16 @@ class KalturaEditorType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEffectType extends KalturaEnumBase
+{
+	const VIDEO_FADE_IN = 1;
+	const VIDEO_FADE_OUT = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEmailIngestionProfileStatus extends KalturaEnumBase
 {
 	const INACTIVE = 0;
