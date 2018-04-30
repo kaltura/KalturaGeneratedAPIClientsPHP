@@ -17076,6 +17076,15 @@ class KalturaSyncCategoryPrivacyContextJobData extends KalturaJobData
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaTaskEntryServerNode extends KalturaEntryServerNode
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaThumbAssetListResponse extends KalturaListResponse
 {
 	/**
@@ -18772,6 +18781,36 @@ abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $creatorUserIdIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaClippingTaskEntryServerNode extends KalturaTaskEntryServerNode
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaClipAttributes
+	 */
+	public $clipAttributes;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $clippedEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $liveEntryId = null;
 
 
 }

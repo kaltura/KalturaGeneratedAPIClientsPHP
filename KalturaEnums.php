@@ -349,11 +349,17 @@ class KalturaEntryServerNodeRecordingStatus extends KalturaEnumBase
  */
 class KalturaEntryServerNodeStatus extends KalturaEnumBase
 {
+	const ERROR = -1;
 	const STOPPED = 0;
 	const PLAYABLE = 1;
 	const BROADCASTING = 2;
 	const AUTHENTICATED = 3;
 	const MARKED_FOR_DELETION = 4;
+	const TASK_PENDING = 5;
+	const TASK_QUEUED = 6;
+	const TASK_PROCESSING = 7;
+	const TASK_UPLOADING = 8;
+	const TASK_FINISHED = 9;
 }
 
 /**
@@ -2356,6 +2362,7 @@ class KalturaEntryServerNodeType extends KalturaEnumBase
 {
 	const LIVE_PRIMARY = "0";
 	const LIVE_BACKUP = "1";
+	const LIVE_CLIPPING_TASK = "2";
 }
 
 /**
