@@ -278,33 +278,6 @@ abstract class KalturaESearchCategoryBaseItem extends KalturaESearchBaseItem
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaESearchEntryBaseItem extends KalturaESearchBaseItem
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaESearchEntryBaseNestedObject extends KalturaESearchEntryBaseItem
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaESearchEntryNestedBaseItem extends KalturaESearchEntryBaseNestedObject
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchHighlight extends KalturaObjectBase
 {
 	/**
@@ -366,6 +339,88 @@ class KalturaESearchItemDataResult extends KalturaObjectBase
 	 * @var string
 	 */
 	public $itemsType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchResult extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchHighlight
+	 */
+	public $highlight;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchItemDataResult
+	 */
+	public $itemsData;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchCategoryResult extends KalturaESearchResult
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCategory
+	 */
+	public $object;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryBaseItem extends KalturaESearchBaseItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryBaseNestedObject extends KalturaESearchEntryBaseItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchEntryNestedBaseItem extends KalturaESearchEntryBaseNestedObject
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchEntryResult extends KalturaESearchResult
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaBaseEntry
+	 */
+	public $object;
 
 
 }
@@ -473,30 +528,7 @@ class KalturaESearchRange extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaESearchResult extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchHighlight
-	 */
-	public $highlight;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchItemDataResult
-	 */
-	public $itemsData;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchResponse extends KalturaObjectBase
+abstract class KalturaESearchResponse extends KalturaObjectBase
 {
 	/**
 	 * 
@@ -505,14 +537,6 @@ class KalturaESearchResponse extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $totalCount = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchResult
-	 * @readonly
-	 */
-	public $objects;
 
 
 }
@@ -523,6 +547,22 @@ class KalturaESearchResponse extends KalturaObjectBase
  */
 abstract class KalturaESearchUserBaseItem extends KalturaESearchBaseItem
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchUserResult extends KalturaESearchResult
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaUser
+	 */
+	public $object;
+
 
 }
 
@@ -636,14 +676,15 @@ class KalturaESearchCategoryParams extends KalturaESearchParams
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchCategoryResult extends KalturaESearchResult
+class KalturaESearchCategoryResponse extends KalturaESearchResponse
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaCategory
+	 * @var array of KalturaESearchCategoryResult
+	 * @readonly
 	 */
-	public $object;
+	public $objects;
 
 
 }
@@ -807,14 +848,15 @@ class KalturaESearchEntryParams extends KalturaESearchParams
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchEntryResult extends KalturaESearchResult
+class KalturaESearchEntryResponse extends KalturaESearchResponse
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaBaseEntry
+	 * @var array of KalturaESearchEntryResult
+	 * @readonly
 	 */
-	public $object;
+	public $objects;
 
 
 }
@@ -945,14 +987,15 @@ class KalturaESearchUserParams extends KalturaESearchParams
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchUserResult extends KalturaESearchResult
+class KalturaESearchUserResponse extends KalturaESearchResponse
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaUser
+	 * @var array of KalturaESearchUserResult
+	 * @readonly
 	 */
-	public $object;
+	public $objects;
 
 
 }
@@ -1425,7 +1468,7 @@ class KalturaESearchService extends KalturaServiceBase
 	 * 
 	 * @param KalturaESearchCategoryParams $searchParams 
 	 * @param KalturaPager $pager 
-	 * @return KalturaESearchResponse
+	 * @return KalturaESearchCategoryResponse
 	 */
 	function searchCategory(KalturaESearchCategoryParams $searchParams, KalturaPager $pager = null)
 	{
@@ -1438,7 +1481,7 @@ class KalturaESearchService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaESearchResponse");
+		$this->client->validateObjectType($resultObject, "KalturaESearchCategoryResponse");
 		return $resultObject;
 	}
 
@@ -1447,7 +1490,7 @@ class KalturaESearchService extends KalturaServiceBase
 	 * 
 	 * @param KalturaESearchEntryParams $searchParams 
 	 * @param KalturaPager $pager 
-	 * @return KalturaESearchResponse
+	 * @return KalturaESearchEntryResponse
 	 */
 	function searchEntry(KalturaESearchEntryParams $searchParams, KalturaPager $pager = null)
 	{
@@ -1460,7 +1503,7 @@ class KalturaESearchService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaESearchResponse");
+		$this->client->validateObjectType($resultObject, "KalturaESearchEntryResponse");
 		return $resultObject;
 	}
 
@@ -1469,7 +1512,7 @@ class KalturaESearchService extends KalturaServiceBase
 	 * 
 	 * @param KalturaESearchUserParams $searchParams 
 	 * @param KalturaPager $pager 
-	 * @return KalturaESearchResponse
+	 * @return KalturaESearchUserResponse
 	 */
 	function searchUser(KalturaESearchUserParams $searchParams, KalturaPager $pager = null)
 	{
@@ -1482,7 +1525,7 @@ class KalturaESearchService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaESearchResponse");
+		$this->client->validateObjectType($resultObject, "KalturaESearchUserResponse");
 		return $resultObject;
 	}
 }
