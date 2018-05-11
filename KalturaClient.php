@@ -3336,6 +3336,27 @@ class KalturaGroupUserService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaGroupUserListResponse");
 		return $resultObject;
 	}
+
+	/**
+	 * Sync by userId and groupIds
+	 * 
+	 * @param string $userId 
+	 * @param string $groupIds 
+	 * @return KalturaBulkUpload
+	 */
+	function sync($userId, $groupIds)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "groupIds", $groupIds);
+		$this->client->queueServiceActionCall("groupuser", "sync", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		return $resultObject;
+	}
 }
 
 /**
@@ -9526,7 +9547,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-05-10');
+		$this->setClientTag('php5:18-05-11');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

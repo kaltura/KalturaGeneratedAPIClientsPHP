@@ -4867,6 +4867,13 @@ class KalturaUser extends KalturaObjectBase
 	 */
 	public $allowedPartnerPackages = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaUserMode
+	 */
+	public $userMode = null;
+
 
 }
 
@@ -6451,6 +6458,14 @@ class KalturaGroupUser extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupUserCreationMode
+	 * @insertonly
+	 */
+	public $creationMode = null;
 
 
 }

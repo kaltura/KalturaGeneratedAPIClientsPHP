@@ -422,6 +422,16 @@ class KalturaGender extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaGroupUserCreationMode extends KalturaEnumBase
+{
+	const MANUAL = 1;
+	const AUTOMATIC = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGroupUserStatus extends KalturaEnumBase
 {
 	const ACTIVE = 0;
@@ -1162,6 +1172,16 @@ class KalturaUserJoinPolicyType extends KalturaEnumBase
 	const AUTO_JOIN = 1;
 	const REQUEST_TO_JOIN = 2;
 	const NOT_ALLOWED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserMode extends KalturaEnumBase
+{
+	const NONE = 0;
+	const PROTECTED_USER = 1;
 }
 
 /**
