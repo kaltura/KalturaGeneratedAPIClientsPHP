@@ -8778,7 +8778,7 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
-	 * Add batch job that sends an email with a link to download an updated CSV that contains list of users
+	 * Creates a batch job that sends an email with a link to download a CSV containing a list of users
 	 * 
 	 * @param KalturaUserFilter $filter A filter used to exclude specific types of users
 	 * @param int $metadataProfileId 
@@ -8918,7 +8918,7 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
-	 * Loges a user to the destination account as long the ks user id exists in the desc acount and the loginData id match for both accounts
+	 * Logs a user to the destination account provided the KS' user ID is associated with the destination account and the loginData ID matches
 	 * 
 	 * @param int $requestedPartnerId 
 	 * @return KalturaSessionResponse
@@ -9000,7 +9000,7 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
-	 * Will serve a requested csv
+	 * Will serve a requested CSV
 	 * 
 	 * @param string $id - the requested file id
 	 * @return string
@@ -9019,7 +9019,7 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
-	 * Set initial users password
+	 * Set initial user password
 	 * 
 	 * @param string $hashKey The hash key used to identify the user (retrieved by email)
 	 * @param string $newPassword The new password to set for the user
@@ -9527,7 +9527,7 @@ class KalturaClient extends KalturaClientBase
 
 	/**
 	 * Manage partner users on Kaltura's side
-	 *  The userId in kaltura is the unique Id in the partner's system, and the [partnerId,Id] couple are unique key in kaltura's DB
+	 *  The userId in kaltura is the unique ID in the partner's system, and the [partnerId,Id] couple are unique key in kaltura's DB
 	 * @var KalturaUserService
 	 */
 	public $user = null;
@@ -9547,7 +9547,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-05-17');
+		$this->setClientTag('php5:18-05-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
