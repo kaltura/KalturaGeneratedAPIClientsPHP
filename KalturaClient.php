@@ -3342,13 +3342,17 @@ class KalturaGroupUserService extends KalturaServiceBase
 	 * 
 	 * @param string $userId 
 	 * @param string $groupIds 
+	 * @param bool $removeFromExistingGroups 
+	 * @param bool $createNewGroups 
 	 * @return KalturaBulkUpload
 	 */
-	function sync($userId, $groupIds)
+	function sync($userId, $groupIds, $removeFromExistingGroups = true, $createNewGroups = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);
 		$this->client->addParam($kparams, "groupIds", $groupIds);
+		$this->client->addParam($kparams, "removeFromExistingGroups", $removeFromExistingGroups);
+		$this->client->addParam($kparams, "createNewGroups", $createNewGroups);
 		$this->client->queueServiceActionCall("groupuser", "sync", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9547,7 +9551,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-05-21');
+		$this->setClientTag('php5:18-05-22');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
