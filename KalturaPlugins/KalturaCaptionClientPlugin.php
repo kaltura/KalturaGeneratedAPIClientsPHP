@@ -159,6 +159,13 @@ class KalturaCaptionAsset extends KalturaAsset
 	 */
 	public $accuracy = null;
 
+	/**
+	 * The Accuracy of the caption content
+	 *
+	 * @var bool
+	 */
+	public $displayOnPlayer = null;
+
 
 }
 

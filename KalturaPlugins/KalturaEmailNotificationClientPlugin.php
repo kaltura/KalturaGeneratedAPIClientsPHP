@@ -66,6 +66,7 @@ class KalturaEmailNotificationRecipientProviderType extends KalturaEnumBase
 	const STATIC_LIST = "1";
 	const CATEGORY = "2";
 	const USER = "3";
+	const GROUP = "4";
 }
 
 /**
@@ -266,6 +267,38 @@ class KalturaEmailNotificationCategoryRecipientProvider extends KalturaEmailNoti
 	 * @var KalturaCategoryUserProviderFilter
 	 */
 	public $categoryUserFilter;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEmailNotificationGroupRecipientJobData extends KalturaEmailNotificationRecipientJobData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $groupId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEmailNotificationGroupRecipientProvider extends KalturaEmailNotificationRecipientProvider
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $groupId = null;
 
 
 }

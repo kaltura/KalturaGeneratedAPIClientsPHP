@@ -87,6 +87,7 @@ class KalturaScheduledTaskProfileStatus extends KalturaEnumBase
 class KalturaObjectFilterEngineType extends KalturaEnumBase
 {
 	const ENTRY = "1";
+	const ENTRY_VENDOR_TASK = "2";
 }
 
 /**

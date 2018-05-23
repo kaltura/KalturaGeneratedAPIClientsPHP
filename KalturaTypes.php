@@ -2382,21 +2382,6 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchLanguageItem
-	 */
-	public $eSearchLanguages;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $publisherEnvironmentType = null;
-
-	/**
-	 * 
-	 *
 	 * @var string
 	 * @readonly
 	 */
@@ -2409,6 +2394,13 @@ class KalturaPartner extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $ottEnvironmentUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchLanguageItem
+	 */
+	public $eSearchLanguages;
 
 
 }
