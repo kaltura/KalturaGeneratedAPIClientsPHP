@@ -44,6 +44,7 @@ class KalturaYouTubeDistributionFeedSpecVersion extends KalturaEnumBase
 {
 	const VERSION_1 = "1";
 	const VERSION_2 = "2";
+	const VERSION_3 = "3";
 }
 
 /**
@@ -171,6 +172,34 @@ class KalturaYouTubeDistributionJobProviderData extends KalturaConfigurableDistr
 	 * @var string
 	 */
 	public $googleTokenData = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionsCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $submitCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $updateCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $deleteVideoIds = null;
 
 
 }
@@ -446,6 +475,48 @@ class KalturaYouTubeDistributionProfile extends KalturaConfigurableDistributionP
 	 * @var string
 	 */
 	public $apiAuthorizeUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyStatus = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $enableContentId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thirdPartyAds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $productListingAds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $domainWhitelist = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $notifySubscribers = null;
 
 
 }

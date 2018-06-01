@@ -244,6 +244,7 @@ abstract class KalturaCuePoint extends KalturaObjectBase
 	 * 
 	 *
 	 * @var bool
+	 * @readonly
 	 */
 	public $isMomentary = null;
 
