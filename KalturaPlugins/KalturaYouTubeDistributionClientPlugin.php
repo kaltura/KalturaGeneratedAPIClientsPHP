@@ -101,6 +101,13 @@ class KalturaYouTubeDistributionJobProviderData extends KalturaConfigurableDistr
 	 *
 	 * @var string
 	 */
+	public $thumbAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $captionAssetIds = null;
 
 	/**
