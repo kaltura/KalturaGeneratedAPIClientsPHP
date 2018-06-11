@@ -14091,6 +14091,22 @@ class KalturaDeliveryProfileLiveAppleHttp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDeliveryProfileLivePackager extends KalturaDeliveryProfile
+{
+	/**
+	 * Domain used to sign the live url
+	 *
+	 * @var string
+	 */
+	public $livePackagerSigningDomain = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
 {
 	/**
@@ -19191,6 +19207,29 @@ class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp
 	 * @var string
 	 */
 	public $rendererClass = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDeliveryProfileLivePackagerHls extends KalturaDeliveryProfileLivePackager
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $disableExtraAttributes = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $forceProxy = null;
 
 
 }
