@@ -2382,6 +2382,14 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $publisherEnvironmentType = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 * @readonly
 	 */
