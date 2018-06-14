@@ -17767,6 +17767,29 @@ class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerWowzaSecureToken extends KalturaUrlTokenizer
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $paramPrefix = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hashAlgorithm = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserAgentRestriction extends KalturaBaseRestriction
 {
 	/**
