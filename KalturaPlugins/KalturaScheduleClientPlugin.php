@@ -770,23 +770,6 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryVendorTaskListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaEntryVendorTask
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaLiveEntryScheduleResource extends KalturaScheduleResource
 {
 	/**
@@ -805,23 +788,6 @@ class KalturaLiveEntryScheduleResource extends KalturaScheduleResource
  */
 class KalturaLocationScheduleResource extends KalturaScheduleResource
 {
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaReachProfileListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaReachProfile
-	 * @readonly
-	 */
-	public $objects;
-
 
 }
 
