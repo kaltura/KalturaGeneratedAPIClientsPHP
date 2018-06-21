@@ -419,7 +419,7 @@ class KalturaAppTokenService extends KalturaServiceBase
 	}
 
 	/**
-	 * Delete application authentication token by id
+	 * Delete application authentication token by ID
 	 * 
 	 * @param string $id 
 	 */
@@ -436,7 +436,7 @@ class KalturaAppTokenService extends KalturaServiceBase
 	}
 
 	/**
-	 * Get application authentication token by id
+	 * Get application authentication token by ID
 	 * 
 	 * @param string $id 
 	 * @return KalturaAppToken
@@ -478,13 +478,13 @@ class KalturaAppTokenService extends KalturaServiceBase
 	}
 
 	/**
-	 * Starts a new KS (kaltura Session) based on application authentication token id
+	 * Starts a new KS (kaltura Session) based on an application authentication token ID
 	 * 
-	 * @param string $id Application token id
-	 * @param string $tokenHash Hashed token, built of sha1 on current KS concatenated with the application token
-	 * @param string $userId Session user id, will be ignored if a different user id already defined on the application token
-	 * @param int $type Session type, will be ignored if a different session type already defined on the application token
-	 * @param int $expiry Session expiry (in seconds), could be overwritten by shorter expiry of the application token and the session-expiry that defined on the application token
+	 * @param string $id Application token ID
+	 * @param string $tokenHash A hash [MD5, SHA1, SHA256 and SHA512 are supported] of the current KS concatenated with the application token
+	 * @param string $userId Session user ID, will be ignored if a different user ID already defined on the application token
+	 * @param int $type Session type, will be ignored if a different session type is already defined on the application token
+	 * @param int $expiry Session expiry (in seconds), could be overridden by shorter expiry of the application token
 	 * @return KalturaSessionInfo
 	 */
 	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
@@ -505,7 +505,7 @@ class KalturaAppTokenService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update application authentication token by id
+	 * Update application authentication token by ID
 	 * 
 	 * @param string $id 
 	 * @param KalturaAppToken $appToken 
@@ -9551,7 +9551,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-06-20');
+		$this->setClientTag('php5:18-06-21');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
