@@ -248,6 +248,14 @@ abstract class KalturaCuePoint extends KalturaObjectBase
 	 */
 	public $isMomentary = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $copiedFrom = null;
+
 
 }
 
