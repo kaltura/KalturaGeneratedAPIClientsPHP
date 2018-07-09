@@ -14163,6 +14163,13 @@ abstract class KalturaDeliveryServerNode extends KalturaServerNode
 	 */
 	public $deliveryProfileIds;
 
+	/**
+	 * Override server node default configuration - json format
+	 *
+	 * @var string
+	 */
+	public $config = null;
+
 
 }
 
@@ -19293,13 +19300,6 @@ class KalturaEdgeServerNode extends KalturaDeliveryServerNode
 	 * @var string
 	 */
 	public $playbackDomain = null;
-
-	/**
-	 * Overdie edge server default configuration - json format
-	 *
-	 * @var string
-	 */
-	public $config = null;
 
 
 }
