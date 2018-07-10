@@ -1115,54 +1115,6 @@ abstract class KalturaESearchAbstractUserItem extends KalturaESearchUserBaseItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchCategoryQuery extends KalturaESearchCategoryBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $eSearchQuery = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchEntryQuery extends KalturaESearchEntryBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $eSearchQuery = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchUserQuery extends KalturaESearchUserBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $eSearchQuery = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchCategoryEntryItem extends KalturaESearchAbstractEntryItem
 {
 	/**
