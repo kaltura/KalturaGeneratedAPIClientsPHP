@@ -604,6 +604,13 @@ abstract class KalturaScheduledTaskProfileBaseFilter extends KalturaFilter
 	 */
 	public $lastExecutionStartedAtLessThanOrEqual = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lastExecutionStartedAtLessThanOrEqualOrNull = null;
+
 
 }
 
