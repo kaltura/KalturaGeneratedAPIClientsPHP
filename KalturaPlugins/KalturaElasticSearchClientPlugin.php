@@ -67,6 +67,8 @@ class KalturaESearchCaptionFieldName extends KalturaEnumBase
 {
 	const CONTENT = "content";
 	const END_TIME = "end_time";
+	const LABEL = "label";
+	const LANGUAGE = "language";
 	const START_TIME = "start_time";
 }
 
