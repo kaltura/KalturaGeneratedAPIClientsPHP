@@ -485,9 +485,10 @@ class KalturaAppTokenService extends KalturaServiceBase
 	 * @param string $userId Session user ID, will be ignored if a different user ID already defined on the application token
 	 * @param int $type Session type, will be ignored if a different session type is already defined on the application token
 	 * @param int $expiry Session expiry (in seconds), could be overridden by shorter expiry of the application token
+	 * @param string $sessionPrivileges Session privileges, will be ignored if a similar privilege is already defined on the application token or the privilege is server reserved
 	 * @return KalturaSessionInfo
 	 */
-	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
+	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null, $sessionPrivileges = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
@@ -495,6 +496,7 @@ class KalturaAppTokenService extends KalturaServiceBase
 		$this->client->addParam($kparams, "userId", $userId);
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->addParam($kparams, "expiry", $expiry);
+		$this->client->addParam($kparams, "sessionPrivileges", $sessionPrivileges);
 		$this->client->queueServiceActionCall("apptoken", "startSession", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9551,8 +9553,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-08-29');
-		$this->setApiVersion('14.5.0');
+		$this->setClientTag('php5:18-08-30');
+		$this->setApiVersion('14.6.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
