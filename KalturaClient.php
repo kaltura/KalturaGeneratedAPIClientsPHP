@@ -6729,6 +6729,31 @@ class KalturaServerNodeService extends KalturaServiceBase
 	}
 
 	/**
+	 * Get the edge server node full path
+	 * 
+	 * @param string $hostName 
+	 * @param string $protocol 
+	 * @param string $deliveryFormat 
+	 * @param string $deliveryType 
+	 * @return string
+	 */
+	function getFullPath($hostName, $protocol = "http", $deliveryFormat = null, $deliveryType = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hostName", $hostName);
+		$this->client->addParam($kparams, "protocol", $protocol);
+		$this->client->addParam($kparams, "deliveryFormat", $deliveryFormat);
+		$this->client->addParam($kparams, "deliveryType", $deliveryType);
+		$this->client->queueServiceActionCall("servernode", "getFullPath", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * 
 	 * 
 	 * @param KalturaServerNodeFilter $filter 
@@ -6775,14 +6800,16 @@ class KalturaServerNodeService extends KalturaServiceBase
 	 * 
 	 * @param string $hostName 
 	 * @param KalturaServerNode $serverNode 
+	 * @param int $serverNodeStatus 
 	 * @return KalturaServerNode
 	 */
-	function reportStatus($hostName, KalturaServerNode $serverNode = null)
+	function reportStatus($hostName, KalturaServerNode $serverNode = null, $serverNodeStatus = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "hostName", $hostName);
 		if ($serverNode !== null)
 			$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->addParam($kparams, "serverNodeStatus", $serverNodeStatus);
 		$this->client->queueServiceActionCall("servernode", "reportStatus", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9553,7 +9580,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-09-17');
+		$this->setClientTag('php5:18-09-18');
 		$this->setApiVersion('14.6.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

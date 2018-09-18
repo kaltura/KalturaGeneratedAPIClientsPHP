@@ -11879,6 +11879,13 @@ class KalturaAccessControlServeRemoteEdgeServerAction extends KalturaRuleAction
 	 */
 	public $edgeServerIds = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $seamlessFallbackEnabled = null;
+
 
 }
 
