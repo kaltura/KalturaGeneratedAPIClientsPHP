@@ -13072,6 +13072,13 @@ class KalturaCaptureThumbJobData extends KalturaJobData
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $srcAssetEncryptionKey = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaAssetType
 	 */
 	public $srcAssetType = null;
@@ -20277,6 +20284,13 @@ class KalturaPostConvertJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $flavorAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $flavorAssetEncryptionKey = null;
 
 	/**
 	 * Indicates if a thumbnail should be created
