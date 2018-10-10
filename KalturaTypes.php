@@ -16385,6 +16385,27 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $categories = null;
 
 	/**
+	 * Filter by customVar1
+	 *
+	 * @var string
+	 */
+	public $customVar1In = null;
+
+	/**
+	 * Filter by customVar2
+	 *
+	 * @var string
+	 */
+	public $customVar2In = null;
+
+	/**
+	 * Filter by customVar3
+	 *
+	 * @var string
+	 */
+	public $customVar3In = null;
+
+	/**
 	 * Time zone offset in minutes
 	 *
 	 * @var int
