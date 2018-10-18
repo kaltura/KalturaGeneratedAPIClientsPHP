@@ -12534,6 +12534,13 @@ class KalturaBulkUploadJobData extends KalturaJobData
 	 */
 	public $numOfErrorObjects = null;
 
+	/**
+	 * privileges for the job
+	 *
+	 * @var string
+	 */
+	public $privileges = null;
+
 
 }
 

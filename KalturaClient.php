@@ -1180,7 +1180,7 @@ class KalturaBulkUploadService extends KalturaServiceBase
 	}
 
 	/**
-	 * Serve action returan the original file.
+	 * Serve action return the original file.
 	 * 
 	 * @param bigint $id Job id
 	 * @return file
@@ -9580,8 +9580,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-10-17');
-		$this->setApiVersion('14.6.0');
+		$this->setClientTag('php5:18-10-18');
+		$this->setApiVersion('14.7.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
