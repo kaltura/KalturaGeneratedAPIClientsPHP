@@ -3861,6 +3861,13 @@ class KalturaConversionProfileAssetParams extends KalturaObjectBase
 	 */
 	public $tags = null;
 
+	/**
+	 * JSON string containing an array of flavotParams field-value pairs.
+	 *
+	 * @var string
+	 */
+	public $overloadParams = null;
+
 
 }
 
