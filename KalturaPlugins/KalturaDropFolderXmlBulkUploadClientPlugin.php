@@ -50,6 +50,22 @@ class KalturaDropFolderXmlBulkUploadFileHandlerConfig extends KalturaDropFolderF
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDropFolderXmlBulkUploadJobData extends KalturaBulkUploadXmlJobData
+{
+	/**
+	 * the job drop folder id
+	 *
+	 * @var int
+	 */
+	public $dropFolderId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDropFolderXmlBulkUploadClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)

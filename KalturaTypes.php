@@ -21411,22 +21411,6 @@ class KalturaDocumentEntryMatchAttributeCondition extends KalturaSearchMatchAttr
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDropFolderXmlBulkUploadJobData extends KalturaBulkUploadXmlJobData
-{
-	/**
-	 * the job drop folder id
-	 *
-	 * @var int
-	 */
-	public $dropFolderId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEvalBooleanField extends KalturaBooleanField
 {
 	/**
