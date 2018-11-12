@@ -10087,6 +10087,13 @@ abstract class KalturaServerNode extends KalturaObjectBase
 	 */
 	public $parentId = null;
 
+	/**
+	 * Environment
+	 *
+	 * @var string
+	 */
+	public $environment = null;
+
 
 }
 
@@ -16846,6 +16853,20 @@ abstract class KalturaServerNodeBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $parentIdMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $environmentEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $environmentIn = null;
 
 
 }
