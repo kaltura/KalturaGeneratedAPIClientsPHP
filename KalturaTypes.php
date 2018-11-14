@@ -16427,6 +16427,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $customVar3In = null;
 
 	/**
+	 * Filter by device
+	 *
+	 * @var string
+	 */
+	public $devicesIn = null;
+
+	/**
 	 * Time zone offset in minutes
 	 *
 	 * @var int
