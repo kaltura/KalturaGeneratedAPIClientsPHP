@@ -16434,6 +16434,20 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $devicesIn = null;
 
 	/**
+	 * Filter by country
+	 *
+	 * @var string
+	 */
+	public $countriesIn = null;
+
+	/**
+	 * Filter by region
+	 *
+	 * @var string
+	 */
+	public $regionsIn = null;
+
+	/**
 	 * Time zone offset in minutes
 	 *
 	 * @var int
