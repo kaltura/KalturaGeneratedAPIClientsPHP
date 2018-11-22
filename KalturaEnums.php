@@ -1681,6 +1681,8 @@ class KalturaBulkUploadAction extends KalturaEnumBase
 	const REPLACE = "4";
 	const TRANSFORM_XSLT = "5";
 	const ADD_OR_UPDATE = "6";
+	const ACTIVATE = "7";
+	const REJECT = "8";
 }
 
 /**
