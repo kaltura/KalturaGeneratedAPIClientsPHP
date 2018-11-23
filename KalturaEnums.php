@@ -4562,6 +4562,8 @@ class KalturaReportType extends KalturaEnumBase
 	const REACH_USAGE = "28";
 	const TOP_CUSTOM_VAR1 = "29";
 	const CITIES = "30";
+	const OPERATING_SYSTEM_FAMILIES = "32";
+	const BROWSERS_FAMIILES = "33";
 	const PARTNER_USAGE = "201";
 }
 
