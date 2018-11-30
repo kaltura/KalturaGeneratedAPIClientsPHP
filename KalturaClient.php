@@ -1400,7 +1400,7 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 	 * @param KalturaBulkUploadCategoryEntryData $bulkUploadCategoryEntryData 
 	 * @return KalturaBulkUpload
 	 */
-	function updateStatusfrombulk($fileData, KalturaBulkUploadJobData $bulkUploadData = null, KalturaBulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
+	function updateStatusFromBulk($fileData, KalturaBulkUploadJobData $bulkUploadData = null, KalturaBulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
 	{
 		$kparams = array();
 		$kfiles = array();
@@ -1409,7 +1409,7 @@ class KalturaCategoryEntryService extends KalturaServiceBase
 			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
 		if ($bulkUploadCategoryEntryData !== null)
 			$this->client->addParam($kparams, "bulkUploadCategoryEntryData", $bulkUploadCategoryEntryData->toParams());
-		$this->client->queueServiceActionCall("categoryentry", "updateStatusfrombulk", $kparams, $kfiles);
+		$this->client->queueServiceActionCall("categoryentry", "updateStatusFromBulk", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
@@ -9606,7 +9606,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-11-29');
+		$this->setClientTag('php5:18-11-30');
 		$this->setApiVersion('14.9.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
