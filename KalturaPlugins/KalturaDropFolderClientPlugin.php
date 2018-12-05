@@ -193,7 +193,6 @@ class KalturaDropFolderOrderBy extends KalturaEnumBase
 class KalturaDropFolderType extends KalturaEnumBase
 {
 	const FEED = "FeedDropFolder.FEED";
-	const WEBEX = "WebexDropFolder.WEBEX";
 	const LOCAL = "1";
 	const FTP = "2";
 	const SCP = "3";
