@@ -1417,6 +1417,7 @@ class KalturaAssetType extends KalturaEnumBase
 	const SWF = "document.SWF";
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
+	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
 	const FLAVOR = "1";
 	const THUMBNAIL = "2";
 	const LIVE = "3";
@@ -1604,15 +1605,15 @@ class KalturaBatchJobType extends KalturaEnumBase
 {
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
-	const CONVERT = "0";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
-	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
+	const CONVERT = "0";
+	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
 	const INTEGRATION = "integration.Integration";
@@ -1620,6 +1621,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
+	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 	const IMPORT = "1";
 	const DELETE = "2";
 	const FLATTEN = "3";
@@ -2269,6 +2271,11 @@ class KalturaDocumentEntryMatchAttribute extends KalturaEnumBase
  */
 class KalturaDrmSchemeName extends KalturaEnumBase
 {
+	const PLAYREADY_CENC = "drm.PLAYREADY_CENC";
+	const WIDEVINE_CENC = "drm.WIDEVINE_CENC";
+	const FAIRPLAY = "fairplay.FAIRPLAY";
+	const PLAYREADY = "playReady.PLAYREADY";
+	const WIDEVINE = "widevine.WIDEVINE";
 }
 
 /**
@@ -4580,6 +4587,7 @@ class KalturaResponseProfileOrderBy extends KalturaEnumBase
  */
 class KalturaRuleActionType extends KalturaEnumBase
 {
+	const DRM_POLICY = "drm.DRM_POLICY";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";
@@ -4648,6 +4656,7 @@ class KalturaServerNodeType extends KalturaEnumBase
  */
 class KalturaSourceType extends KalturaEnumBase
 {
+	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
 	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
 	const WEBCAM = "2";
