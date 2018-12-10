@@ -16385,25 +16385,32 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $keywords = null;
 
 	/**
-	 * Search keywords in onjects tags
+	 * Search keywords in objects tags
 	 *
 	 * @var bool
 	 */
 	public $searchInTags = null;
 
 	/**
-	 * Search keywords in onjects admin tags
+	 * Search keywords in objects admin tags
 	 *
 	 * @var bool
 	 */
 	public $searchInAdminTags = null;
 
 	/**
-	 * Search onjects in specified categories
+	 * Search objects in specified categories
 	 *
 	 * @var string
 	 */
 	public $categories = null;
+
+	/**
+	 * Search objects in specified category ids
+	 *
+	 * @var string
+	 */
+	public $categoriesIdsIn = null;
 
 	/**
 	 * Filter by customVar1
@@ -16448,6 +16455,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $regionIn = null;
 
 	/**
+	 * Filter by city
+	 *
+	 * @var string
+	 */
+	public $citiesIn = null;
+
+	/**
 	 * Filter by operating system family
 	 *
 	 * @var string
@@ -16474,6 +16488,20 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var KalturaReportInterval
 	 */
 	public $interval = null;
+
+	/**
+	 * Filter by media types
+	 *
+	 * @var string
+	 */
+	public $mediaTypeIn = null;
+
+	/**
+	 * Filter by source types
+	 *
+	 * @var string
+	 */
+	public $sourceTypeIn = null;
 
 
 }
