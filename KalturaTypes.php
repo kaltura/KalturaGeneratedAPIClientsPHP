@@ -4570,324 +4570,6 @@ class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaPluginData extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaDrmPlaybackPluginData extends KalturaPluginData
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaDrmSchemeName
-	 */
-	public $scheme = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $licenseURL = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUser extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserType
-	 */
-	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $screenName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $fullName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $email = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $dateOfBirth = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $country = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $state = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $city = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $zip = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $thumbnailUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tags = null;
-
-	/**
-	 * Admin tags can be updated only by using an admin session
-	 *
-	 * @var string
-	 */
-	public $adminTags = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaGender
-	 */
-	public $gender = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserStatus
-	 */
-	public $status = null;
-
-	/**
-	 * Creation date as Unix timestamp (In seconds)
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Last update date as Unix timestamp (In seconds)
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * Can be used to store various partner related data as a string
-	 *
-	 * @var string
-	 */
-	public $partnerData = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $indexedPartnerDataInt = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $indexedPartnerDataString = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $storageSize = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $password = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $firstName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $lastName = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $isAdmin = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaLanguageCode
-	 */
-	public $language = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $lastLoginTime = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $statusUpdatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $deletedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 * @insertonly
-	 */
-	public $loginEnabled = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $roleIds = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $roleNames = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 * @insertonly
-	 */
-	public $isAccountOwner = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $allowedPartnerIds = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $allowedPartnerPackages = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserMode
-	 */
-	public $userMode = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEffect extends KalturaObjectBase
 {
 	/**
@@ -9154,6 +8836,38 @@ abstract class KalturaPermissionItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPluginData extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDrmPlaybackPluginData extends KalturaPluginData
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDrmSchemeName
+	 */
+	public $scheme = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $licenseURL = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPlaybackSource extends KalturaObjectBase
 {
 	/**
@@ -11086,6 +10800,292 @@ class KalturaUploadToken extends KalturaObjectBase
 	 * @insertonly
 	 */
 	public $autoFinalize = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUser extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserType
+	 */
+	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $screenName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fullName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $email = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $dateOfBirth = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $country = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $state = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $city = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $zip = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbnailUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
+
+	/**
+	 * Admin tags can be updated only by using an admin session
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGender
+	 */
+	public $gender = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserStatus
+	 */
+	public $status = null;
+
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * Can be used to store various partner related data as a string
+	 *
+	 * @var string
+	 */
+	public $partnerData = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $indexedPartnerDataInt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $indexedPartnerDataString = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $storageSize = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $password = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $firstName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $lastName = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isAdmin = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaLanguageCode
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastLoginTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $statusUpdatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $deletedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @insertonly
+	 */
+	public $loginEnabled = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $roleIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $roleNames = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @insertonly
+	 */
+	public $isAccountOwner = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowedPartnerIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowedPartnerPackages = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserMode
+	 */
+	public $userMode = null;
 
 
 }
@@ -16385,32 +16385,25 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $keywords = null;
 
 	/**
-	 * Search keywords in objects tags
+	 * Search keywords in onjects tags
 	 *
 	 * @var bool
 	 */
 	public $searchInTags = null;
 
 	/**
-	 * Search keywords in objects admin tags
+	 * Search keywords in onjects admin tags
 	 *
 	 * @var bool
 	 */
 	public $searchInAdminTags = null;
 
 	/**
-	 * Search objects in specified categories
+	 * Search onjects in specified categories
 	 *
 	 * @var string
 	 */
 	public $categories = null;
-
-	/**
-	 * Search objects in specified category ids
-	 *
-	 * @var string
-	 */
-	public $categoriesIdsIn = null;
 
 	/**
 	 * Filter by customVar1
@@ -16455,13 +16448,6 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $regionIn = null;
 
 	/**
-	 * Filter by city
-	 *
-	 * @var string
-	 */
-	public $citiesIn = null;
-
-	/**
 	 * Filter by operating system family
 	 *
 	 * @var string
@@ -16488,20 +16474,6 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var KalturaReportInterval
 	 */
 	public $interval = null;
-
-	/**
-	 * Filter by media types
-	 *
-	 * @var string
-	 */
-	public $mediaTypeIn = null;
-
-	/**
-	 * Filter by source types
-	 *
-	 * @var string
-	 */
-	public $sourceTypeIn = null;
 
 
 }
