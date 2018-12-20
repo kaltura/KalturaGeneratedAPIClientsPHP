@@ -1017,7 +1017,7 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update entry thumbnail using url.
+	 * Update entry thumbnail using URL.
 	 * 
 	 * @param string $entryId Media entry id
 	 * @param string $url File url
@@ -1115,7 +1115,7 @@ class KalturaBulkUploadService extends KalturaServiceBase
 	 Conversion profile id can be specified in the API or in the CSV file, the one in the CSV file will be stronger.
 	 If no conversion profile was specified, partner's default will be used
 	 * 
-	 * @param int $conversionProfileId Convertion profile id to use for converting the current bulk (-1 to use partner's default)
+	 * @param int $conversionProfileId Conversion profile id to use for converting the current bulk (-1 to use partner's default)
 	 * @param file $csvFileData Bulk upload file
 	 * @param string $bulkUploadType 
 	 * @param string $uploadedBy 
@@ -1693,7 +1693,7 @@ class KalturaCategoryUserService extends KalturaServiceBase
 	}
 
 	/**
-	 * Copy all memeber from parent category
+	 * Copy all member from parent category
 	 * 
 	 * @param int $categoryId 
 	 */
@@ -2162,7 +2162,7 @@ class KalturaDataService extends KalturaServiceBase
 	}
 
 	/**
-	 * Serve action returan the file from dataContent field.
+	 * Return the file from dataContent field.
 	 * 
 	 * @param string $entryId Data entry id
 	 * @param int $version Desired version of the data
@@ -2299,7 +2299,7 @@ class KalturaDeliveryProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update exisiting delivery
+	 * Update existing delivery profile
 	 * 
 	 * @param string $id 
 	 * @param KalturaDeliveryProfile $delivery 
@@ -4520,10 +4520,10 @@ class KalturaMediaService extends KalturaServiceBase
 	}
 
 	/**
-	 * Add new entry after the file was recored on the server and the token id exists
+	 * Add new entry after the file was recorded on the server and the token id exists
 	 * 
 	 * @param KalturaMediaEntry $mediaEntry Media entry metadata
-	 * @param string $webcamTokenId Token id for the recored webcam file
+	 * @param string $webcamTokenId Token id for the recorded webcam file
 	 * @return KalturaMediaEntry
 	 */
 	function addFromRecordedWebcam(KalturaMediaEntry $mediaEntry, $webcamTokenId)
@@ -5039,7 +5039,7 @@ class KalturaMediaService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update entry thumbnail using url
+	 * Update entry thumbnail using URL
 	 * 
 	 * @param string $entryId Media entry id
 	 * @param string $url File url
@@ -5153,7 +5153,7 @@ class KalturaMixingService extends KalturaServiceBase
 	}
 
 	/**
-	 * Appends a media entry to a the end of the mix timeline, this will save the mix timeline as a new version.
+	 * Appends a media entry to the end of the mix timeline, this will save the mix timeline as a new version.
 	 * 
 	 * @param string $mixEntryId Mix entry to append to its timeline
 	 * @param string $mediaEntryId Media entry to append to the timeline
@@ -5481,7 +5481,7 @@ class KalturaPartnerService extends KalturaServiceBase
 	/**
 	 * Get usage statistics for a partner
 	 Calculation is done according to partner's package
-	 Additional data returned is a graph points of streaming usage in a timeframe
+	 Additional data returned is a graph points of streaming usage in a time frame
 	 The resolution can be "days" or "months"
 	 * 
 	 * @param int $year 
@@ -5506,7 +5506,7 @@ class KalturaPartnerService extends KalturaServiceBase
 
 	/**
 	 * List partners by filter with paging support
-	 Current implementation will only list the sub partners of the partner initiating the api call (using the current KS).
+	 Current implementation will only list the sub partners of the partner initiating the API call (using the current KS).
 	 This action is only partially implemented to support listing sub partners of a VAR partner.
 	 * 
 	 * @param KalturaPartnerFilter $filter 
@@ -5993,7 +5993,7 @@ class KalturaPlaylistService extends KalturaServiceBase
 	}
 
 	/**
-	 * Revrieve playlist for playing purpose, based on media entry filters
+	 * Retrieve playlist for playing purpose, based on media entry filters
 	 * 
 	 * @param array $filters 
 	 * @param int $totalResults 
@@ -6088,7 +6088,7 @@ class KalturaPlaylistService extends KalturaServiceBase
 
 	/**
 	 * Update existing playlist
-	 Note - you cannot change playlist type. updated playlist must be of the same type.
+	 Note - you cannot change playlist type. Updated playlist must be of the same type.
 	 * 
 	 * @param string $id 
 	 * @param KalturaPlaylist $playlist 
@@ -6148,7 +6148,7 @@ class KalturaReportService extends KalturaServiceBase
 	}
 
 	/**
-	 * Report getBaseTotal action allows to get a the total base for storage reports
+	 * Report getBaseTotal action allows to get the total base for storage reports
 	 * 
 	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
@@ -6292,7 +6292,7 @@ class KalturaReportService extends KalturaServiceBase
 	}
 
 	/**
-	 * Will create a Csv file for the given report and return the URL to access it
+	 * Will create a CSV file for the given report and return the URL to access it
 	 * 
 	 * @param string $reportTitle The title of the report to display at top of CSV
 	 * @param string $reportText The text of the filter of the report
@@ -7370,7 +7370,7 @@ class KalturaSyndicationFeedService extends KalturaServiceBase
 	}
 
 	/**
-	 * Request conversion for all entries that doesnt have the required flavor param
+	 * Request conversion for all entries that doesn't have the required flavor param
 	 returns a comma-separated ids of conversion jobs
 	 * 
 	 * @param string $feedId 
@@ -9240,7 +9240,7 @@ class KalturaWidgetService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update exisiting widget
+	 * Update existing widget
 	 * 
 	 * @param string $id 
 	 * @param KalturaWidget $widget 
@@ -9469,7 +9469,7 @@ class KalturaClient extends KalturaClientBase
 
 	/**
 	 * Playlist service lets you create,manage and play your playlists
-	 *  Playlists could be static (containing a fixed list of entries) or dynamic (baseed on a filter)
+	 *  Playlists could be static (containing a fixed list of entries) or dynamic (based on a filter)
 	 * @var KalturaPlaylistService
 	 */
 	public $playlist = null;
@@ -9606,8 +9606,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-12-19');
-		$this->setApiVersion('14.9.0');
+		$this->setClientTag('php5:18-12-20');
+		$this->setApiVersion('14.11.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
