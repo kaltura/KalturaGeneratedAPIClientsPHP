@@ -6,7 +6,7 @@ php:
   - "7.0"
   - "7.1"
 script: 
-    - sed -e "s#1931861#$PARTNER_ID#g" -e "s#1931861#$PARTNER_ID#g" -e "s#83c3d4449a3abbe92ca5966f5f010eb4#$ADMIN_SECRET#g" -e "s#www.kaltura.com#$API_HOST#g" TestCode/config.template.ini > TestCode/config.ini 
+    - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" TestCode/config.template.ini > TestCode/config.ini 
     - cd TestCode/ && php TestMain.php 
 notifications:
   email:
