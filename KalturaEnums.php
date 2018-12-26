@@ -4568,6 +4568,7 @@ class KalturaReportType extends KalturaEnumBase
 	const UNIQUE_USERS_PLAY = "35";
 	const MAP_OVERLAY_COUNTRY = "36";
 	const MAP_OVERLAY_REGION = "37";
+	const TOP_CONTENT_CREATOR = "38";
 	const PARTNER_USAGE = "201";
 }
 
