@@ -219,6 +219,57 @@ class KalturaCaptionParams extends KalturaAssetParams
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaCaptionPlaybackPluginData extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $label = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $format = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $webVttUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $url = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isDefault = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCaptionAssetListResponse extends KalturaListResponse
 {
 	/**

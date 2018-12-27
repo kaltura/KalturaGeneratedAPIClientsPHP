@@ -9217,6 +9217,13 @@ class KalturaPlaybackContext extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var array of KalturaCaptionPlaybackPluginData
+	 */
+	public $playbackCaptions;
+
+	/**
+	 * 
+	 *
 	 * @var array of KalturaFlavorAsset
 	 */
 	public $flavorAssets;
