@@ -35,6 +35,7 @@ require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaBulkUploadXmlClientPlugin.php");
 
 /**
  * @package Kaltura
@@ -55,6 +56,22 @@ class KalturaBulkServiceFilterData extends KalturaBulkServiceData
 	 * @var KalturaObjectBase
 	 */
 	public $templateObject;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBulkUploadResultJob extends KalturaBulkUploadResult
+{
+	/**
+	 * ID of object being processed by the job
+	 *
+	 * @var int
+	 */
+	public $jobObjectId = null;
 
 
 }

@@ -1691,6 +1691,7 @@ class KalturaBulkUploadAction extends KalturaEnumBase
  */
 class KalturaBulkUploadObjectType extends KalturaEnumBase
 {
+	const JOB = "bulkUploadFilter.JOB";
 	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
 	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
 	const ENTRY = "1";
