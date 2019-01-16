@@ -50,6 +50,17 @@ class KalturaScheduleEventClassificationType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaScheduleEventConflictType extends KalturaEnumBase
+{
+	const RESOURCE_CONFLICT = 1;
+	const BLACKOUT_CONFLICT = 2;
+	const BOTH = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaScheduleEventRecurrenceType extends KalturaEnumBase
 {
 	const NONE = 0;
@@ -76,6 +87,7 @@ class KalturaScheduleEventType extends KalturaEnumBase
 {
 	const RECORD = 1;
 	const LIVE_STREAM = 2;
+	const BLACKOUT = 3;
 }
 
 /**
@@ -724,6 +736,15 @@ abstract class KalturaScheduleResource extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBlackoutScheduleEvent extends KalturaScheduleEvent
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCameraScheduleResource extends KalturaScheduleResource
 {
 	/**
@@ -762,6 +783,14 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
 	 * @var string
 	 */
 	public $categoryIds = null;
+
+	/**
+	 * Blackout schedule events the conflict with this event
+	 *
+	 * @var array of KalturaScheduleEvent
+	 * @readonly
+	 */
+	public $blackoutConflicts;
 
 
 }
@@ -1561,6 +1590,15 @@ abstract class KalturaRecordScheduleEventBaseFilter extends KalturaEntrySchedule
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBlackoutScheduleEventFilter extends KalturaRecordScheduleEventBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveStreamScheduleEventFilter extends KalturaLiveStreamScheduleEventBaseFilter
 {
 
@@ -1692,14 +1730,16 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	 * @param string $resourceIds Comma separated
 	 * @param KalturaScheduleEvent $scheduleEvent 
 	 * @param string $scheduleEventIdToIgnore 
+	 * @param int $scheduleEventConflictType 
 	 * @return KalturaScheduleEventListResponse
 	 */
-	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent, $scheduleEventIdToIgnore = null)
+	function getConflicts($resourceIds, KalturaScheduleEvent $scheduleEvent, $scheduleEventIdToIgnore = null, $scheduleEventConflictType = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "resourceIds", $resourceIds);
 		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
 		$this->client->addParam($kparams, "scheduleEventIdToIgnore", $scheduleEventIdToIgnore);
+		$this->client->addParam($kparams, "scheduleEventConflictType", $scheduleEventConflictType);
 		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -1965,15 +2005,17 @@ class KalturaScheduleEventResourceService extends KalturaServiceBase
 	 * 
 	 * @param KalturaScheduleEventResourceFilter $filter 
 	 * @param KalturaFilterPager $pager 
+	 * @param bool $filterBlackoutConflicts 
 	 * @return KalturaScheduleEventResourceListResponse
 	 */
-	function listAction(KalturaScheduleEventResourceFilter $filter = null, KalturaFilterPager $pager = null)
+	function listAction(KalturaScheduleEventResourceFilter $filter = null, KalturaFilterPager $pager = null, $filterBlackoutConflicts = true)
 	{
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->addParam($kparams, "filterBlackoutConflicts", $filterBlackoutConflicts);
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "list", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
