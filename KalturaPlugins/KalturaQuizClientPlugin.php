@@ -207,6 +207,13 @@ class KalturaAnswerCuePoint extends KalturaCuePoint
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $openAnswer = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaNullableBoolean
 	 * @readonly
 	 */

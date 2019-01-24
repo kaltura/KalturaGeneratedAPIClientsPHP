@@ -16298,6 +16298,13 @@ class KalturaQuizUserEntry extends KalturaUserEntry
 	 */
 	public $score = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedback = null;
+
 
 }
 
