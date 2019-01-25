@@ -1037,13 +1037,13 @@ class KalturaMetadataService extends KalturaServiceBase
 	}
 
 	/**
-	 * Allows you to add a metadata xml data from remote URL.
+	 * Allows you to add a metadata XML data from remote URL.
 	 Enables different permissions than addFromUrl action.
 	 * 
 	 * @param int $metadataProfileId 
 	 * @param string $objectType 
 	 * @param string $objectId 
-	 * @param string $url XML metadata remote url
+	 * @param string $url XML metadata remote URL
 	 * @return KalturaMetadata
 	 */
 	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
@@ -1089,12 +1089,12 @@ class KalturaMetadataService extends KalturaServiceBase
 	}
 
 	/**
-	 * Allows you to add a metadata xml data from remote URL
+	 * Allows you to add a metadata XML data from remote URL
 	 * 
 	 * @param int $metadataProfileId 
 	 * @param string $objectType 
 	 * @param string $objectId 
-	 * @param string $url XML metadata remote url
+	 * @param string $url XML metadata remote URL
 	 * @return KalturaMetadata
 	 */
 	function addFromUrl($metadataProfileId, $objectType, $objectId, $url)
@@ -1543,7 +1543,7 @@ class KalturaMetadataProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update an existing metadata object xslt file
+	 * Update an existing metadata object XSLT file
 	 * 
 	 * @param int $id 
 	 * @param file $xsltFile XSLT file, will be executed on every metadata add/update

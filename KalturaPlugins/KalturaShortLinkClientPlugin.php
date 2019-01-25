@@ -404,7 +404,7 @@ class KalturaShortLinkService extends KalturaServiceBase
 	}
 
 	/**
-	 * Update exisitng short link
+	 * Update existing short link
 	 * 
 	 * @param string $id 
 	 * @param KalturaShortLink $shortLink 

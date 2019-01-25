@@ -4032,7 +4032,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
-	 * Creates perioding metadata sync-point events on a live stream
+	 * Creates periodic metadata sync-point events on a live stream
 	 * 
 	 * @param string $entryId Kaltura live-stream entry id
 	 * @param int $interval Events interval in seconds
@@ -9518,7 +9518,8 @@ class KalturaClient extends KalturaClientBase
 	public $stats = null;
 
 	/**
-	 * Storage Profiles service
+	 * The Storage Profile service allows you to export your Kaltura content to external storage volumes.
+	 *  This service is disabled by default, please contact your account manager if you wish to enable it for your partner.
 	 * @var KalturaStorageProfileService
 	 */
 	public $storageProfile = null;
@@ -9606,7 +9607,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-01-24');
+		$this->setClientTag('php5:19-01-25');
 		$this->setApiVersion('14.13.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
