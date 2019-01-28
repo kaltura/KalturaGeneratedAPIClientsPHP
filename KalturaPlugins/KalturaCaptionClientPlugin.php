@@ -263,6 +263,13 @@ class KalturaCaptionPlaybackPluginData extends KalturaObjectBase
 	 */
 	public $isDefault = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $languageCode = null;
+
 
 }
 
