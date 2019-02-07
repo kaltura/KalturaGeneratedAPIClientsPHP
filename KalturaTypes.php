@@ -16517,6 +16517,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $sourceTypeIn = null;
 
+	/**
+	 * Filter by entry owner
+	 *
+	 * @var string
+	 */
+	public $ownerIdsIn = null;
+
 
 }
 
