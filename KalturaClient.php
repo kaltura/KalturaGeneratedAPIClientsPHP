@@ -6153,14 +6153,17 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param KalturaReportResponseOptions $responseOptions 
 	 * @return array
 	 */
-	function getBaseTotal($reportType, KalturaReportInputFilter $reportInputFilter, $objectIds = null)
+	function getBaseTotal($reportType, KalturaReportInputFilter $reportInputFilter, $objectIds = null, KalturaReportResponseOptions $responseOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "reportType", $reportType);
 		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
 		$this->client->addParam($kparams, "objectIds", $objectIds);
+		if ($responseOptions !== null)
+			$this->client->addParam($kparams, "responseOptions", $responseOptions->toParams());
 		$this->client->queueServiceActionCall("report", "getBaseTotal", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -6223,15 +6226,18 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $dimension 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param KalturaReportResponseOptions $responseOptions 
 	 * @return array
 	 */
-	function getGraphs($reportType, KalturaReportInputFilter $reportInputFilter, $dimension = null, $objectIds = null)
+	function getGraphs($reportType, KalturaReportInputFilter $reportInputFilter, $dimension = null, $objectIds = null, KalturaReportResponseOptions $responseOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "reportType", $reportType);
 		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
 		$this->client->addParam($kparams, "dimension", $dimension);
 		$this->client->addParam($kparams, "objectIds", $objectIds);
+		if ($responseOptions !== null)
+			$this->client->addParam($kparams, "responseOptions", $responseOptions->toParams());
 		$this->client->queueServiceActionCall("report", "getGraphs", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -6249,9 +6255,10 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param KalturaFilterPager $pager 
 	 * @param string $order 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param KalturaReportResponseOptions $responseOptions 
 	 * @return KalturaReportTable
 	 */
-	function getTable($reportType, KalturaReportInputFilter $reportInputFilter, KalturaFilterPager $pager, $order = null, $objectIds = null)
+	function getTable($reportType, KalturaReportInputFilter $reportInputFilter, KalturaFilterPager $pager, $order = null, $objectIds = null, KalturaReportResponseOptions $responseOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "reportType", $reportType);
@@ -6259,6 +6266,8 @@ class KalturaReportService extends KalturaServiceBase
 		$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->addParam($kparams, "order", $order);
 		$this->client->addParam($kparams, "objectIds", $objectIds);
+		if ($responseOptions !== null)
+			$this->client->addParam($kparams, "responseOptions", $responseOptions->toParams());
 		$this->client->queueServiceActionCall("report", "getTable", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -6274,14 +6283,17 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param string $reportType 
 	 * @param KalturaReportInputFilter $reportInputFilter 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param KalturaReportResponseOptions $responseOptions 
 	 * @return KalturaReportTotal
 	 */
-	function getTotal($reportType, KalturaReportInputFilter $reportInputFilter, $objectIds = null)
+	function getTotal($reportType, KalturaReportInputFilter $reportInputFilter, $objectIds = null, KalturaReportResponseOptions $responseOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "reportType", $reportType);
 		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
 		$this->client->addParam($kparams, "objectIds", $objectIds);
+		if ($responseOptions !== null)
+			$this->client->addParam($kparams, "responseOptions", $responseOptions->toParams());
 		$this->client->queueServiceActionCall("report", "getTotal", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -6303,9 +6315,10 @@ class KalturaReportService extends KalturaServiceBase
 	 * @param KalturaFilterPager $pager 
 	 * @param string $order 
 	 * @param string $objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param KalturaReportResponseOptions $responseOptions 
 	 * @return string
 	 */
-	function getUrlForReportAsCsv($reportTitle, $reportText, $headers, $reportType, KalturaReportInputFilter $reportInputFilter, $dimension = null, KalturaFilterPager $pager = null, $order = null, $objectIds = null)
+	function getUrlForReportAsCsv($reportTitle, $reportText, $headers, $reportType, KalturaReportInputFilter $reportInputFilter, $dimension = null, KalturaFilterPager $pager = null, $order = null, $objectIds = null, KalturaReportResponseOptions $responseOptions = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "reportTitle", $reportTitle);
@@ -6318,6 +6331,8 @@ class KalturaReportService extends KalturaServiceBase
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->addParam($kparams, "order", $order);
 		$this->client->addParam($kparams, "objectIds", $objectIds);
+		if ($responseOptions !== null)
+			$this->client->addParam($kparams, "responseOptions", $responseOptions->toParams());
 		$this->client->queueServiceActionCall("report", "getUrlForReportAsCsv", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9607,7 +9622,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-02-13');
+		$this->setClientTag('php5:19-02-14');
 		$this->setApiVersion('14.14.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

@@ -9559,6 +9559,22 @@ class KalturaReportResponse extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaReportResponseOptions extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $delimiter = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReportTable extends KalturaObjectBase
 {
 	/**
