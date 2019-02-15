@@ -9568,6 +9568,13 @@ class KalturaReportResponseOptions extends KalturaObjectBase
 	 */
 	public $delimiter = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $skipEmptyDates = null;
+
 
 }
 
