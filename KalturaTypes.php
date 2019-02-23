@@ -13345,7 +13345,7 @@ class KalturaClipConcatJobData extends KalturaJobData
 	/**
 	 * clip operations
 	 *
-	 * @var array of KalturaObject
+	 * @var array of KalturaOperationAttributes
 	 */
 	public $operationAttributes;
 
@@ -16553,6 +16553,20 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var KalturaESearchEntryOperator
 	 */
 	public $entryOperator;
+
+	/**
+	 * Entry created at greater than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * Entry created at less than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtLessThanOrEqual = null;
 
 
 }
