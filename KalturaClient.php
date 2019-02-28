@@ -8562,6 +8562,7 @@ class KalturaUserEntryService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param KalturaUserEntry $userEntry 
+	 * @return KalturaUserEntry
 	 */
 	function update($id, KalturaUserEntry $userEntry)
 	{
@@ -8573,7 +8574,8 @@ class KalturaUserEntryService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaUserEntry");
+		return $resultObject;
 	}
 }
 
@@ -9622,7 +9624,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-02-27');
+		$this->setClientTag('php5:19-02-28');
 		$this->setApiVersion('14.15.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

@@ -16568,6 +16568,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $entryCreatedAtLessThanOrEqual = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
+
 
 }
 
