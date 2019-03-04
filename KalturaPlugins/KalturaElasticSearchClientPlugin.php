@@ -289,6 +289,31 @@ abstract class KalturaBeaconScheduledResourceBaseItem extends KalturaESearchBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaESearchOrderByItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchSortOrder
+	 */
+	public $sortOrder = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchBaseFilter extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaESearchCategoryBaseItem extends KalturaESearchBaseItem
 {
 
@@ -441,22 +466,6 @@ class KalturaESearchEntryResult extends KalturaESearchResult
 	 * @var KalturaBaseEntry
 	 */
 	public $object;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaESearchOrderByItem extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchSortOrder
-	 */
-	public $sortOrder = null;
 
 
 }

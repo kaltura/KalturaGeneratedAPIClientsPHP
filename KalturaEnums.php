@@ -1848,6 +1848,16 @@ class KalturaConditionType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaConfMapsSourceLocation extends KalturaEnumBase
+{
+	const FS = "FileSystem";
+	const DB = "database";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaContainerFormat extends KalturaEnumBase
 {
 	const _3GP = "3gp";
