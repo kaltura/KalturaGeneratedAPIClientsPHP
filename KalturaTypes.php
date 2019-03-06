@@ -6422,6 +6422,14 @@ class KalturaGroupUser extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
 	 * @insertonly
 	 */
 	public $userId = null;
@@ -6473,6 +6481,13 @@ class KalturaGroupUser extends KalturaObjectBase
 	 * @insertonly
 	 */
 	public $creationMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupUserRole
+	 */
+	public $userRole = null;
 
 
 }
@@ -6981,6 +6996,13 @@ class KalturaThumbParams extends KalturaAssetParams
 	 * @var int
 	 */
 	public $videoOffsetInPercentage = null;
+
+	/**
+	 * interval in seconds for creating thumbnail
+	 *
+	 * @var int
+	 */
+	public $interval = null;
 
 
 }
@@ -16327,6 +16349,14 @@ class KalturaQuizUserEntry extends KalturaUserEntry
 	 * @var string
 	 */
 	public $feedback = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $version = null;
 
 
 }

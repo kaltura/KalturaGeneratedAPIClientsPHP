@@ -172,6 +172,13 @@ class KalturaQuiz extends KalturaObjectBase
 	 */
 	public $showGradeAfterSubmission = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $maxRetakesAllowed = null;
+
 
 }
 
@@ -450,6 +457,13 @@ class KalturaQuestionCuePointFilter extends KalturaQuestionCuePointBaseFilter
  */
 class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $versionEqual = null;
+
 
 }
 

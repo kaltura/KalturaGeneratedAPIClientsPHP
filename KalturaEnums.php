@@ -434,6 +434,16 @@ class KalturaGroupUserCreationMode extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaGroupUserRole extends KalturaEnumBase
+{
+	const MEMBER = 1;
+	const MANAGER = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGroupUserStatus extends KalturaEnumBase
 {
 	const ACTIVE = 0;
@@ -1863,6 +1873,7 @@ class KalturaContainerFormat extends KalturaEnumBase
 	const _3GP = "3gp";
 	const APPLEHTTP = "applehttp";
 	const AVI = "avi";
+	const BIF = "bif";
 	const BMP = "bmp";
 	const COPY = "copy";
 	const FLV = "flv";

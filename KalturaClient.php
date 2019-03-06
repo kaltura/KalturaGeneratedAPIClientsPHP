@@ -3389,6 +3389,27 @@ class KalturaGroupUserService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
 		return $resultObject;
 	}
+
+	/**
+	 * Update GroupUser
+	 * 
+	 * @param string $groupUserId 
+	 * @param KalturaGroupUser $groupUser Id
+	 * @return KalturaGroupUser
+	 */
+	function update($groupUserId, KalturaGroupUser $groupUser)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "groupUserId", $groupUserId);
+		$this->client->addParam($kparams, "groupUser", $groupUser->toParams());
+		$this->client->queueServiceActionCall("groupuser", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaGroupUser");
+		return $resultObject;
+	}
 }
 
 /**
@@ -9624,8 +9645,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-03-05');
-		$this->setApiVersion('14.15.0');
+		$this->setClientTag('php5:19-03-06');
+		$this->setApiVersion('14.16.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
