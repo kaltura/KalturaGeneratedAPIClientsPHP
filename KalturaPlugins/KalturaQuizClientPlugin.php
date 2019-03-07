@@ -179,6 +179,13 @@ class KalturaQuiz extends KalturaObjectBase
 	 */
 	public $maxRetakesAllowed = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaScoreType
+	 */
+	public $scoreType = null;
+
 
 }
 

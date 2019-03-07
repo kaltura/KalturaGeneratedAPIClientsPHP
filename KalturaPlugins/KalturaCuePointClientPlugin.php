@@ -76,6 +76,19 @@ class KalturaQuizOutputType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaScoreType extends KalturaEnumBase
+{
+	const HIGHEST = 1;
+	const LOWEST = 2;
+	const LATEST = 3;
+	const FIRST = 4;
+	const AVERAGE = 5;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaThumbCuePointSubType extends KalturaEnumBase
 {
 	const SLIDE = 1;

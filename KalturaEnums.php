@@ -1619,14 +1619,16 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
+	const CONVERT = "0";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
+	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
-	const CONVERT = "0";
-	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
 	const INTEGRATION = "integration.Integration";
+	const ENTRY_VENDOR_TASK_CSV = "reach.EntryVendorTasksCsv";
+	const SYNC_REACH_CREDIT_TASK = "reach.SyncReachCreditTask";
 	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
@@ -1836,6 +1838,7 @@ class KalturaConditionType extends KalturaEnumBase
 	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
 	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
 	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
+	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
 	const AUTHENTICATED = "1";
 	const COUNTRY = "2";
 	const IP_ADDRESS = "3";
@@ -4523,8 +4526,10 @@ class KalturaQuizUserEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
+	const VERSION_ASC = "+version";
 	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
+	const VERSION_DESC = "-version";
 }
 
 /**
@@ -4595,6 +4600,7 @@ class KalturaReportType extends KalturaEnumBase
 	const APP_DOMAIN_UNIQUE_ACTIVE_USERS = "40";
 	const TOP_SOURCES = "41";
 	const VPAAS_USAGE_MULTI = "42";
+	const CONTENT_REPORT_REASONS = "44";
 	const PARTNER_USAGE = "201";
 }
 
@@ -4617,6 +4623,7 @@ class KalturaResponseProfileOrderBy extends KalturaEnumBase
 class KalturaRuleActionType extends KalturaEnumBase
 {
 	const DRM_POLICY = "drm.DRM_POLICY";
+	const ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";

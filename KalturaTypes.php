@@ -16346,6 +16346,14 @@ class KalturaQuizUserEntry extends KalturaUserEntry
 	/**
 	 * 
 	 *
+	 * @var float
+	 * @readonly
+	 */
+	public $calculatedScore = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $feedback = null;
