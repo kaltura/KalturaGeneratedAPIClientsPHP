@@ -177,7 +177,7 @@ class KalturaQuiz extends KalturaObjectBase
 	 *
 	 * @var int
 	 */
-	public $maxRetakesAllowed = null;
+	public $attemptsAllowed = null;
 
 	/**
 	 * 

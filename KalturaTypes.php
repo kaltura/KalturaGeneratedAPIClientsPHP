@@ -12358,6 +12358,22 @@ class KalturaBaseSyndicationFeedListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBooleanEventNotificationCondition extends KalturaCondition
+{
+	/**
+	 * The boolean event notification ids
+	 *
+	 * @var string
+	 */
+	public $booleanEventNotificationIds = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBulkDownloadJobData extends KalturaJobData
 {
 	/**

@@ -179,126 +179,15 @@ class KalturaConfMapsFilter extends KalturaConfMapsBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaConfMapsService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Add configuration map
-	 * 
-	 * @param KalturaConfMaps $map 
-	 * @return KalturaConfMaps
-	 */
-	function add(KalturaConfMaps $map)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "map", $map->toParams());
-		$this->client->queueServiceActionCall("confmaps_confmaps", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaConfMaps");
-		return $resultObject;
-	}
-
-	/**
-	 * Get configuration map
-	 * 
-	 * @param KalturaConfMapsFilter $filter 
-	 * @return KalturaConfMaps
-	 */
-	function get(KalturaConfMapsFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("confmaps_confmaps", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaConfMaps");
-		return $resultObject;
-	}
-
-	/**
-	 * List configuration maps names
-	 * 
-	 * @return array
-	 */
-	function getMapNames()
-	{
-		$kparams = array();
-		$this->client->queueServiceActionCall("confmaps_confmaps", "getMapNames", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
-	 * List configuration maps
-	 * 
-	 * @param KalturaConfMapsFilter $filter 
-	 * @return KalturaConfMapsListResponse
-	 */
-	function listAction(KalturaConfMapsFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("confmaps_confmaps", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaConfMapsListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Update configuration map
-	 * 
-	 * @param KalturaConfMaps $map 
-	 * @return KalturaConfMaps
-	 */
-	function update(KalturaConfMaps $map)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "map", $map->toParams());
-		$this->client->queueServiceActionCall("confmaps_confmaps", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaConfMaps");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaConfMapsClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaConfMapsService
-	 */
-	public $confMaps = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->confMaps = new KalturaConfMapsService($client);
 	}
 
 	/**
@@ -315,7 +204,6 @@ class KalturaConfMapsClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'confMaps' => $this->confMaps,
 		);
 		return $services;
 	}
