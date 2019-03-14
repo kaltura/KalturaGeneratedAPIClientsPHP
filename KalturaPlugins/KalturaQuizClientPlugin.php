@@ -464,13 +464,6 @@ class KalturaQuestionCuePointFilter extends KalturaQuestionCuePointBaseFilter
  */
 class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $versionEqual = null;
-
 
 }
 

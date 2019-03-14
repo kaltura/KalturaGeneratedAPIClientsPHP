@@ -1521,6 +1521,211 @@ abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBaseUser extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $screenName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fullName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $email = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $country = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $state = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $city = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $zip = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbnailUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
+
+	/**
+	 * Admin tags can be updated only by using an admin session
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserStatus
+	 */
+	public $status = null;
+
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * Can be used to store various partner related data as a string
+	 *
+	 * @var string
+	 */
+	public $partnerData = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $indexedPartnerDataInt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $indexedPartnerDataString = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $storageSize = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaLanguageCode
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastLoginTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $statusUpdatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $deletedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowedPartnerIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowedPartnerPackages = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserMode
+	 */
+	public $userMode = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaJobData extends KalturaObjectBase
 {
 
@@ -4602,50 +4807,14 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUser extends KalturaObjectBase
+class KalturaUser extends KalturaBaseUser
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
 	/**
 	 * 
 	 *
 	 * @var KalturaUserType
 	 */
 	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $screenName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $fullName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $email = null;
 
 	/**
 	 * 
@@ -4657,62 +4826,6 @@ class KalturaUser extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var string
-	 */
-	public $country = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $state = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $city = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $zip = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $thumbnailUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tags = null;
-
-	/**
-	 * Admin tags can be updated only by using an admin session
-	 *
-	 * @var string
-	 */
-	public $adminTags = null;
-
-	/**
-	 * 
-	 *
 	 * @var KalturaGender
 	 */
 	public $gender = null;
@@ -4720,122 +4833,9 @@ class KalturaUser extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var KalturaUserStatus
-	 */
-	public $status = null;
-
-	/**
-	 * Creation date as Unix timestamp (In seconds)
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Last update date as Unix timestamp (In seconds)
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * Can be used to store various partner related data as a string
-	 *
-	 * @var string
-	 */
-	public $partnerData = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $indexedPartnerDataInt = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $indexedPartnerDataString = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $storageSize = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $password = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $firstName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $lastName = null;
-
-	/**
-	 * 
-	 *
 	 * @var bool
 	 */
 	public $isAdmin = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaLanguageCode
-	 */
-	public $language = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $lastLoginTime = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $statusUpdatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $deletedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 * @insertonly
-	 */
-	public $loginEnabled = null;
 
 	/**
 	 * 
@@ -4864,22 +4864,31 @@ class KalturaUser extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
+	 * @insertonly
 	 */
-	public $allowedPartnerIds = null;
+	public $password = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $allowedPartnerPackages = null;
+	public $firstName = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaUserMode
+	 * @var string
 	 */
-	public $userMode = null;
+	public $lastName = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @insertonly
+	 */
+	public $loginEnabled = null;
 
 
 }
@@ -11959,15 +11968,6 @@ class KalturaAccessControlServeRemoteEdgeServerAction extends KalturaRuleAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdminUser extends KalturaUser
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaAmazonS3StorageProfile extends KalturaStorageProfile
 {
 	/**
@@ -18487,6 +18487,15 @@ abstract class KalturaAccessControlProfileBaseFilter extends KalturaRelatedFilte
 	 */
 	public $updatedAtLessThanOrEqual = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAdminUser extends KalturaUser
+{
 
 }
 

@@ -4527,10 +4527,8 @@ class KalturaQuizUserEntryOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
-	const VERSION_ASC = "+version";
 	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
-	const VERSION_DESC = "-version";
 }
 
 /**
@@ -4604,6 +4602,7 @@ class KalturaReportType extends KalturaEnumBase
 	const PERCENTILES = "43";
 	const CONTENT_REPORT_REASONS = "44";
 	const PLAYER_RELATED_INTERACTIONS = "45";
+	const PLAYBACK_RATE = "46";
 	const PARTNER_USAGE = "201";
 }
 
