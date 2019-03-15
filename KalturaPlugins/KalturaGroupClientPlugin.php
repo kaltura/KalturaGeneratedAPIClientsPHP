@@ -34,6 +34,48 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaElasticSearchClientPlugin.php");
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchGroupFieldName extends KalturaEnumBase
+{
+	const CREATED_AT = "created_at";
+	const EMAIL = "email";
+	const FIRST_NAME = "first_name";
+	const GROUP_IDS = "group_ids";
+	const LAST_NAME = "last_name";
+	const PERMISSION_NAMES = "permission_names";
+	const ROLE_IDS = "role_ids";
+	const SCREEN_NAME = "screen_name";
+	const TAGS = "tags";
+	const UPDATED_AT = "updated_at";
+	const USER_ID = "user_id";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchGroupOrderByFieldName extends KalturaEnumBase
+{
+	const CREATED_AT = "created_at";
+	const MEMBERS_COUNT = "members_count";
+	const USER_ID = "puser_id";
+	const SCREEN_NAME = "screen_name";
+	const UPDATED_AT = "updated_at";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchGroupBaseItem extends KalturaESearchBaseItem
+{
+
+}
 
 /**
  * @package Kaltura
@@ -56,6 +98,29 @@ class KalturaGroup extends KalturaBaseUser
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchGroupOperator extends KalturaESearchGroupBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchGroupBaseItem
+	 */
+	public $searchItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGroupListResponse extends KalturaListResponse
 {
 	/**
@@ -65,6 +130,89 @@ class KalturaGroupListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchAbstractGroupItem extends KalturaESearchGroupBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $searchTerm = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchItemType
+	 */
+	public $itemType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchRange
+	 */
+	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchGroupItem extends KalturaESearchAbstractGroupItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchGroupFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchGroupMetadataItem extends KalturaESearchAbstractGroupItem
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xpath = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
 
 
 }

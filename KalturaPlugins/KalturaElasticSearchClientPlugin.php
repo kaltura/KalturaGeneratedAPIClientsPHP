@@ -231,38 +231,6 @@ class KalturaESearchEntryOrderByFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchGroupFieldName extends KalturaEnumBase
-{
-	const CREATED_AT = "created_at";
-	const EMAIL = "email";
-	const FIRST_NAME = "first_name";
-	const GROUP_IDS = "group_ids";
-	const LAST_NAME = "last_name";
-	const PERMISSION_NAMES = "permission_names";
-	const ROLE_IDS = "role_ids";
-	const SCREEN_NAME = "screen_name";
-	const TAGS = "tags";
-	const UPDATED_AT = "updated_at";
-	const USER_ID = "user_id";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchGroupOrderByFieldName extends KalturaEnumBase
-{
-	const CREATED_AT = "created_at";
-	const MEMBERS_COUNT = "members_count";
-	const USER_ID = "puser_id";
-	const SCREEN_NAME = "screen_name";
-	const UPDATED_AT = "updated_at";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchSortOrder extends KalturaEnumBase
 {
 	const ORDER_BY_ASC = "asc";
@@ -960,38 +928,6 @@ class KalturaESearchGroupOrderByItem extends KalturaESearchOrderByItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchUserOperator extends KalturaESearchUserBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperatorType
-	 */
-	public $operator = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchUserBaseItem
-	 */
-	public $searchItems;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchGroupOperator extends KalturaESearchUserOperator
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchGroupParams extends KalturaESearchParams
 {
 	/**
@@ -1100,6 +1036,29 @@ class KalturaESearchUserOrderByItem extends KalturaESearchOrderByItem
 	 * @var KalturaESearchUserOrderByFieldName
 	 */
 	public $sortField = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchUserOperator extends KalturaESearchUserBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchUserBaseItem
+	 */
+	public $searchItems;
 
 
 }
@@ -1397,22 +1356,6 @@ class KalturaESearchEntryItem extends KalturaESearchAbstractEntryItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchGroupItem extends KalturaESearchAbstractUserItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchGroupFieldName
-	 */
-	public $fieldName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchUnifiedItem extends KalturaESearchAbstractEntryItem
 {
 
@@ -1498,15 +1441,6 @@ abstract class KalturaESearchEntryAbstractNestedItem extends KalturaESearchEntry
 	 */
 	public $addHighlight = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchGroupMetadataItem extends KalturaESearchUserMetadataItem
-{
 
 }
 
