@@ -1241,6 +1241,22 @@ abstract class KalturaESearchAbstractUserItem extends KalturaESearchUserBaseItem
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMediaEsearchExportToCsvJobData extends KalturaExportCsvJobData
+{
+	/**
+	 * Esearch parameters for the entry search
+	 *
+	 * @var KalturaESearchEntryParams
+	 */
+	public $searchParams;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCategoryEntryItem extends KalturaESearchAbstractEntryItem
 {
 	/**

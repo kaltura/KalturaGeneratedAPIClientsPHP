@@ -258,6 +258,27 @@ class KalturaGroupService extends KalturaServiceBase
 	}
 
 	/**
+	 * Clone the group (groupId), and set group id with the neeGroupName.
+	 * 
+	 * @param string $originalGroupId The unique identifier in the partner's system
+	 * @param string $newGroupName The unique identifier in the partner's system
+	 * @return KalturaGroup
+	 */
+	function cloneAction($originalGroupId, $newGroupName)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "originalGroupId", $originalGroupId);
+		$this->client->addParam($kparams, "newGroupName", $newGroupName);
+		$this->client->queueServiceActionCall("group_group", "clone", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaGroup");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete group by ID
 	 * 
 	 * @param string $groupId The unique identifier in the partner's system

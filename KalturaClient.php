@@ -2571,6 +2571,37 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaExportcsvService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Will serve a requested CSV
+	 * 
+	 * @param string $id - the requested file id
+	 * @return string
+	 */
+	function serveCsv($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("exportcsv", "serveCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaFileAssetService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -4792,6 +4823,25 @@ class KalturaMediaService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Creates a batch job that sends an email with a link to download a CSV containing a list of entries
+	 * 
+	 * @param KalturaMediaEsearchExportToCsvJobData $data Job data indicating filter to pass to the job
+	 * @return string
+	 */
+	function exportToCsv(KalturaMediaEsearchExportToCsvJobData $data)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data->toParams());
+		$this->client->queueServiceActionCall("media", "exportToCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
 	}
 
 	/**
@@ -9403,6 +9453,12 @@ class KalturaClient extends KalturaClientBase
 	public $entryServerNode = null;
 
 	/**
+	 * Export CSV service is used to manage CSV exports of objects
+	 * @var KalturaExportcsvService
+	 */
+	public $exportcsv = null;
+
+	/**
 	 * Manage file assets
 	 * @var KalturaFileAssetService
 	 */
@@ -9645,8 +9701,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-03-19');
-		$this->setApiVersion('14.16.0');
+		$this->setClientTag('php5:19-03-26');
+		$this->setApiVersion('14.17.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
@@ -9664,6 +9720,7 @@ class KalturaClient extends KalturaClientBase
 		$this->deliveryProfile = new KalturaDeliveryProfileService($this);
 		$this->EmailIngestionProfile = new KalturaEmailIngestionProfileService($this);
 		$this->entryServerNode = new KalturaEntryServerNodeService($this);
+		$this->exportcsv = new KalturaExportcsvService($this);
 		$this->fileAsset = new KalturaFileAssetService($this);
 		$this->flavorAsset = new KalturaFlavorAssetService($this);
 		$this->flavorParamsOutput = new KalturaFlavorParamsOutputService($this);

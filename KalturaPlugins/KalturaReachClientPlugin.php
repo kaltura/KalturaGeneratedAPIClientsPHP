@@ -144,6 +144,7 @@ class KalturaVendorServiceTurnAroundTime extends KalturaEnumBase
 	const TWELVE_HOURS = 43200;
 	const TWENTY_FOUR_HOURS = 86400;
 	const FORTY_EIGHT_HOURS = 172800;
+	const FOUR_DAYS = 345600;
 	const TEN_DAYS = 864000;
 }
 
@@ -155,6 +156,16 @@ class KalturaVendorServiceType extends KalturaEnumBase
 {
 	const HUMAN = 1;
 	const MACHINE = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorTaskProcessingRegion extends KalturaEnumBase
+{
+	const US = 1;
+	const EU = 2;
 }
 
 /**
@@ -700,6 +711,13 @@ class KalturaReachProfile extends KalturaObjectBase
 	 */
 	public $flavorParamsIds = null;
 
+	/**
+	 * Indicates in which region the task processing should task place
+	 *
+	 * @var KalturaVendorTaskProcessingRegion
+	 */
+	public $vendorTaskProcessingRegion = null;
+
 
 }
 
@@ -964,6 +982,185 @@ class KalturaCategoryEntryCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryVendorTaskListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaEntryVendorTask
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReachProfileListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReachProfile
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUnlimitedVendorCredit extends KalturaBaseVendorCredit
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $credit = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $fromDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $toDate = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorAlignmentCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemOutputFormat
+	 */
+	public $outputFormat = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorCaptionsCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemOutputFormat
+	 */
+	public $outputFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableSpeakerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $fixedPriceAddons = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorCatalogItemListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaVendorCatalogItem
+	 * @readonly
+	 */
+	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorCredit extends KalturaBaseVendorCredit
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $credit = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $fromDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $overageCredit = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $addOn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaEntryVendorTaskBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -1136,7 +1333,7 @@ class KalturaEntryVendorTaskFilter extends KalturaEntryVendorTaskBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryVendorTaskCsvJobData extends KalturaJobData
+class KalturaEntryVendorTaskCsvJobData extends KalturaExportCsvJobData
 {
 	/**
 	 * The filter should return the list of users that need to be specified in the csv.
@@ -1144,206 +1341,6 @@ class KalturaEntryVendorTaskCsvJobData extends KalturaJobData
 	 * @var KalturaEntryVendorTaskFilter
 	 */
 	public $filter;
-
-	/**
-	 * The users name
-	 *
-	 * @var string
-	 */
-	public $userName = null;
-
-	/**
-	 * The users email
-	 *
-	 * @var string
-	 */
-	public $userMail = null;
-
-	/**
-	 * The file location
-	 *
-	 * @var string
-	 */
-	public $outputPath = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaEntryVendorTaskListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaEntryVendorTask
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaReachProfileListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaReachProfile
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUnlimitedVendorCredit extends KalturaBaseVendorCredit
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $credit = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $fromDate = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $toDate = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVendorAlignmentCatalogItem extends KalturaVendorCatalogItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaVendorCatalogItemOutputFormat
-	 */
-	public $outputFormat = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVendorCaptionsCatalogItem extends KalturaVendorCatalogItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaVendorCatalogItemOutputFormat
-	 */
-	public $outputFormat = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $enableSpeakerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $fixedPriceAddons = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVendorCatalogItemListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaVendorCatalogItem
-	 * @readonly
-	 */
-	public $objects;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVendorCredit extends KalturaBaseVendorCredit
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $credit = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $fromDate = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $overageCredit = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $addOn = null;
 
 
 }
