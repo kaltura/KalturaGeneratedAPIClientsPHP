@@ -9310,6 +9310,7 @@ class KalturaPlaylist extends KalturaBaseEntry
 	 * Type of playlist
 	 *
 	 * @var KalturaPlaylistType
+	 * @insertonly
 	 */
 	public $playlistType = null;
 
