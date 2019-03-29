@@ -9508,29 +9508,6 @@ class KalturaReportBaseTotal extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportGraph extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $data = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaReportInputBaseFilter extends KalturaObjectBase
 {
 	/**
@@ -9568,21 +9545,168 @@ class KalturaReportInputBaseFilter extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportResponse extends KalturaObjectBase
+class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 {
+	/**
+	 * Search keywords to filter objects
+	 *
+	 * @var string
+	 */
+	public $keywords = null;
+
+	/**
+	 * Search keywords in objects tags
+	 *
+	 * @var bool
+	 */
+	public $searchInTags = null;
+
+	/**
+	 * Search keywords in objects admin tags
+	 *
+	 * @var bool
+	 */
+	public $searchInAdminTags = null;
+
+	/**
+	 * Search objects in specified categories
+	 *
+	 * @var string
+	 */
+	public $categories = null;
+
+	/**
+	 * Search objects in specified category ids
+	 *
+	 * @var string
+	 */
+	public $categoriesIdsIn = null;
+
+	/**
+	 * Filter by customVar1
+	 *
+	 * @var string
+	 */
+	public $customVar1In = null;
+
+	/**
+	 * Filter by customVar2
+	 *
+	 * @var string
+	 */
+	public $customVar2In = null;
+
+	/**
+	 * Filter by customVar3
+	 *
+	 * @var string
+	 */
+	public $customVar3In = null;
+
+	/**
+	 * Filter by device
+	 *
+	 * @var string
+	 */
+	public $deviceIn = null;
+
+	/**
+	 * Filter by country
+	 *
+	 * @var string
+	 */
+	public $countryIn = null;
+
+	/**
+	 * Filter by region
+	 *
+	 * @var string
+	 */
+	public $regionIn = null;
+
+	/**
+	 * Filter by city
+	 *
+	 * @var string
+	 */
+	public $citiesIn = null;
+
+	/**
+	 * Filter by operating system family
+	 *
+	 * @var string
+	 */
+	public $operatingSystemFamilyIn = null;
+
+	/**
+	 * Filter by browser family
+	 *
+	 * @var string
+	 */
+	public $browserFamilyIn = null;
+
+	/**
+	 * Time zone offset in minutes
+	 *
+	 * @var int
+	 */
+	public $timeZoneOffset = null;
+
+	/**
+	 * Aggregated results according to interval
+	 *
+	 * @var KalturaReportInterval
+	 */
+	public $interval = null;
+
+	/**
+	 * Filter by media types
+	 *
+	 * @var string
+	 */
+	public $mediaTypeIn = null;
+
+	/**
+	 * Filter by source types
+	 *
+	 * @var string
+	 */
+	public $sourceTypeIn = null;
+
+	/**
+	 * Filter by entry owner
+	 *
+	 * @var string
+	 */
+	public $ownerIdsIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchEntryOperator
+	 */
+	public $entryOperator;
+
+	/**
+	 * Entry created at greater than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * Entry created at less than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtLessThanOrEqual = null;
+
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $columns = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaString
-	 */
-	public $results;
+	public $entryIdIn = null;
 
 
 }
@@ -9606,6 +9730,163 @@ class KalturaReportResponseOptions extends KalturaObjectBase
 	 * @var bool
 	 */
 	public $skipEmptyDates = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportExportItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportTitle = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaReportExportItemType
+	 */
+	public $action = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaReportType
+	 */
+	public $reportType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaReportInputFilter
+	 */
+	public $filter;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $order = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaReportResponseOptions
+	 */
+	public $responseOptions;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportExportParams extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientEmail = null;
+
+	/**
+	 * Time zone offset in minutes (between client to UTC)
+	 *
+	 * @var int
+	 */
+	public $timeZoneOffset = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReportExportItem
+	 */
+	public $reportItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportExportResponse extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $referenceJobId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportEmail = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportGraph extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $data = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReportResponse extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $columns = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $results;
 
 
 }
@@ -16497,168 +16778,28 @@ abstract class KalturaReportBaseFilter extends KalturaFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaReportInputFilter extends KalturaReportInputBaseFilter
+class KalturaReportExportJobData extends KalturaJobData
 {
 	/**
-	 * Search keywords to filter objects
+	 * 
 	 *
 	 * @var string
 	 */
-	public $keywords = null;
-
-	/**
-	 * Search keywords in objects tags
-	 *
-	 * @var bool
-	 */
-	public $searchInTags = null;
-
-	/**
-	 * Search keywords in objects admin tags
-	 *
-	 * @var bool
-	 */
-	public $searchInAdminTags = null;
-
-	/**
-	 * Search objects in specified categories
-	 *
-	 * @var string
-	 */
-	public $categories = null;
-
-	/**
-	 * Search objects in specified category ids
-	 *
-	 * @var string
-	 */
-	public $categoriesIdsIn = null;
-
-	/**
-	 * Filter by customVar1
-	 *
-	 * @var string
-	 */
-	public $customVar1In = null;
-
-	/**
-	 * Filter by customVar2
-	 *
-	 * @var string
-	 */
-	public $customVar2In = null;
-
-	/**
-	 * Filter by customVar3
-	 *
-	 * @var string
-	 */
-	public $customVar3In = null;
-
-	/**
-	 * Filter by device
-	 *
-	 * @var string
-	 */
-	public $deviceIn = null;
-
-	/**
-	 * Filter by country
-	 *
-	 * @var string
-	 */
-	public $countryIn = null;
-
-	/**
-	 * Filter by region
-	 *
-	 * @var string
-	 */
-	public $regionIn = null;
-
-	/**
-	 * Filter by city
-	 *
-	 * @var string
-	 */
-	public $citiesIn = null;
-
-	/**
-	 * Filter by operating system family
-	 *
-	 * @var string
-	 */
-	public $operatingSystemFamilyIn = null;
-
-	/**
-	 * Filter by browser family
-	 *
-	 * @var string
-	 */
-	public $browserFamilyIn = null;
-
-	/**
-	 * Time zone offset in minutes
-	 *
-	 * @var int
-	 */
-	public $timeZoneOffset = null;
-
-	/**
-	 * Aggregated results according to interval
-	 *
-	 * @var KalturaReportInterval
-	 */
-	public $interval = null;
-
-	/**
-	 * Filter by media types
-	 *
-	 * @var string
-	 */
-	public $mediaTypeIn = null;
-
-	/**
-	 * Filter by source types
-	 *
-	 * @var string
-	 */
-	public $sourceTypeIn = null;
-
-	/**
-	 * Filter by entry owner
-	 *
-	 * @var string
-	 */
-	public $ownerIdsIn = null;
+	public $recipientEmail = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaESearchEntryOperator
+	 * @var array of KalturaReportExportItem
 	 */
-	public $entryOperator;
-
-	/**
-	 * Entry created at greater than or equal as Unix timestamp
-	 *
-	 * @var int
-	 */
-	public $entryCreatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * Entry created at less than or equal as Unix timestamp
-	 *
-	 * @var int
-	 */
-	public $entryCreatedAtLessThanOrEqual = null;
+	public $reportItems;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $entryIdIn = null;
+	public $filePaths = null;
 
 
 }

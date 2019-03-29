@@ -617,6 +617,29 @@ class KalturaESearchUserResult extends KalturaESearchResult
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchEntryOperator extends KalturaESearchEntryBaseItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchEntryBaseItem
+	 */
+	public $searchItems;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCaptionItemData extends KalturaESearchItemData
 {
 	/**
@@ -848,29 +871,6 @@ class KalturaESearchEntryOrderByItem extends KalturaESearchOrderByItem
 	 * @var KalturaESearchEntryOrderByFieldName
 	 */
 	public $sortField = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchEntryOperator extends KalturaESearchEntryBaseItem
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchOperatorType
-	 */
-	public $operator = null;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchEntryBaseItem
-	 */
-	public $searchItems;
 
 
 }

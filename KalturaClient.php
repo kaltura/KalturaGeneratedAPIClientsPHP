@@ -6219,6 +6219,25 @@ class KalturaReportService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param KalturaReportExportParams $params 
+	 * @return KalturaReportExportResponse
+	 */
+	function exportToCsv(KalturaReportExportParams $params)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "params", $params->toParams());
+		$this->client->queueServiceActionCall("report", "exportToCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaReportExportResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * Report getBaseTotal action allows to get the total base for storage reports
 	 * 
 	 * @param string $reportType 
@@ -9701,7 +9720,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-03-28');
+		$this->setClientTag('php5:19-03-29');
 		$this->setApiVersion('14.17.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

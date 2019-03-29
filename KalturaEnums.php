@@ -762,6 +762,17 @@ class KalturaRecordingStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaReportExportItemType extends KalturaEnumBase
+{
+	const TABLE = 1;
+	const TOTAL = 2;
+	const GRAPH = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaResponseProfileStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
@@ -1616,10 +1627,10 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
-	const CONVERT = "0";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
+	const CONVERT = "0";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
@@ -1679,6 +1690,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const CLIP_CONCAT = "47";
 	const COPY_CUE_POINTS = "48";
 	const EXPORT_CSV = "49";
+	const REPORT_EXPORT = "50";
 }
 
 /**
@@ -4021,6 +4033,9 @@ class KalturaMailType extends KalturaEnumBase
 	const MAIL_TYPE_LIVE_REPORT_EXPORT_ABORT = "132";
 	const MAIL_TYPE_USERS_CSV = "133";
 	const MAIL_TYPE_OBJECTS_CSV = "135";
+	const MAIL_TYPE_REPORT_EXPORT_SUCCESS = "136";
+	const MAIL_TYPE_REPORT_EXPORT_FAILURE = "137";
+	const MAIL_TYPE_REPORT_EXPORT_ABORT = "138";
 }
 
 /**
