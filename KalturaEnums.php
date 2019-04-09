@@ -1724,6 +1724,7 @@ class KalturaBulkUploadObjectType extends KalturaEnumBase
 	const USER = "3";
 	const CATEGORY_USER = "4";
 	const CATEGORY_ENTRY = "5";
+	const USER_ENTRY = "6";
 }
 
 /**

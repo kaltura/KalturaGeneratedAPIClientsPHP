@@ -8552,7 +8552,7 @@ class KalturaUserEntryService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param KalturaUserEntryFilter $filter 
-	 * @return int
+	 * @return KalturaBulkUpload
 	 */
 	function bulkDelete(KalturaUserEntryFilter $filter)
 	{
@@ -8563,7 +8563,7 @@ class KalturaUserEntryService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
 		return $resultObject;
 	}
 
@@ -9720,8 +9720,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-04-08');
-		$this->setApiVersion('14.17.0');
+		$this->setClientTag('php5:19-04-09');
+		$this->setApiVersion('14.18.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

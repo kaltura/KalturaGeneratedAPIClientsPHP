@@ -126,6 +126,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const CAPTIONS = 1;
 	const TRANSLATION = 2;
 	const ALIGNMENT = 3;
+	const AUDIO_DESCRIPTION = 4;
 }
 
 /**
@@ -177,21 +178,26 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const AR = "Arabic";
 	const YUE = "Cantonese";
 	const ZH = "Chinese";
+	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";
 	const EN_US = "English (American)";
 	const EN_GB = "English (British)";
+	const FI = "Finnish";
 	const FR = "French";
 	const DE = "German";
 	const HE = "Hebrew";
 	const HI = "Hindi";
+	const IS = "Icelandic";
 	const IT = "Italian";
 	const JA = "Japanese";
 	const KO = "Korean";
 	const CMN = "Mandarin Chinese";
+	const NO = "Norwegian";
 	const PT = "Portuguese";
 	const RU = "Russian";
 	const ES = "Spanish";
+	const SV = "Swedish";
 	const TH = "Thai";
 	const TR = "Turkish";
 }
@@ -1070,6 +1076,29 @@ class KalturaVendorAlignmentCatalogItem extends KalturaVendorCatalogItem
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorAudioDescriptionCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $flavorParamsId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorCaptionsCatalogItem extends KalturaVendorCatalogItem
 {
 	/**
@@ -1697,6 +1726,15 @@ abstract class KalturaVendorCaptionsCatalogItemBaseFilter extends KalturaVendorC
  * @subpackage Client
  */
 class KalturaVendorAlignmentCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorAudioDescriptionCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
 {
 
 }

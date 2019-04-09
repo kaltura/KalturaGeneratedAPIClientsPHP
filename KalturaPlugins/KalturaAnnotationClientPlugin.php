@@ -296,19 +296,21 @@ class KalturaAnnotationService extends KalturaServiceBase
 	 * 
 	 * @param string $id 
 	 * @param string $entryId 
-	 * @return KalturaCuePoint
+	 * @param string $parentId 
+	 * @return KalturaAnnotation
 	 */
-	function cloneAction($id, $entryId)
+	function cloneAction($id, $entryId, $parentId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "parentId", $parentId);
 		$this->client->queueServiceActionCall("annotation_annotation", "clone", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaCuePoint");
+		$this->client->validateObjectType($resultObject, "KalturaAnnotation");
 		return $resultObject;
 	}
 

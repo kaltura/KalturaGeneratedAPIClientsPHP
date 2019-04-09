@@ -13387,6 +13387,22 @@ class KalturaBulkUploadResultUser extends KalturaBulkUploadResult
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBulkUploadResultUserEntry extends KalturaBulkUploadResult
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $userEntryId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBulkUploadUserData extends KalturaBulkUploadObjectData
 {
 
@@ -16485,6 +16501,20 @@ abstract class KalturaPartnerBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $partnerNameDescriptionWebsiteAdminNameAdminEmailLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idGreaterThan = null;
 
 
 }
@@ -22329,6 +22359,13 @@ class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter
 	 * @var string
 	 */
 	public $privacyContextIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerId = null;
 
 
 }
