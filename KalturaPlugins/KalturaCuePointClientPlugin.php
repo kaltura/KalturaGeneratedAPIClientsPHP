@@ -102,11 +102,13 @@ class KalturaThumbCuePointSubType extends KalturaEnumBase
 class KalturaCuePointOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
+	const INT_ID_ASC = "+intId";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
 	const START_TIME_ASC = "+startTime";
 	const TRIGGERED_AT_ASC = "+triggeredAt";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
+	const INT_ID_DESC = "-intId";
 	const PARTNER_SORT_VALUE_DESC = "-partnerSortValue";
 	const START_TIME_DESC = "-startTime";
 	const TRIGGERED_AT_DESC = "-triggeredAt";
@@ -141,6 +143,14 @@ abstract class KalturaCuePoint extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $intId = null;
 
 	/**
 	 * 
