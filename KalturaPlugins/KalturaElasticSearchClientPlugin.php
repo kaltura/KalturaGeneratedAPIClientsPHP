@@ -273,6 +273,15 @@ class KalturaESearchUserOrderByFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEsearchGroupUserFieldName extends KalturaEnumBase
+{
+	const GROUP_IDS = "group_ids";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaESearchBaseItem extends KalturaObjectBase
 {
 
@@ -1364,6 +1373,29 @@ class KalturaESearchEntryItem extends KalturaESearchAbstractEntryItem
 	 * @var KalturaESearchEntryFieldName
 	 */
 	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchGroupUserItem extends KalturaESearchAbstractUserItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaEsearchGroupUserFieldName
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupUserCreationMode
+	 */
+	public $creationMode = null;
 
 
 }
