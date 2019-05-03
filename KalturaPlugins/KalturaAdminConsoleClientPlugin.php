@@ -187,6 +187,13 @@ class KalturaTrackEntry extends KalturaObjectBase
 	 */
 	public $userIp = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $sessionId = null;
+
 
 }
 

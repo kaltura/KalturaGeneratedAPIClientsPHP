@@ -1800,6 +1800,13 @@ class KalturaBatchHistoryData extends KalturaObjectBase
 	 */
 	public $sessionId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $schedulerName = null;
+
 
 }
 
