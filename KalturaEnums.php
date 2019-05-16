@@ -2997,8 +2997,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const HNI = "Hani";
 	const HA = "Hausa";
 	const HAW = "Hawaiian";
-	const HE = "Hebrew";
 	const IW = "Hebrew";
+	const HE = "Hebrew";
 	const HEI = "Heiltsuk";
 	const HID = "Hidatsa";
 	const HIL = "Hiligaynon";
@@ -3105,6 +3105,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const LUN = "Lunda";
 	const LUO = "Luo (Kenya and Tanzania)";
 	const LUT = "Lushootseed";
+	const LB = "Luxembourgish (Letzeburgesch)";
 	const MK = "Macedonian";
 	const MAD = "Madurese";
 	const MAG = "Magahi";
@@ -3348,8 +3349,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const YI = "Yiddish";
 	const JI = "Yiddish";
+	const YI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";
@@ -3433,6 +3434,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const KU = "ku";
 	const KY = "ky";
 	const LA = "la";
+	const LB = "lb";
 	const LI = "li";
 	const LN = "ln";
 	const LO = "lo";

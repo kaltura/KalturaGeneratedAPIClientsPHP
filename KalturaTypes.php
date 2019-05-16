@@ -7927,6 +7927,14 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 */
 	public $primaryServerNodeId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $sipToken = null;
+
 
 }
 
