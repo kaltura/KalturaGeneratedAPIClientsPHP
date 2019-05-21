@@ -5509,6 +5509,25 @@ class KalturaPartnerService extends KalturaServiceBase
 	}
 
 	/**
+	 * Returns partner public info by Id
+	 * 
+	 * @param int $id 
+	 * @return KalturaPartnerPublicInfo
+	 */
+	function getPublicInfo($id = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("partner", "getPublicInfo", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaPartnerPublicInfo");
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieve partner secret and admin secret
 	 * 
 	 * @param int $partnerId 
@@ -9720,7 +9739,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-05-20');
+		$this->setClientTag('php5:19-05-21');
 		$this->setApiVersion('15.0.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

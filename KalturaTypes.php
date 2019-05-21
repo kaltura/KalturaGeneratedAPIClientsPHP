@@ -8923,6 +8923,29 @@ class KalturaModerationFlag extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPartnerPublicInfo extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $analyticsUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ottEnvironmentUrl = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPartnerStatistics extends KalturaObjectBase
 {
 	/**
