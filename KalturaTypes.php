@@ -8939,6 +8939,13 @@ class KalturaPartnerPublicInfo extends KalturaObjectBase
 	 */
 	public $ottEnvironmentUrl = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $analyticsPersistentSessionId = null;
+
 
 }
 
