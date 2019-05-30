@@ -1648,10 +1648,10 @@ class KalturaScheduleEventService extends KalturaServiceBase
 	 * Add new bulk upload batch job
 	 * 
 	 * @param file $fileData 
-	 * @param KalturaBulkUploadICalJobData $bulkUploadData 
+	 * @param KalturaBulkUploadScheduleEventJobData $bulkUploadData 
 	 * @return KalturaBulkUpload
 	 */
-	function addFromBulkUpload($fileData, KalturaBulkUploadICalJobData $bulkUploadData = null)
+	function addFromBulkUpload($fileData, KalturaBulkUploadScheduleEventJobData $bulkUploadData = null)
 	{
 		$kparams = array();
 		$kfiles = array();

@@ -50,6 +50,118 @@ class KalturaBulkUploadResultScheduleEvent extends KalturaBulkUploadResult
 	 */
 	public $referenceId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaScheduleEventType
+	 */
+	public $eventType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $title = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $description = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $categoryIds = null;
+
+	/**
+	 * ID of the resource specified for the new event.
+	 *
+	 * @var string
+	 */
+	public $resourceId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $startTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $endTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recurrence = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $coEditors = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $coPublishers = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $eventOrganizerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentOwnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryType = null;
+
 
 }
 
@@ -122,7 +234,16 @@ class KalturaBulkUploadResultScheduleResource extends KalturaBulkUploadResult
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBulkUploadICalJobData extends KalturaBulkUploadJobData
+abstract class KalturaBulkUploadScheduleEventJobData extends KalturaBulkUploadJobData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBulkUploadICalJobData extends KalturaBulkUploadScheduleEventJobData
 {
 	/**
 	 * The type of the events that ill be created by this upload
@@ -130,6 +251,30 @@ class KalturaBulkUploadICalJobData extends KalturaBulkUploadJobData
 	 * @var KalturaScheduleEventType
 	 */
 	public $eventsType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBulkUploadScheduleEventCsvJobData extends KalturaBulkUploadScheduleEventJobData
+{
+	/**
+	 * The version of the csv file
+	 *
+	 * @var KalturaBulkUploadCsvVersion
+	 * @readonly
+	 */
+	public $csvVersion = null;
+
+	/**
+	 * Array containing CSV headers
+	 *
+	 * @var array of KalturaString
+	 */
+	public $columns;
 
 
 }

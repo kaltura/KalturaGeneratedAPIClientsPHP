@@ -1624,13 +1624,13 @@ class KalturaBatchJobOrderBy extends KalturaEnumBase
  */
 class KalturaBatchJobType extends KalturaEnumBase
 {
+	const CONVERT = "0";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
 	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
 	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
 	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
-	const CONVERT = "0";
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
@@ -2439,9 +2439,9 @@ class KalturaEntryStatus extends KalturaEnumBase
 {
 	const ERROR_IMPORTING = "-2";
 	const ERROR_CONVERTING = "-1";
-	const SCAN_FAILURE = "virusScan.ScanFailure";
 	const IMPORT = "0";
 	const INFECTED = "virusScan.Infected";
+	const SCAN_FAILURE = "virusScan.ScanFailure";
 	const PRECONVERT = "1";
 	const READY = "2";
 	const DELETED = "3";
@@ -2997,8 +2997,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const HNI = "Hani";
 	const HA = "Hausa";
 	const HAW = "Hawaiian";
-	const IW = "Hebrew";
 	const HE = "Hebrew";
+	const IW = "Hebrew";
 	const HEI = "Heiltsuk";
 	const HID = "Hidatsa";
 	const HIL = "Hiligaynon";
@@ -4040,6 +4040,7 @@ class KalturaMailType extends KalturaEnumBase
 	const MAIL_TYPE_REPORT_EXPORT_SUCCESS = "136";
 	const MAIL_TYPE_REPORT_EXPORT_FAILURE = "137";
 	const MAIL_TYPE_REPORT_EXPORT_ABORT = "138";
+	const MAIL_TYPE_SIP_FAILURE = "139";
 }
 
 /**
