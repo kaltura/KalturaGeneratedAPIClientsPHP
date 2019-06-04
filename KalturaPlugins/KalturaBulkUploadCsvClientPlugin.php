@@ -68,6 +68,20 @@ class KalturaBulkUploadCsvJobData extends KalturaBulkUploadJobData
 	 */
 	public $columns;
 
+	/**
+	 * The object in process
+	 *
+	 * @var string
+	 */
+	public $processObjectId = null;
+
+	/**
+	 * The type of the object in process
+	 *
+	 * @var string
+	 */
+	public $processObjectType = null;
+
 
 }
 

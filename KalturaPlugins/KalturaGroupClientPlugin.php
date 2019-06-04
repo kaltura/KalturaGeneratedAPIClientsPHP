@@ -40,6 +40,16 @@ require_once(dirname(__FILE__) . "/KalturaElasticSearchClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaGroupProcessStatus extends KalturaEnumBase
+{
+	const NONE = 0;
+	const PROCESSING = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchGroupFieldName extends KalturaEnumBase
 {
 	const CREATED_AT = "created_at";
@@ -90,6 +100,13 @@ class KalturaGroup extends KalturaBaseUser
 	 * @readonly
 	 */
 	public $membersCount = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupProcessStatus
+	 */
+	public $processStatus = null;
 
 
 }
