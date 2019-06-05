@@ -8991,6 +8991,25 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * Get QR image content
+	 * 
+	 * @param string $hashKey 
+	 * @return string
+	 */
+	function generateQrCode($hashKey)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hashKey", $hashKey);
+		$this->client->queueServiceActionCall("user", "generateQrCode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * Retrieves a user object for a specified user ID.
 	 * 
 	 * @param string $userId The user's unique identifier in the partner's system
@@ -9739,7 +9758,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-06-04');
+		$this->setClientTag('php5:19-06-05');
 		$this->setApiVersion('15.1.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

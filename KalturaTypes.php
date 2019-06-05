@@ -2622,6 +2622,14 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $eSearchLanguages;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $authenticationType = null;
+
 
 }
 
