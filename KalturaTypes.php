@@ -2625,7 +2625,7 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var bool
+	 * @var int
 	 * @readonly
 	 */
 	public $authenticationType = null;

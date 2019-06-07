@@ -127,6 +127,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const TRANSLATION = 2;
 	const ALIGNMENT = 3;
 	const AUDIO_DESCRIPTION = 4;
+	const CHAPTERING = 5;
 }
 
 /**
@@ -969,6 +970,13 @@ class KalturaCategoryEntryCondition extends KalturaCondition
 	public $categoryId = null;
 
 	/**
+	 * Category id's to check condition for
+	 *
+	 * @var string
+	 */
+	public $categoryIds = null;
+
+	/**
 	 * Minimum category user level permission to validate
 	 *
 	 * @var KalturaCategoryUserPermissionLevel
@@ -1146,6 +1154,22 @@ class KalturaVendorCatalogItemListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorChapteringCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
 
 
 }
@@ -1745,6 +1769,15 @@ class KalturaVendorAudioDescriptionCatalogItemFilter extends KalturaVendorCaptio
  * @subpackage Client
  */
 class KalturaVendorCaptionsCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorChapteringCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
 {
 
 }

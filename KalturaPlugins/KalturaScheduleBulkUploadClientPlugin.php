@@ -60,7 +60,7 @@ class KalturaBulkUploadResultScheduleEvent extends KalturaBulkUploadResult
 	/**
 	 * 
 	 *
-	 * @var KalturaScheduleEventType
+	 * @var int
 	 */
 	public $eventType = null;
 
