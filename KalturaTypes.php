@@ -974,6 +974,22 @@ class KalturaAssetServeOptions extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAuthentication extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $qrCode = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaOperationAttributes extends KalturaObjectBase
 {
 
@@ -2625,7 +2641,7 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var KalturaPartnerAuthenticationType
 	 * @readonly
 	 */
 	public $authenticationType = null;

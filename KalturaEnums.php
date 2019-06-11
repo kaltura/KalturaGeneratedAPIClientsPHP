@@ -651,6 +651,17 @@ class KalturaNullableBoolean extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPartnerAuthenticationType extends KalturaEnumBase
+{
+	const PASSWORD_ONLY = 0;
+	const TWO_FACTOR_AUTH = 1;
+	const SSO = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPartnerGroupType extends KalturaEnumBase
 {
 	const PUBLISHER = 1;

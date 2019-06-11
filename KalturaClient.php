@@ -314,6 +314,7 @@ class KalturaAdminUserService extends KalturaServiceBase
 	 * 
 	 * @param string $hashKey 
 	 * @param string $newPassword New password to set
+	 * @return KalturaAuthentication
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -325,7 +326,8 @@ class KalturaAdminUserService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaAuthentication");
+		return $resultObject;
 	}
 
 	/**
@@ -9227,6 +9229,7 @@ class KalturaUserService extends KalturaServiceBase
 	 * 
 	 * @param string $hashKey The hash key used to identify the user (retrieved by email)
 	 * @param string $newPassword The new password to set for the user
+	 * @return KalturaAuthentication
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -9238,7 +9241,8 @@ class KalturaUserService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaAuthentication");
+		return $resultObject;
 	}
 
 	/**
@@ -9758,7 +9762,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-06-10');
+		$this->setClientTag('php5:19-06-11');
 		$this->setApiVersion('15.1.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
