@@ -2844,6 +2844,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const ALN = "Albanian (Gheg)";
 	const ALS = "Albanian (Tosk)";
 	const ALE = "Aleut";
+	const ALG = "Algonquian languages";
 	const ALQ = "Algonquin";
 	const ALT = "Altai (Southern)";
 	const AM = "Amharic";
@@ -2864,6 +2865,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const ASB = "Assiniboine";
 	const AII = "Assyrian Neo-Aramaic";
 	const AST = "Asturian";
+	const ATH = "Athapascan languages";
 	const ATJ = "Atikamekw";
 	const AWA = "Awadhi";
 	const AY = "Aymara";
@@ -2931,6 +2933,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const COO = "Comox";
 	const COP = "Coptic";
 	const CO = "Corsican";
+	const CR = "Cree";
 	const MUS = "Creek";
 	const CRH = "Crimean Tatar";
 	const HR = "Croatian";
@@ -3023,15 +3026,17 @@ class KalturaLanguage extends KalturaEnumBase
 	const KPO = "Ikposo";
 	const ILO = "Iloko";
 	const SMN = "Inari Sami";
-	const IN = "Indonesian";
 	const ID = "Indonesian";
+	const IN = "Indonesian";
 	const IZH = "Ingrian";
 	const INH = "Ingush";
 	const IA = "Interlingua";
 	const IE = "Interlingue";
+	const IKT = "Inuinnaqtun";
 	const IU = "Inuktitut";
 	const IK = "Inupiak";
 	const GA = "Irish";
+	const IRO = "Iroquoian languages";
 	const IT = "Italian";
 	const ITL = "Itelmen";
 	const JA = "Japanese";
@@ -3168,6 +3173,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const NIO = "Nganasan";
 	const NCG = "Nisgaa";
 	const NIU = "Niuean";
+	const ZXX = "No linguistic content";
 	const NOG = "Nogai";
 	const NON = "Norse Old";
 	const NSO = "Northern Sotho Pedi Sepedi";
@@ -3182,6 +3188,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const OJB = "Ojibwa Northwestern";
 	const OJS = "Ojibwa Severn";
 	const OJW = "Ojibwa Western";
+	const OJ = "Ojibwe, Ojibwa";
 	const RYU = "Okinawan Central";
 	const ANG = "Old English";
 	const ONE = "Oneida";
@@ -3232,7 +3239,9 @@ class KalturaLanguage extends KalturaEnumBase
 	const SAH = "Sakha";
 	const SLR = "Salar";
 	const STR = "Salish Straits";
+	const SAL = "Salishan languages";
 	const SJD = "Sami Kildin";
+	const SMI = "Sami languages";
 	const SM = "Samoan";
 	const SG = "Sangro";
 	const SA = "Sanskrit";
@@ -3273,6 +3282,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const DSB = "Sorbian Lower";
 	const HSB = "Sorbian Upper";
 	const SMA = "Southern Sami";
+	const TCE = "Southern Tutchone";
 	const ES = "Spanish";
 	const SRN = "Sranan";
 	const STO = "Stoney";
@@ -3378,9 +3388,11 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const AA = "aa";
 	const AB = "ab";
 	const AF = "af";
+	const ALG = "alg";
 	const AM = "am";
 	const AR = "ar";
 	const AS_ = "as";
+	const ATH = "ath";
 	const AY = "ay";
 	const AZ = "az";
 	const BA = "ba";
@@ -3393,6 +3405,8 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const BR = "br";
 	const CA = "ca";
 	const CO = "co";
+	const CR = "cr";
+	const CRG = "crg";
 	const CS = "cs";
 	const CY = "cy";
 	const DA = "da";
@@ -3428,7 +3442,9 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const ID = "id";
 	const IE = "ie";
 	const IK = "ik";
+	const IKT = "ikt";
 	const IN = "in";
+	const IRO = "iro";
 	const IS = "is";
 	const IT = "it";
 	const IU = "iu";
@@ -3454,6 +3470,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const LV = "lv";
 	const MG = "mg";
 	const MI = "mi";
+	const MIC = "mic";
 	const MK = "mk";
 	const ML = "ml";
 	const MN = "mn";
@@ -3461,13 +3478,16 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
-	const MU = "multilingual";
+	const MU = "mu";
 	const MY = "my";
 	const NA = "na";
 	const NE = "ne";
 	const NL = "nl";
 	const NO = "no";
 	const OC = "oc";
+	const OJ = "oj";
+	const OJS = "ojs";
+	const OJW = "ojw";
 	const OM = "om";
 	const OR_ = "or";
 	const PA = "pa";
@@ -3481,6 +3501,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const RU = "ru";
 	const RW = "rw";
 	const SA = "sa";
+	const SAL = "sal";
 	const SD = "sd";
 	const SG = "sg";
 	const SH = "sh";
@@ -3488,6 +3509,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const SK = "sk";
 	const SL = "sl";
 	const SM = "sm";
+	const SMI = "smi";
 	const SN = "sn";
 	const SO = "so";
 	const SQ = "sq";
@@ -3498,6 +3520,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const SV = "sv";
 	const SW = "sw";
 	const TA = "ta";
+	const TCE = "tce";
 	const TE = "te";
 	const TG = "tg";
 	const TH = "th";
@@ -3512,6 +3535,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const TW = "tw";
 	const UG = "ug";
 	const UK = "uk";
+	const UN = "un";
 	const UR = "ur";
 	const UZ = "uz";
 	const VI = "vi";
@@ -3522,6 +3546,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const YO = "yo";
 	const ZH = "zh";
 	const ZU = "zu";
+	const ZXX = "zxx";
 }
 
 /**
