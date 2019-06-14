@@ -3158,6 +3158,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const MO = "Moldavian";
 	const MNW = "Mon";
 	const MN = "Mongolian";
+	const MOE = "Montagnais";
 	const MFE = "Morisyen";
 	const MOS = "Mossi";
 	const MXI = "Mozarabic";
@@ -3189,6 +3190,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const OJS = "Ojibwa Severn";
 	const OJW = "Ojibwa Western";
 	const OJ = "Ojibwe, Ojibwa";
+	const OKA = "Okanagan";
 	const RYU = "Okinawan Central";
 	const ANG = "Old English";
 	const ONE = "Oneida";
@@ -3268,6 +3270,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const SHS = "Shuswap";
 	const SCN = "Sicilian";
 	const SID = "Sidamo";
+	const BLA = "Siksika";
 	const SZL = "Silesian";
 	const SD = "Sindhi";
 	const SI = "Sinhalese";
@@ -3400,6 +3403,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const BG = "bg";
 	const BH = "bh";
 	const BI = "bi";
+	const BLA = "bla";
 	const BN = "bn";
 	const BO = "bo";
 	const BR = "br";
@@ -3475,6 +3479,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const ML = "ml";
 	const MN = "mn";
 	const MO = "mo";
+	const MOE = "moe";
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
@@ -3488,6 +3493,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const OJ = "oj";
 	const OJS = "ojs";
 	const OJW = "ojw";
+	const OKA = "oka";
 	const OM = "om";
 	const OR_ = "or";
 	const PA = "pa";
