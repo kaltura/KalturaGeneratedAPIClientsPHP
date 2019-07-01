@@ -11499,6 +11499,14 @@ class KalturaUploadToken extends KalturaObjectBase
 	 */
 	public $autoFinalize = null;
 
+	/**
+	 * set the minimum size in bytes for each uploaded part of the file
+	 *
+	 * @var float
+	 * @insertonly
+	 */
+	public $minimumChunkSize = null;
+
 
 }
 
