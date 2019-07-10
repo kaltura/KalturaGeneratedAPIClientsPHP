@@ -190,6 +190,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const MODERATION_STATUS = "moderation_status";
 	const NAME = "name";
 	const PARENT_ENTRY_ID = "parent_id";
+	const PARTNER_SORT_VALUE = "partner_sort_value";
 	const PUSH_PUBLISH = "push_publish";
 	const RECORDED_ENTRY_ID = "recorded_entry_id";
 	const REDIRECT_ENTRY_ID = "redirect_entry_id";

@@ -5535,14 +5535,16 @@ class KalturaPartnerService extends KalturaServiceBase
 	 * @param int $partnerId 
 	 * @param string $adminEmail 
 	 * @param string $cmsPassword 
+	 * @param string $otp 
 	 * @return KalturaPartner
 	 */
-	function getSecrets($partnerId, $adminEmail, $cmsPassword)
+	function getSecrets($partnerId, $adminEmail, $cmsPassword, $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "partnerId", $partnerId);
 		$this->client->addParam($kparams, "adminEmail", $adminEmail);
 		$this->client->addParam($kparams, "cmsPassword", $cmsPassword);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("partner", "getSecrets", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9762,8 +9764,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-07-08');
-		$this->setApiVersion('15.2.0');
+		$this->setClientTag('php5:19-07-10');
+		$this->setApiVersion('15.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

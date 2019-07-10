@@ -2380,6 +2380,13 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $allowedFromEmailWhiteList = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $maxUploadSize = null;
