@@ -40,6 +40,16 @@ require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDistributeTrigger extends KalturaEnumBase
+{
+	const ENTRY_READY = 1;
+	const MODERATION_APPROVED = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDistributionAction extends KalturaEnumBase
 {
 	const SUBMIT = 1;
@@ -634,6 +644,13 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 	 * @var int
 	 */
 	public $recommendedDcForExecute = null;
+
+	/**
+	 * The event that trigger the automatic distribute
+	 *
+	 * @var KalturaDistributeTrigger
+	 */
+	public $distributeTrigger = null;
 
 
 }

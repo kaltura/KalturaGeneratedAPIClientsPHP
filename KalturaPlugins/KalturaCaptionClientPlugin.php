@@ -83,6 +83,7 @@ class KalturaCaptionType extends KalturaEnumBase
 	const DFXP = "2";
 	const WEBVTT = "3";
 	const CAP = "4";
+	const SCC = "5";
 }
 
 /**
@@ -303,6 +304,50 @@ class KalturaCaptionParamsListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaConvertCaptionAssetJobData extends KalturaJobData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileLocation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileEncryptionKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fromType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $toType = null;
 
 
 }

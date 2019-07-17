@@ -337,15 +337,17 @@ class KalturaAdminUserService extends KalturaServiceBase
 	 * @param string $password 
 	 * @param string $newEmail Optional, provide only when you want to update the email
 	 * @param string $newPassword 
+	 * @param string $otp The user's one-time password
 	 * @return KalturaAdminUser
 	 */
-	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
+	function updatePassword($email, $password, $newEmail = "", $newPassword = "", $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "email", $email);
 		$this->client->addParam($kparams, "password", $password);
 		$this->client->addParam($kparams, "newEmail", $newEmail);
 		$this->client->addParam($kparams, "newPassword", $newPassword);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("adminuser", "updatePassword", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9278,8 +9280,9 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param string $newPassword Optional, The user's new password
 	 * @param string $newFirstName Optional, The user's new first name
 	 * @param string $newLastName Optional, The user's new last name
+	 * @param string $otp The user's one-time password
 	 */
-	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
+	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null, $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "oldLoginId", $oldLoginId);
@@ -9288,6 +9291,7 @@ class KalturaUserService extends KalturaServiceBase
 		$this->client->addParam($kparams, "newPassword", $newPassword);
 		$this->client->addParam($kparams, "newFirstName", $newFirstName);
 		$this->client->addParam($kparams, "newLastName", $newLastName);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("user", "updateLoginData", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9764,7 +9768,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-07-10');
+		$this->setClientTag('php5:19-07-17');
 		$this->setApiVersion('15.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

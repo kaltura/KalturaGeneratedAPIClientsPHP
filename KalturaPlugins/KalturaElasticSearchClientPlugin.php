@@ -77,6 +77,15 @@ class KalturaESearchCaptionFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchCategoryAggregateByFieldName extends KalturaEnumBase
+{
+	const CATEGORY_NAME = "category_name";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCategoryEntryFieldName extends KalturaEnumBase
 {
 	const ANCESTOR_ID = "ancestor_id";
@@ -146,6 +155,16 @@ class KalturaESearchCategoryUserFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchCuePointAggregateByFieldName extends KalturaEnumBase
+{
+	const TAGS = "tags";
+	const TYPE = "type";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCuePointFieldName extends KalturaEnumBase
 {
 	const ANSWERS = "answers";
@@ -160,6 +179,18 @@ class KalturaESearchCuePointFieldName extends KalturaEnumBase
 	const TAGS = "tags";
 	const TEXT = "text";
 	const TYPE = "type";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchEntryAggregateByFieldName extends KalturaEnumBase
+{
+	const ACCESS_CONTROL_PROFILE = "access_control_profile_id";
+	const ENTRY_TYPE = "entry_type";
+	const MEDIA_TYPE = "media_type";
+	const TAGS = "tags";
 }
 
 /**
@@ -226,6 +257,14 @@ class KalturaESearchEntryOrderByFieldName extends KalturaEnumBase
 	const VIEWS_LAST_30_DAYS = "views_last_30_days";
 	const VIEWS_LAST_7_DAYS = "views_last_7_days";
 	const VOTES = "votes";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchMetadataAggregateByFieldName extends KalturaEnumBase
+{
 }
 
 /**
@@ -309,6 +348,91 @@ abstract class KalturaESearchOrderByItem extends KalturaObjectBase
 	 * @var KalturaESearchSortOrder
 	 */
 	public $sortOrder = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaESearchAggregationItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $size = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchAggregation extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationItem
+	 */
+	public $aggregations;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchAggregationBucket extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $count = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchAggregationResponseItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationBucket
+	 */
+	public $buckets;
 
 
 }
@@ -701,6 +825,22 @@ class KalturaESearchCaptionItemData extends KalturaESearchItemData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchCategoryAggregationItem extends KalturaESearchAggregationItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCategoryAggregateByFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchCategoryOrderByItem extends KalturaESearchOrderByItem
 {
 	/**
@@ -873,6 +1013,38 @@ class KalturaESearchCuePointItemData extends KalturaESearchItemData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchCuepointsAggregationItem extends KalturaESearchAggregationItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchCuePointAggregateByFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchEntryAggregationItem extends KalturaESearchAggregationItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchEntryAggregateByFieldName
+	 */
+	public $fieldName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchEntryOrderByItem extends KalturaESearchOrderByItem
 {
 	/**
@@ -898,6 +1070,13 @@ class KalturaESearchEntryParams extends KalturaESearchParams
 	 */
 	public $searchOperator;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchAggregation
+	 */
+	public $aggregations;
+
 
 }
 
@@ -914,6 +1093,14 @@ class KalturaESearchEntryResponse extends KalturaESearchResponse
 	 * @readonly
 	 */
 	public $objects;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationResponseItem
+	 * @readonly
+	 */
+	public $aggregations;
 
 
 }
@@ -963,6 +1150,22 @@ class KalturaESearchGroupResponse extends KalturaESearchResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchMetadataAggregationItem extends KalturaESearchAggregationItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchMetadataAggregateByFieldName
+	 */
+	public $fieldName = null;
 
 
 }
