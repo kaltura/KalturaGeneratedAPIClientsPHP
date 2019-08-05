@@ -100,6 +100,13 @@ class KalturaCrossKalturaDistributionJobProviderData extends KalturaConfigurable
 	public $distributedCaptionAssets = null;
 
 	/**
+	 * Key-value array where the keys are IDs of distributed caption assets in the source account and the values are the matching IDs in the target account
+	 *
+	 * @var string
+	 */
+	public $distributedAttachmentAssets = null;
+
+	/**
 	 * Key-value array where the keys are IDs of distributed cue points in the source account and the values are the matching IDs in the target account
 	 *
 	 * @var string
@@ -181,6 +188,34 @@ class KalturaCrossKalturaDistributionProfile extends KalturaConfigurableDistribu
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $designatedCategories = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $distributeCategories = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $collaboratorsCustomMetadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $collaboratorsFromCustomMetadataProfile = null;
+
+	/**
+	 * 
+	 *
 	 * @var bool
 	 */
 	public $distributeCuePoints = null;
@@ -254,6 +289,13 @@ class KalturaCrossKalturaDistributionProfile extends KalturaConfigurableDistribu
 	 * @var array of KalturaKeyValue
 	 */
 	public $mapCaptionParamsIds;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mapAttachmentParamsIds;
 
 
 }
