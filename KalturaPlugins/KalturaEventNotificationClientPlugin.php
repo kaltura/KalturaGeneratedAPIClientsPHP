@@ -540,6 +540,22 @@ class KalturaEventObjectChangedCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEventNotificationDispatchScope extends KalturaEventNotificationScope
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $dynamicValues;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEventNotificationTemplateFilter extends KalturaEventNotificationTemplateBaseFilter
 {
 
