@@ -1102,6 +1102,13 @@ class KalturaVendorAudioDescriptionCatalogItem extends KalturaVendorCatalogItem
 	 */
 	public $flavorParamsId = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $clearAudioFlavorParamsId = null;
+
 
 }
 
