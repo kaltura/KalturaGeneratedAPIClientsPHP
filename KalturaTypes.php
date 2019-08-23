@@ -18219,6 +18219,29 @@ class KalturaUrlTokenizerKs extends KalturaUrlTokenizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlTokenizerL3 extends KalturaUrlTokenizer
+{
+	/**
+	 * gen
+	 *
+	 * @var string
+	 */
+	public $gen = null;
+
+	/**
+	 * paramName
+	 *
+	 * @var string
+	 */
+	public $paramName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlTokenizerLevel3 extends KalturaUrlTokenizer
 {
 	/**
