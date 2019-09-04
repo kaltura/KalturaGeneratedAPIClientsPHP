@@ -167,6 +167,13 @@ class KalturaCaptionAsset extends KalturaAsset
 	 */
 	public $displayOnPlayer = null;
 
+	/**
+	 * List of associated transcript asset id's, comma separated
+	 *
+	 * @var string
+	 */
+	public $associatedTranscriptIds = null;
+
 
 }
 
