@@ -8673,6 +8673,13 @@ abstract class KalturaPlayableEntryBaseFilter extends KalturaBaseEntryFilter
 	 *
 	 * @var int
 	 */
+	public $lastPlayedAtLessThanOrEqualOrNull = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
 	public $durationLessThan = null;
 
 	/**
