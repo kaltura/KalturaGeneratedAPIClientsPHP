@@ -548,6 +548,30 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 */
 	public $taskJobData;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $expectedFinishTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceType
+	 * @readonly
+	 */
+	public $serviceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceFeature
+	 * @readonly
+	 */
+	public $serviceFeature = null;
+
 
 }
 
@@ -1391,6 +1415,20 @@ class KalturaEntryVendorTaskFilter extends KalturaEntryVendorTaskBaseFilter
 	 * @var string
 	 */
 	public $freeText = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeLessThanOrEqual = null;
 
 
 }
