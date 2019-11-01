@@ -14866,7 +14866,7 @@ class KalturaCategoryUserFilter extends KalturaCategoryUserBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaUserBaseFilter extends KalturaRelatedFilter
+abstract class KalturaBaseUserBaseFilter extends KalturaRelatedFilter
 {
 	/**
 	 * 
@@ -14874,20 +14874,6 @@ abstract class KalturaUserBaseFilter extends KalturaRelatedFilter
 	 * @var int
 	 */
 	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserType
-	 */
-	public $typeEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $typeIn = null;
 
 	/**
 	 * 
@@ -14962,6 +14948,59 @@ abstract class KalturaUserBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaBaseUserFilter extends KalturaBaseUserBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaUserBaseFilter extends KalturaBaseUserFilter
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaUserType
+	 */
+	public $typeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $typeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $isAdminEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $firstNameStartsWith = null;
@@ -14972,13 +15011,6 @@ abstract class KalturaUserBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $lastNameStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $isAdminEqual = null;
 
 
 }
@@ -22523,15 +22555,6 @@ abstract class KalturaYahooSyndicationFeedBaseFilter extends KalturaBaseSyndicat
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaAdminUserBaseFilter extends KalturaUserFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaAmazonS3StorageProfileFilter extends KalturaAmazonS3StorageProfileBaseFilter
 {
 
@@ -22916,15 +22939,6 @@ class KalturaYahooSyndicationFeedFilter extends KalturaYahooSyndicationFeedBaseF
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdminUserFilter extends KalturaAdminUserBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaApiActionPermissionItemFilter extends KalturaApiActionPermissionItemBaseFilter
 {
 
@@ -23072,6 +23086,15 @@ class KalturaThumbParamsFilter extends KalturaThumbParamsBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaAdminUserBaseFilter extends KalturaUserFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDeliveryProfileGenericRtmpFilter extends KalturaDeliveryProfileGenericRtmpBaseFilter
 {
 
@@ -23211,6 +23234,15 @@ abstract class KalturaThumbParamsOutputBaseFilter extends KalturaThumbParamsFilt
 	 */
 	public $thumbAssetVersionEqual = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAdminUserFilter extends KalturaAdminUserBaseFilter
+{
 
 }
 

@@ -1301,8 +1301,10 @@ class KalturaAdminUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
+	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const ID_DESC = "-id";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
@@ -1583,6 +1585,20 @@ class KalturaBaseSyndicationFeedOrderBy extends KalturaEnumBase
 	const NAME_DESC = "-name";
 	const PLAYLIST_ID_DESC = "-playlistId";
 	const TYPE_DESC = "-type";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBaseUserOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const ID_ASC = "+id";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const ID_DESC = "-id";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -5017,8 +5033,10 @@ class KalturaUserOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";
+	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const ID_DESC = "-id";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
