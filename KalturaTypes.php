@@ -6841,6 +6841,48 @@ class KalturaMediaInfo extends KalturaObjectBase
 	 */
 	public $maxGOP = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $matrixCoefficients = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $colorTransfer = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $colorPrimaries = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pixelFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $chromaSubsampling = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $bitsDepth = null;
+
 
 }
 
@@ -8324,6 +8366,20 @@ abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter
 	/**
 	 * 
 	 *
+	 * @var float
+	 */
+	public $rankLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $rankGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $totalRankLessThanOrEqual = null;
@@ -9790,6 +9846,20 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackTypeIn = null;
+
+	/**
+	 * filter by playback context ids
+	 *
+	 * @var string
+	 */
+	public $playbackContextIdsIn = null;
 
 
 }
