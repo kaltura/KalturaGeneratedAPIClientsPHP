@@ -226,6 +226,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const PARTNER_SORT_VALUE = "partner_sort_value";
 	const PLAYS = "plays";
 	const PUSH_PUBLISH = "push_publish";
+	const RANK = "rank";
 	const RECORDED_ENTRY_ID = "recorded_entry_id";
 	const REDIRECT_ENTRY_ID = "redirect_entry_id";
 	const REFERENCE_ID = "reference_id";
@@ -253,6 +254,7 @@ class KalturaESearchEntryOrderByFieldName extends KalturaEnumBase
 	const PLAYS_LAST_1_DAY = "plays_last_1_day";
 	const PLAYS_LAST_30_DAYS = "plays_last_30_days";
 	const PLAYS_LAST_7_DAYS = "plays_last_7_days";
+	const RANK = "rank";
 	const START_DATE = "start_date";
 	const UPDATED_AT = "updated_at";
 	const VIEWS = "views";
