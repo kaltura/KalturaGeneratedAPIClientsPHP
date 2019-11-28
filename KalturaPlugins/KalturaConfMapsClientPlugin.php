@@ -67,6 +67,13 @@ class KalturaConfMaps extends KalturaObjectBase
 	public $content = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $rawData = null;
+
+	/**
 	 * IsEditable - true / false
 	 *
 	 * @var bool
@@ -80,7 +87,7 @@ class KalturaConfMaps extends KalturaObjectBase
 	 * @var int
 	 * @readonly
 	 */
-	public $lastUpdate = null;
+	public $createdAt = null;
 
 	/**
 	 * Regex that represent the host/s that this map affect
