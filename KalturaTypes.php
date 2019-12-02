@@ -11198,6 +11198,20 @@ class KalturaStorageProfile extends KalturaObjectBase
 	 */
 	public $shouldExportThumbs = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $mappedPackagerUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $regularPackagerUrl = null;
+
 
 }
 
