@@ -1898,6 +1898,7 @@ class KalturaConditionType extends KalturaEnumBase
 	const ANONYMOUS_IP = "15";
 	const ASSET_TYPE = "16";
 	const BOOLEAN = "17";
+	const HTTP_HEADER = "18";
 }
 
 /**
@@ -4690,6 +4691,8 @@ class KalturaReportType extends KalturaEnumBase
 	const PLAYBACK_RATE = "46";
 	const TOP_USER_CONTENT = "47";
 	const USER_HIGHLIGHTS = "48";
+	const USER_INTERACTIVE_VIDEO = "49";
+	const INTERACTIVE_VIDEO_TOP_NODES = "50";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
@@ -4772,6 +4775,8 @@ class KalturaReportType extends KalturaEnumBase
 	const QOE_ERROR_TRACKING_OPERATING_SYSTEM = "30044";
 	const QOE_ERROR_TRACKING_PLAYER_VERSION = "30045";
 	const QOE_ERROR_TRACKING_ENTRY = "30046";
+	const QOE_VOD_SESSION_FLOW = "30047";
+	const QOE_LIVE_SESSION_FLOW = "30048";
 }
 
 /**

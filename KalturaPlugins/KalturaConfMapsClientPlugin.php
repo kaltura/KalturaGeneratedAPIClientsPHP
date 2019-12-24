@@ -74,6 +74,13 @@ class KalturaConfMaps extends KalturaObjectBase
 	public $rawData = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userId = null;
+
+	/**
 	 * IsEditable - true / false
 	 *
 	 * @var bool

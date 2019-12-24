@@ -9861,6 +9861,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $playbackContextIdsIn = null;
 
+	/**
+	 * filter by root entry ids
+	 *
+	 * @var string
+	 */
+	public $rootEntryIdIn = null;
+
 
 }
 
@@ -22135,6 +22142,22 @@ abstract class KalturaGoogleVideoSyndicationFeedBaseFilter extends KalturaBaseSy
  */
 class KalturaGroupUserFilter extends KalturaGroupUserBaseFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaHttpHeaderCondition extends KalturaRegexCondition
+{
+	/**
+	 * header name
+	 *
+	 * @var string
+	 */
+	public $headerName = null;
+
 
 }
 
