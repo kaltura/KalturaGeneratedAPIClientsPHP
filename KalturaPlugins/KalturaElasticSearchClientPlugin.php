@@ -238,6 +238,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const TEMPLATE_ENTRY_ID = "template_entry_id";
 	const UPDATED_AT = "updated_at";
 	const USER_NAMES = "user_names";
+	const VOTES = "votes";
 }
 
 /**
@@ -1467,6 +1468,13 @@ class KalturaMediaEsearchExportToCsvJobData extends KalturaExportCsvJobData
 	 * @var KalturaESearchEntryParams
 	 */
 	public $searchParams;
+
+	/**
+	 * options
+	 *
+	 * @var array of KalturaExportToCsvOptions
+	 */
+	public $options;
 
 
 }
