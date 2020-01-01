@@ -7555,6 +7555,23 @@ class KalturaSystemService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
+	 * @return string
+	 */
+	function getHealthCheck()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("system", "getHealthCheck", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
 	 * @return int
 	 */
 	function getTime()
@@ -9768,7 +9785,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-12-31');
+		$this->setClientTag('php5:20-01-01');
 		$this->setApiVersion('15.14.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
