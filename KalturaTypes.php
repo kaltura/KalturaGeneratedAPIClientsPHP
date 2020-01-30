@@ -6891,6 +6891,13 @@ class KalturaMediaInfo extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
+	public $colorSpace = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $chromaSubsampling = null;
 
 	/**
@@ -7913,6 +7920,50 @@ class KalturaLiveStreamBitrate extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveStreamDetails extends KalturaObjectBase
+{
+	/**
+	 * The status of the primary stream
+	 *
+	 * @var KalturaEntryServerNodeStatus
+	 */
+	public $primaryStreamStatus = null;
+
+	/**
+	 * The status of the secondary stream
+	 *
+	 * @var KalturaEntryServerNodeStatus
+	 */
+	public $secondaryStreamStatus = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaViewMode
+	 */
+	public $viewMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $wasBroadcast = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaLiveStreamBroadcastStatus
+	 */
+	public $broadcastStatus = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveStreamEntry extends KalturaLiveEntry
 {
 	/**
@@ -7951,6 +8002,20 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 * @var string
 	 */
 	public $secondaryBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $primarySecuredBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySecuredBroadcastingUrl = null;
 
 	/**
 	 * 
@@ -9809,11 +9874,25 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	public $operatingSystemFamilyIn = null;
 
 	/**
+	 * Filter by operating system
+	 *
+	 * @var string
+	 */
+	public $operatingSystemIn = null;
+
+	/**
 	 * Filter by browser family
 	 *
 	 * @var string
 	 */
 	public $browserFamilyIn = null;
+
+	/**
+	 * Filter by browser
+	 *
+	 * @var string
+	 */
+	public $browserIn = null;
 
 	/**
 	 * Time zone offset in minutes
@@ -9898,6 +9977,27 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $rootEntryIdIn = null;
+
+	/**
+	 * filter by error code
+	 *
+	 * @var string
+	 */
+	public $errorCodeIn = null;
+
+	/**
+	 * filter by player version
+	 *
+	 * @var string
+	 */
+	public $playerVersionIn = null;
+
+	/**
+	 * filter by isp
+	 *
+	 * @var string
+	 */
+	public $ispIn = null;
 
 
 }
@@ -15499,6 +15599,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $serverNodeIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverNodeIdIn = null;
 
 	/**
 	 * 

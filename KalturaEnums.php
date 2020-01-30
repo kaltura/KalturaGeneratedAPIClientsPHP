@@ -545,6 +545,17 @@ class KalturaLiveStatsEventType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveStreamBroadcastStatus extends KalturaEnumBase
+{
+	const OFFLINE = 1;
+	const PREVIEW = 2;
+	const LIVE = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMailJobStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
@@ -4779,6 +4790,22 @@ class KalturaReportType extends KalturaEnumBase
 	const QOE_ERROR_TRACKING_ENTRY = "30046";
 	const QOE_VOD_SESSION_FLOW = "30047";
 	const QOE_LIVE_SESSION_FLOW = "30048";
+	const QOE_EXPERIENCE_CUSTOM_VAR1 = "30049";
+	const QOE_EXPERIENCE_CUSTOM_VAR2 = "30050";
+	const QOE_EXPERIENCE_CUSTOM_VAR3 = "30051";
+	const QOE_ENGAGEMENT_CUSTOM_VAR1 = "30052";
+	const QOE_ENGAGEMENT_CUSTOM_VAR2 = "30053";
+	const QOE_ENGAGEMENT_CUSTOM_VAR3 = "30054";
+	const QOE_STREAM_QUALITY_CUSTOM_VAR1 = "30055";
+	const QOE_STREAM_QUALITY_CUSTOM_VAR2 = "30056";
+	const QOE_STREAM_QUALITY_CUSTOM_VAR3 = "30057";
+	const QOE_ERROR_TRACKING_CUSTOM_VAR1 = "30058";
+	const QOE_ERROR_TRACKING_CUSTOM_VAR2 = "30059";
+	const QOE_ERROR_TRACKING_CUSTOM_VAR3 = "30060";
+	const QOE_EXPERIENCE_APPLICATION_VERSION = "30061";
+	const QOE_ENGAGEMENT_APPLICATION_VERSION = "30062";
+	const QOE_STREAM_QUALITY_APPLICATION_VERSION = "30063";
+	const QOE_ERROR_TRACKING_APPLICATION_VERSION = "30064";
 }
 
 /**

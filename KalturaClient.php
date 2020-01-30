@@ -4191,6 +4191,25 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	/**
 	 * Delivering the status of a live stream (on-air/offline) if it is possible
 	 * 
+	 * @param string $id ID of the live stream entry
+	 * @return KalturaLiveStreamDetails
+	 */
+	function getDetails($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("livestream", "getDetails", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveStreamDetails");
+		return $resultObject;
+	}
+
+	/**
+	 * Delivering the status of a live stream (on-air/offline) if it is possible
+	 * 
 	 * @param string $id ID of the live stream
 	 * @param string $protocol Protocol of the stream to test.
 	 * @return bool
@@ -9804,8 +9823,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-01-29');
-		$this->setApiVersion('15.15.0');
+		$this->setClientTag('php5:20-01-30');
+		$this->setApiVersion('15.16.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

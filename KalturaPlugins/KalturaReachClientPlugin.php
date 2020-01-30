@@ -1077,13 +1077,6 @@ class KalturaUnlimitedVendorCredit extends KalturaBaseVendorCredit
 	 */
 	public $fromDate = null;
 
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $toDate = null;
-
 
 }
 
