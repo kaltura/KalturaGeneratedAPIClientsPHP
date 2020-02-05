@@ -7303,6 +7303,13 @@ class KalturaLiveEntryRecordingOptions extends KalturaObjectBase
 	 */
 	public $nonDeletedCuePointsTags = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $archiveVodSuffixTimezone = null;
+
 
 }
 
@@ -15662,6 +15669,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $serverTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverTypeNotIn = null;
 
 
 }
