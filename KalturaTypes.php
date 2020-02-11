@@ -10006,6 +10006,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $ispIn = null;
 
+	/**
+	 * filter by application version
+	 *
+	 * @var string
+	 */
+	public $applicationVersionIn = null;
+
 
 }
 

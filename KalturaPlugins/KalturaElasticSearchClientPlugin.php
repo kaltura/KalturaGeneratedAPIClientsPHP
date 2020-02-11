@@ -1319,6 +1319,22 @@ class KalturaESearchUserResponse extends KalturaESearchResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryCaptionAdvancedFilter extends KalturaSearchItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $hasCaption = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaBeaconAbstractScheduledResourceItem extends KalturaBeaconScheduledResourceBaseItem
 {
 	/**
