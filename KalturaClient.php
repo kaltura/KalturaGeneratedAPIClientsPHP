@@ -4064,12 +4064,14 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * Archive a live entry which was recorded
 	 * 
 	 * @param string $liveEntryId 
+	 * @param string $vodEntryId 
 	 * @return bool
 	 */
-	function archive($liveEntryId)
+	function archive($liveEntryId, $vodEntryId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "liveEntryId", $liveEntryId);
+		$this->client->addParam($kparams, "vodEntryId", $vodEntryId);
 		$this->client->queueServiceActionCall("livestream", "archive", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9823,7 +9825,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-02-11');
+		$this->setClientTag('php5:20-02-12');
 		$this->setApiVersion('15.17.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

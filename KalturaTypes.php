@@ -16190,6 +16190,13 @@ class KalturaLiveEntryArchiveJobData extends KalturaJobData
 	 */
 	public $liveEntryId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $vodEntryId = null;
+
 
 }
 
