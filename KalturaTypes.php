@@ -15624,6 +15624,13 @@ abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $serverNodeIdNotIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $createdAtLessThanOrEqual = null;
