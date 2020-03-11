@@ -2653,6 +2653,70 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $authenticationType = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $extendedFreeTrailExpiryReason = null;
+
+	/**
+	 * Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $extendedFreeTrailExpiryDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $extendedFreeTrail = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $extendedFreeTrailEndsWarning = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $eightyPercentWarning = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $usageLimitWarning = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastFreeTrialNotificationDay = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $monitorUsage = null;
+
 
 }
 
@@ -16910,6 +16974,13 @@ abstract class KalturaPartnerBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $idGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $monitorUsageEqual = null;
 
 
 }
