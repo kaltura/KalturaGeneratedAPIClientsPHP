@@ -5100,6 +5100,7 @@ class KalturaUserEntryType extends KalturaEnumBase
 {
 	const QUIZ = "quiz.QUIZ";
 	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";
+	const WATCH_LATER = "watchLater.WATCH_LATER";
 }
 
 /**
