@@ -453,6 +453,13 @@ class KalturaModifyEntryObjectTask extends KalturaObjectTask
 	 */
 	public $inputEntitledUsersPublish = null;
 
+	/**
+	 * Should clear the media repurposing data and therefore reset the process
+	 *
+	 * @var bool
+	 */
+	public $resetMediaRepurposingProcess = null;
+
 
 }
 

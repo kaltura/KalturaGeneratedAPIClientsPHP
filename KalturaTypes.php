@@ -7520,6 +7520,13 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	 */
 	public $lastBroadcastEndTime = null;
 
+	/**
+	 * The time when the entry was first live with view_all
+	 *
+	 * @var int
+	 */
+	public $broadcastTime = null;
+
 
 }
 
@@ -10076,6 +10083,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $applicationVersionIn = null;
+
+	/**
+	 * filter by node id
+	 *
+	 * @var string
+	 */
+	public $nodeIdsIn = null;
 
 
 }
