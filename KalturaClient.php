@@ -4032,6 +4032,27 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
+	 * Allocates a conference room or returns ones that has already been allocated
+	 * 
+	 * @param string $entryId 
+	 * @param string $env 
+	 * @return KalturaRoomDetails
+	 */
+	function allocateConferenceRoom($entryId, $env = "")
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "env", $env);
+		$this->client->queueServiceActionCall("livestream", "allocateConferenceRoom", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaRoomDetails");
+		return $resultObject;
+	}
+
+	/**
 	 * Append recorded video to live entry
 	 * 
 	 * @param string $entryId Live entry id
@@ -4170,6 +4191,27 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	}
 
 	/**
+	 * When the conf is finished this API should be called.
+	 * 
+	 * @param string $entryId 
+	 * @param int $serverNodeId 
+	 * @return bool
+	 */
+	function finishConf($entryId, $serverNodeId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("livestream", "finishConf", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
 	 * Get live stream entry by ID.
 	 * 
 	 * @param string $entryId Live stream entry id
@@ -4269,6 +4311,25 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaLiveEntry");
+		return $resultObject;
+	}
+
+	/**
+	 * Mark that the conference has actually started
+	 * 
+	 * @param string $entryId 
+	 * @return bool
+	 */
+	function registerConf($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("livestream", "registerConf", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
 		return $resultObject;
 	}
 
@@ -9825,7 +9886,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-04-22');
+		$this->setClientTag('php5:20-04-23');
 		$this->setApiVersion('16.0.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);

@@ -2500,7 +2500,9 @@ class KalturaEntryStatus extends KalturaEnumBase
 class KalturaEntryType extends KalturaEnumBase
 {
 	const AUTOMATIC = "-1";
+	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
 	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
+	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 	const MEDIA_CLIP = "1";
 	const MIX = "2";
 	const PLAYLIST = "5";
@@ -4889,6 +4891,9 @@ class KalturaServerNodeOrderBy extends KalturaEnumBase
  */
 class KalturaServerNodeType extends KalturaEnumBase
 {
+	const CONFERENCE_SERVER = "conference.CONFERENCE_SERVER";
+	const LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER";
+	const SIP_SERVER = "sip.SIP_SERVER";
 	const WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER";
 	const EDGE = "1";
 }
@@ -5100,6 +5105,7 @@ class KalturaUserEntryStatus extends KalturaEnumBase
 class KalturaUserEntryType extends KalturaEnumBase
 {
 	const QUIZ = "quiz.QUIZ";
+	const REGISTRATION = "registration.REGISTRATION";
 	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";
 	const WATCH_LATER = "watchLater.WATCH_LATER";
 }

@@ -252,6 +252,7 @@ class KalturaDistributionProviderType extends KalturaEnumBase
 	const IDETIC = "ideticDistribution.IDETIC";
 	const METRO_PCS = "metroPcsDistribution.METRO_PCS";
 	const MSN = "msnDistribution.MSN";
+	const PODCAST = "podcastDistribution.PODCAST";
 	const QUICKPLAY = "quickPlayDistribution.QUICKPLAY";
 	const UNICORN = "unicornDistribution.UNICORN";
 	const YAHOO = "yahooDistribution.YAHOO";
