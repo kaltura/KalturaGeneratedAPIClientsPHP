@@ -744,6 +744,7 @@ class KalturaPlaylistType extends KalturaEnumBase
 	const STATIC_LIST = 3;
 	const DYNAMIC = 10;
 	const EXTERNAL = 101;
+	const PATH = 102;
 }
 
 /**
@@ -1732,6 +1733,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const REPORT_EXPORT = "50";
 	const LIVE_ENTRY_ARCHIVE = "51";
 	const STORAGE_UPDATE = "52";
+	const STORAGE_PERIODIC_EXPORT = "53";
 }
 
 /**
@@ -1749,6 +1751,7 @@ class KalturaBulkUploadAction extends KalturaEnumBase
 	const ADD_OR_UPDATE = "6";
 	const ACTIVATE = "7";
 	const REJECT = "8";
+	const UPDATE_STATUS = "9";
 }
 
 /**
@@ -1766,6 +1769,7 @@ class KalturaBulkUploadObjectType extends KalturaEnumBase
 	const CATEGORY_USER = "4";
 	const CATEGORY_ENTRY = "5";
 	const USER_ENTRY = "6";
+	const VENDOR_CATALOG_ITEM = "7";
 }
 
 /**
@@ -4711,6 +4715,9 @@ class KalturaReportType extends KalturaEnumBase
 	const INTERACTIVE_VIDEO_TOP_NODES = "50";
 	const LATEST_PLAYED_ENTRIES = "51";
 	const CATEGORY_HIGHLIGHTS = "52";
+	const SUB_CATEGORIES = "53";
+	const INTERACTIVE_VIDEO_NODE_TOP_HOTSPOTS = "54";
+	const INTERCATIVE_VIDEO_NODE_SWITCH_TOP_HOTSPOTS = "55";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";

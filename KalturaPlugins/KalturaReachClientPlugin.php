@@ -35,6 +35,7 @@ require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
 
 /**
  * @package Kaltura
@@ -138,6 +139,13 @@ class KalturaVendorServiceTurnAroundTime extends KalturaEnumBase
 {
 	const BEST_EFFORT = -1;
 	const IMMEDIATE = 0;
+	const ONE_BUSINESS_DAY = 1;
+	const TWO_BUSINESS_DAYS = 2;
+	const THREE_BUSINESS_DAYS = 3;
+	const FOUR_BUSINESS_DAYS = 4;
+	const FIVE_BUSINESS_DAYS = 5;
+	const SIX_BUSINESS_DAYS = 6;
+	const SEVEN_BUSINESS_DAYS = 7;
 	const THIRTY_MINUTES = 1800;
 	const TWO_HOURS = 7200;
 	const THREE_HOURS = 10800;
@@ -145,9 +153,7 @@ class KalturaVendorServiceTurnAroundTime extends KalturaEnumBase
 	const EIGHT_HOURS = 28800;
 	const TWELVE_HOURS = 43200;
 	const TWENTY_FOUR_HOURS = 86400;
-	const ONE_BUSINESS_DAY = 129600;
 	const FORTY_EIGHT_HOURS = 172800;
-	const TWO_BUSINESS_DAYS = 216000;
 	const FOUR_DAYS = 345600;
 	const FIVE_DAYS = 432000;
 	const TEN_DAYS = 864000;
@@ -573,6 +579,14 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $serviceFeature = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceTurnAroundTime
+	 * @readonly
+	 */
+	public $turnAroundTime = null;
 
 
 }
@@ -1891,6 +1905,32 @@ class KalturaVendorCatalogItemService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param file $fileData 
+	 * @param KalturaBulkUploadJobData $bulkUploadData 
+	 * @param KalturaBulkUploadVendorCatalogItemData $bulkUploadVendorCatalogItemData 
+	 * @return KalturaBulkUpload
+	 */
+	function addFromBulkUpload($fileData, KalturaBulkUploadJobData $bulkUploadData = null, KalturaBulkUploadVendorCatalogItemData $bulkUploadVendorCatalogItemData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		if ($bulkUploadVendorCatalogItemData !== null)
+			$this->client->addParam($kparams, "bulkUploadVendorCatalogItemData", $bulkUploadVendorCatalogItemData->toParams());
+		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "addFromBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		return $resultObject;
+	}
+
+	/**
 	 * Delete vedor catalog item object
 	 * 
 	 * @param int $id 
@@ -1927,6 +1967,25 @@ class KalturaVendorCatalogItemService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param int $vendorPartnerId 
+	 * @return string
+	 */
+	function getServeUrl($vendorPartnerId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "getServeUrl", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * List KalturaVendorCatalogItem objects
 	 * 
 	 * @param KalturaVendorCatalogItemFilter $filter 
@@ -1947,6 +2006,25 @@ class KalturaVendorCatalogItemService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaVendorCatalogItemListResponse");
 		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $vendorPartnerId 
+	 * @return file
+	 */
+	function serve($vendorPartnerId = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "serve", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
 	}
 
 	/**

@@ -10091,6 +10091,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $nodeIdsIn = null;
 
+	/**
+	 * filter by categories ancestor
+	 *
+	 * @var string
+	 */
+	public $categoriesAncestorIdIn = null;
+
 
 }
 
@@ -11433,14 +11440,28 @@ class KalturaStorageProfile extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
-	public $mappedPackagerUrl = null;
+	public $packagerUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $exportPeriodically = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $regularPackagerUrl = null;
+	public $excludedFlavorParamsIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldExportCaptions = null;
 
 
 }
@@ -13800,7 +13821,130 @@ class KalturaBulkUploadResultUserEntry extends KalturaBulkUploadResult
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBulkUploadResultVendorCatalogItem extends KalturaBulkUploadResult
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $vendorCatalogItemId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $vendorPartnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceFeature
+	 */
+	public $serviceFeature = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceType
+	 */
+	public $serviceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorServiceTurnAroundTime
+	 */
+	public $turnAroundTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $targetLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemOutputFormat
+	 */
+	public $outputFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableSpeakerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $fixedPriceAddons = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemPricing
+	 */
+	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $flavorParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $clearAudioFlavorParamsId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBulkUploadUserData extends KalturaBulkUploadObjectData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBulkUploadVendorCatalogItemData extends KalturaBulkUploadObjectData
 {
 
 }
@@ -23442,6 +23586,20 @@ abstract class KalturaMediaServerNodeBaseFilter extends KalturaDeliveryServerNod
  */
 class KalturaPlaylistFilter extends KalturaPlaylistBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaPlaylistType
+	 */
+	public $playListTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playListTypeIn = null;
+
 
 }
 

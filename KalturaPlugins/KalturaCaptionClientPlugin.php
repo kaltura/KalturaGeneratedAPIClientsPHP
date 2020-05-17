@@ -576,6 +576,27 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
+	 * Manually export an asset
+	 * 
+	 * @param string $assetId 
+	 * @param int $storageProfileId 
+	 * @return KalturaFlavorAsset
+	 */
+	function export($assetId, $storageProfileId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->addParam($kparams, "storageProfileId", $storageProfileId);
+		$this->client->queueServiceActionCall("caption_captionasset", "export", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaFlavorAsset");
+		return $resultObject;
+	}
+
+	/**
 	 * 
 	 * 
 	 * @param string $captionAssetId 
