@@ -21638,6 +21638,20 @@ class KalturaStorageExportJobData extends KalturaStorageJobData
 	 */
 	public $createLink = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalUrl = null;
+
 
 }
 
@@ -22067,6 +22081,13 @@ class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData
 	 * @var string
 	 */
 	public $endPoint = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $storageClass = null;
 
 
 }

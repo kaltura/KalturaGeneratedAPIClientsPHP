@@ -296,6 +296,13 @@ class KalturaFileSync extends KalturaObjectBase
 	 */
 	public $srcEncKey = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $storageClass = null;
+
 
 }
 

@@ -100,6 +100,13 @@ class KalturaCrossKalturaDistributionJobProviderData extends KalturaConfigurable
 	public $distributedCaptionAssets = null;
 
 	/**
+	 * Key-value array where the keys are IDs of distributed fileassets in the source account and the values are the matching IDs in the target account
+	 *
+	 * @var string
+	 */
+	public $distributedFileAssets = null;
+
+	/**
 	 * Key-value array where the keys are IDs of distributed caption assets in the source account and the values are the matching IDs in the target account
 	 *
 	 * @var string
