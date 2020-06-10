@@ -9417,6 +9417,25 @@ class KalturaUserService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
 	}
+
+	/**
+	 * Validate hash key
+	 * 
+	 * @param string $hashKey The hash key used to identify the user (retrieved by email)
+	 * @return KalturaAuthentication
+	 */
+	function validateHashKey($hashKey)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hashKey", $hashKey);
+		$this->client->queueServiceActionCall("user", "validateHashKey", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaAuthentication");
+		return $resultObject;
+	}
 }
 
 /**
@@ -9887,7 +9906,7 @@ class KalturaClient extends KalturaClientBase
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:20-06-09');
-		$this->setApiVersion('16.3.0');
+		$this->setApiVersion('16.4.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

@@ -908,38 +908,6 @@ class KalturaAddEntryVendorTaskAction extends KalturaRuleAction
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAlignmentVendorTaskData extends KalturaVendorTaskData
-{
-	/**
-	 * The id of the text transcript object the vendor should use while runing the alignment task
-	 *
-	 * @var string
-	 */
-	public $textTranscriptAssetId = null;
-
-	/**
-	 * Optional - The id of the json transcript object the vendor should update once alignment task processing is done
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $jsonTranscriptAssetId = null;
-
-	/**
-	 * Optional - The id of the caption asset object the vendor should update once alignment task processing is done
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $captionAssetId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaCatalogItemAdvancedFilter extends KalturaSearchItem
 {
 	/**
@@ -1252,6 +1220,47 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
 	 * @var int
 	 */
 	public $addOn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaVendorTaskDataCaptionAsset extends KalturaVendorTaskData
+{
+	/**
+	 * Optional - The id of the caption asset object
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $captionAssetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaAlignmentVendorTaskData extends KalturaVendorTaskDataCaptionAsset
+{
+	/**
+	 * The id of the text transcript object the vendor should use while runing the alignment task
+	 *
+	 * @var string
+	 */
+	public $textTranscriptAssetId = null;
+
+	/**
+	 * Optional - The id of the json transcript object the vendor should update once alignment task processing is done
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $jsonTranscriptAssetId = null;
 
 
 }
@@ -1580,6 +1589,15 @@ class KalturaTimeRangeVendorCredit extends KalturaVendorCredit
 	 */
 	public $toDate = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTranslationVendorTaskData extends KalturaVendorTaskDataCaptionAsset
+{
 
 }
 

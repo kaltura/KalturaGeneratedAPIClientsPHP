@@ -8850,6 +8850,13 @@ class KalturaBaseEntryFilter extends KalturaBaseEntryBaseFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $excludedFreeTextGroups = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaNullableBoolean
 	 */
 	public $isRoot = null;
@@ -20256,6 +20263,13 @@ class KalturaConvertJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $engineMessage = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $userCpu = null;
 
 
 }
