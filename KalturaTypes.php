@@ -8857,6 +8857,13 @@ class KalturaBaseEntryFilter extends KalturaBaseEntryBaseFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $descriptionLike = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaNullableBoolean
 	 */
 	public $isRoot = null;
