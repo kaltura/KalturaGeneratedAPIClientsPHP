@@ -80,6 +80,79 @@ abstract class KalturaBaseInteractivity extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaInteractivityDataFieldsFilter extends KalturaObjectBase
+{
+	/**
+	 * A string containing CSV list of fields to include
+	 *
+	 * @var string
+	 */
+	public $fields = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaInteractivityRootFilter extends KalturaInteractivityDataFieldsFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaInteractivityNodeFilter extends KalturaInteractivityDataFieldsFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaInteractivityInteractionFilter extends KalturaInteractivityDataFieldsFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaInteractivityDataFilter extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaInteractivityRootFilter
+	 */
+	public $rootFilter;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaInteractivityNodeFilter
+	 */
+	public $nodeFilter;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaInteractivityInteractionFilter
+	 */
+	public $interactionFilter;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaInteractivity extends KalturaBaseInteractivity
 {
 
@@ -148,12 +221,15 @@ class KalturaInteractivityService extends KalturaServiceBase
 	 * Retrieve a interactivity object by entry id
 	 * 
 	 * @param string $entryId 
+	 * @param KalturaInteractivityDataFilter $dataFilter 
 	 * @return KalturaInteractivity
 	 */
-	function get($entryId)
+	function get($entryId, KalturaInteractivityDataFilter $dataFilter = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		if ($dataFilter !== null)
+			$this->client->addParam($kparams, "dataFilter", $dataFilter->toParams());
 		$this->client->queueServiceActionCall("interactivity_interactivity", "get", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

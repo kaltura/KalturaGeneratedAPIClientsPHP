@@ -10112,6 +10112,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $categoriesAncestorIdIn = null;
 
+	/**
+	 * filter by hotspot id
+	 *
+	 * @var string
+	 */
+	public $hotspotIdIn = null;
+
 
 }
 
