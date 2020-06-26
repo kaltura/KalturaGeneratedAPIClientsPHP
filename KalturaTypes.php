@@ -11484,6 +11484,13 @@ class KalturaStorageProfile extends KalturaObjectBase
 	 */
 	public $shouldExportCaptions = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $excludedEntryTypes = null;
+
 
 }
 
