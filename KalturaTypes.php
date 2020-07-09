@@ -1337,6 +1337,22 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 */
 	public $displayInSearch = null;
 
+	/**
+	 * Entry application
+	 *
+	 * @var KalturaEntryApplication
+	 * @insertonly
+	 */
+	public $application = null;
+
+	/**
+	 * Entry application version
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $applicationVersion = null;
+
 
 }
 
@@ -5447,6 +5463,14 @@ class KalturaMediaEntry extends KalturaPlayableEntry
 	 * @insertonly
 	 */
 	public $sourceType = null;
+
+	/**
+	 * The source version of the entry
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $sourceVersion = null;
 
 	/**
 	 * The search provider type used to import this entry

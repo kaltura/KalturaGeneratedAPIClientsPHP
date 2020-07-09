@@ -2437,6 +2437,22 @@ class KalturaEdgeServerNodeOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryApplication extends KalturaEnumBase
+{
+	const KMC = "0";
+	const KMS = "1";
+	const KAF = "2";
+	const PITCH = "3";
+	const KMS_GO = "4";
+	const WEBCAST_APP = "5";
+	const PERSONAL_CAPTURE = "6";
+	const KALTURA_MEETING = "7";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryIdentifierField extends KalturaEnumBase
 {
 	const ID = "id";
@@ -4722,6 +4738,8 @@ class KalturaReportType extends KalturaEnumBase
 	const INTERCATIVE_VIDEO_NODE_SWITCH_TOP_HOTSPOTS = "55";
 	const INTERACTIVE_VIDEO_HOTSPOT_CLICKED_PERCENTILES = "56";
 	const INTERACTIVE_VIDEO_NODE_SWITCH_HOTSPOT_CLICKED_PERCENTILES = "57";
+	const TOP_CUSTOM_VAR2 = "58";
+	const TOP_CUSTOM_VAR3 = "59";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
