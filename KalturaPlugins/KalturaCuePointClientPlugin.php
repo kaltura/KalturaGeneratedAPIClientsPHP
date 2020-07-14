@@ -225,7 +225,6 @@ abstract class KalturaCuePoint extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $userId = null;
 

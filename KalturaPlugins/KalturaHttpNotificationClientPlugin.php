@@ -402,6 +402,13 @@ class KalturaHttpNotificationDispatchJobData extends KalturaEventNotificationDis
 	public $method = null;
 
 	/**
+	 * The type of the data to send.
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
+
+	/**
 	 * Data to send.
 	 *
 	 * @var string
