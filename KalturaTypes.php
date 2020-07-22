@@ -12213,6 +12213,13 @@ class KalturaWidget extends KalturaObjectBase
 	 */
 	public $roles = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privileges = null;
+
 
 }
 
