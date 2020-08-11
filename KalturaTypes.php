@@ -8206,6 +8206,14 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 */
 	public $sipToken = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaSipSourceType
+	 * @readonly
+	 */
+	public $sipSourceType = null;
+
 
 }
 

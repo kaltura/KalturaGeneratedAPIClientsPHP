@@ -9314,11 +9314,13 @@ class KalturaUserService extends KalturaServiceBase
 	 * Reset user's password and send the user an email to generate a new one.
 	 * 
 	 * @param string $email The user's email address (login email)
+	 * @param string $linkType Kmc or kms
 	 */
-	function resetPassword($email)
+	function resetPassword($email, $linkType = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "email", $email);
+		$this->client->addParam($kparams, "linkType", $linkType);
 		$this->client->queueServiceActionCall("user", "resetPassword", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9905,8 +9907,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-08-10');
-		$this->setApiVersion('16.7.0');
+		$this->setClientTag('php5:20-08-11');
+		$this->setApiVersion('16.8.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

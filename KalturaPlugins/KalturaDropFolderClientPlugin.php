@@ -1640,6 +1640,25 @@ class KalturaDropFolderService extends KalturaServiceBase
 		$this->client->validateObjectType($resultObject, "KalturaDropFolder");
 		return $resultObject;
 	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $dropFolderId 
+	 * @param int $status 
+	 */
+	function updateStatus($dropFolderId, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "dropFolderId", $dropFolderId);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("dropfolder_dropfolder", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
 }
 
 /**

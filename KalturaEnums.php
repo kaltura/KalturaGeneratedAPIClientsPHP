@@ -1736,6 +1736,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const STORAGE_PERIODIC_EXPORT = "53";
 	const STORAGE_PERIODIC_PURGE = "54";
 	const STORAGE_PERIODIC_DELETE_LOCAL = "55";
+	const REACH_JOB_CLEANER = "56";
 }
 
 /**
@@ -4842,6 +4843,16 @@ class KalturaReportType extends KalturaEnumBase
 	const QOE_ENGAGEMENT_APPLICATION_VERSION = "30062";
 	const QOE_STREAM_QUALITY_APPLICATION_VERSION = "30063";
 	const QOE_ERROR_TRACKING_APPLICATION_VERSION = "30064";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResetPassLinkType extends KalturaEnumBase
+{
+	const KMC = "1";
+	const KMS = "2";
 }
 
 /**

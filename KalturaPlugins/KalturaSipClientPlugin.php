@@ -39,6 +39,17 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSipSourceType extends KalturaEnumBase
+{
+	const PICTURE_IN_PICTURE = 1;
+	const TALKING_HEADS = 2;
+	const SCREEN_SHARE = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSipServerNodeOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
