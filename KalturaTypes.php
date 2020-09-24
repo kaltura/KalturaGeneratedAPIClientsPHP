@@ -5008,6 +5008,20 @@ class KalturaUser extends KalturaBaseUser
 	 */
 	public $loginEnabled = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $registrationInfo = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $attendanceInfo = null;
+
 
 }
 
