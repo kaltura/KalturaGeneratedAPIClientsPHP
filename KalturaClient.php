@@ -4258,7 +4258,7 @@ class KalturaLiveStreamService extends KalturaServiceBase
 	 * @param string $protocol Protocol of the stream to test.
 	 * @return bool
 	 */
-	function isLive($id, $protocol)
+	function isLive($id, $protocol = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
@@ -9907,8 +9907,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:20-10-13');
-		$this->setApiVersion('16.8.0');
+		$this->setClientTag('php5:20-10-14');
+		$this->setApiVersion('16.9.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

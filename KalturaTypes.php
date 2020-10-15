@@ -784,6 +784,14 @@ class KalturaAsset extends KalturaObjectBase
 	 */
 	public $actualSourceAssetParamsIds = null;
 
+	/**
+	 * The size (in Bytes) of the asset
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $sizeInBytes = null;
+
 
 }
 
@@ -2492,7 +2500,6 @@ class KalturaPartner extends KalturaObjectBase
 	 * 
 	 *
 	 * @var array of KalturaKeyValue
-	 * @insertonly
 	 */
 	public $additionalParams;
 
@@ -2567,6 +2574,14 @@ class KalturaPartner extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $ignoreSeoLinks = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $blockDirectLogin = null;
 
 	/**
 	 * 
@@ -9881,6 +9896,29 @@ class KalturaReportBaseTotal extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaReportExportFile extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReportInputBaseFilter extends KalturaObjectBase
 {
 	/**
@@ -10275,6 +10313,13 @@ class KalturaReportExportParams extends KalturaObjectBase
 	 * @var array of KalturaReportExportItem
 	 */
 	public $reportItems;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportsItemsGroup = null;
 
 
 }
@@ -11354,6 +11399,13 @@ class KalturaStorageProfile extends KalturaObjectBase
 	 * @var string
 	 */
 	public $storageBaseDir = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pathPrefix = null;
 
 	/**
 	 * 
@@ -17536,6 +17588,20 @@ class KalturaReportExportJobData extends KalturaJobData
 	 */
 	public $filePaths = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportsGroup = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReportExportFile
+	 */
+	public $files;
+
 
 }
 
@@ -20337,6 +20403,13 @@ class KalturaConvertJobData extends KalturaConvartableJobData
 	 * @var string
 	 */
 	public $engineMessage = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $destFileSyncSharedPath = null;
 
 	/**
 	 * 

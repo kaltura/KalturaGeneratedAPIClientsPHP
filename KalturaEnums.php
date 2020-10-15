@@ -3034,6 +3034,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const FRP = "Franco-Prove";
 	const FRK = "Frankish";
 	const FR = "French";
+	const FR_CA = "French (Canada)";
 	const FY = "Frisian";
 	const FRR = "Frisian Northern";
 	const FUR = "Friulian";
@@ -3067,8 +3068,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const HNI = "Hani";
 	const HA = "Hausa";
 	const HAW = "Hawaiian";
-	const HE = "Hebrew";
 	const IW = "Hebrew";
+	const HE = "Hebrew";
 	const HEI = "Heiltsuk";
 	const HID = "Hidatsa";
 	const HIL = "Hiligaynon";
@@ -3082,8 +3083,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const KPO = "Ikposo";
 	const ILO = "Iloko";
 	const SMN = "Inari Sami";
-	const ID = "Indonesian";
 	const IN = "Indonesian";
+	const ID = "Indonesian";
 	const IZH = "Ingrian";
 	const INH = "Ingush";
 	const IA = "Interlingua";
@@ -3363,6 +3364,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const TGX = "Tagish";
 	const THT = "Tahltan";
 	const TDD = "Tai Na";
+	const ZH_TW = "Taiwanese Mandarin";
 	const TG = "Tajik";
 	const TLY = "Talysh";
 	const TTQ = "Tamajaq Tawallammat";
@@ -3485,6 +3487,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const FJ = "fj";
 	const FO = "fo";
 	const FR = "fr";
+	const FR_CA = "fr_ca";
 	const FY = "fy";
 	const GA = "ga";
 	const GD = "gd";
@@ -3607,6 +3610,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const YI = "yi";
 	const YO = "yo";
 	const ZH = "zh";
+	const ZH_TW = "zh_tw";
 	const ZU = "zu";
 	const ZXX = "zxx";
 }
@@ -4843,6 +4847,17 @@ class KalturaReportType extends KalturaEnumBase
 	const QOE_ENGAGEMENT_APPLICATION_VERSION = "30062";
 	const QOE_STREAM_QUALITY_APPLICATION_VERSION = "30063";
 	const QOE_ERROR_TRACKING_APPLICATION_VERSION = "30064";
+	const HIGHLIGHTS_WEBCAST = "40001";
+	const ENGAGEMENT_WEBCAST = "40002";
+	const QUALITY_WEBCAST = "40003";
+	const MAP_OVERLAY_COUNTRY_WEBCAST = "40004";
+	const MAP_OVERLAY_REGION_WEBCAST = "40005";
+	const MAP_OVERLAY_CITY_WEBCAST = "40006";
+	const PLATFORMS_WEBCAST = "40007";
+	const TOP_DOMAINS_WEBCAST = "40008";
+	const TOP_USERS_WEBCAST = "40009";
+	const ENGAGEMENT_BREAKDOWN_WEBCAST = "40010";
+	const ENGAGMENT_TIMELINE_WEBCAST = "40011";
 }
 
 /**

@@ -195,6 +195,7 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const EN_GB = "English (British)";
 	const FI = "Finnish";
 	const FR = "French";
+	const FR_CA = "French (Canada)";
 	const DE = "German";
 	const EL = "Greek";
 	const HE = "Hebrew";
@@ -202,9 +203,11 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const HU = "Hungarian";
 	const IS = "Icelandic";
 	const IN = "Indonesian";
+	const GA = "Irish";
 	const IT = "Italian";
 	const JA = "Japanese";
 	const KO = "Korean";
+	const ML = "Malayalam";
 	const CMN = "Mandarin Chinese";
 	const NO = "Norwegian";
 	const PL = "Polish";
@@ -213,8 +216,15 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const RU = "Russian";
 	const ES = "Spanish";
 	const SV = "Swedish";
+	const ZH_TW = "Taiwanese Mandarin";
+	const TA = "Tamil";
 	const TH = "Thai";
 	const TR = "Turkish";
+	const UK = "Ukrainian";
+	const UR = "Urdu";
+	const VI = "Vietnamese";
+	const CY = "Welsh";
+	const ZU = "Zulu";
 }
 
 /**
