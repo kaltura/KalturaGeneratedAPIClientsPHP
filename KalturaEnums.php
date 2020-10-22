@@ -4558,6 +4558,7 @@ class KalturaPlaybackProtocol extends KalturaEnumBase
 	const APPLE_HTTP = "applehttp";
 	const APPLE_HTTP_TO_MC = "applehttp_to_mc";
 	const AUTO = "auto";
+	const DOWNLOAD = "download";
 	const AKAMAI_HD = "hdnetwork";
 	const AKAMAI_HDS = "hdnetworkmanifest";
 	const HDS = "hds";

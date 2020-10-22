@@ -898,6 +898,13 @@ class KalturaLiveStreamScheduleEvent extends KalturaEntryScheduleEvent
 	 */
 	public $preStartTime = null;
 
+	/**
+	 * The time relative time before the endTime considered as postEnd time
+	 *
+	 * @var int
+	 */
+	public $postEndTime = null;
+
 
 }
 

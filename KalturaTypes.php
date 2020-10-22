@@ -14917,22 +14917,6 @@ class KalturaDeliveryProfileAkamaiHds extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileAkamaiHttp extends KalturaDeliveryProfile
-{
-	/**
-	 * Should we use intelliseek
-	 *
-	 * @var bool
-	 */
-	public $useIntelliseek = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaDeliveryProfileBaseFilter extends KalturaFilter
 {
 	/**
@@ -15102,7 +15086,7 @@ class KalturaDeliveryProfileGenericHds extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericHttp extends KalturaDeliveryProfile
+class KalturaDeliveryProfileGenericSilverLight extends KalturaDeliveryProfile
 {
 	/**
 	 * 
@@ -15118,14 +15102,14 @@ class KalturaDeliveryProfileGenericHttp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileGenericSilverLight extends KalturaDeliveryProfile
+class KalturaDeliveryProfileHttp extends KalturaDeliveryProfile
 {
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var int
 	 */
-	public $pattern = null;
+	public $maxSize = null;
 
 
 }
@@ -18693,6 +18677,22 @@ class KalturaUrlRecognizerAkamaiG2O extends KalturaUrlRecognizer
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlRecognizerKaltura extends KalturaUrlRecognizer
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $key = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlTokenizerAkamaiHttp extends KalturaUrlTokenizer
 {
 	/**
@@ -18884,6 +18884,15 @@ class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer
 	 */
 	public $rootDir = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUrlTokenizerKaltura extends KalturaUrlTokenizer
+{
 
 }
 
@@ -20441,6 +20450,22 @@ class KalturaCountryCondition extends KalturaMatchCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDeliveryProfileAkamaiHttp extends KalturaDeliveryProfileHttp
+{
+	/**
+	 * Should we use intelliseek
+	 *
+	 * @var bool
+	 */
+	public $useIntelliseek = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDeliveryProfileFilter extends KalturaDeliveryProfileBaseFilter
 {
 	/**
@@ -20449,6 +20474,22 @@ class KalturaDeliveryProfileFilter extends KalturaDeliveryProfileBaseFilter
 	 * @var KalturaNullableBoolean
 	 */
 	public $isLive = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDeliveryProfileGenericHttp extends KalturaDeliveryProfileHttp
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pattern = null;
 
 
 }
