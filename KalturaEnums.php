@@ -3272,6 +3272,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const PL = "Polish";
 	const PNT = "Pontic";
 	const PT = "Portuguese";
+	const PT_BR = "Portuguese (Brazil)";
 	const POT = "Potawatomi";
 	const PRG = "Prussian";
 	const FUC = "Pulaar";
@@ -3344,6 +3345,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const SMA = "Southern Sami";
 	const TCE = "Southern Tutchone";
 	const ES = "Spanish";
+	const ES_XL = "Spanish (Latin America)";
 	const SRN = "Sranan";
 	const STO = "Stoney";
 	const XSV = "Sudovian";
@@ -3432,8 +3434,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const YI = "Yiddish";
 	const JI = "Yiddish";
+	const YI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";
@@ -3480,6 +3482,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const EN_US = "en_us";
 	const EO = "eo";
 	const ES = "es";
+	const ES_XL = "es_xl";
 	const ET = "et";
 	const EU = "eu";
 	const FA = "fa";
@@ -3559,6 +3562,7 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const PL = "pl";
 	const PS = "ps";
 	const PT = "pt";
+	const PT_BR = "pt_br";
 	const QU = "qu";
 	const RM = "rm";
 	const RN = "rn";
