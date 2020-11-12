@@ -368,6 +368,14 @@ class KalturaDictionary extends KalturaObjectBase
  */
 abstract class KalturaVendorTaskData extends KalturaObjectBase
 {
+	/**
+	 * The duration of the entry for which the task was created for in milliseconds
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $entryDuration = null;
+
 
 }
 
