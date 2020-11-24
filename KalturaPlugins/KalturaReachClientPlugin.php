@@ -906,6 +906,13 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	 */
 	public $pricing;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowResubmission = null;
+
 
 }
 

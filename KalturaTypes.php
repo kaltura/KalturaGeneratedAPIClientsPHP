@@ -9624,6 +9624,22 @@ class KalturaPlaybackSource extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaTypedArray extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $count = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPlaybackContext extends KalturaObjectBase
 {
 	/**
@@ -9660,6 +9676,13 @@ class KalturaPlaybackContext extends KalturaObjectBase
 	 * @var array of KalturaAccessControlMessage
 	 */
 	public $messages;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaTypedArray
+	 */
+	public $bumperData;
 
 
 }
