@@ -81,6 +81,7 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
 	public $accountId = null;
 
@@ -103,7 +104,7 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 *
 	 * @var KalturaHandleParticipantsMode
 	 */
-	public $handleParticipantMode = null;
+	public $handleParticipantsMode = null;
 
 	/**
 	 * 
@@ -132,6 +133,13 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 * @var KalturaNullableBoolean
 	 */
 	public $enableWebinarUploads = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $conversionProfileId = null;
 
 
 }
@@ -182,6 +190,25 @@ class KalturaZoomVendorService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Retrieve zoom integration setting object by partner id
+	 * 
+	 * @param int $partnerId 
+	 * @return KalturaZoomIntegrationSetting
+	 */
+	function get($partnerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "partnerId", $partnerId);
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaZoomIntegrationSetting");
+		return $resultObject;
 	}
 
 	/**
