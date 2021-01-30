@@ -10233,6 +10233,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $crmIdIn = null;
 
+	/**
+	 * filter by playlist id
+	 *
+	 * @var string
+	 */
+	public $playlistIdIn = null;
+
 
 }
 
@@ -16416,6 +16423,13 @@ class KalturaImportJobData extends KalturaJobData
 	 * @var int
 	 */
 	public $fileSize = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $destFileSharedPath = null;
 
 
 }
