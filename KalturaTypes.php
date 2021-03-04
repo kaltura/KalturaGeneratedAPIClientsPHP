@@ -3421,6 +3421,13 @@ class KalturaCategory extends KalturaObjectBase
 	 */
 	public $aggregationCategories = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
+
 
 }
 
@@ -5036,6 +5043,27 @@ class KalturaUser extends KalturaBaseUser
 	 * @var string
 	 */
 	public $attendanceInfo = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $title = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $company = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ksPrivileges = null;
 
 
 }
@@ -10239,6 +10267,20 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $playlistIdIn = null;
+
+	/**
+	 * filter by domain
+	 *
+	 * @var string
+	 */
+	public $domainIn = null;
+
+	/**
+	 * filter by canonical url
+	 *
+	 * @var string
+	 */
+	public $canonicalUrlIn = null;
 
 
 }
@@ -16623,6 +16665,13 @@ class KalturaLiveEntryServerNode extends KalturaEntryServerNode
 	 * @var bool
 	 */
 	public $isPlayableUser = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaViewMode
+	 */
+	public $viewMode = null;
 
 
 }

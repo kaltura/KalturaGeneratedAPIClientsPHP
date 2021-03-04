@@ -134,6 +134,13 @@ class KalturaConfMaps extends KalturaObjectBase
 	 */
 	public $status = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $changeDescription = null;
+
 
 }
 

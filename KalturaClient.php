@@ -3409,7 +3409,7 @@ class KalturaGroupUserService extends KalturaServiceBase
 	 * @param bool $createNewGroups 
 	 * @return KalturaBulkUpload
 	 */
-	function sync($userId, $groupIds, $removeFromExistingGroups = true, $createNewGroups = true)
+	function sync($userId, $groupIds = null, $removeFromExistingGroups = true, $createNewGroups = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);
@@ -9907,8 +9907,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-03-02');
-		$this->setApiVersion('16.16.0');
+		$this->setClientTag('php5:21-03-03');
+		$this->setApiVersion('16.18.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
