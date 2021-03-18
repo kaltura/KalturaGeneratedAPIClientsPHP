@@ -9092,9 +9092,10 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param KalturaUserFilter $filter A filter used to exclude specific types of users
 	 * @param int $metadataProfileId 
 	 * @param array $additionalFields 
+	 * @param array $mappedFields Mapping between field
 	 * @return string
 	 */
-	function exportToCsv(KalturaUserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null)
+	function exportToCsv(KalturaUserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
@@ -9104,6 +9105,11 @@ class KalturaUserService extends KalturaServiceBase
 			foreach($additionalFields as $index => $obj)
 			{
 				$this->client->addParam($kparams, "additionalFields:$index", $obj->toParams());
+			}
+		if ($mappedFields !== null)
+			foreach($mappedFields as $index => $obj)
+			{
+				$this->client->addParam($kparams, "mappedFields:$index", $obj->toParams());
 			}
 		$this->client->queueServiceActionCall("user", "exportToCsv", $kparams);
 		if ($this->client->isMultiRequest())
@@ -9907,8 +9913,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-03-16');
-		$this->setApiVersion('16.18.0');
+		$this->setClientTag('php5:21-03-17');
+		$this->setApiVersion('16.19.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

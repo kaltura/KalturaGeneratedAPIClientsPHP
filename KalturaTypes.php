@@ -5451,6 +5451,13 @@ class KalturaStreamContainer extends KalturaObjectBase
 	 *
 	 * @var string
 	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $type = null;
 
 	/**
@@ -22305,6 +22312,13 @@ class KalturaUsersCsvJobData extends KalturaExportCsvJobData
 	 * @var array of KalturaCsvAdditionalFieldInfo
 	 */
 	public $additionalFields;
+
+	/**
+	 * Array of header names and their mapped user fields
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mappedFields;
 
 
 }

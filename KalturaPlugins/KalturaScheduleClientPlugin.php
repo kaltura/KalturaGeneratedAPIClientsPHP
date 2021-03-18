@@ -88,6 +88,7 @@ class KalturaScheduleEventType extends KalturaEnumBase
 	const RECORD = 1;
 	const LIVE_STREAM = 2;
 	const BLACKOUT = 3;
+	const MEETING = 4;
 }
 
 /**
@@ -912,6 +913,22 @@ class KalturaLiveStreamScheduleEvent extends KalturaEntryScheduleEvent
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMeetingScheduleEvent extends KalturaEntryScheduleEvent
+{
+	/**
+	 * The time relative time before the startTime considered as preStart time
+	 *
+	 * @var int
+	 */
+	public $preStartTime = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaRecordScheduleEvent extends KalturaEntryScheduleEvent
 {
 
@@ -1602,6 +1619,15 @@ abstract class KalturaLiveStreamScheduleEventBaseFilter extends KalturaEntrySche
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaMeetingScheduleEventBaseFilter extends KalturaEntryScheduleEventFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaRecordScheduleEventBaseFilter extends KalturaEntryScheduleEventFilter
 {
 
@@ -1621,6 +1647,15 @@ class KalturaBlackoutScheduleEventFilter extends KalturaRecordScheduleEventBaseF
  * @subpackage Client
  */
 class KalturaLiveStreamScheduleEventFilter extends KalturaLiveStreamScheduleEventBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaMeetingScheduleEventFilter extends KalturaMeetingScheduleEventBaseFilter
 {
 
 }
