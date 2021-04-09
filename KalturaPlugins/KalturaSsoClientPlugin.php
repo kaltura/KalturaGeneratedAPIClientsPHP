@@ -227,158 +227,15 @@ class KalturaSsoFilter extends KalturaSsoBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaSsoService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Adds a new sso configuration.
-	 * 
-	 * @param KalturaSso $sso A new sso configuration
-	 * @return KalturaSso
-	 */
-	function add(KalturaSso $sso)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "sso", $sso->toParams());
-		$this->client->queueServiceActionCall("sso_sso", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaSso");
-		return $resultObject;
-	}
-
-	/**
-	 * Delete sso by ID
-	 * 
-	 * @param int $ssoId The unique identifier in the sso's object
-	 * @return KalturaSso
-	 */
-	function delete($ssoId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "ssoId", $ssoId);
-		$this->client->queueServiceActionCall("sso_sso", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaSso");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieves sso object
-	 * 
-	 * @param int $ssoId The unique identifier in the sso's object
-	 * @return KalturaSso
-	 */
-	function get($ssoId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "ssoId", $ssoId);
-		$this->client->queueServiceActionCall("sso_sso", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaSso");
-		return $resultObject;
-	}
-
-	/**
-	 * Lists sso objects that are associated with an account.
-	 * 
-	 * @param KalturaSsoFilter $filter 
-	 * @param KalturaFilterPager $pager A limit for the number of records to display on a page
-	 * @return KalturaSsoListResponse
-	 */
-	function listAction(KalturaSsoFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("sso_sso", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaSsoListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * Login with SSO, getting redirect url according to application type and partner Id
-	 or according to application type and domain
-	 * 
-	 * @param string $userId 
-	 * @param string $applicationType 
-	 * @param int $partnerId 
-	 * @return string
-	 */
-	function login($userId, $applicationType, $partnerId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "applicationType", $applicationType);
-		$this->client->addParam($kparams, "partnerId", $partnerId);
-		$this->client->queueServiceActionCall("sso_sso", "login", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-
-	/**
-	 * Update sso by ID
-	 * 
-	 * @param int $ssoId The unique identifier in the sso's object
-	 * @param KalturaSso $sso Id The unique identifier in the sso's object
-	 * @return KalturaSso
-	 */
-	function update($ssoId, KalturaSso $sso)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "ssoId", $ssoId);
-		$this->client->addParam($kparams, "sso", $sso->toParams());
-		$this->client->queueServiceActionCall("sso_sso", "update", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaSso");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaSsoClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaSsoService
-	 */
-	public $sso = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->sso = new KalturaSsoService($client);
 	}
 
 	/**
@@ -395,7 +252,6 @@ class KalturaSsoClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'sso' => $this->sso,
 		);
 		return $services;
 	}

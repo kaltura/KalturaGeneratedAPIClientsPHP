@@ -311,54 +311,15 @@ class KalturaWidevineFlavorParamsOutputFilter extends KalturaWidevineFlavorParam
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaWidevineDrmService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Get license for encrypted content playback
-	 * 
-	 * @param string $flavorAssetId 
-	 * @param string $referrer 64base encoded
-	 * @return string
-	 */
-	function getLicense($flavorAssetId, $referrer = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
-		$this->client->addParam($kparams, "referrer", $referrer);
-		$this->client->queueServiceActionCall("widevine_widevinedrm", "getLicense", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaWidevineClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaWidevineDrmService
-	 */
-	public $widevineDrm = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->widevineDrm = new KalturaWidevineDrmService($client);
 	}
 
 	/**
@@ -375,7 +336,6 @@ class KalturaWidevineClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'widevineDrm' => $this->widevineDrm,
 		);
 		return $services;
 	}

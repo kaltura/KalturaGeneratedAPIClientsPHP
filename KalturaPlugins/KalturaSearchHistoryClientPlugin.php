@@ -73,29 +73,6 @@ class KalturaESearchHistory extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchHistoryFilter extends KalturaESearchBaseFilter
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $searchTermStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $searchedObjectIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaESearchHistoryListResponse extends KalturaListResponse
 {
 	/**
@@ -109,70 +86,15 @@ class KalturaESearchHistoryListResponse extends KalturaListResponse
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaSearchHistoryService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $searchTerm 
-	 */
-	function delete($searchTerm)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "searchTerm", $searchTerm);
-		$this->client->queueServiceActionCall("searchhistory_searchhistory", "delete", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaESearchHistoryFilter $filter 
-	 * @return KalturaESearchHistoryListResponse
-	 */
-	function listAction(KalturaESearchHistoryFilter $filter = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("searchhistory_searchhistory", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaESearchHistoryListResponse");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaSearchHistoryClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaSearchHistoryService
-	 */
-	public $searchHistory = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->searchHistory = new KalturaSearchHistoryService($client);
 	}
 
 	/**
@@ -189,7 +111,6 @@ class KalturaSearchHistoryClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'searchHistory' => $this->searchHistory,
 		);
 		return $services;
 	}

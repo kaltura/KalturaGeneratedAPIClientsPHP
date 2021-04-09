@@ -64,50 +64,6 @@ class KalturaConferenceServerNodeOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaRoomDetails extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $token = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $expiry = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaConferenceEntryServerNode extends KalturaEntryServerNode
 {
 	/**

@@ -128,50 +128,6 @@ class KalturaBusinessProcessStartNotificationTemplateOrderBy extends KalturaEnum
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaBusinessProcessCase extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $businessProcessId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $businessProcessStartNotificationTemplateId = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $suspended = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $activityId = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 abstract class KalturaBusinessProcessServer extends KalturaObjectBase
 {
 	/**
@@ -594,98 +550,15 @@ class KalturaBusinessProcessStartNotificationTemplateFilter extends KalturaBusin
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaBusinessProcessCaseService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Abort business-process case
-	 * 
-	 * @param string $objectType 
-	 * @param string $objectId 
-	 * @param int $businessProcessStartNotificationTemplateId 
-	 */
-	function abort($objectType, $objectId, $businessProcessStartNotificationTemplateId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->addParam($kparams, "businessProcessStartNotificationTemplateId", $businessProcessStartNotificationTemplateId);
-		$this->client->queueServiceActionCall("businessprocessnotification_businessprocesscase", "abort", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * List business-process cases
-	 * 
-	 * @param string $objectType 
-	 * @param string $objectId 
-	 * @return array
-	 */
-	function listAction($objectType, $objectId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->queueServiceActionCall("businessprocessnotification_businessprocesscase", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "array");
-		return $resultObject;
-	}
-
-	/**
-	 * Server business-process case diagram
-	 * 
-	 * @param string $objectType 
-	 * @param string $objectId 
-	 * @param int $businessProcessStartNotificationTemplateId 
-	 * @return file
-	 */
-	function serveDiagram($objectType, $objectId, $businessProcessStartNotificationTemplateId)
-	{
-		if ($this->client->isMultiRequest())
-			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->addParam($kparams, "businessProcessStartNotificationTemplateId", $businessProcessStartNotificationTemplateId);
-		$this->client->queueServiceActionCall("businessprocessnotification_businessprocesscase", "serveDiagram", $kparams);
-		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
-			return $this->client->getServeUrl();
-		return $this->client->doQueue();
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaBusinessProcessNotificationClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaBusinessProcessCaseService
-	 */
-	public $businessProcessCase = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->businessProcessCase = new KalturaBusinessProcessCaseService($client);
 	}
 
 	/**
@@ -702,7 +575,6 @@ class KalturaBusinessProcessNotificationClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'businessProcessCase' => $this->businessProcessCase,
 		);
 		return $services;
 	}

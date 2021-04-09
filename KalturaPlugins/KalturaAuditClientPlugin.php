@@ -764,94 +764,15 @@ class KalturaAuditTrailFilter extends KalturaAuditTrailBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaAuditTrailService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * Allows you to add an audit trail object and audit trail content associated with Kaltura object
-	 * 
-	 * @param KalturaAuditTrail $auditTrail 
-	 * @return KalturaAuditTrail
-	 */
-	function add(KalturaAuditTrail $auditTrail)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "auditTrail", $auditTrail->toParams());
-		$this->client->queueServiceActionCall("audit_audittrail", "add", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaAuditTrail");
-		return $resultObject;
-	}
-
-	/**
-	 * Retrieve an audit trail object by id
-	 * 
-	 * @param int $id 
-	 * @return KalturaAuditTrail
-	 */
-	function get($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("audit_audittrail", "get", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaAuditTrail");
-		return $resultObject;
-	}
-
-	/**
-	 * List audit trail objects by filter and pager
-	 * 
-	 * @param KalturaAuditTrailFilter $filter 
-	 * @param KalturaFilterPager $pager 
-	 * @return KalturaAuditTrailListResponse
-	 */
-	function listAction(KalturaAuditTrailFilter $filter = null, KalturaFilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("audit_audittrail", "list", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaAuditTrailListResponse");
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaAuditClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaAuditTrailService
-	 */
-	public $auditTrail = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->auditTrail = new KalturaAuditTrailService($client);
 	}
 
 	/**
@@ -868,7 +789,6 @@ class KalturaAuditClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'auditTrail' => $this->auditTrail,
 		);
 		return $services;
 	}

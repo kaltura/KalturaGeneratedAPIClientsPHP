@@ -217,50 +217,15 @@ class KalturaUnicornDistributionProfileFilter extends KalturaUnicornDistribution
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUnicornService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param int $id Distribution job id
-	 */
-	function notify($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("unicorndistribution_unicorn", "notify", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaUnicornDistributionClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaUnicornService
-	 */
-	public $unicorn = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->unicorn = new KalturaUnicornService($client);
 	}
 
 	/**
@@ -277,7 +242,6 @@ class KalturaUnicornDistributionClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'unicorn' => $this->unicorn,
 		);
 		return $services;
 	}

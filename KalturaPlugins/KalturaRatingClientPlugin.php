@@ -122,111 +122,15 @@ class KalturaRatingCountFilter extends KalturaRatingCountBaseFilter
 
 }
 
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaRatingService extends KalturaServiceBase
-{
-	function __construct(KalturaClient $client = null)
-	{
-		parent::__construct($client);
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $entryId 
-	 * @return int
-	 */
-	function checkRating($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("rating_rating", "checkRating", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaRatingCountFilter $filter 
-	 * @return KalturaRatingCountListResponse
-	 */
-	function getRatingCounts(KalturaRatingCountFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("rating_rating", "getRatingCounts", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaRatingCountListResponse");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $entryId 
-	 * @param int $rank 
-	 * @return int
-	 */
-	function rate($entryId, $rank)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "rank", $rank);
-		$this->client->queueServiceActionCall("rating_rating", "rate", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
-		return $resultObject;
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param string $entryId 
-	 * @return bool
-	 */
-	function removeRating($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("rating_rating", "removeRating", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$resultObject = (bool) $resultObject;
-		return $resultObject;
-	}
-}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaRatingClientPlugin extends KalturaClientPlugin
 {
-	/**
-	 * @var KalturaRatingService
-	 */
-	public $rating = null;
-
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->rating = new KalturaRatingService($client);
 	}
 
 	/**
@@ -243,7 +147,6 @@ class KalturaRatingClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'rating' => $this->rating,
 		);
 		return $services;
 	}
