@@ -447,6 +447,15 @@ class KalturaESearchAggregationResponseItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaESearchBaseFilter extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaESearchCategoryBaseItem extends KalturaESearchBaseItem
 {
 

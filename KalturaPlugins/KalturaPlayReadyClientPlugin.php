@@ -200,6 +200,29 @@ class KalturaPlayReadyAnalogVideoOPIdHolder extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPlayReadyContentKey extends KalturaObjectBase
+{
+	/**
+	 * Guid - key id of the specific content
+	 *
+	 * @var string
+	 */
+	public $keyId = null;
+
+	/**
+	 * License content key 64 bit encoded
+	 *
+	 * @var string
+	 */
+	public $contentKey = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPlayReadyCopyEnablerHolder extends KalturaObjectBase
 {
 	/**
@@ -277,6 +300,43 @@ class KalturaPlayReadyPolicy extends KalturaDrmPolicy
 	 * @var array of KalturaPlayReadyRight
 	 */
 	public $rights;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlayReadyLicenseDetails extends KalturaObjectBase
+{
+	/**
+	 * PlayReady policy object
+	 *
+	 * @var KalturaPlayReadyPolicy
+	 */
+	public $policy;
+
+	/**
+	 * License begin date
+	 *
+	 * @var int
+	 */
+	public $beginDate = null;
+
+	/**
+	 * License expiration date
+	 *
+	 * @var int
+	 */
+	public $expirationDate = null;
+
+	/**
+	 * License removal date
+	 *
+	 * @var int
+	 */
+	public $removalDate = null;
 
 
 }
@@ -444,15 +504,117 @@ class KalturaPlayReadyProfileFilter extends KalturaPlayReadyProfileBaseFilter
 
 }
 
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPlayReadyDrmService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Generate key id and content key for PlayReady encryption
+	 * 
+	 * @return KalturaPlayReadyContentKey
+	 */
+	function generateKey()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("playready_playreadydrm", "generateKey", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaPlayReadyContentKey");
+		return $resultObject;
+	}
+
+	/**
+	 * Get content keys for input key ids
+	 * 
+	 * @param string $keyIds - comma separated key id's
+	 * @return array
+	 */
+	function getContentKeys($keyIds)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "keyIds", $keyIds);
+		$this->client->queueServiceActionCall("playready_playreadydrm", "getContentKeys", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "array");
+		return $resultObject;
+	}
+
+	/**
+	 * Get content key and key id for the given entry
+	 * 
+	 * @param string $entryId 
+	 * @param bool $createIfMissing 
+	 * @return KalturaPlayReadyContentKey
+	 */
+	function getEntryContentKey($entryId, $createIfMissing = false)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "createIfMissing", $createIfMissing);
+		$this->client->queueServiceActionCall("playready_playreadydrm", "getEntryContentKey", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaPlayReadyContentKey");
+		return $resultObject;
+	}
+
+	/**
+	 * Get Play Ready policy and dates for license creation
+	 * 
+	 * @param string $keyId 
+	 * @param string $deviceId 
+	 * @param int $deviceType 
+	 * @param string $entryId 
+	 * @param string $referrer 64base encoded
+	 * @return KalturaPlayReadyLicenseDetails
+	 */
+	function getLicenseDetails($keyId, $deviceId, $deviceType, $entryId = null, $referrer = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "keyId", $keyId);
+		$this->client->addParam($kparams, "deviceId", $deviceId);
+		$this->client->addParam($kparams, "deviceType", $deviceType);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "referrer", $referrer);
+		$this->client->queueServiceActionCall("playready_playreadydrm", "getLicenseDetails", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaPlayReadyLicenseDetails");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaPlayReadyClientPlugin extends KalturaClientPlugin
 {
+	/**
+	 * @var KalturaPlayReadyDrmService
+	 */
+	public $playReadyDrm = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
+		$this->playReadyDrm = new KalturaPlayReadyDrmService($client);
 	}
 
 	/**
@@ -469,6 +631,7 @@ class KalturaPlayReadyClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'playReadyDrm' => $this->playReadyDrm,
 		);
 		return $services;
 	}

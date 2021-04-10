@@ -169,6 +169,22 @@ class KalturaBeacon extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaBeaconSearchParams extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBeaconSearchScheduledResourceOrderByItem extends KalturaESearchOrderByItem
 {
 	/**
@@ -177,6 +193,22 @@ class KalturaBeaconSearchScheduledResourceOrderByItem extends KalturaESearchOrde
 	 * @var KalturaBeaconScheduledResourceOrderByFieldName
 	 */
 	public $sortField = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBeaconSearchScheduledResourceOrderBy extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaBeaconSearchScheduledResourceOrderByItem
+	 */
+	public $orderItems;
 
 
 }
@@ -299,6 +331,29 @@ class KalturaBeaconScheduledResourceOperator extends KalturaBeaconScheduledResou
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBeaconScheduledResourceSearchParams extends KalturaBeaconSearchParams
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaBeaconScheduledResourceOperator
+	 */
+	public $searchOperator;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaBeaconSearchScheduledResourceOrderBy
+	 */
+	public $orderBy;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBeaconFilter extends KalturaBeaconBaseFilter
 {
 	/**
@@ -327,15 +382,122 @@ class KalturaBeaconScheduledResourceItem extends KalturaBeaconAbstractScheduledR
 
 }
 
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaBeaconService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaBeacon $beacon 
+	 * @param int $shouldLog 
+	 * @return bool
+	 */
+	function add(KalturaBeacon $beacon, $shouldLog = 0)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "beacon", $beacon->toParams());
+		$this->client->addParam($kparams, "shouldLog", $shouldLog);
+		$this->client->queueServiceActionCall("beacon_beacon", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaBeaconEnhanceFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaBeaconListResponse
+	 */
+	function enhanceSearch(KalturaBeaconEnhanceFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("beacon_beacon", "enhanceSearch", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBeaconListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaBeaconFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaBeaconListResponse
+	 */
+	function listAction(KalturaBeaconFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("beacon_beacon", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBeaconListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param KalturaBeaconSearchParams $searchParams 
+	 * @param KalturaPager $pager 
+	 * @return KalturaBeaconListResponse
+	 */
+	function searchScheduledResource(KalturaBeaconSearchParams $searchParams, KalturaPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("beacon_beacon", "searchScheduledResource", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBeaconListResponse");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
  */
 class KalturaBeaconClientPlugin extends KalturaClientPlugin
 {
+	/**
+	 * @var KalturaBeaconService
+	 */
+	public $beacon = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
+		$this->beacon = new KalturaBeaconService($client);
 	}
 
 	/**
@@ -352,6 +514,7 @@ class KalturaBeaconClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'beacon' => $this->beacon,
 		);
 		return $services;
 	}
