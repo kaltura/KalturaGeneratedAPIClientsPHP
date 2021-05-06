@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -77,6 +77,16 @@ class KalturaCaptionParamsOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaCaptionSource extends KalturaEnumBase
+{
+	const UNKNOWN = "0";
+	const ZOOM = "1";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCaptionType extends KalturaEnumBase
 {
 	const SRT = "1";
@@ -136,6 +146,14 @@ class KalturaCaptionAsset extends KalturaAsset
 	 * @insertonly
 	 */
 	public $format = null;
+
+	/**
+	 * The source of the asset
+	 *
+	 * @var KalturaCaptionSource
+	 * @insertonly
+	 */
+	public $source = null;
 
 	/**
 	 * The status of the asset

@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -142,6 +142,51 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 */
 	public $conversionProfileId = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $jwtToken = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $deletionPolicy = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableZoomTranscription = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $zoomAccountDescription = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaZoomIntegrationSettingResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaZoomIntegrationSetting
+	 * @readonly
+	 */
+	public $objects;
+
 
 }
 
@@ -213,6 +258,43 @@ class KalturaZoomVendorService extends KalturaServiceBase
 	}
 
 	/**
+	 * List KalturaZoomIntegrationSetting objects
+	 * 
+	 * @param KalturaFilterPager $pager Pager
+	 * @return KalturaZoomIntegrationSettingResponse
+	 */
+	function listAction(KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaZoomIntegrationSettingResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $jwt 
+	 */
+	function localRegistrationPage($jwt)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "jwt", $jwt);
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "localRegistrationPage", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * 
 	 * 
 	 * @return string
@@ -227,6 +309,22 @@ class KalturaZoomVendorService extends KalturaServiceBase
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "string");
 		return $resultObject;
+	}
+
+	/**
+	 * Load html page the that will ask the user for its KMC URL, derive the region of the user from it,
+	 and redirect to the registration page in the correct region, while forwarding the necessary code for registration
+	 * 
+	 */
+	function preOauthValidation()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "preOauthValidation", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**

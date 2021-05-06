@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -1360,6 +1360,13 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 * @insertonly
 	 */
 	public $applicationVersion = null;
+
+	/**
+	 * Block auto transcript on Entry
+	 *
+	 * @var bool
+	 */
+	public $blockAutoTranscript = null;
 
 
 }
@@ -9659,22 +9666,6 @@ class KalturaPlaybackSource extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaTypedArray extends KalturaObjectBase
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $count = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaPlaybackContext extends KalturaObjectBase
 {
 	/**
@@ -9715,7 +9706,7 @@ class KalturaPlaybackContext extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var KalturaTypedArray
+	 * @var array of KalturaObject
 	 */
 	public $bumperData;
 
@@ -21299,6 +21290,36 @@ class KalturaLiveParams extends KalturaFlavorParams
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaMappedObjectsCsvJobData extends KalturaExportCsvJobData
+{
+	/**
+	 * The metadata profile we should look the xpath in
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * The xpath to look in the metadataProfileId  and the wanted csv field name
+	 *
+	 * @var array of KalturaCsvAdditionalFieldInfo
+	 */
+	public $additionalFields;
+
+	/**
+	 * Array of header names and their mapped user fields
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mappedFields;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaFlavorParams extends KalturaFlavorParams
 {
 
@@ -22290,43 +22311,6 @@ abstract class KalturaUserRoleBaseFilter extends KalturaRelatedFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUsersCsvJobData extends KalturaExportCsvJobData
-{
-	/**
-	 * The filter should return the list of users that need to be specified in the csv.
-	 *
-	 * @var KalturaUserFilter
-	 */
-	public $filter;
-
-	/**
-	 * The metadata profile we should look the xpath in
-	 *
-	 * @var int
-	 */
-	public $metadataProfileId = null;
-
-	/**
-	 * The xpath to look in the metadataProfileId  and the wanted csv field name
-	 *
-	 * @var array of KalturaCsvAdditionalFieldInfo
-	 */
-	public $additionalFields;
-
-	/**
-	 * Array of header names and their mapped user fields
-	 *
-	 * @var array of KalturaKeyValue
-	 */
-	public $mappedFields;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaWidgetFilter extends KalturaWidgetBaseFilter
 {
 
@@ -22787,6 +22771,22 @@ class KalturaDocumentEntryMatchAttributeCondition extends KalturaSearchMatchAttr
 	 * @var KalturaDocumentEntryMatchAttribute
 	 */
 	public $attribute = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntriesCsvJobData extends KalturaMappedObjectsCsvJobData
+{
+	/**
+	 * The filter should return the list of entries that need to be specified in the csv.
+	 *
+	 * @var KalturaBaseEntryFilter
+	 */
+	public $filter;
 
 
 }
@@ -23385,6 +23385,22 @@ class KalturaUserLoginDataFilter extends KalturaUserLoginDataBaseFilter
  */
 class KalturaUserRoleFilter extends KalturaUserRoleBaseFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUsersCsvJobData extends KalturaMappedObjectsCsvJobData
+{
+	/**
+	 * The filter should return the list of users that need to be specified in the csv.
+	 *
+	 * @var KalturaUserFilter
+	 */
+	public $filter;
+
 
 }
 
