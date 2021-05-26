@@ -170,6 +170,27 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 */
 	public $zoomAccountDescription = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableMeetingUpload = null;
+
 
 }
 
@@ -295,9 +316,9 @@ class KalturaZoomVendorService extends KalturaServiceBase
 	}
 
 	/**
+	 * Load html page the that will ask the user for its KMC URL, derive the region of the user from it,
+	 and redirect to the registration page in the correct region, while forwarding the necessary code for registration
 	 * 
-	 * 
-	 * @return string
 	 */
 	function oauthValidation()
 	{
@@ -307,14 +328,13 @@ class KalturaZoomVendorService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
-		return $resultObject;
+		$this->client->validateObjectType($resultObject, "null");
 	}
 
 	/**
-	 * Load html page the that will ask the user for its KMC URL, derive the region of the user from it,
-	 and redirect to the registration page in the correct region, while forwarding the necessary code for registration
 	 * 
+	 * 
+	 * @return string
 	 */
 	function preOauthValidation()
 	{
@@ -324,7 +344,8 @@ class KalturaZoomVendorService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
 	}
 
 	/**
