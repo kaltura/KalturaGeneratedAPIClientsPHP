@@ -36,6 +36,7 @@ require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaCaptionClientPlugin.php");
 
 /**
  * @package Kaltura
@@ -129,6 +130,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const ALIGNMENT = 3;
 	const AUDIO_DESCRIPTION = 4;
 	const CHAPTERING = 5;
+	const INTELLIGENT_TAGGING = 6;
 }
 
 /**
@@ -237,6 +239,7 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 class KalturaEntryVendorTaskOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
+	const EXPECTED_FINISH_TIME_ASC = "+expectedFinishTime";
 	const FINISH_TIME_ASC = "+finishTime";
 	const ID_ASC = "+id";
 	const PRICE_ASC = "+price";
@@ -244,6 +247,7 @@ class KalturaEntryVendorTaskOrderBy extends KalturaEnumBase
 	const STATUS_ASC = "+status";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
+	const EXPECTED_FINISH_TIME_DESC = "-expectedFinishTime";
 	const FINISH_TIME_DESC = "-finishTime";
 	const ID_DESC = "-id";
 	const PRICE_DESC = "-price";
@@ -264,6 +268,14 @@ class KalturaReachProfileOrderBy extends KalturaEnumBase
 	const CREATED_AT_DESC = "-createdAt";
 	const ID_DESC = "-id";
 	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReachVendorEngineType extends KalturaEnumBase
+{
 }
 
 /**
@@ -921,6 +933,20 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	public $pricing;
 
 	/**
+	 * Property showing the catalog item's engine type, in case a vendor can offer the same service via different engines.
+	 *
+	 * @var KalturaReachVendorEngineType
+	 */
+	public $engineType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+	/**
 	 * 
 	 *
 	 * @var bool
@@ -1069,6 +1095,23 @@ class KalturaEntryVendorTaskListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * Optional - The id of the caption asset object
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $assetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReachProfileListResponse extends KalturaListResponse
 {
 	/**
@@ -1115,13 +1158,6 @@ class KalturaVendorAlignmentCatalogItem extends KalturaVendorCatalogItem
 	/**
 	 * 
 	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
-	/**
-	 * 
-	 *
 	 * @var KalturaVendorCatalogItemOutputFormat
 	 */
 	public $outputFormat = null;
@@ -1135,13 +1171,6 @@ class KalturaVendorAlignmentCatalogItem extends KalturaVendorCatalogItem
  */
 class KalturaVendorAudioDescriptionCatalogItem extends KalturaVendorCatalogItem
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 	/**
 	 * 
 	 *
@@ -1165,13 +1194,6 @@ class KalturaVendorAudioDescriptionCatalogItem extends KalturaVendorCatalogItem
  */
 class KalturaVendorCaptionsCatalogItem extends KalturaVendorCatalogItem
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 	/**
 	 * 
 	 *
@@ -1219,13 +1241,6 @@ class KalturaVendorCatalogItemListResponse extends KalturaListResponse
  */
 class KalturaVendorChapteringCatalogItem extends KalturaVendorCatalogItem
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaCatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 
 }
 
@@ -1263,6 +1278,15 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
 	 */
 	public $addOn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogItem
+{
 
 }
 
@@ -1326,6 +1350,13 @@ abstract class KalturaEntryVendorTaskBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idNotIn = null;
 
 	/**
 	 * 
@@ -1459,6 +1490,20 @@ abstract class KalturaEntryVendorTaskBaseFilter extends KalturaRelatedFilter
 	 * @var string
 	 */
 	public $contextEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeLessThanOrEqual = null;
 
 
 }

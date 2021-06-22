@@ -5826,6 +5826,31 @@ class KalturaPartnerService extends KalturaServiceBase
 	}
 
 	/**
+	 * Create a new Partner object
+	 * 
+	 * @param KalturaPartner $partner 
+	 * @param string $cmsPassword 
+	 * @param int $templatePartnerId 
+	 * @param bool $silent 
+	 * @return bool
+	 */
+	function registrationValidation(KalturaPartner $partner, $cmsPassword = "", $templatePartnerId = null, $silent = false)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "partner", $partner->toParams());
+		$this->client->addParam($kparams, "cmsPassword", $cmsPassword);
+		$this->client->addParam($kparams, "templatePartnerId", $templatePartnerId);
+		$this->client->addParam($kparams, "silent", $silent);
+		$this->client->queueServiceActionCall("partner", "registrationValidation", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
 	 * Update details and settings of an existing partner
 	 * 
 	 * @param KalturaPartner $partner 
@@ -9947,8 +9972,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-06-13');
-		$this->setApiVersion('17.2.0');
+		$this->setClientTag('php5:21-06-22');
+		$this->setApiVersion('17.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
