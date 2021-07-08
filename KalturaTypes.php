@@ -2755,6 +2755,48 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $monitorUsage = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $passwordStructureValidations = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $passwordStructureValidationsDescription = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $passReplaceFreq = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $maxLoginAttempts = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $loginBlockPeriod = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $numPrevPassToKeep = null;
+
 
 }
 

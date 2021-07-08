@@ -386,6 +386,13 @@ class KalturaDropFolder extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $fileDeleteRegex = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $autoFileDeleteDays = null;
