@@ -1521,20 +1521,6 @@ class KalturaEntryVendorTaskFilter extends KalturaEntryVendorTaskBaseFilter
 	 */
 	public $freeText = null;
 
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $expectedFinishTimeGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $expectedFinishTimeLessThanOrEqual = null;
-
 
 }
 
