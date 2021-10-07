@@ -50,6 +50,17 @@ class KalturaHandleParticipantsMode extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorIntegrationStatus extends KalturaEnumBase
+{
+	const DISABLED = 1;
+	const ACTIVE = 2;
+	const DELETED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaZoomUsersMatching extends KalturaEnumBase
 {
 	const DO_NOT_MODIFY = 0;
@@ -62,21 +73,30 @@ class KalturaZoomUsersMatching extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaZoomIntegrationSetting extends KalturaObjectBase
+abstract class KalturaIntegrationSetting extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var int
+	 * @readonly
 	 */
-	public $defaultUserId = null;
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorIntegrationStatus
+	 * @readonly
+	 */
+	public $status = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $zoomCategory = null;
+	public $defaultUserId = null;
 
 	/**
 	 * 
@@ -91,14 +111,14 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 *
 	 * @var KalturaNullableBoolean
 	 */
-	public $enableRecordingUpload = null;
+	public $createUserIfNotExist = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaNullableBoolean
+	 * @var int
 	 */
-	public $createUserIfNotExist = null;
+	public $conversionProfileId = null;
 
 	/**
 	 * 
@@ -106,6 +126,60 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 * @var KalturaHandleParticipantsMode
 	 */
 	public $handleParticipantsMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $deletionPolicy = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $partnerId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $zoomCategory = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableRecordingUpload = null;
 
 	/**
 	 * 
@@ -138,23 +212,9 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
-	 */
-	public $conversionProfileId = null;
-
-	/**
-	 * 
-	 *
 	 * @var string
 	 */
 	public $jwtToken = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $deletionPolicy = null;
 
 	/**
 	 * 
@@ -169,20 +229,6 @@ class KalturaZoomIntegrationSetting extends KalturaObjectBase
 	 * @var string
 	 */
 	public $zoomAccountDescription = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAt = null;
 
 	/**
 	 * 
@@ -384,6 +430,119 @@ class KalturaZoomVendorService extends KalturaServiceBase
 		return $resultObject;
 	}
 }
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorIntegrationService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Add new integration setting object
+	 * 
+	 * @param KalturaIntegrationSetting $integration 
+	 * @param string $remoteId 
+	 * @return KalturaIntegrationSetting
+	 */
+	function add(KalturaIntegrationSetting $integration, $remoteId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "integration", $integration->toParams());
+		$this->client->addParam($kparams, "remoteId", $remoteId);
+		$this->client->queueServiceActionCall("vendor_vendorintegration", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaIntegrationSetting");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete integration object by ID
+	 * 
+	 * @param int $integrationId 
+	 * @return KalturaIntegrationSetting
+	 */
+	function delete($integrationId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "integrationId", $integrationId);
+		$this->client->queueServiceActionCall("vendor_vendorintegration", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaIntegrationSetting");
+		return $resultObject;
+	}
+
+	/**
+	 * Retrieve integration setting object by ID
+	 * 
+	 * @param int $integrationId 
+	 * @return KalturaIntegrationSetting
+	 */
+	function get($integrationId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "integrationId", $integrationId);
+		$this->client->queueServiceActionCall("vendor_vendorintegration", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaIntegrationSetting");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an existing vedor catalog item object
+	 * 
+	 * @param int $id 
+	 * @param KalturaIntegrationSetting $integrationSetting 
+	 * @return KalturaIntegrationSetting
+	 */
+	function update($id, KalturaIntegrationSetting $integrationSetting)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "integrationSetting", $integrationSetting->toParams());
+		$this->client->queueServiceActionCall("vendor_vendorintegration", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaIntegrationSetting");
+		return $resultObject;
+	}
+
+	/**
+	 * Update vendor catalog item status by id
+	 * 
+	 * @param int $id 
+	 * @param KalturaIntegrationSetting $status 
+	 * @return KalturaIntegrationSetting
+	 */
+	function updateStatus($id, KalturaIntegrationSetting $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status->toParams());
+		$this->client->queueServiceActionCall("vendor_vendorintegration", "updateStatus", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaIntegrationSetting");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
@@ -395,10 +554,16 @@ class KalturaVendorClientPlugin extends KalturaClientPlugin
 	 */
 	public $zoomVendor = null;
 
+	/**
+	 * @var KalturaVendorIntegrationService
+	 */
+	public $vendorIntegration = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
 		$this->zoomVendor = new KalturaZoomVendorService($client);
+		$this->vendorIntegration = new KalturaVendorIntegrationService($client);
 	}
 
 	/**
@@ -416,6 +581,7 @@ class KalturaVendorClientPlugin extends KalturaClientPlugin
 	{
 		$services = array(
 			'zoomVendor' => $this->zoomVendor,
+			'vendorIntegration' => $this->vendorIntegration,
 		);
 		return $services;
 	}

@@ -2797,6 +2797,14 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $numPrevPassToKeep = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaTwoFactorAuthenticationMode
+	 * @readonly
+	 */
+	public $twoFactorAuthenticationMode = null;
+
 
 }
 
@@ -5113,6 +5121,14 @@ class KalturaUser extends KalturaBaseUser
 	 * @var string
 	 */
 	public $ksPrivileges = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $encryptedSeed = null;
 
 
 }
@@ -9034,6 +9050,13 @@ class KalturaBaseEntryFilter extends KalturaBaseEntryBaseFilter
 	 */
 	public $redirectFromEntryId = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $conversionProfileIdEqual = null;
+
 
 }
 
@@ -10439,6 +10462,13 @@ class KalturaReportExportParams extends KalturaObjectBase
 	 * @var string
 	 */
 	public $reportsItemsGroup = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $baseUrl = null;
 
 
 }
@@ -15316,14 +15346,14 @@ class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileVodPackagerPlayServer extends KalturaDeliveryProfile
+class KalturaDeliveryProfileVod extends KalturaDeliveryProfile
 {
 	/**
 	 * 
 	 *
 	 * @var bool
 	 */
-	public $adStitchingEnabled = null;
+	public $simuliveSupport = null;
 
 
 }
@@ -16042,6 +16072,15 @@ class KalturaEntryLiveStats extends KalturaLiveStats
 	 */
 	public $peakDvrAudience = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEntryScheduledCondition extends KalturaCondition
+{
 
 }
 
@@ -17725,6 +17764,13 @@ class KalturaReportExportJobData extends KalturaJobData
 	 * @var array of KalturaReportExportFile
 	 */
 	public $files;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $baseUrl = null;
 
 
 }
@@ -20684,14 +20730,14 @@ class KalturaDeliveryProfileLivePackagerHls extends KalturaDeliveryProfileLivePa
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfileVodPackagerPlayServer
+class KalturaDeliveryProfileVodPackagerPlayServer extends KalturaDeliveryProfileVod
 {
 	/**
 	 * 
 	 *
 	 * @var bool
 	 */
-	public $allowFairplayOffline = null;
+	public $adStitchingEnabled = null;
 
 
 }
@@ -22773,6 +22819,22 @@ abstract class KalturaDeliveryProfileLiveAppleHttpBaseFilter extends KalturaDeli
  */
 abstract class KalturaDeliveryProfileRtmpBaseFilter extends KalturaDeliveryProfileFilter
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfileVodPackagerPlayServer
+{
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowFairplayOffline = null;
+
 
 }
 

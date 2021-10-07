@@ -90,6 +90,7 @@ class KalturaScheduleEventType extends KalturaEnumBase
 	const BLACKOUT = 3;
 	const MEETING = 4;
 	const LIVE_REDIRECT = 5;
+	const VOD = 6;
 }
 
 /**
@@ -271,6 +272,29 @@ class KalturaScheduleResourceOrderBy extends KalturaEnumBase
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLinkedScheduleEvent extends KalturaObjectBase
+{
+	/**
+	 * The time between the end of the event which it's id is in $eventId and the start of the event holding this object
+	 *
+	 * @var int
+	 */
+	public $offset = null;
+
+	/**
+	 * The id of the event influencing the start of the event holding this object
+	 *
+	 * @var int
+	 */
+	public $eventId = null;
+
+
 }
 
 /**
@@ -483,6 +507,20 @@ abstract class KalturaScheduleEvent extends KalturaObjectBase
 	 * @var string
 	 */
 	public $referenceId = null;
+
+	/**
+	 * Contains the Id of the event that influences the timing of this event and the offset of time.
+	 *
+	 * @var KalturaLinkedScheduleEvent
+	 */
+	public $linkedTo;
+
+	/**
+	 * An array of Schedule Event Ids that their start time depends on the end of the current.
+	 *
+	 * @var string
+	 */
+	public $linkedBy = null;
 
 	/**
 	 * 
@@ -1316,6 +1354,15 @@ abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVodScheduleEvent extends KalturaEntryScheduleEvent
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLiveRedirectScheduleEvent extends KalturaBaseLiveScheduleEvent
 {
 	/**
@@ -1361,6 +1408,20 @@ class KalturaLiveStreamScheduleEvent extends KalturaBaseLiveScheduleEvent
 	 * @var int
 	 */
 	public $postEndTime = null;
+
+	/**
+	 * The entry id of the pre start entry
+	 *
+	 * @var string
+	 */
+	public $preStartEntryId = null;
+
+	/**
+	 * The entry id of the post end entry
+	 *
+	 * @var string
+	 */
+	public $postEndEntryId = null;
 
 
 }
@@ -1672,6 +1733,15 @@ abstract class KalturaRecordScheduleEventBaseFilter extends KalturaEntrySchedule
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaVodScheduleEventBaseFilter extends KalturaEntryScheduleEventFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaBlackoutScheduleEventFilter extends KalturaRecordScheduleEventBaseFilter
 {
 
@@ -1700,6 +1770,15 @@ class KalturaMeetingScheduleEventFilter extends KalturaMeetingScheduleEventBaseF
  * @subpackage Client
  */
 class KalturaRecordScheduleEventFilter extends KalturaRecordScheduleEventBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVodScheduleEventFilter extends KalturaVodScheduleEventBaseFilter
 {
 
 }

@@ -72,6 +72,7 @@ class KalturaDrmProfileStatus extends KalturaEnumBase
  */
 class KalturaDrmLicenseScenario extends KalturaEnumBase
 {
+	const NONE = "0";
 	const PROTECTION = "playReady.PROTECTION";
 	const PURCHASE = "playReady.PURCHASE";
 	const RENTAL = "playReady.RENTAL";

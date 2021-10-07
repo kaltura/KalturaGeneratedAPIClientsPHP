@@ -985,6 +985,25 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	}
 
 	/**
+	 * This action serves HLS encrypted key if access control is validated
+	 * 
+	 * @param string $entryId 
+	 * @return file
+	 */
+	function servePlaybackKey($entryId)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("baseentry", "servePlaybackKey", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
 	 * Update base entry. Only the properties that were set will be updated.
 	 * 
 	 * @param string $entryId Entry id to update
@@ -1510,6 +1529,29 @@ class KalturaCategoryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaBulkUpload");
+		return $resultObject;
+	}
+
+	/**
+	 * Clone Category
+	 * 
+	 * @param int $categoryId 
+	 * @param int $fromPartnerId 
+	 * @param int $parentCategoryId 
+	 * @return KalturaCategory
+	 */
+	function cloneAction($categoryId, $fromPartnerId, $parentCategoryId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "categoryId", $categoryId);
+		$this->client->addParam($kparams, "fromPartnerId", $fromPartnerId);
+		$this->client->addParam($kparams, "parentCategoryId", $parentCategoryId);
+		$this->client->queueServiceActionCall("category", "clone", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaCategory");
 		return $resultObject;
 	}
 
@@ -9972,8 +10014,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-09-05');
-		$this->setApiVersion('17.5.0');
+		$this->setClientTag('php5:21-10-07');
+		$this->setApiVersion('17.11.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

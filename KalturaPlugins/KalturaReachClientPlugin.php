@@ -189,6 +189,7 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 {
 	const AR = "Arabic";
 	const YUE = "Cantonese";
+	const CA = "Catalan";
 	const ZH = "Chinese";
 	const DA = "Danish";
 	const NL = "Dutch";
@@ -2251,7 +2252,7 @@ class KalturaReachProfileService extends KalturaServiceBase
 	}
 
 	/**
-	 * Sync vednor profile credit
+	 * Sync vendor profile credit
 	 * 
 	 * @param int $reachProfileId 
 	 * @return KalturaReachProfile

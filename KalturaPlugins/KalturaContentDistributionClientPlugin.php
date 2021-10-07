@@ -653,6 +653,14 @@ abstract class KalturaDistributionProfile extends KalturaObjectBase
 	 */
 	public $distributeTrigger = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $supportImageEntry = null;
+
 
 }
 
