@@ -62,6 +62,13 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
 	 */
 	public $lastUpdateTime = null;
 
+	/**
+	 * Property to save last entry ID played in a playlist.
+	 *
+	 * @var string
+	 */
+	public $playlistLastEntryId = null;
+
 
 }
 
