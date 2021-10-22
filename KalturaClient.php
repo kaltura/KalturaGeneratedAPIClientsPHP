@@ -10014,7 +10014,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-10-21');
+		$this->setClientTag('php5:21-10-22');
 		$this->setApiVersion('17.12.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
