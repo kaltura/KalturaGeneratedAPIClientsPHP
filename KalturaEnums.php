@@ -1932,6 +1932,8 @@ class KalturaConditionType extends KalturaEnumBase
 	const BOOLEAN = "17";
 	const HTTP_HEADER = "18";
 	const ENTRY_SCHEDULED = "19";
+	const ACTION_NAME = "20";
+	const URL_AUTH_PARAMS = "21";
 }
 
 /**
@@ -4686,6 +4688,7 @@ class KalturaReportInterval extends KalturaEnumBase
 	const MONTHS = "months";
 	const TEN_MINUTES = "ten_minutes";
 	const TEN_SECONDS = "ten_seconds";
+	const YEARS = "years";
 }
 
 /**

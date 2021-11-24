@@ -6495,9 +6495,10 @@ class KalturaReportService extends KalturaServiceBase
 	 * 
 	 * @param int $id 
 	 * @param array $params 
+	 * @param string $excludedFields 
 	 * @return file
 	 */
-	function getCsv($id, array $params = null)
+	function getCsv($id, array $params = null, $excludedFields = null)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
@@ -6509,6 +6510,7 @@ class KalturaReportService extends KalturaServiceBase
 			{
 				$this->client->addParam($kparams, "params:$index", $obj->toParams());
 			}
+		$this->client->addParam($kparams, "excludedFields", $excludedFields);
 		$this->client->queueServiceActionCall("report", "getCsv", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
@@ -6517,12 +6519,14 @@ class KalturaReportService extends KalturaServiceBase
 
 	/**
 	 * Returns report CSV file executed by string params with the following convention: param1=value1;param2=value2
+	 excludedFields can be supplied comma separated
 	 * 
 	 * @param int $id 
 	 * @param string $params 
+	 * @param string $excludedFields 
 	 * @return file
 	 */
-	function getCsvFromStringParams($id, $params = null)
+	function getCsvFromStringParams($id, $params = null, $excludedFields = null)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
@@ -6530,6 +6534,7 @@ class KalturaReportService extends KalturaServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "params", $params);
+		$this->client->addParam($kparams, "excludedFields", $excludedFields);
 		$this->client->queueServiceActionCall("report", "getCsvFromStringParams", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
@@ -10014,8 +10019,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:21-11-21');
-		$this->setApiVersion('17.12.0');
+		$this->setClientTag('php5:21-11-24');
+		$this->setApiVersion('17.14.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

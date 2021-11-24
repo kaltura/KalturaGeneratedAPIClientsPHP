@@ -2242,6 +2242,22 @@ class KalturaESearchLanguageItem extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaRegexItem extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $regex = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaPartner extends KalturaObjectBase
 {
 	/**
@@ -2758,9 +2774,9 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaRegexItem
 	 */
-	public $passwordStructureValidations = null;
+	public $passwordStructureValidations;
 
 	/**
 	 * 
@@ -2804,6 +2820,13 @@ class KalturaPartner extends KalturaObjectBase
 	 * @readonly
 	 */
 	public $twoFactorAuthenticationMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isSelfServe = null;
 
 
 }
@@ -18826,6 +18849,15 @@ class KalturaUploadTokenListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUrlAuthenticationParamsCondition extends KalturaCondition
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUrlRecognizerAkamaiG2O extends KalturaUrlRecognizer
 {
 	/**
@@ -22418,6 +22450,15 @@ class KalturaAccessControlFilter extends KalturaAccessControlBaseFilter
  * @subpackage Client
  */
 class KalturaAccessControlProfileFilter extends KalturaAccessControlProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaActionNameCondition extends KalturaRegexCondition
 {
 
 }

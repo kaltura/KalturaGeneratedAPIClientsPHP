@@ -105,6 +105,7 @@ class KalturaDropFolderErrorCode extends KalturaEnumBase
 	const ERROR_GET_DB_FILE_LIST = "4";
 	const DROP_FOLDER_APP_ERROR = "5";
 	const CONTENT_MATCH_POLICY_UNDEFINED = "6";
+	const MISSING_CONFIG = "7";
 }
 
 /**
