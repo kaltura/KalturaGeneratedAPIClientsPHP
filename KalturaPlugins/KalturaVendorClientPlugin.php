@@ -526,14 +526,14 @@ class KalturaVendorIntegrationService extends KalturaServiceBase
 	 * Update vendor catalog item status by id
 	 * 
 	 * @param int $id 
-	 * @param KalturaIntegrationSetting $status 
+	 * @param int $status 
 	 * @return KalturaIntegrationSetting
 	 */
-	function updateStatus($id, KalturaIntegrationSetting $status)
+	function updateStatus($id, $status)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status->toParams());
+		$this->client->addParam($kparams, "status", $status);
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "updateStatus", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

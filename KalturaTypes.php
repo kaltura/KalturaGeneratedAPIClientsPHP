@@ -5027,6 +5027,29 @@ class KalturaDrmPlaybackPluginData extends KalturaPluginData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDynamicEmailContents extends KalturaObjectBase
+{
+	/**
+	 * The subject of the customized email
+	 *
+	 * @var string
+	 */
+	public $emailSubject = null;
+
+	/**
+	 * The body of the customized email
+	 *
+	 * @var string
+	 */
+	public $emailBody = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUser extends KalturaBaseUser
 {
 	/**
@@ -11722,6 +11745,13 @@ class KalturaStorageProfile extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $port = null;
+
+	/**
+	 * 
+	 *
 	 * @var bool
 	 */
 	public $shouldExportThumbs = null;
@@ -17029,6 +17059,13 @@ class KalturaMailJobData extends KalturaJobData
 	/**
 	 * 
 	 *
+	 * @var KalturaDynamicEmailContents
+	 */
+	public $dynamicEmailContents;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $templatePath = null;
@@ -22101,6 +22138,13 @@ class KalturaStorageExportJobData extends KalturaStorageJobData
 	 * @var string
 	 */
 	public $externalUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $port = null;
 
 
 }
