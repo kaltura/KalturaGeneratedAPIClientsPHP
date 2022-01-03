@@ -10391,6 +10391,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $canonicalUrlIn = null;
 
+	/**
+	 * filter by virtual event id
+	 *
+	 * @var string
+	 */
+	public $virtualEventIdIn = null;
+
 
 }
 
@@ -20681,6 +20688,13 @@ class KalturaConvertJobData extends KalturaConvartableJobData
 	 * @var int
 	 */
 	public $userCpu = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $estimatedEffort = null;
 
 
 }
