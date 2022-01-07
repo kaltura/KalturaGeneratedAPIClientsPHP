@@ -110,6 +110,7 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
  */
 class KalturaEventNotificationEventType extends KalturaEnumBase
 {
+	const INTEGRATION_JOB_CLOSED = "integrationEventNotifications.INTEGRATION_JOB_CLOSED";
 	const BATCH_JOB_STATUS = "1";
 	const OBJECT_ADDED = "2";
 	const OBJECT_CHANGED = "3";
