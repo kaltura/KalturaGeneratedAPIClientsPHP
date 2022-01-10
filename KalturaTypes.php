@@ -15376,6 +15376,13 @@ class KalturaDeliveryProfileLivePackager extends KalturaDeliveryProfile
 	 */
 	public $livePackagerSigningDomain = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldRedirect = null;
+
 
 }
 

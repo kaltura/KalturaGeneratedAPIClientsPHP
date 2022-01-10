@@ -9406,6 +9406,25 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * Resets user login password
+	 * 
+	 * @param string $loginDataId The user's current email address that identified the user for login
+	 * @param string $newPassword The user's new password
+	 */
+	function loginDataResetPassword($loginDataId, $newPassword)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "loginDataId", $loginDataId);
+		$this->client->addParam($kparams, "newPassword", $newPassword);
+		$this->client->queueServiceActionCall("user", "loginDataResetPassword", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
 	 * Notifies that a user is banned from an account.
 	 * 
 	 * @param string $userId The user's unique identifier in the partner's system
@@ -10020,7 +10039,7 @@ class KalturaClient extends KalturaClientBase
 		parent::__construct($config);
 		
 		$this->setClientTag('php5:22-01-10');
-		$this->setApiVersion('17.17.0');
+		$this->setApiVersion('17.18.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
