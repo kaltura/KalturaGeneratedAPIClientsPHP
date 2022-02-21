@@ -10398,6 +10398,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $virtualEventIdIn = null;
 
+	/**
+	 * filter by origin
+	 *
+	 * @var string
+	 */
+	public $originIn = null;
+
 
 }
 

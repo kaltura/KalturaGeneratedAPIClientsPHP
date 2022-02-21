@@ -1423,6 +1423,13 @@ class KalturaLiveStreamScheduleEvent extends KalturaBaseLiveScheduleEvent
 	 */
 	public $postEndEntryId = null;
 
+	/**
+	 * Detect whether "real" live can interrupt to the "main" content
+	 *
+	 * @var bool
+	 */
+	public $isContentInterruptible = null;
+
 
 }
 

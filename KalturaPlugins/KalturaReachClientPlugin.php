@@ -131,6 +131,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const AUDIO_DESCRIPTION = 4;
 	const CHAPTERING = 5;
 	const INTELLIGENT_TAGGING = 6;
+	const DUBBING = 7;
 }
 
 /**
@@ -1286,6 +1287,36 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorDubbingCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $flavorParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $clearAudioFlavorParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $targetLanguage = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogItem
 {
 
@@ -1901,6 +1932,29 @@ abstract class KalturaVendorCaptionsCatalogItemBaseFilter extends KalturaVendorC
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCatalogItemFilter
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $targetLanguageEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $targetLanguageIn = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorAlignmentCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
 {
 
@@ -1929,6 +1983,15 @@ class KalturaVendorCaptionsCatalogItemFilter extends KalturaVendorCaptionsCatalo
  * @subpackage Client
  */
 class KalturaVendorChapteringCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorDubbingCatalogItemFilter extends KalturaVendorDubbingCatalogItemBaseFilter
 {
 
 }

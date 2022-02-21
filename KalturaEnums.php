@@ -4888,6 +4888,7 @@ class KalturaReportType extends KalturaEnumBase
 	const VE_REGISTERED_INDUSTRY = "50002";
 	const VE_REGISTERED_ROLES = "50003";
 	const VE_REGISTERED_COUNTRIES = "50004";
+	const VE_REGISTERED_WORLD_REGIONS = "50005";
 }
 
 /**
