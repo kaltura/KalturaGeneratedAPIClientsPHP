@@ -2828,6 +2828,22 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $isSelfServe = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $allowedDomains = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $excludedAdminRoleName = null;
+
 
 }
 
@@ -5175,6 +5191,13 @@ class KalturaUser extends KalturaBaseUser
 	 * @readonly
 	 */
 	public $encryptedSeed = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isSsoExcluded = null;
 
 
 }
@@ -8313,6 +8336,34 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 *
 	 * @var string
 	 */
+	public $primarySrtBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $primarySrtStreamId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySrtBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySrtStreamId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $streamName = null;
 
 	/**
@@ -8364,6 +8415,13 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	 * @readonly
 	 */
 	public $streamUsername = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $srtPass = null;
 
 	/**
 	 * The Streams primary server node id
