@@ -1638,7 +1638,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	}
 
 	/**
-	 * Move categories that belong to the same parent category to a target categroy - enabled only for ks with disable entitlement
+	 * Move categories that belong to the same parent category to a target category - enabled only for ks with disable entitlement
 	 * 
 	 * @param string $categoryIds 
 	 * @param int $targetCategoryParentId 
@@ -7373,7 +7373,7 @@ class KalturaStatsService extends KalturaServiceBase
 
 	/**
 	 * Will write to the event log a single line representing the event
-	 client version - will help interprete the line structure. different client versions might have slightly different data/data formats in the line
+	 client version - will help interpret the line structure. Different client versions might have slightly different data/data formats in the line
 event_id - number is the row number in yuval's excel
 datetime - same format as MySql's datetime - can change and should reflect the time zone
 session id - can be some big random number or guid
@@ -7413,7 +7413,7 @@ referrer
 
 	/**
 	 * Will collect the kmcEvent sent form the KMC client
-	 // this will actually be an empty function because all events will be sent using GET and will anyway be logged in the apache log
+	 // this will actually be an empty function because all events will be sent using GET and will anyway be logged in the Apache log
 	 * 
 	 * @param KalturaStatsKmcEvent $kmcEvent 
 	 */
@@ -8153,7 +8153,7 @@ class KalturaThumbAssetService extends KalturaServiceBase
 	}
 
 	/**
-	 * Serves thumbnail by entry id and thumnail params id
+	 * Serves thumbnail by entry id and thumbnail params id
 	 * 
 	 * @param string $entryId 
 	 * @param int $thumbParamId If not set, default thumbnail will be used.
@@ -10038,8 +10038,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:22-04-26');
-		$this->setApiVersion('18.2.0');
+		$this->setClientTag('php5:22-04-27');
+		$this->setApiVersion('18.3.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
