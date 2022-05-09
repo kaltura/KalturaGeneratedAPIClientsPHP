@@ -289,6 +289,7 @@ class KalturaESearchSortOrder extends KalturaEnumBase
  */
 class KalturaESearchUserFieldName extends KalturaEnumBase
 {
+	const COMPANY = "company";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const FIRST_NAME = "first_name";
@@ -298,6 +299,7 @@ class KalturaESearchUserFieldName extends KalturaEnumBase
 	const ROLE_IDS = "role_ids";
 	const SCREEN_NAME = "screen_name";
 	const TAGS = "tags";
+	const TITLE = "title";
 	const UPDATED_AT = "updated_at";
 	const USER_ID = "user_id";
 	const TYPE = "user_type";
