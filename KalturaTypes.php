@@ -7687,7 +7687,7 @@ abstract class KalturaLiveEntry extends KalturaMediaEntry
 	/**
 	 * The time (unix timestamp in milliseconds) in which the entry broadcast started or 0 when the entry is off the air
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $currentBroadcastStartTime = null;
 
@@ -11352,7 +11352,7 @@ class KalturaStatsEvent extends KalturaObjectBase
 	/**
 	 * the client's timestamp of this event
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $eventTimestamp = null;
 
@@ -11523,7 +11523,7 @@ class KalturaStatsKmcEvent extends KalturaObjectBase
 	/**
 	 * the client's timestamp of this event
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $eventTimestamp = null;
 

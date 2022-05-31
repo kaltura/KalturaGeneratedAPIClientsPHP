@@ -1299,6 +1299,17 @@ class KalturaWidgetSecurityType extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaZoomGroupParticipationType extends KalturaEnumBase
+{
+	const NO_CLASSIFICATION = 0;
+	const OPT_IN = 1;
+	const OPT_OUT = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAccessControlOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";

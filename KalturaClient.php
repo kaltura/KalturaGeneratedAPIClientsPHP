@@ -69,7 +69,7 @@ class KalturaAccessControlProfileService extends KalturaServiceBase
 	/**
 	 * Delete access control profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -86,7 +86,7 @@ class KalturaAccessControlProfileService extends KalturaServiceBase
 	/**
 	 * Get access control profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaAccessControlProfile
 	 */
 	function get($id)
@@ -128,7 +128,7 @@ class KalturaAccessControlProfileService extends KalturaServiceBase
 	/**
 	 * Update access control profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaAccessControlProfile $accessControlProfile 
 	 * @return KalturaAccessControlProfile
 	 */
@@ -180,7 +180,7 @@ class KalturaAccessControlService extends KalturaServiceBase
 	/**
 	 * Delete Access Control Profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -197,7 +197,7 @@ class KalturaAccessControlService extends KalturaServiceBase
 	/**
 	 * Get Access Control Profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaAccessControl
 	 */
 	function get($id)
@@ -239,7 +239,7 @@ class KalturaAccessControlService extends KalturaServiceBase
 	/**
 	 * Update Access Control Profile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaAccessControl $accessControl 
 	 * @return KalturaAccessControl
 	 */
@@ -1558,7 +1558,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	/**
 	 * Delete a Category
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param int $moveEntriesToParentCategory 
 	 */
 	function delete($id, $moveEntriesToParentCategory = 1)
@@ -1577,7 +1577,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	/**
 	 * Get Category by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaCategory
 	 */
 	function get($id)
@@ -1596,7 +1596,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	/**
 	 * Index Category by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param bool $shouldUpdate 
 	 * @return int
 	 */
@@ -1676,7 +1676,7 @@ class KalturaCategoryService extends KalturaServiceBase
 	/**
 	 * Update Category
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaCategory $category 
 	 * @return KalturaCategory
 	 */
@@ -2013,7 +2013,7 @@ class KalturaConversionProfileService extends KalturaServiceBase
 	/**
 	 * Delete Conversion Profile by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -2030,7 +2030,7 @@ class KalturaConversionProfileService extends KalturaServiceBase
 	/**
 	 * Get Conversion Profile by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaConversionProfile
 	 */
 	function get($id)
@@ -2091,7 +2091,7 @@ class KalturaConversionProfileService extends KalturaServiceBase
 	/**
 	 * Set Conversion Profile to be the partner default
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaConversionProfile
 	 */
 	function setAsDefault($id)
@@ -2110,7 +2110,7 @@ class KalturaConversionProfileService extends KalturaServiceBase
 	/**
 	 * Update Conversion Profile by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaConversionProfile $conversionProfile 
 	 * @return KalturaConversionProfile
 	 */
@@ -2460,7 +2460,7 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
 	/**
 	 * Delete an existing EmailIngestionProfile
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -2477,7 +2477,7 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
 	/**
 	 * Retrieve a EmailIngestionProfile by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaEmailIngestionProfile
 	 */
 	function get($id)
@@ -2515,7 +2515,7 @@ class KalturaEmailIngestionProfileService extends KalturaServiceBase
 	/**
 	 * Update an existing EmailIngestionProfile
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaEmailIngestionProfile $EmailIP 
 	 * @return KalturaEmailIngestionProfile
 	 */
@@ -2590,7 +2590,7 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaEntryServerNode $entryServerNode 
 	 * @return KalturaEntryServerNode
 	 */
@@ -2632,7 +2632,7 @@ class KalturaEntryServerNodeService extends KalturaServiceBase
 	/**
 	 * Validates server node still registered on entry
 	 * 
-	 * @param bigint $id Entry server node id
+	 * @param int $id Entry server node id
 	 */
 	function validateRegisteredEntryServerNode($id)
 	{
@@ -3234,7 +3234,7 @@ class KalturaFlavorParamsOutputService extends KalturaServiceBase
 	/**
 	 * Get flavor params output object by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaFlavorParamsOutput
 	 */
 	function get($id)
@@ -3307,7 +3307,7 @@ class KalturaFlavorParamsService extends KalturaServiceBase
 	/**
 	 * Delete Flavor Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -3324,7 +3324,7 @@ class KalturaFlavorParamsService extends KalturaServiceBase
 	/**
 	 * Get Flavor Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaFlavorParams
 	 */
 	function get($id)
@@ -3385,7 +3385,7 @@ class KalturaFlavorParamsService extends KalturaServiceBase
 	/**
 	 * Update Flavor Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaFlavorParams $flavorParams 
 	 * @return KalturaFlavorParams
 	 */
@@ -5655,7 +5655,7 @@ class KalturaPartnerService extends KalturaServiceBase
 	/**
 	 * Retrieve partner object by Id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaPartner
 	 */
 	function get($id = null)
@@ -5692,7 +5692,7 @@ class KalturaPartnerService extends KalturaServiceBase
 	/**
 	 * Returns partner public info by Id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaPartnerPublicInfo
 	 */
 	function getPublicInfo($id = null)
@@ -6423,7 +6423,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param array $params 
 	 * @return KalturaReportResponse
 	 */
@@ -6493,7 +6493,7 @@ class KalturaReportService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param array $params 
 	 * @param string $excludedFields 
 	 * @return file
@@ -6521,7 +6521,7 @@ class KalturaReportService extends KalturaServiceBase
 	 * Returns report CSV file executed by string params with the following convention: param1=value1;param2=value2
 	 excludedFields can be supplied comma separated
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param string $params 
 	 * @param string $excludedFields 
 	 * @return file
@@ -8248,7 +8248,7 @@ class KalturaThumbParamsOutputService extends KalturaServiceBase
 	/**
 	 * Get thumb params output object by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaThumbParamsOutput
 	 */
 	function get($id)
@@ -8321,7 +8321,7 @@ class KalturaThumbParamsService extends KalturaServiceBase
 	/**
 	 * Delete Thumb Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -8338,7 +8338,7 @@ class KalturaThumbParamsService extends KalturaServiceBase
 	/**
 	 * Get Thumb Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaThumbParams
 	 */
 	function get($id)
@@ -8399,7 +8399,7 @@ class KalturaThumbParamsService extends KalturaServiceBase
 	/**
 	 * Update Thumb Params by ID
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaThumbParams $thumbParams 
 	 * @return KalturaThumbParams
 	 */
@@ -8451,7 +8451,7 @@ class KalturaUiConfService extends KalturaServiceBase
 	/**
 	 * Clone an existing UIConf
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaUiConf
 	 */
 	function cloneAction($id)
@@ -8470,7 +8470,7 @@ class KalturaUiConfService extends KalturaServiceBase
 	/**
 	 * Delete an existing UIConf
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 */
 	function delete($id)
 	{
@@ -8487,7 +8487,7 @@ class KalturaUiConfService extends KalturaServiceBase
 	/**
 	 * Retrieve a UIConf by id
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaUiConf
 	 */
 	function get($id)
@@ -8569,7 +8569,7 @@ class KalturaUiConfService extends KalturaServiceBase
 	/**
 	 * Update an existing UIConf
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaUiConf $uiConf 
 	 * @return KalturaUiConf
 	 */
@@ -8819,7 +8819,7 @@ class KalturaUserEntryService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @return KalturaUserEntry
 	 */
 	function delete($id)
@@ -8899,7 +8899,7 @@ class KalturaUserEntryService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param bigint $id 
+	 * @param int $id 
 	 * @param KalturaUserEntry $userEntry 
 	 * @return KalturaUserEntry
 	 */
@@ -10038,8 +10038,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:22-05-29');
-		$this->setApiVersion('18.4.0');
+		$this->setClientTag('php5:22-05-30');
+		$this->setApiVersion('18.6.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

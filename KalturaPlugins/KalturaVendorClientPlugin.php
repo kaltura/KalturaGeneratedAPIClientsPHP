@@ -237,6 +237,27 @@ class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
 	 */
 	public $enableMeetingUpload = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $optOutGroupNames = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $optInGroupNames = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaZoomGroupParticipationType
+	 */
+	public $groupParticipationType = null;
+
 
 }
 
