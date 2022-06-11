@@ -53,6 +53,7 @@ class KalturaGroupProcessStatus extends KalturaEnumBase
 class KalturaESearchGroupFieldName extends KalturaEnumBase
 {
 	const COMPANY = "company";
+	const COUNTRY = "country";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const FIRST_NAME = "first_name";
