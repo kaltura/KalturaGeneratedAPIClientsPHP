@@ -623,6 +623,13 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 */
 	public $turnAroundTime = null;
 
+	/**
+	 * The vendor's task internal Id
+	 *
+	 * @var string
+	 */
+	public $externalTaskId = null;
+
 
 }
 

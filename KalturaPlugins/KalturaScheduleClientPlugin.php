@@ -301,6 +301,36 @@ class KalturaLinkedScheduleEvent extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaLiveFeature extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemName = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $preStartTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $postEndTime = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaScheduleEventRecurrence extends KalturaObjectBase
 {
 	/**
@@ -831,6 +861,43 @@ abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent
 	 * @readonly
 	 */
 	public $blackoutConflicts;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaLiveCaptionFeature extends KalturaLiveFeature
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $mediaUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $mediaKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionToken = null;
 
 
 }
@@ -1429,6 +1496,13 @@ class KalturaLiveStreamScheduleEvent extends KalturaBaseLiveScheduleEvent
 	 * @var bool
 	 */
 	public $isContentInterruptible = null;
+
+	/**
+	 * list of live features that apply to the event
+	 *
+	 * @var array of KalturaLiveFeature
+	 */
+	public $liveFeatures;
 
 
 }

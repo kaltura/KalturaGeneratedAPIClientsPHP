@@ -5446,13 +5446,27 @@ abstract class KalturaEntryServerNode extends KalturaObjectBase
 class KalturaExportToCsvOptions extends KalturaObjectBase
 {
 	/**
-	 * Setting this property will cause additional columns to be added to the final report. The columns will be related to the specific object type passed (currently only MEDIA_CLIP is supported).
-	 * 	 Please note that this property will NOT change the result filter in any way (i.e passing MEDIA_CLIP here will not force the report to return only media items).
-	 * 	 /
+	 * The format of the outputted date string. There are also several predefined date constants that may be used instead, so for example DATE_RSS contains the format string 'D, d M Y H:i:s'.
+	 * 	 https://www.php.net/manual/en/function.date.php
 	 *
 	 * @var string
 	 */
 	public $format = null;
+
+	/**
+	 * Setting this property will cause additional columns to be added to the final report. The columns will be related to the specific object type passed (currently only MEDIA_CLIP is supported).
+	 * 	 Please note that this property will NOT change the result filter in any way (i.e passing MEDIA_CLIP here will not force the report to return only media items).
+	 *
+	 * @var KalturaEntryType
+	 */
+	public $typeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $defaultHeader = null;
 
 
 }
@@ -12249,6 +12263,22 @@ class KalturaUploadToken extends KalturaObjectBase
 	 */
 	public $autoFinalize = null;
 
+	/**
+	 * The value for the object_type field.
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $attachedObjectType = null;
+
+	/**
+	 * The value for the object_id field.
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $attachedObjectId = null;
+
 
 }
 
@@ -16767,6 +16797,22 @@ class KalturaIpAddressRestriction extends KalturaBaseRestriction
 	 * @var string
 	 */
 	public $ipAddressList = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKeyValueExtended extends KalturaKeyValue
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $predefinedFormat = null;
 
 
 }
@@ -21556,6 +21602,13 @@ abstract class KalturaMappedObjectsCsvJobData extends KalturaExportCsvJobData
 	 * @var array of KalturaKeyValue
 	 */
 	public $mappedFields;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaExportToCsvOptions
+	 */
+	public $options;
 
 
 }

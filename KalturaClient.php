@@ -734,9 +734,10 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	 * @param int $metadataProfileId 
 	 * @param array $additionalFields 
 	 * @param array $mappedFields Mapping between field headline and its mapped value
+	 * @param KalturaExportToCsvOptions $options 
 	 * @return string
 	 */
-	function exportToCsv(KalturaBaseEntryFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null)
+	function exportToCsv(KalturaBaseEntryFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null, KalturaExportToCsvOptions $options = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
@@ -752,6 +753,8 @@ class KalturaBaseEntryService extends KalturaServiceBase
 			{
 				$this->client->addParam($kparams, "mappedFields:$index", $obj->toParams());
 			}
+		if ($options !== null)
+			$this->client->addParam($kparams, "options", $options->toParams());
 		$this->client->queueServiceActionCall("baseentry", "exportToCsv", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -9199,9 +9202,10 @@ class KalturaUserService extends KalturaServiceBase
 	 * @param int $metadataProfileId 
 	 * @param array $additionalFields 
 	 * @param array $mappedFields Mapping between field
+	 * @param KalturaExportToCsvOptions $options 
 	 * @return string
 	 */
-	function exportToCsv(KalturaUserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null)
+	function exportToCsv(KalturaUserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null, KalturaExportToCsvOptions $options = null)
 	{
 		$kparams = array();
 		if ($filter !== null)
@@ -9217,6 +9221,8 @@ class KalturaUserService extends KalturaServiceBase
 			{
 				$this->client->addParam($kparams, "mappedFields:$index", $obj->toParams());
 			}
+		if ($options !== null)
+			$this->client->addParam($kparams, "options", $options->toParams());
 		$this->client->queueServiceActionCall("user", "exportToCsv", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -10038,8 +10044,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:22-06-26');
-		$this->setApiVersion('18.7.0');
+		$this->setClientTag('php5:22-06-27');
+		$this->setApiVersion('18.8.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
