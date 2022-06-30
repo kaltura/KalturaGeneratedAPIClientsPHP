@@ -1578,6 +1578,43 @@ class KalturaCategoryService extends KalturaServiceBase
 	}
 
 	/**
+	 * Creates a batch job that sends an email with a link to download a CSV containing a list of categories
+	 * 
+	 * @param KalturaCategoryFilter $filter A filter used to exclude specific categories
+	 * @param int $metadataProfileId 
+	 * @param array $additionalFields 
+	 * @param array $mappedFields Mapping between field headline and its mapped value
+	 * @param KalturaExportToCsvOptions $options 
+	 * @return string
+	 */
+	function exportToCsv(KalturaCategoryFilter $filter = null, $metadataProfileId = null, array $additionalFields = null, array $mappedFields = null, KalturaExportToCsvOptions $options = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		if ($additionalFields !== null)
+			foreach($additionalFields as $index => $obj)
+			{
+				$this->client->addParam($kparams, "additionalFields:$index", $obj->toParams());
+			}
+		if ($mappedFields !== null)
+			foreach($mappedFields as $index => $obj)
+			{
+				$this->client->addParam($kparams, "mappedFields:$index", $obj->toParams());
+			}
+		if ($options !== null)
+			$this->client->addParam($kparams, "options", $options->toParams());
+		$this->client->queueServiceActionCall("category", "exportToCsv", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "string");
+		return $resultObject;
+	}
+
+	/**
 	 * Get Category by id
 	 * 
 	 * @param bigint $id 
@@ -10044,8 +10081,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:22-06-29');
-		$this->setApiVersion('18.8.0');
+		$this->setClientTag('php5:22-06-30');
+		$this->setApiVersion('18.9.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

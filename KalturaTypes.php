@@ -12248,7 +12248,7 @@ class KalturaUploadToken extends KalturaObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * Upload url - to explicitly determine to which domain to adress the uploadToken->upload call
+	 * Upload url - to explicitly determine to which domain to address the uploadToken->upload call
 	 *
 	 * @var string
 	 * @readonly
@@ -12256,7 +12256,7 @@ class KalturaUploadToken extends KalturaObjectBase
 	public $uploadUrl = null;
 
 	/**
-	 * autoFinalize - Should the upload be finalized once the file size on disk matches the file size reproted when adding the upload token.
+	 * autoFinalize - Should the upload be finalized once the file size on disk matches the file size reported when adding the upload token.
 	 *
 	 * @var KalturaNullableBoolean
 	 * @insertonly
@@ -12264,7 +12264,7 @@ class KalturaUploadToken extends KalturaObjectBase
 	public $autoFinalize = null;
 
 	/**
-	 * The value for the object_type field.
+	 * The type of the object this token is attached to.
 	 *
 	 * @var string
 	 * @readonly
@@ -12272,7 +12272,7 @@ class KalturaUploadToken extends KalturaObjectBase
 	public $attachedObjectType = null;
 
 	/**
-	 * The value for the object_id field.
+	 * The id of the object this token is attached to.
 	 *
 	 * @var string
 	 * @readonly
@@ -22791,15 +22791,6 @@ class KalturaBatchJobFilterExt extends KalturaBatchJobFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaCategoryEntryFilter extends KalturaCategoryEntryBaseFilter
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaCategoryFilter extends KalturaCategoryBaseFilter
 {
 	/**
@@ -22858,6 +22849,31 @@ class KalturaCategoryFilter extends KalturaCategoryBaseFilter
 	 */
 	public $idOrInheritedParentIdIn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCategoriesCsvJobData extends KalturaMappedObjectsCsvJobData
+{
+	/**
+	 * The filter should return the list of categories that need to be specified in the csv.
+	 *
+	 * @var KalturaCategoryFilter
+	 */
+	public $filter;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCategoryEntryFilter extends KalturaCategoryEntryBaseFilter
+{
 
 }
 
