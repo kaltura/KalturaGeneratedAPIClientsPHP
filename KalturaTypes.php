@@ -10478,6 +10478,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $originIn = null;
 
+	/**
+	 * filter by ui conf id
+	 *
+	 * @var string
+	 */
+	public $uiConfIdIn = null;
+
 
 }
 

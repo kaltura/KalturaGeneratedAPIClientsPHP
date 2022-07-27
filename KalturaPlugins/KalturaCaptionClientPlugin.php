@@ -716,6 +716,25 @@ class KalturaCaptionAssetService extends KalturaServiceBase
 	}
 
 	/**
+	 * Serves caption file as Json by its ID
+	 * 
+	 * @param string $captionAssetId 
+	 * @return file
+	 */
+	function serveAsJson($captionAssetId)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		$this->client->queueServiceActionCall("caption_captionasset", "serveAsJson", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+
+	/**
 	 * Serves caption by entry id and thumnail params id
 	 * 
 	 * @param string $entryId 

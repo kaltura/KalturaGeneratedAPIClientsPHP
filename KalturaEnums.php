@@ -4779,6 +4779,7 @@ class KalturaReportType extends KalturaEnumBase
 	const TOP_CUSTOM_VAR3 = "59";
 	const SELF_SERVE_USAGE = "60";
 	const FLAVOR_PARAMS_TRANSCODING_USAGE = "61";
+	const PLAYER_HIGHLIGHTS = "62";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
