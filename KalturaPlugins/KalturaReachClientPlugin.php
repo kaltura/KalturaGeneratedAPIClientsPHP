@@ -62,6 +62,7 @@ class KalturaEntryVendorTaskStatus extends KalturaEnumBase
 	const ERROR = 6;
 	const ABORTED = 7;
 	const PENDING_ENTRY_READY = 8;
+	const SCHEDULED = 9;
 }
 
 /**
@@ -132,6 +133,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const CHAPTERING = 5;
 	const INTELLIGENT_TAGGING = 6;
 	const DUBBING = 7;
+	const LIVE_CAPTION = 8;
 }
 
 /**
@@ -1138,6 +1140,39 @@ class KalturaReachProfileListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaScheduledVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $startDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $endDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $scheduledEventId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUnlimitedVendorCredit extends KalturaBaseVendorCredit
 {
 	/**
@@ -1845,6 +1880,36 @@ abstract class KalturaVendorCatalogItemBaseFilter extends KalturaRelatedFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorLiveCaptionCatalogItem extends KalturaVendorCaptionsCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $minimalRefundTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $minimalOrderTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $durationLimit = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorTranslationCatalogItem extends KalturaVendorCaptionsCatalogItem
 {
 	/**
@@ -1999,6 +2064,15 @@ class KalturaVendorChapteringCatalogItemFilter extends KalturaVendorCaptionsCata
  * @subpackage Client
  */
 class KalturaVendorDubbingCatalogItemFilter extends KalturaVendorDubbingCatalogItemBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLiveCaptionCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
 {
 
 }
