@@ -48,24 +48,20 @@ class MultiRequestSubResult implements ArrayAccess
         return new MultiRequestSubResult($this->value . ':' . $name);
 	}
 
-	#[\ReturnTypeWillChange]
 	public function offsetExists($offset)
 	{
 		return true;
 	}
 
-	#[\ReturnTypeWillChange]
 	public function offsetGet($offset)
 	{
-	    return new MultiRequestSubResult($this->value . ':' . $offset);
+        return new MultiRequestSubResult($this->value . ':' . $offset);
 	}
 
-	#[\ReturnTypeWillChange]
 	public function offsetSet($offset, $value)
 	{
 	}
 
-	#[\ReturnTypeWillChange]
 	public function offsetUnset($offset)
 	{
 	}
