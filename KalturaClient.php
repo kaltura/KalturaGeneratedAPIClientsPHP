@@ -9453,6 +9453,7 @@ class KalturaUserService extends KalturaServiceBase
 	 * 
 	 * @param string $loginDataId The user's current email address that identified the user for login
 	 * @param string $newPassword The user's new password
+	 * @return KalturaUser
 	 */
 	function loginDataResetPassword($loginDataId, $newPassword)
 	{
@@ -9464,7 +9465,8 @@ class KalturaUserService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaUser");
+		return $resultObject;
 	}
 
 	/**
@@ -10081,7 +10083,7 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:22-08-17');
+		$this->setClientTag('php5:22-08-18');
 		$this->setApiVersion('18.12.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
