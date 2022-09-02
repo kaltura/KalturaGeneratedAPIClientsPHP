@@ -922,6 +922,36 @@ class KalturaLiveEntryScheduleResource extends KalturaScheduleResource
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaLiveRestreamFeature extends KalturaLiveFeature
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $primaryUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondaryUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $streamKey = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaLocationScheduleResource extends KalturaScheduleResource
 {
 

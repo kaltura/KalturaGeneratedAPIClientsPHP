@@ -1146,6 +1146,7 @@ class KalturaUiConfCreationMode extends KalturaEnumBase
 {
 	const WIZARD = 2;
 	const ADVANCED = 3;
+	const SYSTEM = 4;
 }
 
 /**
