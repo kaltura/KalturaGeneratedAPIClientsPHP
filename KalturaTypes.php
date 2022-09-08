@@ -15874,6 +15874,20 @@ abstract class KalturaUserBaseFilter extends KalturaBaseUserFilter
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaUserType
 	 */
 	public $typeEqual = null;
@@ -15921,20 +15935,6 @@ class KalturaUserFilter extends KalturaUserBaseFilter
 	 * @var string
 	 */
 	public $idOrScreenNameStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
 
 	/**
 	 * 
