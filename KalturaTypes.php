@@ -2844,6 +2844,13 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $excludedAdminRoleName = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $eventPlatformAllowedTemplates = null;
+
 
 }
 
@@ -13049,6 +13056,13 @@ class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRuleAction
 	 * @var int
 	 */
 	public $replacmenServerNodeId = null;
+
+	/**
+	 * Set this value if you want to check if the server is accessible before redirecting traffic to it (this value is in milliseconds)
+	 *
+	 * @var int
+	 */
+	public $checkAliveTimeoutMs = null;
 
 
 }
