@@ -998,6 +998,29 @@ class KalturaAuthentication extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMultiLingualString extends KalturaObjectBase
+{
+	/**
+	 * The language of the value
+	 *
+	 * @var string
+	 */
+	public $language = null;
+
+	/**
+	 * Value
+	 *
+	 * @var string
+	 */
+	public $value = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaOperationAttributes extends KalturaObjectBase
 {
 
@@ -1025,11 +1048,25 @@ class KalturaBaseEntry extends KalturaObjectBase
 	public $name = null;
 
 	/**
+	 * Entry name (Min 1 chars)
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_name;
+
+	/**
 	 * Entry description
 	 *
 	 * @var string
 	 */
 	public $description = null;
+
+	/**
+	 * Entry description
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_description;
 
 	/**
 	 * 
@@ -1060,6 +1097,13 @@ class KalturaBaseEntry extends KalturaObjectBase
 	 * @var string
 	 */
 	public $tags = null;
+
+	/**
+	 * Entry tags
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_tags;
 
 	/**
 	 * Entry admin tags can be updated only by administrators
@@ -10764,6 +10808,13 @@ class KalturaRequestConfiguration extends KalturaObjectBase
 	 * @var string
 	 */
 	public $ks = null;
+
+	/**
+	 * language
+	 *
+	 * @var string
+	 */
+	public $language = null;
 
 	/**
 	 * Response profile - this attribute will be automatically unset after every API call.
