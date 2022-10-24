@@ -5180,6 +5180,8 @@ class KalturaUploadTokenOrderBy extends KalturaEnumBase
  */
 class KalturaUserEntryExtendedStatus extends KalturaEnumBase
 {
+	const SYNC_STATUS_ERROR = "quiz.SYNC_STATUS_ERROR";
+	const SYNC_STATUS_SUCCESS = "quiz.SYNC_STATUS_SUCCESS";
 	const PLAYBACK_COMPLETE = "viewHistory.PLAYBACK_COMPLETE";
 	const PLAYBACK_STARTED = "viewHistory.PLAYBACK_STARTED";
 	const VIEWED = "viewHistory.VIEWED";
