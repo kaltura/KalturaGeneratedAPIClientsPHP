@@ -117,6 +117,7 @@ class KalturaAuditTrailObjectType extends KalturaEnumBase
 	const USER_ROLE = "UserRole";
 	const ACCESS_CONTROL = "accessControl";
 	const CATEGORY = "category";
+	const CATEGORY_ENTRY = "categoryEntry";
 	const CONVERSION_PROFILE_2 = "conversionProfile2";
 	const ENTRY = "entry";
 	const FLAVOR_ASSET = "flavorAsset";

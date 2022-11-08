@@ -2860,6 +2860,14 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $allowDefaultPasswordRestrictions = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaTwoFactorAuthenticationMode
 	 * @readonly
 	 */
@@ -2894,6 +2902,14 @@ class KalturaPartner extends KalturaObjectBase
 	 * @var string
 	 */
 	public $eventPlatformAllowedTemplates = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $verticalClassificationId = null;
 
 
 }
@@ -17002,6 +17018,13 @@ class KalturaLiveEntryServerNode extends KalturaEntryServerNode
 	 * @var KalturaViewMode
 	 */
 	public $viewMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $featuresUpdatedAt = null;
 
 
 }
