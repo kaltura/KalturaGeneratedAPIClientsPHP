@@ -5166,6 +5166,14 @@ class KalturaUser extends KalturaBaseUser
 	/**
 	 * 
 	 *
+	 * @var bool
+	 * @insertonly
+	 */
+	public $isGuest = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $roleIds = null;
@@ -5265,6 +5273,14 @@ class KalturaUser extends KalturaBaseUser
 	 * @var bool
 	 */
 	public $isSsoExcluded = null;
+
+	/**
+	 * This field should be sent instead of the id field whenever you want to work with hashed user ids
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $externalId = null;
 
 
 }
@@ -14323,6 +14339,13 @@ class KalturaBulkUploadResultUser extends KalturaBulkUploadResult
 	 * @var string
 	 */
 	public $group = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalId = null;
 
 
 }

@@ -158,6 +158,13 @@ abstract class KalturaIntegrationSetting extends KalturaObjectBase
 	 */
 	public $partnerId = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $enableMeetingUpload = null;
+
 
 }
 
@@ -229,13 +236,6 @@ class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
 	 * @var string
 	 */
 	public $zoomAccountDescription = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaNullableBoolean
-	 */
-	public $enableMeetingUpload = null;
 
 	/**
 	 * 

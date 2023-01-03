@@ -899,6 +899,13 @@ class KalturaLiveCaptionFeature extends KalturaLiveFeature
 	 */
 	public $captionToken = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $inputDelay = null;
+
 
 }
 

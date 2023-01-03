@@ -4785,6 +4785,7 @@ class KalturaReportType extends KalturaEnumBase
 	const CDN_BANDWIDTH_USAGE = "64";
 	const REACH_CATALOG_USAGE = "65";
 	const REACH_PROFILE_USAGE = "66";
+	const SELF_SERVE_BANDWIDTH = "67";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
@@ -4917,6 +4918,7 @@ class KalturaResetPassLinkType extends KalturaEnumBase
 {
 	const KMC = "1";
 	const KMS = "2";
+	const KME = "3";
 }
 
 /**
