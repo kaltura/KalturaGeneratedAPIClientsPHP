@@ -10098,6 +10098,13 @@ class KalturaUrlResource extends KalturaContentResource
 	 */
 	public $forceAsyncDownload = null;
 
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $urlHeaders;
+
 
 }
 

@@ -257,6 +257,13 @@ class KalturaSystemPartnerFilter extends KalturaPartnerFilter
 	 */
 	public $partnerParentIdIn = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminEmailEqual = null;
+
 
 }
 
