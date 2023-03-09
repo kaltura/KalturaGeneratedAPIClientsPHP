@@ -971,6 +971,25 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	}
 
 	/**
+	 * Move the entry to the recycle bin
+	 * 
+	 * @param string $entryId 
+	 * @return KalturaBaseEntry
+	 */
+	function recycle($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("baseentry", "recycle", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBaseEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Reject the entry and mark the pending flags (if any) as moderated (this will make the entry non-playable).
 	 * 
 	 * @param string $entryId 
@@ -985,6 +1004,25 @@ class KalturaBaseEntryService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "null");
+	}
+
+	/**
+	 * Restore the entry from the recycle bin
+	 * 
+	 * @param string $entryId 
+	 * @return KalturaBaseEntry
+	 */
+	function restoreRecycled($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("baseentry", "restoreRecycled", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBaseEntry");
+		return $resultObject;
 	}
 
 	/**
@@ -10083,8 +10121,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:23-02-27');
-		$this->setApiVersion('19.3.0');
+		$this->setClientTag('php5:23-03-09');
+		$this->setApiVersion('19.4.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

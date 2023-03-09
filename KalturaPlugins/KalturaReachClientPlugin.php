@@ -184,6 +184,7 @@ class KalturaVendorTaskProcessingRegion extends KalturaEnumBase
 {
 	const US = 1;
 	const EU = 2;
+	const CA = 3;
 }
 
 /**

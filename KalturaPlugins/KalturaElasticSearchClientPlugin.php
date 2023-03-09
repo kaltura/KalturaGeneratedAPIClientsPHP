@@ -207,6 +207,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const CREATOR_ID = "creator_kuser_id";
 	const CREDIT = "credit";
 	const DESCRIPTION = "description";
+	const DISPLAY_IN_SEARCH = "display_in_search";
 	const END_DATE = "end_date";
 	const ENTITLED_USER_EDIT = "entitled_kusers_edit";
 	const ENTITLED_USER_PUBLISH = "entitled_kusers_publish";

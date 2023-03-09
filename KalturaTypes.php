@@ -9194,6 +9194,13 @@ abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter
 	 */
 	public $tagsAdminTagsNameMultiLikeAnd = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryDisplayInSearchType
+	 */
+	public $displayInSearchEqual = null;
+
 
 }
 

@@ -313,6 +313,7 @@ class KalturaEmailIngestionProfileStatus extends KalturaEnumBase
  */
 class KalturaEntryDisplayInSearchType extends KalturaEnumBase
 {
+	const RECYCLED = -2;
 	const SYSTEM = -1;
 	const NONE = 0;
 	const PARTNER_ONLY = 1;
@@ -2475,6 +2476,7 @@ class KalturaEntryApplication extends KalturaEnumBase
 	const WEBCAST_APP = "5";
 	const PERSONAL_CAPTURE = "6";
 	const KALTURA_MEETING = "7";
+	const EP = "8";
 }
 
 /**
