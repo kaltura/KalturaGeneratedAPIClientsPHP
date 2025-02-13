@@ -34,12 +34,37 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaFeedDropFolderClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
+class KalturaApFeedDropFolder extends KalturaFeedDropFolder
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $apApiKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaStringValue
+	 */
+	public $itemsToExpand;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaApFeedDropFolderClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -47,11 +72,11 @@ class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaKalturaInternalToolsClientPlugin
+	 * @return KalturaApFeedDropFolderClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaKalturaInternalToolsClientPlugin($client);
+		return new KalturaApFeedDropFolderClientPlugin($client);
 	}
 
 	/**
@@ -69,7 +94,7 @@ class KalturaKalturaInternalToolsClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'KalturaInternalTools';
+		return 'ApFeedDropFolder';
 	}
 }
 

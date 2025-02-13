@@ -88,6 +88,7 @@ class KalturaObjectFilterEngineType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 	const ENTRY_VENDOR_TASK = "2";
+	const RECYCLE_BIN_CLEANUP = "3";
 }
 
 /**
@@ -107,6 +108,7 @@ class KalturaObjectTaskType extends KalturaEnumBase
 	const STORAGE_EXPORT = "6";
 	const MODIFY_ENTRY = "7";
 	const MAIL_NOTIFICATION = "8";
+	const RECYCLE_BIN_CLEANUP = "9";
 }
 
 /**
@@ -474,6 +476,15 @@ class KalturaModifyEntryObjectTask extends KalturaObjectTask
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaRecycleBinCleanupObjectTask extends KalturaObjectTask
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaScheduledTaskJobData extends KalturaJobData
 {
 	/**
@@ -624,6 +635,13 @@ abstract class KalturaScheduledTaskProfileBaseFilter extends KalturaFilter
 	 * @var int
 	 */
 	public $lastExecutionStartedAtLessThanOrEqualOrNull = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectFilterEngineTypeIn = null;
 
 
 }

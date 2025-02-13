@@ -34,89 +34,35 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaElasticSearchClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegrationProviderType extends KalturaEnumBase
-{
-	const CIELO24 = "cielo24.Cielo24";
-	const DEXTER = "dexterIntegration.Dexter";
-	const EXAMPLE = "exampleIntegration.Example";
-	const VOICEBASE = "voicebase.Voicebase";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaIntegrationTriggerType extends KalturaEnumBase
-{
-	const BPM_EVENT_NOTIFICATION = "bpmEventNotificationIntegration.BpmEventNotification";
-	const MANUAL = "1";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaIntegrationJobProviderData extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaIntegrationJobTriggerData extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaIntegrationJobData extends KalturaJobData
+class KalturaBumper extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
 	 * @var string
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $url = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaPlaybackSource
 	 * @readonly
 	 */
-	public $callbackNotificationUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaIntegrationProviderType
-	 */
-	public $providerType = null;
-
-	/**
-	 * Additional data that relevant for the provider only
-	 *
-	 * @var KalturaIntegrationJobProviderData
-	 */
-	public $providerData;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaIntegrationTriggerType
-	 */
-	public $triggerType = null;
-
-	/**
-	 * Additional data that relevant for the trigger only
-	 *
-	 * @var KalturaIntegrationJobTriggerData
-	 */
-	public $triggerData;
+	public $sources;
 
 
 }
@@ -126,7 +72,7 @@ class KalturaIntegrationJobData extends KalturaJobData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegrationService extends KalturaServiceBase
+class KalturaBumperService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
 	{
@@ -134,68 +80,108 @@ class KalturaIntegrationService extends KalturaServiceBase
 	}
 
 	/**
-	 * Dispatch integration task
+	 * Adds a bumper to an entry
 	 * 
-	 * @param KalturaIntegrationJobData $data 
-	 * @param string $objectType 
-	 * @param string $objectId 
-	 * @return int
+	 * @param string $entryId 
+	 * @param KalturaBumper $bumper 
+	 * @return KalturaBumper
 	 */
-	function dispatch(KalturaIntegrationJobData $data, $objectType, $objectId)
+	function add($entryId, KalturaBumper $bumper)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "data", $data->toParams());
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->queueServiceActionCall("integration_integration", "dispatch", $kparams);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "bumper", $bumper->toParams());
+		$this->client->queueServiceActionCall("bumper_bumper", "add", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "integer");
+		$this->client->validateObjectType($resultObject, "KalturaBumper");
 		return $resultObject;
 	}
 
 	/**
+	 * Delete bumper by EntryId
 	 * 
-	 * 
-	 * @param int $id Integration job id
+	 * @param string $entryId 
+	 * @return KalturaBumper
 	 */
-	function notify($id)
+	function delete($entryId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("integration_integration", "notify", $kparams);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("bumper_bumper", "delete", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaBumper");
+		return $resultObject;
+	}
+
+	/**
+	 * Allows to get the bumper
+	 * 
+	 * @param string $entryId 
+	 * @return KalturaBumper
+	 */
+	function get($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("bumper_bumper", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBumper");
+		return $resultObject;
+	}
+
+	/**
+	 * Allows to update a bumper
+	 * 
+	 * @param string $entryId 
+	 * @param KalturaBumper $bumper 
+	 * @return KalturaBumper
+	 */
+	function update($entryId, KalturaBumper $bumper)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "bumper", $bumper->toParams());
+		$this->client->queueServiceActionCall("bumper_bumper", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaBumper");
+		return $resultObject;
 	}
 }
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaIntegrationClientPlugin extends KalturaClientPlugin
+class KalturaBumperClientPlugin extends KalturaClientPlugin
 {
 	/**
-	 * @var KalturaIntegrationService
+	 * @var KalturaBumperService
 	 */
-	public $integration = null;
+	public $bumper = null;
 
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->integration = new KalturaIntegrationService($client);
+		$this->bumper = new KalturaBumperService($client);
 	}
 
 	/**
-	 * @return KalturaIntegrationClientPlugin
+	 * @return KalturaBumperClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaIntegrationClientPlugin($client);
+		return new KalturaBumperClientPlugin($client);
 	}
 
 	/**
@@ -204,7 +190,7 @@ class KalturaIntegrationClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'integration' => $this->integration,
+			'bumper' => $this->bumper,
 		);
 		return $services;
 	}
@@ -214,7 +200,7 @@ class KalturaIntegrationClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'integration';
+		return 'bumper';
 	}
 }
 

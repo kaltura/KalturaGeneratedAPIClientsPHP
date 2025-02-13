@@ -112,6 +112,17 @@ class KalturaHttpNotificationTemplateOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSecureHashingAlgo extends KalturaEnumBase
+{
+	const SHA_1 = 1;
+	const SHA_256 = 2;
+	const SHA_512 = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaHttpNotification extends KalturaObjectBase
 {
 	/**
@@ -377,6 +388,13 @@ class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate
 	 * @var array of KalturaKeyValue
 	 */
 	public $customHeaders;
+
+	/**
+	 * The type of SHA to use.
+	 *
+	 * @var KalturaSecureHashingAlgo
+	 */
+	public $secureHashingAlgo = null;
 
 
 }

@@ -39,6 +39,16 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEventNotificationDelayedCondition extends KalturaEnumBase
+{
+	const NONE = 0;
+	const PENDING_ENTRY_READY = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEventNotificationTemplateStatus extends KalturaEnumBase
 {
 	const DISABLED = 1;
@@ -64,6 +74,7 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
 	const DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile";
 	const METADATA = "metadataEventNotifications.Metadata";
 	const TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset";
+	const VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const ASSET = "3";
@@ -146,11 +157,13 @@ class KalturaEventNotificationTemplateOrderBy extends KalturaEnumBase
  */
 class KalturaEventNotificationTemplateType extends KalturaEnumBase
 {
+	const BOOLEAN = "booleanNotification.Boolean";
 	const BPM_ABORT = "businessProcessNotification.BusinessProcessAbort";
 	const BPM_SIGNAL = "businessProcessNotification.BusinessProcessSignal";
 	const BPM_START = "businessProcessNotification.BusinessProcessStart";
 	const EMAIL = "emailNotification.Email";
 	const HTTP = "httpNotification.Http";
+	const KAFKA = "kafkaNotification.Kafka";
 	const PUSH = "pushNotification.Push";
 }
 
@@ -281,7 +294,7 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 	public $eventType = null;
 
 	/**
-	 * Define the object that raied the event that should trigger this notification
+	 * Define the object that raised the event that should trigger this notification
 	 *
 	 * @var KalturaEventNotificationEventObjectType
 	 */
@@ -307,6 +320,13 @@ class KalturaEventNotificationTemplate extends KalturaObjectBase
 	 * @var array of KalturaEventNotificationParameter
 	 */
 	public $userParameters;
+
+	/**
+	 * Event batch job will be delayed until specific condition criteria is met
+	 *
+	 * @var KalturaEventNotificationDelayedCondition
+	 */
+	public $eventDelayedCondition = null;
 
 
 }

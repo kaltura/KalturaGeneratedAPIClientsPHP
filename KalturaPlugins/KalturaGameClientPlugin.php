@@ -34,46 +34,42 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaElasticSearchClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchHistoryAggregateFieldName extends KalturaEnumBase
+class KalturaGameObjectType extends KalturaEnumBase
 {
-	const SEARCH_TERM = "search_term";
+	const LEADERBOARD = "1";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchHistory extends KalturaObjectBase
+class KalturaUserScoreProperties extends KalturaObjectBase
 {
 	/**
 	 * 
 	 *
-	 * @var string
-	 * @readonly
+	 * @var int
 	 */
-	public $searchTerm = null;
+	public $rank = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
-	public $searchedObject = null;
+	public $userId = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $timestamp = null;
+	public $score = null;
 
 
 }
@@ -82,77 +78,16 @@ class KalturaESearchHistory extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaESearchHistoryAggregationItem extends KalturaESearchAggregationItem
+class KalturaUserScorePropertiesResponse extends KalturaListResponse
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaESearchHistoryAggregateFieldName
-	 */
-	public $fieldName = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchHistoryFilter extends KalturaESearchBaseFilter
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $searchTermStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $searchedObjectIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchRange
-	 */
-	public $timestampRange;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaESearchHistoryAggregationItem
-	 */
-	public $aggregation;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaESearchHistoryListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchHistory
+	 * @var array of KalturaUserScoreProperties
 	 * @readonly
 	 */
 	public $objects;
 
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchAggregationResponseItem
-	 * @readonly
-	 */
-	public $aggregations;
-
 
 }
 
@@ -160,14 +95,51 @@ class KalturaESearchHistoryListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchHistoryCsvJobData extends KalturaExportCsvJobData
+abstract class KalturaUserScorePropertiesBaseFilter extends KalturaRelatedFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUserScorePropertiesFilter extends KalturaUserScorePropertiesBaseFilter
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaESearchHistoryFilter
+	 * @var string
 	 */
-	public $filter;
+	public $gameObjectId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaGameObjectType
+	 */
+	public $gameObjectType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $placesAboveUser = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $placesBelowUser = null;
 
 
 }
@@ -177,7 +149,7 @@ class KalturaSearchHistoryCsvJobData extends KalturaExportCsvJobData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchHistoryService extends KalturaServiceBase
+class KalturaUserScoreService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
 	{
@@ -187,56 +159,70 @@ class KalturaSearchHistoryService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param string $searchTerm 
+	 * @param string $gameObjectId 
+	 * @param string $gameObjectType 
+	 * @param string $userId 
+	 * @return KalturaUserScorePropertiesResponse
 	 */
-	function delete($searchTerm)
+	function delete($gameObjectId, $gameObjectType, $userId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "searchTerm", $searchTerm);
-		$this->client->queueServiceActionCall("searchhistory_searchhistory", "delete", $kparams);
+		$this->client->addParam($kparams, "gameObjectId", $gameObjectId);
+		$this->client->addParam($kparams, "gameObjectType", $gameObjectType);
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->queueServiceActionCall("game_userscore", "delete", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
-	}
-
-	/**
-	 * 
-	 * 
-	 * @param KalturaESearchHistoryFilter $filter A filter used to aggregate the search terms
-	 * @return string
-	 */
-	function exportToCsv(KalturaESearchHistoryFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("searchhistory_searchhistory", "exportToCsv", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultObject = $this->client->doQueue();
-		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "string");
+		$this->client->validateObjectType($resultObject, "KalturaUserScorePropertiesResponse");
 		return $resultObject;
 	}
 
 	/**
 	 * 
 	 * 
-	 * @param KalturaESearchHistoryFilter $filter 
-	 * @return KalturaESearchHistoryListResponse
+	 * @param KalturaUserScorePropertiesFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaUserScorePropertiesResponse
 	 */
-	function listAction(KalturaESearchHistoryFilter $filter = null)
+	function listAction(KalturaUserScorePropertiesFilter $filter, KalturaFilterPager $pager = null)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("searchhistory_searchhistory", "list", $kparams);
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("game_userscore", "list", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "KalturaESearchHistoryListResponse");
+		$this->client->validateObjectType($resultObject, "KalturaUserScorePropertiesResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param string $gameObjectId 
+	 * @param string $gameObjectType 
+	 * @param string $userId 
+	 * @param int $score 
+	 * @return KalturaUserScorePropertiesResponse
+	 */
+	function update($gameObjectId, $gameObjectType, $userId, $score)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "gameObjectId", $gameObjectId);
+		$this->client->addParam($kparams, "gameObjectType", $gameObjectType);
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "score", $score);
+		$this->client->queueServiceActionCall("game_userscore", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserScorePropertiesResponse");
 		return $resultObject;
 	}
 }
@@ -244,25 +230,25 @@ class KalturaSearchHistoryService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaSearchHistoryClientPlugin extends KalturaClientPlugin
+class KalturaGameClientPlugin extends KalturaClientPlugin
 {
 	/**
-	 * @var KalturaSearchHistoryService
+	 * @var KalturaUserScoreService
 	 */
-	public $searchHistory = null;
+	public $userScore = null;
 
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
-		$this->searchHistory = new KalturaSearchHistoryService($client);
+		$this->userScore = new KalturaUserScoreService($client);
 	}
 
 	/**
-	 * @return KalturaSearchHistoryClientPlugin
+	 * @return KalturaGameClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaSearchHistoryClientPlugin($client);
+		return new KalturaGameClientPlugin($client);
 	}
 
 	/**
@@ -271,7 +257,7 @@ class KalturaSearchHistoryClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
-			'searchHistory' => $this->searchHistory,
+			'userScore' => $this->userScore,
 		);
 		return $services;
 	}
@@ -281,7 +267,7 @@ class KalturaSearchHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'searchHistory';
+		return 'game';
 	}
 }
 

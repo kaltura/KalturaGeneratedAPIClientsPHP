@@ -645,6 +645,25 @@ class KalturaBaseEntryService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param KalturaBaseEntryFilter $filter 
+	 * @return int
+	 */
+	function bulkDelete(KalturaBaseEntryFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("baseentry", "bulkDelete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "integer");
+		return $resultObject;
+	}
+
+	/**
 	 * Clone an entry with optional attributes to apply to the clone
 	 * 
 	 * @param string $entryId Id of entry to clone
@@ -4402,6 +4421,25 @@ class KalturaLiveStreamService extends KalturaServiceBase
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
 		$this->client->validateObjectType($resultObject, "KalturaLiveStreamDetails");
+		return $resultObject;
+	}
+
+	/**
+	 * Deliver information about the livestream
+	 * 
+	 * @param string $entryId Id of the live stream entry
+	 * @return KalturaLiveStreamStats
+	 */
+	function getLiveStreamStats($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("livestream", "getLiveStreamStats", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaLiveStreamStats");
 		return $resultObject;
 	}
 
@@ -8849,6 +8887,125 @@ class KalturaUploadTokenService extends KalturaServiceBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUserAppRoleService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * Assign an application role for a user
+	 * 
+	 * @param KalturaUserAppRole $userAppRole 
+	 * @return KalturaUserAppRole
+	 */
+	function add(KalturaUserAppRole $userAppRole)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userAppRole", $userAppRole->toParams());
+		$this->client->queueServiceActionCall("userapprole", "add", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserAppRole");
+		return $resultObject;
+	}
+
+	/**
+	 * Delete an application role for a user and app guid
+	 * 
+	 * @param string $userId The user id
+	 * @param string $appGuid The app-registry id
+	 * @return bool
+	 */
+	function delete($userId, $appGuid)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "appGuid", $appGuid);
+		$this->client->queueServiceActionCall("userapprole", "delete", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
+	 * Get an application role for a user and app guid
+	 * 
+	 * @param string $userId The user id
+	 * @param string $appGuid The app-registry id
+	 * @return KalturaUserAppRole
+	 */
+	function get($userId, $appGuid)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "appGuid", $appGuid);
+		$this->client->queueServiceActionCall("userapprole", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserAppRole");
+		return $resultObject;
+	}
+
+	/**
+	 * List an application roles by filter and pager
+	 * 
+	 * @param KalturaUserAppRoleFilter $filter 
+	 * @param KalturaFilterPager $pager 
+	 * @return KalturaUserAppRoleListResponse
+	 */
+	function listAction(KalturaUserAppRoleFilter $filter = null, KalturaFilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("userapprole", "list", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserAppRoleListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * Update an application role for a user
+	 * 
+	 * @param string $userId 
+	 * @param string $appGuid 
+	 * @param KalturaUserAppRole $userAppRole 
+	 * @return KalturaUserAppRole
+	 */
+	function update($userId, $appGuid, KalturaUserAppRole $userAppRole)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "appGuid", $appGuid);
+		$this->client->addParam($kparams, "userAppRole", $userAppRole->toParams());
+		$this->client->queueServiceActionCall("userapprole", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUserAppRole");
+		return $resultObject;
+	}
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserEntryService extends KalturaServiceBase
 {
 	function __construct(KalturaClient $client = null)
@@ -9525,6 +9682,30 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * Replace a user's existing login data to a new or an existing login data
+	 to only be used when admin impersonates a partner
+	 * 
+	 * @param string $userId The user's unique identifier in the partner's system
+	 * @param string $newLoginId The new user's email address that identifies the user for login
+	 * @param string $existingLoginId The user's email address that identifies the user for login
+	 * @return KalturaUser
+	 */
+	function replaceUserLoginData($userId, $newLoginId, $existingLoginId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "newLoginId", $newLoginId);
+		$this->client->addParam($kparams, "existingLoginId", $existingLoginId);
+		$this->client->queueServiceActionCall("user", "replaceUserLoginData", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUser");
+		return $resultObject;
+	}
+
+	/**
 	 * Reset user's password and send the user an email to generate a new one.
 	 * 
 	 * @param string $email The user's email address (login email)
@@ -10088,6 +10269,12 @@ class KalturaClient extends KalturaClientBase
 	public $uploadToken = null;
 
 	/**
+	 * Manage application based roles for user
+	 * @var KalturaUserAppRoleService
+	 */
+	public $userAppRole = null;
+
+	/**
 	 * 
 	 * @var KalturaUserEntryService
 	 */
@@ -10121,8 +10308,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:23-03-23');
-		$this->setApiVersion('19.4.0');
+		$this->setClientTag('php5:25-02-05');
+		$this->setApiVersion('21.9.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
@@ -10175,6 +10362,7 @@ class KalturaClient extends KalturaClientBase
 		$this->uiConf = new KalturaUiConfService($this);
 		$this->upload = new KalturaUploadService($this);
 		$this->uploadToken = new KalturaUploadTokenService($this);
+		$this->userAppRole = new KalturaUserAppRoleService($this);
 		$this->userEntry = new KalturaUserEntryService($this);
 		$this->userRole = new KalturaUserRoleService($this);
 		$this->user = new KalturaUserService($this);

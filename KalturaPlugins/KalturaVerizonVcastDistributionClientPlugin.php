@@ -34,47 +34,49 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaVerizonVcastDistributionProfileOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVerizonVcastDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVerizonVcastDistributionProvider extends KalturaDistributionProvider
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVerizonVcastDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
 {
 	/**
-	 * Playback context
+	 * 
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
-	 *
-	 * @var int
-	 */
-	public $lastTimeReached = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
+	public $xml = null;
 
 
 }
@@ -83,63 +85,84 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaVerizonVcastDistributionProfile extends KalturaConfigurableDistributionProfile
 {
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $idEqual = null;
+	public $ftpHost = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $idIn = null;
+	public $ftpLogin = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $userIdEqual = null;
+	public $ftpPass = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $userIdIn = null;
+	public $providerName = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $updatedAtGreaterThanOrEqual = null;
+	public $providerId = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
+	public $entitlement = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $extendedStatusIn = null;
+	public $priority = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowStreaming = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $streamingPriceCode = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowDownload = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $downloadPriceCode = null;
 
 
 }
@@ -148,29 +171,8 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
+abstract class KalturaVerizonVcastDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
 
 }
 
@@ -178,7 +180,34 @@ class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaVerizonVcastDistributionProviderFilter extends KalturaVerizonVcastDistributionProviderBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaVerizonVcastDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVerizonVcastDistributionProfileFilter extends KalturaVerizonVcastDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVerizonVcastDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +215,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaVerizonVcastDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaVerizonVcastDistributionClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +237,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'verizonVcastDistribution';
 	}
 }
 

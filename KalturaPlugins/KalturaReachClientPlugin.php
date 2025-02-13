@@ -37,6 +37,7 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaCaptionClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaScheduleClientPlugin.php");
 
 /**
  * @package Kaltura
@@ -114,6 +115,16 @@ class KalturaVendorCatalogItemOutputFormat extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorCatalogItemStage extends KalturaEnumBase
+{
+	const PRODUCTION = 1;
+	const QA = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorCatalogItemStatus extends KalturaEnumBase
 {
 	const DEPRECATED = 1;
@@ -136,6 +147,11 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const DUBBING = 7;
 	const LIVE_CAPTION = 8;
 	const EXTENDED_AUDIO_DESCRIPTION = 9;
+	const CLIPS = 10;
+	const LIVE_TRANSLATION = 11;
+	const QUIZ = 12;
+	const SUMMARY = 13;
+	const VIDEO_ANALYSIS = 14;
 }
 
 /**
@@ -191,52 +207,108 @@ class KalturaVendorTaskProcessingRegion extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorVideoAnalysisType extends KalturaEnumBase
+{
+	const OCR = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCatalogItemLanguage extends KalturaEnumBase
 {
+	const AF = "Afrikaans";
 	const AR = "Arabic";
+	const AUTO_DETECT = "Auto Detect";
+	const AZ = "Azerbaijani";
+	const BA = "Bashkir";
+	const EU = "Basque";
+	const BN = "Bengali (Bangla)";
+	const BS = "Bosnian";
+	const BG = "Bulgarian";
+	const MY = "Burmese";
+	const BE = "Byelorussian (Belarusian)";
+	const KM = "Cambodian";
 	const YUE = "Cantonese";
 	const CA = "Catalan";
 	const ZH = "Chinese";
+	const HR = "Croatian";
 	const CS = "Czech";
 	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";
 	const EN_US = "English (American)";
+	const EN_AU = "English (Australian)";
 	const EN_GB = "English (British)";
+	const EO = "Esperanto";
+	const ET = "Estonian";
+	const FA = "Farsi";
 	const FI = "Finnish";
 	const FR = "French";
 	const FR_CA = "French (Canada)";
 	const GD = "Gaelic (Scottish)";
+	const GL = "Galician";
+	const KA = "Georgian";
 	const DE = "German";
 	const EL = "Greek";
+	const GU = "Gujarati";
 	const HE = "Hebrew";
 	const HI = "Hindi";
 	const HU = "Hungarian";
 	const IS = "Icelandic";
 	const IN = "Indonesian";
+	const IA = "Interlingua";
 	const GA = "Irish";
 	const IT = "Italian";
 	const JA = "Japanese";
+	const JV = "Javanese";
+	const KN = "Kannada";
+	const KK = "Kazakh";
 	const KO = "Korean";
+	const LO = "Laothian";
+	const LV = "Latvian (Lettish)";
+	const LT = "Lithuanian";
+	const MK = "Macedonian";
+	const MS = "Malay";
 	const ML = "Malayalam";
 	const CMN = "Mandarin Chinese";
+	const MR = "Marathi";
+	const MN = "Mongolian";
+	const NE = "Nepali";
 	const NO = "Norwegian";
+	const FA_IR = "Persian (Iran)";
 	const PL = "Polish";
 	const PT = "Portuguese";
 	const PT_BR = "Portuguese (Brazil)";
+	const PA = "Punjabi";
 	const RO = "Romanian";
 	const RU = "Russian";
+	const SR = "Serbian";
+	const ZH_CN = "Simplified Chinese";
+	const SI = "Sinhalese";
+	const SK = "Slovak";
+	const SK_SK = "Slovakian";
+	const SL = "Slovenian";
 	const ES = "Spanish";
 	const ES_XL = "Spanish (Latin America)";
+	const SU = "Sundanese";
+	const SW = "Swahili (Kiswahili)";
 	const SV = "Swedish";
+	const TL = "Tagalog";
 	const ZH_TW = "Taiwanese Mandarin";
 	const TA = "Tamil";
+	const TE = "Telugu";
 	const TH = "Thai";
+	const ZH_HK = "Traditional Chinese";
 	const TR = "Turkish";
+	const UG = "Uighur";
 	const UK = "Ukrainian";
 	const UR = "Urdu";
+	const UZ = "Uzbek";
 	const VI = "Vietnamese";
 	const CY = "Welsh";
+	const XH = "Xhosa";
 	const ZU = "Zulu";
 }
 
@@ -284,6 +356,29 @@ class KalturaReachProfileOrderBy extends KalturaEnumBase
  */
 class KalturaReachVendorEngineType extends KalturaEnumBase
 {
+	const OPEN_CALAIS = "OpenCalaisReachVendor.OPEN_CALAIS";
+	const HELLO_WORLD = "ReachInternal.HELLO_WORLD";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSummaryWritingStyleTaskData extends KalturaEnumBase
+{
+	const CASUAL = "casual";
+	const FORMAL = "formal";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTypeOfSummaryTaskData extends KalturaEnumBase
+{
+	const CONCISE = "concise";
+	const DETAILED = "detailed";
+	const EXTENSIVE = "extensive";
 }
 
 /**
@@ -320,6 +415,7 @@ class KalturaVendorCatalogItemOrderBy extends KalturaEnumBase
  */
 class KalturaVendorCatalogItemPriceFunction extends KalturaEnumBase
 {
+	const PRICE_PER_HOUR = "kReachUtils::calcPricePerHour";
 	const PRICE_PER_MINUTE = "kReachUtils::calcPricePerMinute";
 	const PRICE_PER_SECOND = "kReachUtils::calcPricePerSecond";
 }
@@ -968,6 +1064,62 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	 */
 	public $allowResubmission = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $vendorData = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemStage
+	 */
+	public $stage = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lastBulkUpdateId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contract = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $createdBy = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $notes = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminTagsToExclude = null;
+
 
 }
 
@@ -1093,6 +1245,47 @@ class KalturaCategoryEntryCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaClipsVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * Estimated duration of the clips, in seconds.
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $clipsDuration = null;
+
+	/**
+	 * Event session context ID used to enhance clip results.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $eventSessionContextId = null;
+
+	/**
+	 * Instruction describing the moments to capture or the objectives to achieve with the clips.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
+	/**
+	 * List of clips as JSON string.
+	 * 	 For example: [{"title": "Title of the first clip", "description": "Description of the first clip", "tags": "Tagged-Example", "start": 127, "duration": 30}]
+	 *
+	 * @var string
+	 */
+	public $clipsOutputJson = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryVendorTaskListResponse extends KalturaListResponse
 {
 	/**
@@ -1119,6 +1312,57 @@ class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
 	 * @insertonly
 	 */
 	public $assetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaQuizVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * Number Of Questions.
+	 *
+	 * @var int
+	 */
+	public $numberOfQuestions = null;
+
+	/**
+	 * Questions Type.
+	 *
+	 * @var string
+	 */
+	public $questionsType = null;
+
+	/**
+	 * Quiz Context.
+	 *
+	 * @var string
+	 */
+	public $context = null;
+
+	/**
+	 * Formal Style.
+	 *
+	 * @var string
+	 */
+	public $formalStyle = null;
+
+	/**
+	 * Create quiz flag.
+	 *
+	 * @var bool
+	 */
+	public $createQuiz = null;
+
+	/**
+	 * Quiz entry Id
+	 *
+	 * @var string
+	 */
+	public $quizOutput = null;
 
 
 }
@@ -1169,6 +1413,43 @@ class KalturaScheduledVendorTaskData extends KalturaVendorTaskData
 	 * @insertonly
 	 */
 	public $scheduledEventId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSummaryVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * Type of summary.
+	 *
+	 * @var KalturaTypeOfSummaryTaskData
+	 */
+	public $typeOfSummary = null;
+
+	/**
+	 * Writing style of the summary.
+	 *
+	 * @var KalturaSummaryWritingStyleTaskData
+	 */
+	public $writingStyle = null;
+
+	/**
+	 * Language code
+	 *
+	 * @var KalturaLanguageCode
+	 */
+	public $language = null;
+
+	/**
+	 * JSON string containing the summary output.
+	 *
+	 * @var string
+	 */
+	public $summaryOutputJson = null;
 
 
 }
@@ -1296,6 +1577,15 @@ class KalturaVendorChapteringCatalogItem extends KalturaVendorCatalogItem
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorClipsCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorCredit extends KalturaBaseVendorCredit
 {
 	/**
@@ -1402,6 +1692,24 @@ class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogIte
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorQuizCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSummaryCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaVendorTaskDataCaptionAsset extends KalturaVendorTaskData
 {
 	/**
@@ -1411,6 +1719,29 @@ abstract class KalturaVendorTaskDataCaptionAsset extends KalturaVendorTaskData
 	 * @insertonly
 	 */
 	public $captionAssetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorVideoAnalysisCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorVideoAnalysisType
+	 */
+	public $videoAnalysisType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $maxVideoDuration = null;
 
 
 }
@@ -1914,7 +2245,7 @@ abstract class KalturaVendorCatalogItemBaseFilter extends KalturaRelatedFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaVendorLiveCaptionCatalogItem extends KalturaVendorCaptionsCatalogItem
+class KalturaVendorLiveCatalogItem extends KalturaVendorCaptionsCatalogItem
 {
 	/**
 	 * 
@@ -1952,6 +2283,13 @@ class KalturaVendorTranslationCatalogItem extends KalturaVendorCaptionsCatalogIt
 	 * @var KalturaCatalogItemLanguage
 	 */
 	public $targetLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $requireSource = null;
 
 
 }
@@ -1993,6 +2331,38 @@ class KalturaVendorCatalogItemFilter extends KalturaVendorCatalogItemBaseFilter
 	 * @var int
 	 */
 	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $catalogItemIdEqual = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLiveCaptionCatalogItem extends KalturaVendorLiveCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLiveTranslationCatalogItem extends KalturaVendorLiveCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemLanguage
+	 */
+	public $targetLanguage = null;
 
 
 }
@@ -2038,6 +2408,15 @@ abstract class KalturaVendorCaptionsCatalogItemBaseFilter extends KalturaVendorC
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorClipsCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCatalogItemFilter
 {
 	/**
@@ -2054,6 +2433,42 @@ abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCa
 	 */
 	public $targetLanguageIn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorIntelligentTaggingCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorQuizCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSummaryCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorVideoAnalysisCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
 
 }
 
@@ -2140,6 +2555,15 @@ abstract class KalturaVendorTranslationCatalogItemBaseFilter extends KalturaVend
 	 */
 	public $targetLanguageIn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLiveTranslationCatalogItemFilter extends KalturaVendorTranslationCatalogItemBaseFilter
+{
 
 }
 

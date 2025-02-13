@@ -148,6 +148,13 @@ class KalturaTagFilter extends KalturaFilter
 	 *
 	 * @var string
 	 */
+	public $objectTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $tagEqual = null;
 
 	/**

@@ -906,6 +906,20 @@ class KalturaLiveCaptionFeature extends KalturaLiveFeature
 	 */
 	public $inputDelay = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $language = null;
+
 
 }
 
@@ -944,6 +958,13 @@ class KalturaLiveRestreamFeature extends KalturaLiveFeature
 	 * @var string
 	 */
 	public $secondaryUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackUrl = null;
 
 	/**
 	 * 
@@ -1871,6 +1892,13 @@ class KalturaBlackoutScheduleEventFilter extends KalturaRecordScheduleEventBaseF
  */
 class KalturaLiveStreamScheduleEventFilter extends KalturaLiveStreamScheduleEventBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sourceEntryIdEqual = null;
+
 
 }
 

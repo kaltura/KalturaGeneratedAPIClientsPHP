@@ -127,6 +127,7 @@ class KalturaCuePointType extends KalturaEnumBase
 	const EVENT = "eventCuePoint.Event";
 	const QUIZ_ANSWER = "quiz.QUIZ_ANSWER";
 	const QUIZ_QUESTION = "quiz.QUIZ_QUESTION";
+	const SESSION = "sessionCuePoint.Session";
 	const THUMB = "thumbCuePoint.Thumb";
 }
 

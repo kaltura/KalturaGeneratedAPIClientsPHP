@@ -569,6 +569,29 @@ class KalturaDocumentsService extends KalturaServiceBase
 	}
 
 	/**
+	 * Add content to document entry which is not yet associated with content (therefore is in status NO_CONTENT).
+	 If the requirement is to replace the entry's associated content, use action updateContent.
+	 * 
+	 * @param string $entryId 
+	 * @param KalturaResource $resource 
+	 * @return KalturaDocumentEntry
+	 */
+	function addContent($entryId, KalturaResource $resource = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		if ($resource !== null)
+			$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->queueServiceActionCall("document_documents", "addContent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaDocumentEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * Copy entry into new entry
 	 * 
 	 * @param string $sourceEntryId Document entry id to copy from

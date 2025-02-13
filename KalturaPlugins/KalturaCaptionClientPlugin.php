@@ -69,6 +69,16 @@ class KalturaCaptionAssetOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaCaptionAssetUsage extends KalturaEnumBase
+{
+	const CAPTION = "0";
+	const EXTENDED_AUDIO_DESCRIPTION = "1";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCaptionParamsOrderBy extends KalturaEnumBase
 {
 }
@@ -192,6 +202,13 @@ class KalturaCaptionAsset extends KalturaAsset
 	 * @var string
 	 */
 	public $associatedTranscriptIds = null;
+
+	/**
+	 * The usage of the asset
+	 *
+	 * @var KalturaCaptionAssetUsage
+	 */
+	public $usage = null;
 
 
 }

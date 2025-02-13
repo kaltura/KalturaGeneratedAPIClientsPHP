@@ -35,162 +35,81 @@ require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
 
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
-{
-	/**
-	 * Playback context
-	 *
-	 * @var string
-	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
-	 *
-	 * @var int
-	 */
-	public $lastTimeReached = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
-
-
-}
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaSharepointExtensionService extends KalturaServiceBase
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
-{
-	protected function __construct(KalturaClient $client)
+	function __construct(KalturaClient $client = null)
 	{
 		parent::__construct($client);
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * Is this Kaltura-Sharepoint-Server-Plugin supports minimum version of $major.$minor.$build (which is required by the extension)
+	 * 
+	 * @param int $serverMajor 
+	 * @param int $serverMinor 
+	 * @param int $serverBuild 
+	 * @return bool
+	 */
+	function isVersionSupported($serverMajor, $serverMinor, $serverBuild)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverMajor", $serverMajor);
+		$this->client->addParam($kparams, "serverMinor", $serverMinor);
+		$this->client->addParam($kparams, "serverBuild", $serverBuild);
+		$this->client->queueServiceActionCall("kalturasharepointextension_sharepointextension", "isVersionSupported", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$resultObject = (bool) $resultObject;
+		return $resultObject;
+	}
+
+	/**
+	 * List uiconfs for sharepoint extension
+	 * 
+	 * @return KalturaUiConfListResponse
+	 */
+	function listUiconfs()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("kalturasharepointextension_sharepointextension", "listUiconfs", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUiConfListResponse");
+		return $resultObject;
+	}
+}
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKalturaSharepointExtensionClientPlugin extends KalturaClientPlugin
+{
+	/**
+	 * @var KalturaSharepointExtensionService
+	 */
+	public $sharepointExtension = null;
+
+	protected function __construct(KalturaClient $client)
+	{
+		parent::__construct($client);
+		$this->sharepointExtension = new KalturaSharepointExtensionService($client);
+	}
+
+	/**
+	 * @return KalturaKalturaSharepointExtensionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaKalturaSharepointExtensionClientPlugin($client);
 	}
 
 	/**
@@ -199,6 +118,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'sharepointExtension' => $this->sharepointExtension,
 		);
 		return $services;
 	}
@@ -208,7 +128,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'KalturaSharepointExtension';
 	}
 }
 

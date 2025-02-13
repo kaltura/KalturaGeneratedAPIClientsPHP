@@ -34,47 +34,101 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaCuePointClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaSessionCuePointOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const END_TIME_ASC = "+endTime";
+	const INT_ID_ASC = "+intId";
+	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
+	const START_TIME_ASC = "+startTime";
+	const TRIGGERED_AT_ASC = "+triggeredAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const END_TIME_DESC = "-endTime";
+	const INT_ID_DESC = "-intId";
+	const PARTNER_SORT_VALUE_DESC = "-partnerSortValue";
+	const START_TIME_DESC = "-startTime";
+	const TRIGGERED_AT_DESC = "-triggeredAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSessionCuePoint extends KalturaCuePoint
 {
 	/**
-	 * Playback context
+	 * 
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
+	public $name = null;
 
 	/**
-	 * Last playback time reached by user
+	 * 
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
+	public $endTime = null;
+
+	/**
+	 * Duration in milliseconds
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sessionOwner = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaSessionCuePointBaseFilter extends KalturaCuePointFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $endTimeGreaterThanOrEqual = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
+	public $endTimeLessThanOrEqual = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var int
 	 */
-	public $extendedStatus = null;
+	public $durationGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $durationLessThanOrEqual = null;
 
 
 }
@@ -83,64 +137,8 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaSessionCuePointFilter extends KalturaSessionCuePointBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
 
 }
 
@@ -148,37 +146,7 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaSessionCuePointClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +154,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaSessionCuePointClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaSessionCuePointClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +176,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'sessionCuePoint';
 	}
 }
 

@@ -126,6 +126,33 @@ class KalturaBitRateMode extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaBorderStyle extends KalturaEnumBase
+{
+	const OUTLINE_WITH_SHADOW = 1;
+	const OPAQUE_BOX = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCaptionsAlignment extends KalturaEnumBase
+{
+	const BOTTOM_LEFT = 1;
+	const BOTTOM_CENTER = 2;
+	const BOTTOM_RIGHT = 3;
+	const TOP_LEFT = 4;
+	const TOP_CENTER = 6;
+	const TOP_RIGHT = 7;
+	const CENTER_LEFT = 8;
+	const CENTER_CENTER = 10;
+	const CENTER_RIGHT = 11;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCategoryEntryStatus extends KalturaEnumBase
 {
 	const PENDING = 1;
@@ -169,6 +196,17 @@ class KalturaCategoryUserStatus extends KalturaEnumBase
 	const PENDING = 2;
 	const NOT_ACTIVE = 3;
 	const DELETED = 4;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaChapterNamePolicy extends KalturaEnumBase
+{
+	const BY_ENTRY_ID = 1;
+	const BY_ENTRY_NAME = 2;
+	const NUMERICAL = 3;
 }
 
 /**
@@ -1177,6 +1215,8 @@ class KalturaUiConfObjType extends KalturaEnumBase
 	const KSR = 19;
 	const KUPLOAD = 20;
 	const WEBCASTING = 21;
+	const SAP = 22;
+	const REELS = 23;
 }
 
 /**
@@ -1524,6 +1564,7 @@ class KalturaBaseEntryCloneOptions extends KalturaEnumBase
 	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
 	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
 	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
+	const SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS";
 	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 	const USERS = "1";
 	const CATEGORIES = "2";
@@ -1654,6 +1695,7 @@ class KalturaBatchJobObjectType extends KalturaEnumBase
 	const CATEGORY = "2";
 	const FILE_SYNC = "3";
 	const ASSET = "4";
+	const USER = "5";
 }
 
 /**
@@ -1689,6 +1731,7 @@ class KalturaBatchJobOrderBy extends KalturaEnumBase
 class KalturaBatchJobType extends KalturaEnumBase
 {
 	const CONVERT = "0";
+	const REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler";
 	const CONVERT_CAPTION_ASSET = "caption.convertcaptionasset";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
@@ -1706,6 +1749,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const ENTRY_VENDOR_TASK_CSV = "reach.EntryVendorTasksCsv";
 	const SYNC_REACH_CREDIT_TASK = "reach.SyncReachCreditTask";
 	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
+	const SEARCH_TERM_CSV = "searchHistory.searchTermsCsv";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
@@ -1762,6 +1806,7 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const STORAGE_PERIODIC_PURGE = "54";
 	const STORAGE_PERIODIC_DELETE_LOCAL = "55";
 	const REACH_JOB_CLEANER = "56";
+	const MULTI_CLIP_CONCAT = "57";
 }
 
 /**
@@ -1920,6 +1965,7 @@ class KalturaCloneComponentSelectorType extends KalturaEnumBase
  */
 class KalturaConditionType extends KalturaEnumBase
 {
+	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
 	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
 	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
 	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
@@ -2276,6 +2322,8 @@ class KalturaDeliveryProfileType extends KalturaEnumBase
 	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
 	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
 	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
+	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
+	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
 	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
 	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 	const APPLE_HTTP = "1";
@@ -2554,6 +2602,7 @@ class KalturaEntryType extends KalturaEnumBase
 	const AUTOMATIC = "-1";
 	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
 	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
+	const ROOM = "room.room";
 	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 	const MEDIA_CLIP = "1";
 	const MIX = "2";
@@ -2980,6 +3029,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const BIN = "Bini";
 	const BPY = "Bishnupriya Manipuri";
 	const BI = "Bislama";
+	const BS = "Bosnian";
 	const BR = "Breton";
 	const BUG = "Buginese";
 	const BG = "Bulgarian";
@@ -3044,6 +3094,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const EGL = "Emilian";
 	const EN = "English";
 	const EN_US = "English (American)";
+	const EN_AU = "English (Australian)";
 	const EN_GB = "English (British)";
 	const ENM = "English Middle (1100-1500)";
 	const MYV = "Erzya";
@@ -3097,8 +3148,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const HNI = "Hani";
 	const HA = "Hausa";
 	const HAW = "Hawaiian";
-	const IW = "Hebrew";
 	const HE = "Hebrew";
+	const IW = "Hebrew";
 	const HEI = "Heiltsuk";
 	const HID = "Hidatsa";
 	const HIL = "Hiligaynon";
@@ -3292,6 +3343,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const PS = "Pashto (Pushto)";
 	const PRP = "Persian";
 	const PRS = "Persian (Dari)";
+	const FA_IR = "Persian (Iran)";
 	const PFL = "Pfaelzisch";
 	const PCD = "Picard";
 	const PMS = "Piedmontese";
@@ -3359,6 +3411,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const SID = "Sidamo";
 	const BLA = "Siksika";
 	const SZL = "Silesian";
+	const ZH_CN = "Simplified Chinese";
 	const SD = "Sindhi";
 	const SI = "Sinhalese";
 	const SS = "Siswati";
@@ -3366,6 +3419,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const SCS = "Slavey North";
 	const XSL = "Slavey South";
 	const SK = "Slovak";
+	const SK_SK = "Slovakian";
 	const SL = "Slovenian";
 	const SO = "Somali";
 	const SNK = "Soninke";
@@ -3421,6 +3475,7 @@ class KalturaLanguage extends KalturaEnumBase
 	const TPI = "Tok Pisin";
 	const TO = "Tonga";
 	const TOG = "Tonga (Nyasa)";
+	const ZH_HK = "Traditional Chinese";
 	const DDO = "Tsez";
 	const TSI = "Tsimshian";
 	const TS = "Tsonga";
@@ -3463,8 +3518,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const JI = "Yiddish";
 	const YI = "Yiddish";
+	const JI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";
@@ -4311,6 +4366,7 @@ class KalturaMediaInfoOrderBy extends KalturaEnumBase
 class KalturaMediaParserType extends KalturaEnumBase
 {
 	const MEDIAINFO = "0";
+	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
 	const FFMPEG = "1";
 }
 
@@ -4804,6 +4860,7 @@ class KalturaReportType extends KalturaEnumBase
 	const DISCOVERY_VIEW_REALTIME = "10013";
 	const TOP_ENDED_BROADCAST_ENTRIES = "10014";
 	const TOP_LIVE_NOW_ENTRIES = "10015";
+	const LIVE_MEETING_USERS_OVERVIEW_REALTIME = "10016";
 	const CONTENT_DROPOFF_VPAAS = "20001";
 	const TOP_SYNDICATION_VPAAS = "20002";
 	const USER_TOP_CONTENT_VPAAS = "20003";
@@ -4910,6 +4967,28 @@ class KalturaReportType extends KalturaEnumBase
 	const VE_REGISTERED_ROLES = "50003";
 	const VE_REGISTERED_COUNTRIES = "50004";
 	const VE_REGISTERED_WORLD_REGIONS = "50005";
+	const VE_USER_HIGHLIGHTS = "50006";
+	const VE_ATTENDANCE_HIGHLIGHTS = "50007";
+	const VE_REGISTERED_COMPANIES = "50008";
+	const EP_WEBCAST_HIGHLIGHTS = "60001";
+	const EP_WEBCAST_UNIQUE_USERS = "60002";
+	const EP_WEBCAST_ENGAGEMENT = "60003";
+	const EP_WEBCAST_ENGAGEMENT_TIMELINE = "60004";
+	const EP_WEBCAST_TOP_RECORDING = "60005";
+	const EP_WEBCAST_TOP_PLATFORMS = "60006";
+	const EP_WEBCAST_MAP_OVERLAY_COUNTRY = "60007";
+	const EP_WEBCAST_MAP_OVERLAY_REGION = "60008";
+	const EP_WEBCAST_MAP_OVERLAY_CITY = "60009";
+	const EP_WEBCAST_LIVE_USER_ENGAGEMENT = "60010";
+	const EP_WEBCAST_LIVE_USER_ENGAGEMENT_LEVEL = "60011";
+	const EP_WEBCAST_VOD_USER_TOP_CONTENT = "60012";
+	const EP_WEBCAST_VOD_LIVE_USERS_ENGAGEMENT = "60013";
+	const EP_ATTENDEES = "60014";
+	const EP_VIEWTIME = "60015";
+	const EP_TOP_MOMENTS = "60016";
+	const EP_TOP_SESSIONS = "60017";
+	const EP_WEBCAST_ENGAGEMENT_OVER_TIME = "60018";
+	const CNC_PARTICIPATION = "70001";
 }
 
 /**
@@ -4921,6 +5000,8 @@ class KalturaResetPassLinkType extends KalturaEnumBase
 	const KMC = "1";
 	const KMS = "2";
 	const KME = "3";
+	const EP = "4";
+	const KME_NR = "5";
 }
 
 /**
@@ -5077,6 +5158,7 @@ class KalturaTaggedObjectType extends KalturaEnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";
+	const LIVESTREAMENTRY = "3";
 }
 
 /**
@@ -5182,6 +5264,15 @@ class KalturaUploadTokenOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaUserCapabilityType extends KalturaEnumBase
+{
+	const SYNCED_GROUP = "0";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUserEntryExtendedStatus extends KalturaEnumBase
 {
 	const SYNC_STATUS_ERROR = "quiz.SYNC_STATUS_ERROR";
@@ -5212,6 +5303,7 @@ class KalturaUserEntryStatus extends KalturaEnumBase
 	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";
 	const DELETED = "2";
+	const RECYCLED = "3";
 }
 
 /**
@@ -5220,6 +5312,7 @@ class KalturaUserEntryStatus extends KalturaEnumBase
  */
 class KalturaUserEntryType extends KalturaEnumBase
 {
+	const PERMISSION_LEVEL = "entryPermissionLevel.PERMISSION_LEVEL";
 	const QUIZ = "quiz.QUIZ";
 	const REGISTRATION = "registration.REGISTRATION";
 	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";

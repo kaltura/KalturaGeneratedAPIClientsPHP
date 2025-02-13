@@ -52,12 +52,14 @@ class KalturaGroupProcessStatus extends KalturaEnumBase
  */
 class KalturaESearchGroupFieldName extends KalturaEnumBase
 {
+	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const EXTERNAL_ID = "external_id";
 	const FIRST_NAME = "first_name";
+	const FULL_NAME = "full_name";
 	const GROUP_IDS = "group_ids";
 	const IS_ADMIN = "is_admin";
 	const IS_HASHED = "is_hashed";
@@ -79,6 +81,7 @@ class KalturaESearchGroupFieldName extends KalturaEnumBase
 class KalturaESearchGroupOrderByFieldName extends KalturaEnumBase
 {
 	const CREATED_AT = "created_at";
+	const FULL_NAME = "full_name";
 	const MEMBERS_COUNT = "members_count";
 	const USER_ID = "puser_id";
 	const SCREEN_NAME = "screen_name";

@@ -34,47 +34,50 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaDropFolderTrRdsFileHandlerConfig extends KalturaDropFolderFileHandlerConfig
 {
 	/**
-	 * Playback context
+	 * 
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
+	public $leadPattern = null;
 
 	/**
-	 * Last playback time reached by user
+	 * 
+	 *
+	 * @var string
+	 */
+	public $additionalPatterns = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTrRdsDropFolder extends KalturaSftpDropFolder
+{
+	/**
+	 * 
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
+	public $syncMetadataProfile = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
+	public $targetMetadataProfile = null;
 
 
 }
@@ -83,102 +86,7 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaTrRdsSyncDropFolderClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +94,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaTrRdsSyncDropFolderClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaTrRdsSyncDropFolderClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +116,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'TrRdsSyncDropFolder';
 	}
 }
 

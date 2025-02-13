@@ -39,42 +39,52 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaUserEntryPermissionLevel extends KalturaEnumBase
+{
+	const SPEAKER = 1;
+	const ROOM_MODERATOR = 2;
+	const ATTENDEE = 3;
+	const ADMIN = 4;
+	const PREVIEW_ONLY = 5;
+	const CHAT_MODERATOR = 6;
+	const PANELIST = 7;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPermissionLevel extends KalturaObjectBase
+{
+	/**
+	 * Permission Level
+	 *
+	 * @var KalturaUserEntryPermissionLevel
+	 */
+	public $permissionLevel = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPermissionLevelUserEntry extends KalturaUserEntry
 {
 	/**
 	 * Playback context
 	 *
-	 * @var string
+	 * @var array of KalturaPermissionLevel
 	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
-	 *
-	 * @var int
-	 */
-	public $lastTimeReached = null;
+	public $permissionLevels;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
+	public $permissionOrder = null;
 
 
 }
@@ -83,63 +93,14 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaPermissionLevelUserEntryFilter extends KalturaUserEntryFilter
 {
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaPermissionLevel
 	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
+	public $permissionLevels;
 
 
 }
@@ -148,37 +109,7 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaEntryPermissionLevelClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +117,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaEntryPermissionLevelClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaEntryPermissionLevelClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +139,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'entryPermissionLevel';
 	}
 }
 

@@ -142,6 +142,7 @@ class KalturaDropFolderFileErrorCode extends KalturaEnumBase
  */
 class KalturaDropFolderFileHandlerType extends KalturaEnumBase
 {
+	const TR_RDS = "TrRdsSyncDropFolder.TR_RDS";
 	const XML = "dropFolderXmlBulkUpload.XML";
 	const ICAL = "scheduleDropFolder.ICAL";
 	const CONTENT = "1";
@@ -193,8 +194,15 @@ class KalturaDropFolderOrderBy extends KalturaEnumBase
  */
 class KalturaDropFolderType extends KalturaEnumBase
 {
+	const AP_FEED = "ApFeedDropFolder.AP_FEED";
 	const FEED = "FeedDropFolder.FEED";
+	const MS_TEAMS = "MicrosoftTeamsDropFolder.MS_TEAMS";
+	const S3DROPFOLDER = "S3DropFolder.S3DROPFOLDER";
+	const TR_RDS_COMPANY = "TrRdsSyncDropFolder.TR_RDS_COMPANY";
+	const TR_RDS_TMCTERM = "TrRdsSyncDropFolder.TR_RDS_TMCTERM";
+	const WEBEX_API = "WebexAPIDropFolder.WEBEX_API";
 	const WEBEX = "WebexDropFolder.WEBEX";
+	const ZOOM = "ZoomDropFolder.ZOOM";
 	const LOCAL = "1";
 	const FTP = "2";
 	const SCP = "3";

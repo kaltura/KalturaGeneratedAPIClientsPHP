@@ -185,6 +185,20 @@ class KalturaVirtualEvent extends KalturaObjectBase
 	 */
 	public $registrationFormSchema = null;
 
+	/**
+	 * The Virtual Event Url
+	 *
+	 * @var string
+	 */
+	public $eventUrl = null;
+
+	/**
+	 * The Virtual Event WebHook registration token
+	 *
+	 * @var string
+	 */
+	public $webhookRegistrationToken = null;
+
 
 }
 

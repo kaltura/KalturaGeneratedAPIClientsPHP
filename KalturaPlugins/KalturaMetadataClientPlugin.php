@@ -1117,7 +1117,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Delete an existing metadata
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 */
 	function delete($id)
 	{
@@ -1134,7 +1134,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Retrieve a metadata object by id
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return KalturaMetadata
 	 */
 	function get($id)
@@ -1175,7 +1175,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	 * Mark existing metadata as invalid
 	 Used by batch metadata transform
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param int $version Enable update only if the metadata object version did not change by other process
 	 */
 	function invalidate($id, $version = null)
@@ -1217,7 +1217,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Serves metadata XML file
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @return file
 	 */
 	function serve($id)
@@ -1236,7 +1236,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Update an existing metadata object with new XML content
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param string $xmlData XML metadata
 	 * @param int $version Enable update only if the metadata object version did not change by other process
 	 * @return KalturaMetadata
@@ -1259,7 +1259,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Update an existing metadata object with new XML file
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param file $xmlFile XML metadata
 	 * @return KalturaMetadata
 	 */
@@ -1281,7 +1281,7 @@ class KalturaMetadataService extends KalturaServiceBase
 	/**
 	 * Action transforms current metadata object XML using a provided XSL.
 	 * 
-	 * @param int $id 
+	 * @param bigint $id 
 	 * @param file $xslFile 
 	 * @return KalturaMetadata
 	 */

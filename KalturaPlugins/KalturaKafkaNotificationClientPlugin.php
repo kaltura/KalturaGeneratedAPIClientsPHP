@@ -34,47 +34,79 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaKafkaNotificationFormat extends KalturaEnumBase
+{
+	const JSON = 1;
+	const AVRO = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKafkaNotificationTemplateOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const ID_ASC = "+id";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const ID_DESC = "-id";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKafkaNotificationTemplate extends KalturaEventNotificationTemplate
 {
 	/**
-	 * Playback context
+	 * Define the content dynamic parameters
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
+	public $topicName = null;
 
 	/**
-	 * Last playback time reached by user
-	 *
-	 * @var int
-	 */
-	public $lastTimeReached = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
+	 * Define the content dynamic parameters
 	 *
 	 * @var string
 	 */
-	public $playlistLastEntryId = null;
+	public $partitionKey = null;
 
 	/**
-	 * 
+	 * Define the content dynamic parameters
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var KalturaKafkaNotificationFormat
 	 */
-	public $extendedStatus = null;
+	public $messageFormat = null;
+
+	/**
+	 * Kaltura API object type
+	 *
+	 * @var string
+	 */
+	public $apiObjectType = null;
+
+	/**
+	 * Kaltura response-profile system name
+	 *
+	 * @var string
+	 */
+	public $responseProfileSystemName = null;
+
+	/**
+	 * Partner permissions needed to trigger the notification (comma seperated list of permissions)
+	 *
+	 * @var string
+	 */
+	public $requiresPermissions = null;
 
 
 }
@@ -83,64 +115,8 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+abstract class KalturaKafkaNotificationTemplateBaseFilter extends KalturaEventNotificationTemplateFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
 
 }
 
@@ -148,29 +124,8 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
+class KalturaKafkaNotificationTemplateFilter extends KalturaKafkaNotificationTemplateBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
 
 }
 
@@ -178,7 +133,7 @@ class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaKafkaNotificationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +141,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaKafkaNotificationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaKafkaNotificationClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +163,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'kafkaNotification';
 	}
 }
 

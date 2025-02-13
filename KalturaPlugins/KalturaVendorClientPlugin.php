@@ -44,6 +44,32 @@ class KalturaHandleParticipantsMode extends KalturaEnumBase
 	const ADD_AS_CO_PUBLISHERS = 0;
 	const ADD_AS_CO_VIEWERS = 1;
 	const IGNORE = 2;
+	const ADD_AS_CO_EDITORS = 3;
+	const ADD_AS_CO_EDITORS_CO_PUBLISHERS = 4;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRecordingFileType extends KalturaEnumBase
+{
+	const UNDEFINED = 0;
+	const VIDEO = 1;
+	const CHAT = 2;
+	const TRANSCRIPT = 3;
+	const AUDIO = 4;
+	const CC = 5;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRecordingType extends KalturaEnumBase
+{
+	const MEETING = 0;
+	const WEBINAR = 1;
 }
 
 /**
@@ -67,6 +93,29 @@ class KalturaZoomUsersMatching extends KalturaEnumBase
 	const ADD_POSTFIX = 1;
 	const REMOVE_POSTFIX = 2;
 	const CMS_MATCHING = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaEndpointValidationResponse extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $plainToken = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $encryptedToken = null;
+
+
 }
 
 /**
@@ -226,13 +275,6 @@ class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
 	/**
 	 * 
 	 *
-	 * @var string
-	 */
-	public $jwtToken = null;
-
-	/**
-	 * 
-	 *
 	 * @var KalturaNullableBoolean
 	 */
 	public $enableZoomTranscription = null;
@@ -264,6 +306,20 @@ class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
 	 * @var KalturaZoomGroupParticipationType
 	 */
 	public $groupParticipationType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaHandleParticipantsMode
+	 */
+	public $handleCohostsMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaHandleParticipantsMode
+	 */
+	public $handleAlternativeHostsMode = null;
 
 
 }
@@ -375,12 +431,12 @@ class KalturaZoomVendorService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
-	 * @param string $jwt 
+	 * @param string $zoomAccountId 
 	 */
-	function localRegistrationPage($jwt)
+	function localRegistrationPage($zoomAccountId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "jwt", $jwt);
+		$this->client->addParam($kparams, "zoomAccountId", $zoomAccountId);
 		$this->client->queueServiceActionCall("vendor_zoomvendor", "localRegistrationPage", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -425,6 +481,7 @@ class KalturaZoomVendorService extends KalturaServiceBase
 	/**
 	 * 
 	 * 
+	 * @return KalturaEndpointValidationResponse
 	 */
 	function recordingComplete()
 	{
@@ -434,7 +491,8 @@ class KalturaZoomVendorService extends KalturaServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();
 		$this->client->throwExceptionIfError($resultObject);
-		$this->client->validateObjectType($resultObject, "null");
+		$this->client->validateObjectType($resultObject, "KalturaEndpointValidationResponse");
+		return $resultObject;
 	}
 
 	/**

@@ -34,47 +34,146 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaVendorClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaZoomMeetingMetadata extends KalturaObjectBase
 {
 	/**
-	 * Playback context
+	 * 
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
+	public $uuid = null;
 
 	/**
-	 * Last playback time reached by user
+	 * 
+	 *
+	 * @var string
+	 */
+	public $meetingId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $accountId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hostId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $topic = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $meetingStartTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaRecordingType
+	 */
+	public $type = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaZoomRecordingFile extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recordingStart = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaRecordingFileType
+	 */
+	public $fileType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $downloadUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileExtension = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $downloadToken = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaZoomDropFolder extends KalturaDropFolder
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $zoomVendorIntegrationId = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaZoomIntegrationSetting
+	 * @readonly
+	 */
+	public $zoomVendorIntegration;
+
+	/**
+	 * 
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
+	public $lastHandledMeetingTime = null;
 
 
 }
@@ -83,63 +182,35 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaZoomDropFolderFile extends KalturaDropFolderFile
 {
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var KalturaZoomMeetingMetadata
 	 */
-	public $idEqual = null;
+	public $meetingMetadata;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaZoomRecordingFile
+	 */
+	public $recordingFile;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $idIn = null;
+	public $parentEntryId = null;
 
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var bool
 	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
+	public $isParentEntry = null;
 
 
 }
@@ -148,29 +219,8 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
+abstract class KalturaZoomDropFolderBaseFilter extends KalturaDropFolderFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
 
 }
 
@@ -178,7 +228,16 @@ class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaZoomDropFolderFilter extends KalturaZoomDropFolderBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaZoomDropFolderClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +245,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaZoomDropFolderClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaZoomDropFolderClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +267,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'ZoomDropFolder';
 	}
 }
 

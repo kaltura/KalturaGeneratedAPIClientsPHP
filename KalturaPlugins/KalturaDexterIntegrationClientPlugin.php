@@ -34,47 +34,49 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaIntegrationClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaVoicebaseClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaDexterIntegrationJobProviderData extends KalturaIntegrationJobProviderData
 {
 	/**
-	 * Playback context
-	 *
-	 * @var string
-	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
+	 * ID of the metadata profile for the extracted term metadata
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
+	public $metadataProfileId = null;
 
 	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
+	 * ID of the transcript asset
 	 *
 	 * @var string
 	 */
-	public $playlistLastEntryId = null;
+	public $transcriptAssetId = null;
 
 	/**
-	 * 
+	 * ID of the entry
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var string
 	 */
-	public $extendedStatus = null;
+	public $entryId = null;
+
+	/**
+	 * Voicebase API key to fetch transcript tokens
+	 *
+	 * @var string
+	 */
+	public $voicebaseApiKey = null;
+
+	/**
+	 * Voicebase API password to fetch transcript tokens
+	 *
+	 * @var string
+	 */
+	public $voicebaseApiPassword = null;
 
 
 }
@@ -83,102 +85,7 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaDexterIntegrationClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +93,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaDexterIntegrationClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaDexterIntegrationClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +115,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'dexterIntegration';
 	}
 }
 

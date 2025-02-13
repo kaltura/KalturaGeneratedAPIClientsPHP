@@ -34,47 +34,85 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaTvinciAssetsType extends KalturaEnumBase
+{
+	const REGULAR = 1;
+	const VIRTUAL = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionProfileOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionTag extends KalturaObjectBase
 {
 	/**
-	 * Playback context
+	 * 
 	 *
 	 * @var string
 	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
-	 *
-	 * @var int
-	 */
-	public $lastTimeReached = null;
+	public $tagname = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
 	 * @var string
 	 */
-	public $playlistLastEntryId = null;
+	public $extension = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var string
 	 */
-	public $extendedStatus = null;
+	public $protocol = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $format = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $filename = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ppvmodule = null;
 
 
 }
@@ -83,63 +121,23 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+class KalturaTvinciDistributionProvider extends KalturaDistributionProvider
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
 {
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
+	public $xml = null;
 
 
 }
@@ -148,28 +146,56 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
+class KalturaTvinciDistributionProfile extends KalturaConfigurableDistributionProfile
 {
 	/**
 	 * 
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var string
 	 */
-	public $extendedStatusEqual = null;
+	public $ingestUrl = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $extendedStatusIn = null;
+	public $username = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $extendedStatusNotIn = null;
+	public $password = null;
+
+	/**
+	 * Tags array for Tvinci distribution
+	 *
+	 * @var array of KalturaTvinciDistributionTag
+	 */
+	public $tags;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xsltFile = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $innerType = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaTvinciAssetsType
+	 */
+	public $assetsType = null;
 
 
 }
@@ -178,7 +204,43 @@ class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+abstract class KalturaTvinciDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionProviderFilter extends KalturaTvinciDistributionProviderBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaTvinciDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionProfileFilter extends KalturaTvinciDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvinciDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +248,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaTvinciDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaTvinciDistributionClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +270,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'tvinciDistribution';
 	}
 }
 

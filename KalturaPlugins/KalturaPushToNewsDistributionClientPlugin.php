@@ -34,47 +34,125 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaTranscriptClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaMetadataClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaPushToNewsDistributionProvider extends KalturaDistributionProvider
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPushToNewsDistributionJobProviderData extends KalturaConfigurableDistributionJobProviderData
 {
 	/**
-	 * Playback context
-	 *
-	 * @var string
-	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
+	 * 
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
+	public $currentVersion = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $bodyParamContent = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaPushToNewsDistributionProfile extends KalturaConfigurableDistributionProfile
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDistributionProtocol
+	 * @insertonly
+	 */
+	public $protocol = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $host = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ips = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
+	public $port = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var string
 	 */
-	public $extendedStatus = null;
+	public $basePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $username = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $password = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $namedItem = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $certificateKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $bodyXslt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $recentNewsTimeInterval = null;
 
 
 }
@@ -83,102 +161,7 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
-{
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
-{
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+class KalturaPushToNewsDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +169,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaPushToNewsDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaPushToNewsDistributionClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +191,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'pushToNewsDistribution';
 	}
 }
 

@@ -201,6 +201,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 {
 	const ACCESS_CONTROL_ID = "access_control_id";
 	const ADMIN_TAGS = "admin_tags";
+	const BROADCAST_ENTRY_ID = "broadcast_entry_id";
 	const CAPTIONS_CONTENT = "captions_content";
 	const CONVERSION_PROFILE_ID = "conversion_profile_id";
 	const CREATED_AT = "created_at";
@@ -229,8 +230,10 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const PUSH_PUBLISH = "push_publish";
 	const RANK = "rank";
 	const RECORDED_ENTRY_ID = "recorded_entry_id";
+	const RECYCLED_AT = "recycled_at";
 	const REDIRECT_ENTRY_ID = "redirect_entry_id";
 	const REFERENCE_ID = "reference_id";
+	const ROOM_TYPE = "room_type";
 	const ROOT_ID = "root_id";
 	const SITE_URL = "site_url";
 	const SOURCE_TYPE = "source_type";
@@ -257,6 +260,7 @@ class KalturaESearchEntryOrderByFieldName extends KalturaEnumBase
 	const PLAYS_LAST_30_DAYS = "plays_last_30_days";
 	const PLAYS_LAST_7_DAYS = "plays_last_7_days";
 	const RANK = "rank";
+	const RECYCLED_AT = "recycled_at";
 	const START_DATE = "start_date";
 	const UPDATED_AT = "updated_at";
 	const VIEWS = "views";
@@ -290,12 +294,14 @@ class KalturaESearchSortOrder extends KalturaEnumBase
  */
 class KalturaESearchUserFieldName extends KalturaEnumBase
 {
+	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const EXTERNAL_ID = "external_id";
 	const FIRST_NAME = "first_name";
+	const FULL_NAME = "full_name";
 	const GROUP_IDS = "group_ids";
 	const IS_ADMIN = "is_admin";
 	const IS_HASHED = "is_hashed";
@@ -318,6 +324,7 @@ class KalturaESearchUserFieldName extends KalturaEnumBase
 class KalturaESearchUserOrderByFieldName extends KalturaEnumBase
 {
 	const CREATED_AT = "created_at";
+	const FULL_NAME = "full_name";
 	const USER_ID = "puser_id";
 	const SCREEN_NAME = "screen_name";
 	const UPDATED_AT = "updated_at";
@@ -678,6 +685,13 @@ abstract class KalturaESearchParams extends KalturaObjectBase
 	 * @var KalturaESearchOrderBy
 	 */
 	public $orderBy;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $ignoreSynonym = null;
 
 
 }

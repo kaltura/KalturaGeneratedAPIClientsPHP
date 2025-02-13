@@ -34,47 +34,127 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntry extends KalturaUserEntry
+class KalturaTVComDistributionProfileOrderBy extends KalturaEnumBase
+{
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTVComDistributionProviderOrderBy extends KalturaEnumBase
+{
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTVComDistributionProvider extends KalturaDistributionProvider
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTVComDistributionProfile extends KalturaConfigurableDistributionProfile
 {
 	/**
-	 * Playback context
-	 *
-	 * @var string
-	 */
-	public $playbackContext = null;
-
-	/**
-	 * Last playback time reached by user
+	 * 
 	 *
 	 * @var int
 	 */
-	public $lastTimeReached = null;
+	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $feedUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedTitle = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedLink = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedDescription = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedCopyright = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedImageTitle = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedImageUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedImageLink = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
 	 */
-	public $lastUpdateTime = null;
-
-	/**
-	 * Property to save last entry ID played in a playlist.
-	 *
-	 * @var string
-	 */
-	public $playlistLastEntryId = null;
+	public $feedImageWidth = null;
 
 	/**
 	 * 
 	 *
-	 * @var KalturaUserEntryExtendedStatus
+	 * @var int
 	 */
-	public $extendedStatus = null;
+	public $feedImageHeight = null;
 
 
 }
@@ -83,64 +163,8 @@ class KalturaViewHistoryUserEntry extends KalturaUserEntry
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
+abstract class KalturaTVComDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
 
 }
 
@@ -148,29 +172,8 @@ class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
+class KalturaTVComDistributionProviderFilter extends KalturaTVComDistributionProviderBaseFilter
 {
-	/**
-	 * 
-	 *
-	 * @var KalturaUserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
 
 }
 
@@ -178,7 +181,25 @@ class KalturaViewHistoryUserEntryFilter extends KalturaUserEntryFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
+abstract class KalturaTVComDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTVComDistributionProfileFilter extends KalturaTVComDistributionProfileBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTvComDistributionClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -186,11 +207,11 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaViewHistoryClientPlugin
+	 * @return KalturaTvComDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaViewHistoryClientPlugin($client);
+		return new KalturaTvComDistributionClientPlugin($client);
 	}
 
 	/**
@@ -208,7 +229,7 @@ class KalturaViewHistoryClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'viewHistory';
+		return 'tvComDistribution';
 	}
 }
 

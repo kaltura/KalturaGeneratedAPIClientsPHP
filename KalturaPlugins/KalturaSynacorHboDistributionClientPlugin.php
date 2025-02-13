@@ -34,35 +34,17 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaFileSyncClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaContentDistributionClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTrackEntryEventType extends KalturaEnumBase
-{
-	const UPLOADED_FILE = 1;
-	const WEBCAM_COMPLETED = 2;
-	const IMPORT_STARTED = 3;
-	const ADD_ENTRY = 4;
-	const UPDATE_ENTRY = 5;
-	const DELETED_ENTRY = 6;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUiConfAdminOrderBy extends KalturaEnumBase
+class KalturaSynacorHboDistributionProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const NAME_ASC = "+name";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const NAME_DESC = "-name";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 
@@ -70,134 +52,16 @@ class KalturaUiConfAdminOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTrackEntry extends KalturaObjectBase
+class KalturaSynacorHboDistributionProviderOrderBy extends KalturaEnumBase
 {
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $id = null;
+}
 
-	/**
-	 * 
-	 *
-	 * @var KalturaTrackEntryEventType
-	 */
-	public $trackEventType = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $psVersion = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $context = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $partnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hostName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $changedProperties = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $paramStr1 = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $paramStr2 = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $paramStr3 = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $ks = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIp = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $sessionId = null;
-
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSynacorHboDistributionProvider extends KalturaDistributionProvider
+{
 
 }
 
@@ -205,48 +69,43 @@ class KalturaTrackEntry extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfAdmin extends KalturaUiConf
+class KalturaSynacorHboDistributionProfile extends KalturaConfigurableDistributionProfile
 {
 	/**
 	 * 
 	 *
-	 * @var bool
-	 */
-	public $isPublic = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaTrackEntryListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaTrackEntry
+	 * @var string
 	 * @readonly
 	 */
-	public $objects;
+	public $feedUrl = null;
 
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaUiConfAdminListResponse extends KalturaListResponse
-{
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUiConfAdmin
-	 * @readonly
+	 * @var string
 	 */
-	public $objects;
+	public $feedTitle = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedSubtitle = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedLink = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedAuthorName = null;
 
 
 }
@@ -255,7 +114,7 @@ class KalturaUiConfAdminListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaUiConfAdminBaseFilter extends KalturaUiConfFilter
+abstract class KalturaSynacorHboDistributionProviderBaseFilter extends KalturaDistributionProviderFilter
 {
 
 }
@@ -264,7 +123,7 @@ abstract class KalturaUiConfAdminBaseFilter extends KalturaUiConfFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaUiConfAdminFilter extends KalturaUiConfAdminBaseFilter
+class KalturaSynacorHboDistributionProviderFilter extends KalturaSynacorHboDistributionProviderBaseFilter
 {
 
 }
@@ -273,19 +132,76 @@ class KalturaUiConfAdminFilter extends KalturaUiConfAdminBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaAdminConsoleClientPlugin extends KalturaClientPlugin
+abstract class KalturaSynacorHboDistributionProfileBaseFilter extends KalturaConfigurableDistributionProfileFilter
 {
-	protected function __construct(KalturaClient $client)
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSynacorHboDistributionProfileFilter extends KalturaSynacorHboDistributionProfileBaseFilter
+{
+
+}
+
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSynacorHboService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
 	{
 		parent::__construct($client);
 	}
 
 	/**
-	 * @return KalturaAdminConsoleClientPlugin
+	 * 
+	 * 
+	 * @param int $distributionProfileId 
+	 * @param string $hash 
+	 * @return file
+	 */
+	function getFeed($distributionProfileId, $hash)
+	{
+		if ($this->client->isMultiRequest())
+			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "distributionProfileId", $distributionProfileId);
+		$this->client->addParam($kparams, "hash", $hash);
+		$this->client->queueServiceActionCall("synacorhbodistribution_synacorhbo", "getFeed", $kparams);
+		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
+			return $this->client->getServeUrl();
+		return $this->client->doQueue();
+	}
+}
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSynacorHboDistributionClientPlugin extends KalturaClientPlugin
+{
+	/**
+	 * @var KalturaSynacorHboService
+	 */
+	public $synacorHbo = null;
+
+	protected function __construct(KalturaClient $client)
+	{
+		parent::__construct($client);
+		$this->synacorHbo = new KalturaSynacorHboService($client);
+	}
+
+	/**
+	 * @return KalturaSynacorHboDistributionClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaAdminConsoleClientPlugin($client);
+		return new KalturaSynacorHboDistributionClientPlugin($client);
 	}
 
 	/**
@@ -294,6 +210,7 @@ class KalturaAdminConsoleClientPlugin extends KalturaClientPlugin
 	public function getServices()
 	{
 		$services = array(
+			'synacorHbo' => $this->synacorHbo,
 		);
 		return $services;
 	}
@@ -303,7 +220,7 @@ class KalturaAdminConsoleClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'adminConsole';
+		return 'synacorHboDistribution';
 	}
 }
 
