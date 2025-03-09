@@ -73,6 +73,9 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
 	const DROP_FOLDER = "dropFolderEventNotifications.DropFolder";
 	const DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile";
 	const METADATA = "metadataEventNotifications.Metadata";
+	const SCHEDULE_EVENT = "scheduleEventNotifications.ScheduleEvent";
+	const SCHEDULE_EVENT_RESOURCE = "scheduleEventNotifications.ScheduleEventResource";
+	const SCHEDULE_RESOURCE = "scheduleEventNotifications.ScheduleResource";
 	const TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset";
 	const VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent";
 	const ENTRY = "1";

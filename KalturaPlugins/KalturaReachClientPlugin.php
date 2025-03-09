@@ -38,6 +38,7 @@ require_once(dirname(__FILE__) . "/KalturaEventNotificationClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaBulkUploadClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaCaptionClientPlugin.php");
 require_once(dirname(__FILE__) . "/KalturaScheduleClientPlugin.php");
+require_once(dirname(__FILE__) . "/KalturaTranscriptClientPlugin.php");
 
 /**
  * @package Kaltura
@@ -152,6 +153,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const QUIZ = 12;
 	const SUMMARY = 13;
 	const VIDEO_ANALYSIS = 14;
+	const MODERATION = 15;
 }
 
 /**
@@ -1320,6 +1322,36 @@ class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaModerationVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * A comma seperated string of rule IDs.
+	 *
+	 * @var string
+	 */
+	public $ruleIds = null;
+
+	/**
+	 * A comma seperated string of policy IDs.
+	 *
+	 * @var string
+	 */
+	public $policyIds = null;
+
+	/**
+	 * JSON string containing the moderation output.
+	 *
+	 * @var string
+	 */
+	public $moderationOutputJson = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaQuizVendorTaskData extends KalturaVendorTaskData
 {
 	/**
@@ -1684,6 +1716,15 @@ class KalturaVendorExtendedAudioDescriptionCatalogItem extends KalturaVendorCata
  * @subpackage Client
  */
 class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorModerationCatalogItem extends KalturaVendorCatalogItem
 {
 
 }
@@ -2441,6 +2482,15 @@ abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCa
  * @subpackage Client
  */
 class KalturaVendorIntelligentTaggingCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorModerationCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }

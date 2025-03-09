@@ -1024,6 +1024,13 @@ abstract class KalturaDropFolderFileBaseFilter extends KalturaFilter
 	 *
 	 * @var int
 	 */
+	public $idGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
 	public $partnerIdEqual = null;
 
 	/**

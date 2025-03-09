@@ -10722,6 +10722,13 @@ class KalturaReportExportParams extends KalturaObjectBase
 	public $recipientEmail = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientName = null;
+
+	/**
 	 * Time zone offset in minutes (between client to UTC)
 	 *
 	 * @var int
@@ -18658,6 +18665,13 @@ class KalturaReportExportJobData extends KalturaJobData
 	 * @var string
 	 */
 	public $recipientEmail = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientName = null;
 
 	/**
 	 * 

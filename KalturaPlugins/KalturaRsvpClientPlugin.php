@@ -34,65 +34,24 @@
 require_once(dirname(__FILE__) . "/../KalturaClientBase.php");
 require_once(dirname(__FILE__) . "/../KalturaEnums.php");
 require_once(dirname(__FILE__) . "/../KalturaTypes.php");
-require_once(dirname(__FILE__) . "/KalturaDropFolderClientPlugin.php");
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaS3DropFolder extends KalturaDropFolder
+class KalturaRsvpUserEntryOrderBy extends KalturaEnumBase
 {
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $s3Host = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $s3Region = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $s3UserId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $s3Password = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $useS3Arn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $s3Arn = null;
-
-
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaS3DropFolderFile extends KalturaDropFolderFile
+class KalturaRsvpUserEntry extends KalturaUserEntry
 {
 
 }
@@ -101,7 +60,25 @@ class KalturaS3DropFolderFile extends KalturaDropFolderFile
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaS3DropFolderClientPlugin extends KalturaClientPlugin
+abstract class KalturaRsvpUserEntryBaseFilter extends KalturaUserEntryFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRsvpUserEntryFilter extends KalturaRsvpUserEntryBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaRsvpClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -109,11 +86,11 @@ class KalturaS3DropFolderClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaS3DropFolderClientPlugin
+	 * @return KalturaRsvpClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaS3DropFolderClientPlugin($client);
+		return new KalturaRsvpClientPlugin($client);
 	}
 
 	/**
@@ -131,7 +108,7 @@ class KalturaS3DropFolderClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'S3DropFolder';
+		return 'rsvp';
 	}
 }
 
