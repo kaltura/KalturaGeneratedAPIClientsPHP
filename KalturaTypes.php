@@ -18531,6 +18531,13 @@ class KalturaQuizUserEntry extends KalturaUserEntry
 	 */
 	public $version = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryExtendedStatus
+	 */
+	public $extendedStatus = null;
+
 
 }
 

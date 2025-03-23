@@ -9383,6 +9383,25 @@ class KalturaUserService extends KalturaServiceBase
 	}
 
 	/**
+	 * 
+	 * 
+	 * @param string $userId 
+	 * @return KalturaUser
+	 */
+	function demoteAdmin($userId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->queueServiceActionCall("user", "demoteAdmin", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaUser");
+		return $resultObject;
+	}
+
+	/**
 	 * Disables a user's ability to log into a partner account using an email address and a password.
 	 You may use either a userId or a loginId parameter for this action.
 	 * 
@@ -10308,8 +10327,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:25-03-08');
-		$this->setApiVersion('21.11.0');
+		$this->setClientTag('php5:25-03-22');
+		$this->setApiVersion('21.12.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);

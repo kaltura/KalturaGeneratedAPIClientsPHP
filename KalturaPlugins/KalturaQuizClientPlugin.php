@@ -468,6 +468,27 @@ class KalturaQuestionCuePointFilter extends KalturaQuestionCuePointBaseFilter
  */
 class KalturaQuizUserEntryFilter extends KalturaQuizUserEntryBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryExtendedStatus
+	 */
+	public $extendedStatusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusNotIn = null;
+
 
 }
 

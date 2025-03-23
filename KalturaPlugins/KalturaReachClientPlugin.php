@@ -154,6 +154,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const SUMMARY = 13;
 	const VIDEO_ANALYSIS = 14;
 	const MODERATION = 15;
+	const METADATA_ENRICHMENT = 16;
 }
 
 /**
@@ -1322,6 +1323,39 @@ class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataEnrichmentVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * The level of detail for the metadata enrichment process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $detailLevel = null;
+
+	/**
+	 * Instructions describing what should be taken into account during the metadata enrichment process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
+	/**
+	 * Metadata enrichment result as JSON string.
+	 * 	 For example: {"titles": ["The first title", "The second title"], "descriptions": ["The first description"], "tags": ["Tag1", "Tag2"]}
+	 *
+	 * @var string
+	 */
+	public $outputJson = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaModerationVendorTaskData extends KalturaVendorTaskData
 {
 	/**
@@ -1716,6 +1750,15 @@ class KalturaVendorExtendedAudioDescriptionCatalogItem extends KalturaVendorCata
  * @subpackage Client
  */
 class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorMetadataEnrichmentCatalogItem extends KalturaVendorCatalogItem
 {
 
 }
@@ -2482,6 +2525,15 @@ abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCa
  * @subpackage Client
  */
 class KalturaVendorIntelligentTaggingCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorMetadataEnrichmentCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }
