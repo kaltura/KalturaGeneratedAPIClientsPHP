@@ -7209,6 +7209,14 @@ class KalturaGroupUser extends KalturaObjectBase
 	 */
 	public $userRole = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupType
+	 * @readonly
+	 */
+	public $groupType = null;
+
 
 }
 
@@ -24107,6 +24115,13 @@ abstract class KalturaGoogleVideoSyndicationFeedBaseFilter extends KalturaBaseSy
  */
 class KalturaGroupUserFilter extends KalturaGroupUserBaseFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupType
+	 */
+	public $groupType = null;
+
 
 }
 

@@ -118,6 +118,13 @@ class KalturaGroup extends KalturaBaseUser
 	 */
 	public $processStatus = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupType
+	 */
+	public $groupType = null;
+
 
 }
 
@@ -250,6 +257,13 @@ class KalturaESearchGroupMetadataItem extends KalturaESearchAbstractGroupItem
  */
 class KalturaGroupFilter extends KalturaUserFilter
 {
+	/**
+	 * 
+	 *
+	 * @var KalturaGroupType
+	 */
+	public $groupType = null;
+
 
 }
 

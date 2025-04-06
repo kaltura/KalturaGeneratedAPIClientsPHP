@@ -463,6 +463,16 @@ class KalturaGender extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaGroupType extends KalturaEnumBase
+{
+	const GROUP = 1;
+	const APPLICATIVE_GROUP = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaGroupUserCreationMode extends KalturaEnumBase
 {
 	const MANUAL = 1;
@@ -1315,6 +1325,7 @@ class KalturaUserType extends KalturaEnumBase
 {
 	const USER = 0;
 	const GROUP = 1;
+	const APPLICATIVE_GROUP = 2;
 }
 
 /**
