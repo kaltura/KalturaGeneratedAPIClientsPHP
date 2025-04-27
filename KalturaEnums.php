@@ -2004,6 +2004,7 @@ class KalturaConditionType extends KalturaEnumBase
 	const ENTRY_SCHEDULED = "19";
 	const ACTION_NAME = "20";
 	const URL_AUTH_PARAMS = "21";
+	const SESSION_TYPE = "22";
 }
 
 /**

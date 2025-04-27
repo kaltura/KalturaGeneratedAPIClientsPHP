@@ -1119,6 +1119,13 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $defaultReachProfileId = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
 	public $adminTagsToExclude = null;
@@ -2432,6 +2439,22 @@ class KalturaVendorCatalogItemFilter extends KalturaVendorCatalogItemBaseFilter
  */
 class KalturaVendorLiveCaptionCatalogItem extends KalturaVendorLiveCatalogItem
 {
+	/**
+	 * How long before the live stream start should service activate? (in secs)
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $startTimeBuffer = null;
+
+	/**
+	 * How long after the live stream end should service de-activate? (in secs)
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $endTimeBuffer = null;
+
 
 }
 
@@ -3347,12 +3370,14 @@ class KalturaPartnerCatalogItemService extends KalturaServiceBase
 	 * Assign existing catalogItem to specific account
 	 * 
 	 * @param int $id Source catalog item to assign to partner
+	 * @param int $defaultReachProfileId 
 	 * @return KalturaVendorCatalogItem
 	 */
-	function add($id)
+	function add($id, $defaultReachProfileId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "defaultReachProfileId", $defaultReachProfileId);
 		$this->client->queueServiceActionCall("reach_partnercatalogitem", "add", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

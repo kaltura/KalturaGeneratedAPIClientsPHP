@@ -10655,6 +10655,13 @@ class KalturaReportResponseOptions extends KalturaObjectBase
 	 */
 	public $skipEmptyDates = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useFriendlyHeadersNames = null;
+
 
 }
 
@@ -19186,6 +19193,22 @@ class KalturaSessionResponse extends KalturaStartWidgetSessionResponse
  */
 class KalturaSessionRestriction extends KalturaBaseRestriction
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSessionTypeCondition extends KalturaCondition
+{
+	/**
+	 * The privelege needed to remove the restriction
+	 *
+	 * @var KalturaSessionType
+	 */
+	public $sessionType = null;
+
 
 }
 
