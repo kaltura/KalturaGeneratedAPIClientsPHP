@@ -2537,6 +2537,7 @@ class KalturaEntryApplication extends KalturaEnumBase
 	const PERSONAL_CAPTURE = "6";
 	const KALTURA_MEETING = "7";
 	const EP = "8";
+	const CONTENT_LAB = "9";
 }
 
 /**

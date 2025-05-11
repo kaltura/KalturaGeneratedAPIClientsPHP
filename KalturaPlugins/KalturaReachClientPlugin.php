@@ -44,6 +44,15 @@ require_once(dirname(__FILE__) . "/KalturaTranscriptClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryObjectType extends KalturaEnumBase
+{
+	const ENTRY = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEntryVendorTaskCreationMode extends KalturaEnumBase
 {
 	const MANUAL = 1;
@@ -608,6 +617,14 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	public $userId = null;
 
 	/**
+	 * 
+	 *
+	 * @var KalturaEntryObjectType
+	 * @insertonly
+	 */
+	public $entryObjectType = null;
+
+	/**
 	 * The user ID that approved this task for execution (in case moderation is requested)
 	 *
 	 * @var string
@@ -1066,6 +1083,13 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	 * @var bool
 	 */
 	public $allowResubmission = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $requiresOverages = null;
 
 	/**
 	 * 
@@ -1689,6 +1713,13 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
 	 */
 	public $addOn = null;
 
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowNegativeOverageCredit = null;
+
 
 }
 
@@ -2034,6 +2065,27 @@ abstract class KalturaEntryVendorTaskBaseFilter extends KalturaRelatedFilter
 	 * @var int
 	 */
 	public $expectedFinishTimeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaEntryObjectType
+	 */
+	public $entryObjectTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryObjectTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryObjectTypeNotIn = null;
 
 
 }
