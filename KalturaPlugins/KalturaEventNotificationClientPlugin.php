@@ -62,22 +62,6 @@ class KalturaEventNotificationTemplateStatus extends KalturaEnumBase
  */
 class KalturaEventNotificationEventObjectType extends KalturaEnumBase
 {
-	const AD_CUE_POINT = "adCuePointEventNotifications.AdCuePoint";
-	const ANNOTATION = "annotationEventNotifications.Annotation";
-	const ATTACHMENT_ASSET = "attachmentAssetEventNotifications.AttachmentAsset";
-	const CAPTION_ASSET = "captionAssetEventNotifications.CaptionAsset";
-	const CODE_CUE_POINT = "codeCuePointEventNotifications.CodeCuePoint";
-	const DISTRIBUTION_PROFILE = "contentDistributionEventNotifications.DistributionProfile";
-	const ENTRY_DISTRIBUTION = "contentDistributionEventNotifications.EntryDistribution";
-	const CUE_POINT = "cuePointEventNotifications.CuePoint";
-	const DROP_FOLDER = "dropFolderEventNotifications.DropFolder";
-	const DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile";
-	const METADATA = "metadataEventNotifications.Metadata";
-	const SCHEDULE_EVENT = "scheduleEventNotifications.ScheduleEvent";
-	const SCHEDULE_EVENT_RESOURCE = "scheduleEventNotifications.ScheduleEventResource";
-	const SCHEDULE_RESOURCE = "scheduleEventNotifications.ScheduleResource";
-	const TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset";
-	const VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const ASSET = "3";
@@ -116,6 +100,23 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
 	const ENTRY_SERVER_NODE = "40";
 	const REACH_PROFILE = "41";
 	const ENTRY_VENDOR_TASK = "42";
+	const GROUPUSER = "43";
+	const AD_CUE_POINT = "adCuePointEventNotifications.AdCuePoint";
+	const ANNOTATION = "annotationEventNotifications.Annotation";
+	const ATTACHMENT_ASSET = "attachmentAssetEventNotifications.AttachmentAsset";
+	const CAPTION_ASSET = "captionAssetEventNotifications.CaptionAsset";
+	const CODE_CUE_POINT = "codeCuePointEventNotifications.CodeCuePoint";
+	const DISTRIBUTION_PROFILE = "contentDistributionEventNotifications.DistributionProfile";
+	const ENTRY_DISTRIBUTION = "contentDistributionEventNotifications.EntryDistribution";
+	const CUE_POINT = "cuePointEventNotifications.CuePoint";
+	const DROP_FOLDER = "dropFolderEventNotifications.DropFolder";
+	const DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile";
+	const METADATA = "metadataEventNotifications.Metadata";
+	const SCHEDULE_EVENT = "scheduleEventNotifications.ScheduleEvent";
+	const SCHEDULE_EVENT_RESOURCE = "scheduleEventNotifications.ScheduleEventResource";
+	const SCHEDULE_RESOURCE = "scheduleEventNotifications.ScheduleResource";
+	const TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset";
+	const VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent";
 }
 
 /**
@@ -124,7 +125,6 @@ class KalturaEventNotificationEventObjectType extends KalturaEnumBase
  */
 class KalturaEventNotificationEventType extends KalturaEnumBase
 {
-	const INTEGRATION_JOB_CLOSED = "integrationEventNotifications.INTEGRATION_JOB_CLOSED";
 	const BATCH_JOB_STATUS = "1";
 	const OBJECT_ADDED = "2";
 	const OBJECT_CHANGED = "3";
@@ -138,6 +138,7 @@ class KalturaEventNotificationEventType extends KalturaEnumBase
 	const OBJECT_UPDATED = "11";
 	const OBJECT_REPLACED = "12";
 	const OBJECT_READY_FOR_INDEX = "13";
+	const INTEGRATION_JOB_CLOSED = "integrationEventNotifications.INTEGRATION_JOB_CLOSED";
 }
 
 /**

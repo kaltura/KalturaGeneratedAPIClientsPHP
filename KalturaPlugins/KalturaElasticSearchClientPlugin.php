@@ -693,6 +693,20 @@ abstract class KalturaESearchParams extends KalturaObjectBase
 	 */
 	public $ignoreSynonym = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $objectIdsNotIn = null;
+
 
 }
 

@@ -115,10 +115,10 @@ class KalturaDrmProfileOrderBy extends KalturaEnumBase
  */
 class KalturaDrmProviderType extends KalturaEnumBase
 {
+	const CENC = "1";
 	const FAIRPLAY = "fairplay.FAIRPLAY";
 	const PLAY_READY = "playReady.PLAY_READY";
 	const WIDEVINE = "widevine.WIDEVINE";
-	const CENC = "1";
 }
 
 /**

@@ -464,91 +464,22 @@ class KalturaAccessControlScope extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaSearchItem extends KalturaObjectBase
-{
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaFilter extends KalturaObjectBase
+class KalturaReportFilter extends KalturaObjectBase
 {
 	/**
-	 * 
+	 * The dimension whose values should be filtered
 	 *
 	 * @var string
 	 */
-	public $orderBy = null;
+	public $dimension = null;
 
 	/**
-	 * 
-	 *
-	 * @var KalturaSearchItem
-	 */
-	public $advancedSearch;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-abstract class KalturaReportBaseFilter extends KalturaFilter
-{
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
+	 * The (comma separated) values to include in the filter
 	 *
 	 * @var string
 	 */
-	public $idIn = null;
+	public $values = null;
 
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $partnerIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $partnerIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemNameIn = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaReportFilter extends KalturaReportBaseFilter
-{
 
 }
 
@@ -4876,6 +4807,38 @@ class KalturaUrlTokenizer extends KalturaObjectBase
 	 * @var bool
 	 */
 	public $limitIpAddress = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaSearchItem extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaFilter extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $orderBy = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaSearchItem
+	 */
+	public $advancedSearch;
 
 
 }
@@ -18671,6 +18634,57 @@ class KalturaRenderCaptionAttributes extends KalturaCaptionAttributes
 	 * @var string
 	 */
 	public $captionAssetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaReportBaseFilter extends KalturaFilter
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNameIn = null;
 
 
 }

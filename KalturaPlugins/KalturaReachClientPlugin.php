@@ -164,6 +164,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const VIDEO_ANALYSIS = 14;
 	const MODERATION = 15;
 	const METADATA_ENRICHMENT = 16;
+	const SENTIMENT_ANALYSIS = 17;
 }
 
 /**
@@ -430,6 +431,7 @@ class KalturaVendorCatalogItemPriceFunction extends KalturaEnumBase
 	const PRICE_PER_HOUR = "kReachUtils::calcPricePerHour";
 	const PRICE_PER_MINUTE = "kReachUtils::calcPricePerMinute";
 	const PRICE_PER_SECOND = "kReachUtils::calcPricePerSecond";
+	const PRICE_PER_TOKEN = "kReachUtils::calcPricePerToken";
 }
 
 /**
@@ -623,6 +625,13 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 * @insertonly
 	 */
 	public $entryObjectType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $unitsUsed = null;
 
 	/**
 	 * The user ID that approved this task for execution (in case moderation is requested)
@@ -1089,7 +1098,7 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	 *
 	 * @var bool
 	 */
-	public $requiresOverages = null;
+	public $payPerUse = null;
 
 	/**
 	 * 
@@ -1404,6 +1413,13 @@ class KalturaModerationVendorTaskData extends KalturaVendorTaskData
 	public $policyIds = null;
 
 	/**
+	 * A comma seperated string of category IDs.
+	 *
+	 * @var string
+	 */
+	public $categoryIds = null;
+
+	/**
 	 * JSON string containing the moderation output.
 	 *
 	 * @var string
@@ -1510,6 +1526,22 @@ class KalturaScheduledVendorTaskData extends KalturaVendorTaskData
 	 * @insertonly
 	 */
 	public $scheduledEventId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSentimentAnalysisVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * Language code
+	 *
+	 * @var KalturaLanguageCode
+	 */
+	public $language = null;
 
 
 }
@@ -1713,13 +1745,6 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
 	 */
 	public $addOn = null;
 
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $allowNegativeOverageCredit = null;
-
 
 }
 
@@ -1815,6 +1840,15 @@ class KalturaVendorModerationCatalogItem extends KalturaVendorCatalogItem
  * @subpackage Client
  */
 class KalturaVendorQuizCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSentimentAnalysisCatalogItem extends KalturaVendorCatalogItem
 {
 
 }
@@ -2627,6 +2661,15 @@ class KalturaVendorModerationCatalogItemFilter extends KalturaVendorCatalogItemF
  * @subpackage Client
  */
 class KalturaVendorQuizCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSentimentAnalysisCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }

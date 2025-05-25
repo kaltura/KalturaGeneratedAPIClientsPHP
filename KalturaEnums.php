@@ -1531,6 +1531,9 @@ class KalturaAssetParamsOutputOrderBy extends KalturaEnumBase
  */
 class KalturaAssetType extends KalturaEnumBase
 {
+	const FLAVOR = "1";
+	const THUMBNAIL = "2";
+	const LIVE = "3";
 	const ATTACHMENT = "attachment.Attachment";
 	const CAPTION = "caption.Caption";
 	const DOCUMENT = "document.Document";
@@ -1540,9 +1543,6 @@ class KalturaAssetType extends KalturaEnumBase
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
 	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
-	const FLAVOR = "1";
-	const THUMBNAIL = "2";
-	const LIVE = "3";
 }
 
 /**
@@ -1572,11 +1572,6 @@ class KalturaAudioCodec extends KalturaEnumBase
  */
 class KalturaBaseEntryCloneOptions extends KalturaEnumBase
 {
-	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
-	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
-	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
-	const SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS";
-	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 	const USERS = "1";
 	const CATEGORIES = "2";
 	const CHILD_ENTRIES = "3";
@@ -1584,6 +1579,11 @@ class KalturaBaseEntryCloneOptions extends KalturaEnumBase
 	const METADATA = "5";
 	const FLAVORS = "6";
 	const CAPTIONS = "7";
+	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
+	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
+	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
+	const SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS";
+	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 }
 
 /**
@@ -1697,16 +1697,16 @@ class KalturaBaseUserOrderBy extends KalturaEnumBase
  */
 class KalturaBatchJobObjectType extends KalturaEnumBase
 {
-	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
-	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
-	const METADATA = "metadata.Metadata";
-	const METADATA_PROFILE = "metadata.MetadataProfile";
-	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const FILE_SYNC = "3";
 	const ASSET = "4";
 	const USER = "5";
+	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
+	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
+	const METADATA = "metadata.Metadata";
+	const METADATA_PROFILE = "metadata.MetadataProfile";
+	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
 }
 
 /**
@@ -1742,29 +1742,6 @@ class KalturaBatchJobOrderBy extends KalturaEnumBase
 class KalturaBatchJobType extends KalturaEnumBase
 {
 	const CONVERT = "0";
-	const REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler";
-	const CONVERT_CAPTION_ASSET = "caption.convertcaptionasset";
-	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
-	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
-	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
-	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
-	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
-	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
-	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
-	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
-	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
-	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
-	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
-	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
-	const INTEGRATION = "integration.Integration";
-	const ENTRY_VENDOR_TASK_CSV = "reach.EntryVendorTasksCsv";
-	const SYNC_REACH_CREDIT_TASK = "reach.SyncReachCreditTask";
-	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
-	const SEARCH_TERM_CSV = "searchHistory.searchTermsCsv";
-	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
-	const TAG_RESOLVE = "tagSearch.TagResolve";
-	const VIRUS_SCAN = "virusScan.VirusScan";
-	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 	const IMPORT = "1";
 	const DELETE = "2";
 	const FLATTEN = "3";
@@ -1818,6 +1795,29 @@ class KalturaBatchJobType extends KalturaEnumBase
 	const STORAGE_PERIODIC_DELETE_LOCAL = "55";
 	const REACH_JOB_CLEANER = "56";
 	const MULTI_CLIP_CONCAT = "57";
+	const REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler";
+	const CONVERT_CAPTION_ASSET = "caption.convertcaptionasset";
+	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
+	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
+	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";
+	const DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable";
+	const DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable";
+	const DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport";
+	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
+	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
+	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
+	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
+	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
+	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
+	const INTEGRATION = "integration.Integration";
+	const ENTRY_VENDOR_TASK_CSV = "reach.EntryVendorTasksCsv";
+	const SYNC_REACH_CREDIT_TASK = "reach.SyncReachCreditTask";
+	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
+	const SEARCH_TERM_CSV = "searchHistory.searchTermsCsv";
+	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
+	const TAG_RESOLVE = "tagSearch.TagResolve";
+	const VIRUS_SCAN = "virusScan.VirusScan";
+	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 }
 
 /**
@@ -1826,7 +1826,6 @@ class KalturaBatchJobType extends KalturaEnumBase
  */
 class KalturaBulkUploadAction extends KalturaEnumBase
 {
-	const CANCEL = "scheduleBulkUpload.CANCEL";
 	const ADD = "1";
 	const UPDATE = "2";
 	const DELETE = "3";
@@ -1836,6 +1835,7 @@ class KalturaBulkUploadAction extends KalturaEnumBase
 	const ACTIVATE = "7";
 	const REJECT = "8";
 	const UPDATE_STATUS = "9";
+	const CANCEL = "scheduleBulkUpload.CANCEL";
 }
 
 /**
@@ -1844,9 +1844,6 @@ class KalturaBulkUploadAction extends KalturaEnumBase
  */
 class KalturaBulkUploadObjectType extends KalturaEnumBase
 {
-	const JOB = "bulkUploadFilter.JOB";
-	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
-	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const USER = "3";
@@ -1854,6 +1851,9 @@ class KalturaBulkUploadObjectType extends KalturaEnumBase
 	const CATEGORY_ENTRY = "5";
 	const USER_ENTRY = "6";
 	const VENDOR_CATALOG_ITEM = "7";
+	const JOB = "bulkUploadFilter.JOB";
+	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
+	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
 }
 
 /**
@@ -1976,13 +1976,6 @@ class KalturaCloneComponentSelectorType extends KalturaEnumBase
  */
 class KalturaConditionType extends KalturaEnumBase
 {
-	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
-	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
-	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
-	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
-	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
-	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
-	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
 	const AUTHENTICATED = "1";
 	const COUNTRY = "2";
 	const IP_ADDRESS = "3";
@@ -2005,6 +1998,13 @@ class KalturaConditionType extends KalturaEnumBase
 	const ACTION_NAME = "20";
 	const URL_AUTH_PARAMS = "21";
 	const SESSION_TYPE = "22";
+	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
+	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
+	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
+	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
+	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
+	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
+	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
 }
 
 /**
@@ -2331,13 +2331,6 @@ class KalturaDeliveryProfileRtmpOrderBy extends KalturaEnumBase
  */
 class KalturaDeliveryProfileType extends KalturaEnumBase
 {
-	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
-	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
-	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
-	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
-	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
-	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
-	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 	const APPLE_HTTP = "1";
 	const HDS = "3";
 	const HTTP = "4";
@@ -2383,6 +2376,13 @@ class KalturaDeliveryProfileType extends KalturaEnumBase
 	const LIVE_PACKAGER_DASH = "1009";
 	const LIVE_PACKAGER_MSS = "1010";
 	const LIVE_AKAMAI_HDS = "1013";
+	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
+	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
+	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
+	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
+	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
+	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
+	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 }
 
 /**
@@ -2595,8 +2595,6 @@ class KalturaEntryStatus extends KalturaEnumBase
 	const ERROR_IMPORTING = "-2";
 	const ERROR_CONVERTING = "-1";
 	const IMPORT = "0";
-	const INFECTED = "virusScan.Infected";
-	const SCAN_FAILURE = "virusScan.ScanFailure";
 	const PRECONVERT = "1";
 	const READY = "2";
 	const DELETED = "3";
@@ -2604,6 +2602,8 @@ class KalturaEntryStatus extends KalturaEnumBase
 	const MODERATE = "5";
 	const BLOCKED = "6";
 	const NO_CONTENT = "7";
+	const INFECTED = "virusScan.Infected";
+	const SCAN_FAILURE = "virusScan.ScanFailure";
 }
 
 /**
@@ -2613,10 +2613,6 @@ class KalturaEntryStatus extends KalturaEnumBase
 class KalturaEntryType extends KalturaEnumBase
 {
 	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const ROOM = "room.room";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 	const MEDIA_CLIP = "1";
 	const MIX = "2";
 	const PLAYLIST = "5";
@@ -2624,6 +2620,10 @@ class KalturaEntryType extends KalturaEnumBase
 	const LIVE_STREAM = "7";
 	const LIVE_CHANNEL = "8";
 	const DOCUMENT = "10";
+	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
+	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
+	const ROOM = "room.room";
+	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 }
 
 /**
@@ -2718,11 +2718,6 @@ class KalturaFileAssetStatus extends KalturaEnumBase
  */
 class KalturaFileSyncObjectType extends KalturaEnumBase
 {
-	const DISTRIBUTION_PROFILE = "contentDistribution.DistributionProfile";
-	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
-	const GENERIC_DISTRIBUTION_ACTION = "contentDistribution.GenericDistributionAction";
-	const EMAIL_NOTIFICATION_TEMPLATE = "emailNotification.EmailNotificationTemplate";
-	const HTTP_NOTIFICATION_TEMPLATE = "httpNotification.HttpNotificationTemplate";
 	const ENTRY = "1";
 	const UICONF = "2";
 	const BATCHJOB = "3";
@@ -2733,6 +2728,11 @@ class KalturaFileSyncObjectType extends KalturaEnumBase
 	const SYNDICATION_FEED = "7";
 	const CONVERSION_PROFILE = "8";
 	const FILE_ASSET = "9";
+	const DISTRIBUTION_PROFILE = "contentDistribution.DistributionProfile";
+	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
+	const GENERIC_DISTRIBUTION_ACTION = "contentDistribution.GenericDistributionAction";
+	const EMAIL_NOTIFICATION_TEMPLATE = "emailNotification.EmailNotificationTemplate";
+	const HTTP_NOTIFICATION_TEMPLATE = "httpNotification.HttpNotificationTemplate";
 }
 
 /**
@@ -3176,8 +3176,8 @@ class KalturaLanguage extends KalturaEnumBase
 	const KPO = "Ikposo";
 	const ILO = "Iloko";
 	const SMN = "Inari Sami";
-	const IN = "Indonesian";
 	const ID = "Indonesian";
+	const IN = "Indonesian";
 	const IZH = "Ingrian";
 	const INH = "Ingush";
 	const IA = "Interlingua";
@@ -4379,8 +4379,8 @@ class KalturaMediaInfoOrderBy extends KalturaEnumBase
 class KalturaMediaParserType extends KalturaEnumBase
 {
 	const MEDIAINFO = "0";
-	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
 	const FFMPEG = "1";
+	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
 }
 
 /**
@@ -4790,10 +4790,6 @@ class KalturaReportOrderBy extends KalturaEnumBase
  */
 class KalturaReportType extends KalturaEnumBase
 {
-	const QUIZ = "quiz.QUIZ";
-	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";
-	const QUIZ_USER_AGGREGATE_BY_QUESTION = "quiz.QUIZ_USER_AGGREGATE_BY_QUESTION";
-	const QUIZ_USER_PERCENTAGE = "quiz.QUIZ_USER_PERCENTAGE";
 	const TOP_CONTENT = "1";
 	const CONTENT_DROPOFF = "2";
 	const CONTENT_INTERACTIONS = "3";
@@ -4857,6 +4853,7 @@ class KalturaReportType extends KalturaEnumBase
 	const REACH_CATALOG_USAGE = "65";
 	const REACH_PROFILE_USAGE = "66";
 	const SELF_SERVE_BANDWIDTH = "67";
+	const PARTNER_USAGE_SF = "68";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
@@ -5002,6 +4999,10 @@ class KalturaReportType extends KalturaEnumBase
 	const EP_TOP_SESSIONS = "60017";
 	const EP_WEBCAST_ENGAGEMENT_OVER_TIME = "60018";
 	const CNC_PARTICIPATION = "70001";
+	const QUIZ = "quiz.QUIZ";
+	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";
+	const QUIZ_USER_AGGREGATE_BY_QUESTION = "quiz.QUIZ_USER_AGGREGATE_BY_QUESTION";
+	const QUIZ_USER_PERCENTAGE = "quiz.QUIZ_USER_PERCENTAGE";
 }
 
 /**
@@ -5035,8 +5036,6 @@ class KalturaResponseProfileOrderBy extends KalturaEnumBase
  */
 class KalturaRuleActionType extends KalturaEnumBase
 {
-	const DRM_POLICY = "drm.DRM_POLICY";
-	const ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";
@@ -5045,6 +5044,8 @@ class KalturaRuleActionType extends KalturaEnumBase
 	const SERVE_FROM_REMOTE_SERVER = "6";
 	const REQUEST_HOST_REGEX = "7";
 	const LIMIT_THUMBNAIL_CAPTURE = "8";
+	const DRM_POLICY = "drm.DRM_POLICY";
+	const ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK";
 }
 
 /**
@@ -5095,11 +5096,11 @@ class KalturaServerNodeOrderBy extends KalturaEnumBase
  */
 class KalturaServerNodeType extends KalturaEnumBase
 {
+	const EDGE = "1";
 	const CONFERENCE_SERVER = "conference.CONFERENCE_SERVER";
 	const LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER";
 	const SIP_SERVER = "sip.SIP_SERVER";
 	const WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER";
-	const EDGE = "1";
 }
 
 /**
@@ -5108,8 +5109,6 @@ class KalturaServerNodeType extends KalturaEnumBase
  */
 class KalturaSourceType extends KalturaEnumBase
 {
-	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
-	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
 	const WEBCAM = "2";
 	const URL = "5";
@@ -5124,6 +5123,8 @@ class KalturaSourceType extends KalturaEnumBase
 	const KALTURA_RECORDED_LIVE = "36";
 	const LECTURE_CAPTURE = "37";
 	const LIVE_STREAM_ONTEXTDATA_CAPTIONS = "42";
+	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
+	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 }
 
 /**
@@ -5144,13 +5145,13 @@ class KalturaStorageProfileOrderBy extends KalturaEnumBase
  */
 class KalturaStorageProfileProtocol extends KalturaEnumBase
 {
-	const KONTIKI = "kontiki.KONTIKI";
 	const KALTURA_DC = "0";
 	const FTP = "1";
 	const SCP = "2";
 	const SFTP = "3";
 	const S3 = "6";
 	const LOCAL = "7";
+	const KONTIKI = "kontiki.KONTIKI";
 }
 
 /**
@@ -5313,10 +5314,10 @@ class KalturaUserEntryOrderBy extends KalturaEnumBase
  */
 class KalturaUserEntryStatus extends KalturaEnumBase
 {
-	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";
 	const DELETED = "2";
 	const RECYCLED = "3";
+	const QUIZ_SUBMITTED = "quiz.3";
 }
 
 /**

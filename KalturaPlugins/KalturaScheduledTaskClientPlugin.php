@@ -97,9 +97,6 @@ class KalturaObjectFilterEngineType extends KalturaEnumBase
  */
 class KalturaObjectTaskType extends KalturaEnumBase
 {
-	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
-	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
-	const EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt";
 	const DELETE_ENTRY = "1";
 	const MODIFY_CATEGORIES = "2";
 	const DELETE_ENTRY_FLAVORS = "3";
@@ -109,6 +106,9 @@ class KalturaObjectTaskType extends KalturaEnumBase
 	const MODIFY_ENTRY = "7";
 	const MAIL_NOTIFICATION = "8";
 	const RECYCLE_BIN_CLEANUP = "9";
+	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
+	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
+	const EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt";
 }
 
 /**

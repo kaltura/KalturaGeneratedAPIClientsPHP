@@ -238,6 +238,8 @@ class KalturaDistributionProviderOrderBy extends KalturaEnumBase
  */
 class KalturaDistributionProviderType extends KalturaEnumBase
 {
+	const GENERIC = "1";
+	const SYNDICATION = "2";
 	const ATT_UVERSE = "attUverseDistribution.ATT_UVERSE";
 	const AVN = "avnDistribution.AVN";
 	const COMCAST_MRSS = "comcastMrssDistribution.COMCAST_MRSS";
@@ -269,8 +271,6 @@ class KalturaDistributionProviderType extends KalturaEnumBase
 	const YAHOO = "yahooDistribution.YAHOO";
 	const YOUTUBE = "youTubeDistribution.YOUTUBE";
 	const YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API";
-	const GENERIC = "1";
-	const SYNDICATION = "2";
 }
 
 /**
