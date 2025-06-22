@@ -75,6 +75,7 @@ class KalturaAttachmentType extends KalturaEnumBase
 	const MEDIA = "2";
 	const DOCUMENT = "3";
 	const JSON = "4";
+	const MARKDOWN = "5";
 }
 
 /**

@@ -125,6 +125,16 @@ class KalturaVendorCatalogItemOutputFormat extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorCatalogItemSignLanguageOutputFormat extends KalturaEnumBase
+{
+	const ASPECT_RATIO_16_9 = 1;
+	const ASPECT_RATIO_4_3 = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorCatalogItemStage extends KalturaEnumBase
 {
 	const PRODUCTION = 1;
@@ -140,6 +150,15 @@ class KalturaVendorCatalogItemStatus extends KalturaEnumBase
 	const DEPRECATED = 1;
 	const ACTIVE = 2;
 	const DELETED = 3;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorDocumentEnrichmentType extends KalturaEnumBase
+{
+	const MD_CONVERSION = 1;
 }
 
 /**
@@ -165,6 +184,8 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const MODERATION = 15;
 	const METADATA_ENRICHMENT = 16;
 	const SENTIMENT_ANALYSIS = 17;
+	const DOCUMENT_ENRICHMENT = 18;
+	const SIGN_LANGUAGE = 19;
 }
 
 /**
@@ -323,6 +344,16 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const CY = "Welsh";
 	const XH = "Xhosa";
 	const ZU = "Zulu";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCatalogItemSignLanguage extends KalturaEnumBase
+{
+	const ENGLISH_ASL = "English (ASL)";
+	const ENGLISH_BSL = "English (BSL)";
 }
 
 /**
@@ -1288,47 +1319,6 @@ class KalturaCategoryEntryCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaClipsVendorTaskData extends KalturaVendorTaskData
-{
-	/**
-	 * Estimated duration of the clips, in seconds.
-	 *
-	 * @var int
-	 * @insertonly
-	 */
-	public $clipsDuration = null;
-
-	/**
-	 * Event session context ID used to enhance clip results.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $eventSessionContextId = null;
-
-	/**
-	 * Instruction describing the moments to capture or the objectives to achieve with the clips.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $instruction = null;
-
-	/**
-	 * List of clips as JSON string.
-	 * 	 For example: [{"title": "Title of the first clip", "description": "Description of the first clip", "tags": "Tagged-Example", "start": 127, "duration": 30}]
-	 *
-	 * @var string
-	 */
-	public $clipsOutputJson = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
 class KalturaEntryVendorTaskListResponse extends KalturaListResponse
 {
 	/**
@@ -1363,27 +1353,17 @@ class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaMetadataEnrichmentVendorTaskData extends KalturaVendorTaskData
+class KalturaLocalizedVendorTaskData extends KalturaVendorTaskData
 {
 	/**
-	 * The level of detail for the metadata enrichment process.
+	 * Language code
 	 *
-	 * @var string
-	 * @insertonly
+	 * @var KalturaLanguage
 	 */
-	public $detailLevel = null;
+	public $outputLanguage = null;
 
 	/**
-	 * Instructions describing what should be taken into account during the metadata enrichment process.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $instruction = null;
-
-	/**
-	 * Metadata enrichment result as JSON string.
-	 * 	 For example: {"titles": ["The first title", "The second title"], "descriptions": ["The first description"], "tags": ["Tag1", "Tag2"]}
+	 * result as JSON string.
 	 *
 	 * @var string
 	 */
@@ -1425,57 +1405,6 @@ class KalturaModerationVendorTaskData extends KalturaVendorTaskData
 	 * @var string
 	 */
 	public $moderationOutputJson = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaQuizVendorTaskData extends KalturaVendorTaskData
-{
-	/**
-	 * Number Of Questions.
-	 *
-	 * @var int
-	 */
-	public $numberOfQuestions = null;
-
-	/**
-	 * Questions Type.
-	 *
-	 * @var string
-	 */
-	public $questionsType = null;
-
-	/**
-	 * Quiz Context.
-	 *
-	 * @var string
-	 */
-	public $context = null;
-
-	/**
-	 * Formal Style.
-	 *
-	 * @var string
-	 */
-	public $formalStyle = null;
-
-	/**
-	 * Create quiz flag.
-	 *
-	 * @var bool
-	 */
-	public $createQuiz = null;
-
-	/**
-	 * Quiz entry Id
-	 *
-	 * @var string
-	 */
-	public $quizOutput = null;
 
 
 }
@@ -1542,43 +1471,6 @@ class KalturaSentimentAnalysisVendorTaskData extends KalturaVendorTaskData
 	 * @var KalturaLanguageCode
 	 */
 	public $language = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaSummaryVendorTaskData extends KalturaVendorTaskData
-{
-	/**
-	 * Type of summary.
-	 *
-	 * @var KalturaTypeOfSummaryTaskData
-	 */
-	public $typeOfSummary = null;
-
-	/**
-	 * Writing style of the summary.
-	 *
-	 * @var KalturaSummaryWritingStyleTaskData
-	 */
-	public $writingStyle = null;
-
-	/**
-	 * Language code
-	 *
-	 * @var KalturaLanguageCode
-	 */
-	public $language = null;
-
-	/**
-	 * JSON string containing the summary output.
-	 *
-	 * @var string
-	 */
-	public $summaryOutputJson = null;
 
 
 }
@@ -1752,6 +1644,22 @@ class KalturaVendorCredit extends KalturaBaseVendorCredit
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorDocumentEnrichmentCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorDocumentEnrichmentType
+	 */
+	public $documentEnrichmentType = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorDubbingCatalogItem extends KalturaVendorCatalogItem
 {
 	/**
@@ -1857,6 +1765,29 @@ class KalturaVendorSentimentAnalysisCatalogItem extends KalturaVendorCatalogItem
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorSignLanguageCatalogItem extends KalturaVendorCatalogItem
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaCatalogItemSignLanguage
+	 */
+	public $targetLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemSignLanguageOutputFormat
+	 */
+	public $outputFormat = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorSummaryCatalogItem extends KalturaVendorCatalogItem
 {
 
@@ -1922,6 +1853,47 @@ class KalturaAlignmentVendorTaskData extends KalturaVendorTaskDataCaptionAsset
 	 * @insertonly
 	 */
 	public $jsonTranscriptAssetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaClipsVendorTaskData extends KalturaLocalizedVendorTaskData
+{
+	/**
+	 * Estimated duration of the clips, in seconds.
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $clipsDuration = null;
+
+	/**
+	 * Event session context ID used to enhance clip results.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $eventSessionContextId = null;
+
+	/**
+	 * Instruction describing the moments to capture or the objectives to achieve with the clips.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
+	/**
+	 * List of clips as JSON string.
+	 * 	 For example: [{"title": "Title of the first clip", "description": "Description of the first clip", "tags": "Tagged-Example", "start": 127, "duration": 30}]
+	 *
+	 * @var string
+	 */
+	public $clipsOutputJson = null;
 
 
 }
@@ -2160,6 +2132,82 @@ class KalturaEntryVendorTaskCsvJobData extends KalturaExportCsvJobData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataEnrichmentVendorTaskData extends KalturaLocalizedVendorTaskData
+{
+	/**
+	 * The level of detail for the metadata enrichment process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $detailLevel = null;
+
+	/**
+	 * Instructions describing what should be taken into account during the metadata enrichment process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaQuizVendorTaskData extends KalturaLocalizedVendorTaskData
+{
+	/**
+	 * Number Of Questions.
+	 *
+	 * @var int
+	 */
+	public $numberOfQuestions = null;
+
+	/**
+	 * Questions Type.
+	 *
+	 * @var string
+	 */
+	public $questionsType = null;
+
+	/**
+	 * Quiz Context.
+	 *
+	 * @var string
+	 */
+	public $context = null;
+
+	/**
+	 * Formal Style.
+	 *
+	 * @var string
+	 */
+	public $formalStyle = null;
+
+	/**
+	 * Create quiz flag.
+	 *
+	 * @var bool
+	 */
+	public $createQuiz = null;
+
+	/**
+	 * Quiz entry Id
+	 *
+	 * @var string
+	 */
+	public $quizOutput = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaReachProfileBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -2261,6 +2309,36 @@ class KalturaReachReportInputFilter extends KalturaReportInputFilter
 	 * @var KalturaVendorServiceTurnAroundTime
 	 */
 	public $turnAroundTime = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSummaryVendorTaskData extends KalturaLocalizedVendorTaskData
+{
+	/**
+	 * Type of summary.
+	 *
+	 * @var KalturaTypeOfSummaryTaskData
+	 */
+	public $typeOfSummary = null;
+
+	/**
+	 * Writing style of the summary.
+	 *
+	 * @var KalturaSummaryWritingStyleTaskData
+	 */
+	public $writingStyle = null;
+
+	/**
+	 * JSON string containing the summary output.
+	 *
+	 * @var string
+	 */
+	public $summaryOutputJson = null;
 
 
 }
@@ -2610,6 +2688,15 @@ class KalturaVendorClipsCatalogItemFilter extends KalturaVendorCatalogItemFilter
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorDocumentEnrichmentCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCatalogItemFilter
 {
 	/**
@@ -2751,6 +2838,15 @@ class KalturaVendorExtendedAudioDescriptionCatalogItemFilter extends KalturaVend
  * @subpackage Client
  */
 class KalturaVendorLiveCaptionCatalogItemFilter extends KalturaVendorCaptionsCatalogItemBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSignLanguageCatalogItemFilter extends KalturaVendorDubbingCatalogItemBaseFilter
 {
 
 }
@@ -3355,6 +3451,27 @@ class KalturaEntryVendorTaskService extends KalturaServiceBase
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "rejectReason", $rejectReason);
 		$this->client->queueServiceActionCall("reach_entryvendortask", "reject", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryVendorTask");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $id Vendor task id
+	 * @param string $newOutput 
+	 * @return KalturaEntryVendorTask
+	 */
+	function replaceOutput($id, $newOutput)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "newOutput", $newOutput);
+		$this->client->queueServiceActionCall("reach_entryvendortask", "replaceOutput", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultObject = $this->client->doQueue();

@@ -5211,15 +5211,17 @@ class KalturaMediaService extends KalturaServiceBase
 	 * Get volume map by entry id
 	 * 
 	 * @param string $entryId Entry id
+	 * @param int $desiredLines Desired Lines
 	 * @return file
 	 */
-	function getVolumeMap($entryId)
+	function getVolumeMap($entryId, $desiredLines = null)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "desiredLines", $desiredLines);
 		$this->client->queueServiceActionCall("media", "getVolumeMap", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
@@ -10327,8 +10329,8 @@ class KalturaClient extends KalturaClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:25-05-24');
-		$this->setApiVersion('21.16.0');
+		$this->setClientTag('php5:25-06-21');
+		$this->setApiVersion('21.18.0');
 		
 		$this->accessControlProfile = new KalturaAccessControlProfileService($this);
 		$this->accessControl = new KalturaAccessControlService($this);
