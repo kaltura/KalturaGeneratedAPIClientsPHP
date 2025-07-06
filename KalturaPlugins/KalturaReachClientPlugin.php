@@ -384,6 +384,17 @@ class KalturaEntryVendorTaskOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMetadataEnrichmentApplyMode extends KalturaEnumBase
+{
+	const FILL_EMPTY = "FILL_EMPTY";
+	const FILL_EMPTY_AND_OVERRIDE_LIST = "FILL_EMPTY_AND_OVERRIDE_LIST";
+	const OVERRIDE_ALL = "OVERRIDE_ALL";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReachProfileOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
@@ -2149,6 +2160,29 @@ class KalturaMetadataEnrichmentVendorTaskData extends KalturaLocalizedVendorTask
 	 * @insertonly
 	 */
 	public $instruction = null;
+
+	/**
+	 * Indicates whether the metadata enrichment results should be automatically applied on the task entry.
+	 * 	 Default is false.
+	 *
+	 * @var bool
+	 */
+	public $shouldApply = null;
+
+	/**
+	 * Specifies how metadata fields should be applied during enrichment.
+	 * 	 If 'FILL_EMPTY_AND_OVERRIDE_LIST', use overrideFields to specify which fields to override.
+	 *
+	 * @var KalturaMetadataEnrichmentApplyMode
+	 */
+	public $applyMode = null;
+
+	/**
+	 * List of entry fields to override when applyMode is set to 'FILL_EMPTY_AND_OVERRIDE_LIST'.
+	 *
+	 * @var array of KalturaString
+	 */
+	public $overrideFields;
 
 
 }

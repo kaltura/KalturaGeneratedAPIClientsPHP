@@ -99,6 +99,17 @@ class KalturaZoomUsersMatching extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaZoomUsersSearchMethod extends KalturaEnumBase
+{
+	const ID = 0;
+	const EMAIL = 1;
+	const ALL = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaEndpointValidationResponse extends KalturaObjectBase
 {
 	/**
@@ -320,6 +331,13 @@ class KalturaZoomIntegrationSetting extends KalturaIntegrationSetting
 	 * @var KalturaHandleParticipantsMode
 	 */
 	public $handleAlternativeHostsMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaZoomUsersSearchMethod
+	 */
+	public $userSearchMethod = null;
 
 
 }
