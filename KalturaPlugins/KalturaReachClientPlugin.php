@@ -47,6 +47,7 @@ require_once(dirname(__FILE__) . "/KalturaTranscriptClientPlugin.php");
 class KalturaEntryObjectType extends KalturaEnumBase
 {
 	const ENTRY = 1;
+	const ASSET = 2;
 }
 
 /**
@@ -119,16 +120,6 @@ class KalturaVendorCatalogItemOutputFormat extends KalturaEnumBase
 	const SRT = 1;
 	const DFXP = 2;
 	const VTT = 3;
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaVendorCatalogItemSignLanguageOutputFormat extends KalturaEnumBase
-{
-	const ASPECT_RATIO_16_9 = 1;
-	const ASPECT_RATIO_4_3 = 2;
 }
 
 /**
@@ -1784,13 +1775,6 @@ class KalturaVendorSignLanguageCatalogItem extends KalturaVendorCatalogItem
 	 * @var KalturaCatalogItemSignLanguage
 	 */
 	public $targetLanguage = null;
-
-	/**
-	 * 
-	 *
-	 * @var KalturaVendorCatalogItemSignLanguageOutputFormat
-	 */
-	public $outputFormat = null;
 
 
 }

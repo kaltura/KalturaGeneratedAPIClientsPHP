@@ -1540,6 +1540,7 @@ class KalturaAssetType extends KalturaEnumBase
 	const IMAGE = "document.Image";
 	const PDF = "document.PDF";
 	const SWF = "document.SWF";
+	const MARKDOWN = "markdown.Markdown";
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
 	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
@@ -4998,6 +4999,7 @@ class KalturaReportType extends KalturaEnumBase
 	const EP_TOP_MOMENTS = "60016";
 	const EP_TOP_SESSIONS = "60017";
 	const EP_WEBCAST_ENGAGEMENT_OVER_TIME = "60018";
+	const EP_LATEST_DOWNLOADED_ATTACHMENTS = "60019";
 	const CNC_PARTICIPATION = "70001";
 	const QUIZ = "quiz.QUIZ";
 	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";

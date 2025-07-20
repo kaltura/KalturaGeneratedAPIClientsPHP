@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . "/KalturaAttachmentClientPlugin.php");
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAssetOrderBy extends KalturaEnumBase
+class KalturaMarkdownAssetOrderBy extends KalturaEnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";
@@ -56,29 +56,28 @@ class KalturaTranscriptAssetOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptProviderType extends KalturaEnumBase
+class KalturaMarkdownProviderType extends KalturaEnumBase
 {
-	const CIELO24 = "cielo24.Cielo24";
-	const VOICEBASE = "voicebase.Voicebase";
+	const KAI = "0";
 }
 
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAsset extends KalturaTextualAttachmentAsset
+class KalturaMarkdownAsset extends KalturaAttachmentAsset
 {
 	/**
-	 * The accuracy of the transcript - values between 0 and 1
+	 * The percentage accuracy of the markdown - values between 0 and 100
 	 *
-	 * @var float
+	 * @var int
 	 */
 	public $accuracy = null;
 
 	/**
-	 * The provider of the transcript
+	 * The provider of the markdown
 	 *
-	 * @var KalturaTranscriptProviderType
+	 * @var KalturaMarkdownProviderType
 	 */
 	public $providerType = null;
 
@@ -89,42 +88,12 @@ class KalturaTranscriptAsset extends KalturaTextualAttachmentAsset
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaEntryTranscriptAssetSearchItem extends KalturaSearchItem
+class KalturaMarkdownAssetListResponse extends KalturaListResponse
 {
 	/**
 	 * 
 	 *
-	 * @var string
-	 */
-	public $contentLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $contentMultiLikeAnd = null;
-
-
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaTranscriptAssetListResponse extends KalturaListResponse
-{
-	/**
-	 * 
-	 *
-	 * @var array of KalturaTranscriptAsset
+	 * @var array of KalturaMarkdownAsset
 	 * @readonly
 	 */
 	public $objects;
@@ -136,7 +105,7 @@ class KalturaTranscriptAssetListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
-abstract class KalturaTranscriptAssetBaseFilter extends KalturaTextualAttachmentAssetFilter
+abstract class KalturaMarkdownAssetBaseFilter extends KalturaTextualAttachmentAssetFilter
 {
 
 }
@@ -145,7 +114,7 @@ abstract class KalturaTranscriptAssetBaseFilter extends KalturaTextualAttachment
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptAssetFilter extends KalturaTranscriptAssetBaseFilter
+class KalturaMarkdownAssetFilter extends KalturaMarkdownAssetBaseFilter
 {
 
 }
@@ -154,7 +123,7 @@ class KalturaTranscriptAssetFilter extends KalturaTranscriptAssetBaseFilter
  * @package Kaltura
  * @subpackage Client
  */
-class KalturaTranscriptClientPlugin extends KalturaClientPlugin
+class KalturaMarkdownClientPlugin extends KalturaClientPlugin
 {
 	protected function __construct(KalturaClient $client)
 	{
@@ -162,11 +131,11 @@ class KalturaTranscriptClientPlugin extends KalturaClientPlugin
 	}
 
 	/**
-	 * @return KalturaTranscriptClientPlugin
+	 * @return KalturaMarkdownClientPlugin
 	 */
 	public static function get(KalturaClient $client)
 	{
-		return new KalturaTranscriptClientPlugin($client);
+		return new KalturaMarkdownClientPlugin($client);
 	}
 
 	/**
@@ -184,7 +153,7 @@ class KalturaTranscriptClientPlugin extends KalturaClientPlugin
 	 */
 	public function getName()
 	{
-		return 'transcript';
+		return 'markdown';
 	}
 }
 

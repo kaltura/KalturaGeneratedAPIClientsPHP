@@ -101,9 +101,8 @@ class KalturaZoomUsersMatching extends KalturaEnumBase
  */
 class KalturaZoomUsersSearchMethod extends KalturaEnumBase
 {
-	const ID = 0;
-	const EMAIL = 1;
-	const ALL = 2;
+	const EMAIL = 0;
+	const EXTERNAL = 1;
 }
 
 /**

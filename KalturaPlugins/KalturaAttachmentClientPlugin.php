@@ -120,6 +120,29 @@ class KalturaAttachmentAsset extends KalturaAsset
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaTextualAttachmentAsset extends KalturaAttachmentAsset
+{
+	/**
+	 * The language of the transcript
+	 *
+	 * @var KalturaLanguage
+	 */
+	public $language = null;
+
+	/**
+	 * Was verified by human or machine
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $humanVerified = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAttachmentAssetListResponse extends KalturaListResponse
 {
 	/**
@@ -139,6 +162,23 @@ class KalturaAttachmentAssetListResponse extends KalturaListResponse
  */
 class KalturaAttachmentServeOptions extends KalturaAssetServeOptions
 {
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaTextualAttachmentAssetListResponse extends KalturaListResponse
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaTextualAttachmentAsset
+	 * @readonly
+	 */
+	public $objects;
+
 
 }
 
@@ -191,6 +231,24 @@ abstract class KalturaAttachmentAssetBaseFilter extends KalturaAssetFilter
  * @subpackage Client
  */
 class KalturaAttachmentAssetFilter extends KalturaAttachmentAssetBaseFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaTextualAttachmentAssetBaseFilter extends KalturaAttachmentAssetFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+abstract class KalturaTextualAttachmentAssetFilter extends KalturaTextualAttachmentAssetBaseFilter
 {
 
 }
