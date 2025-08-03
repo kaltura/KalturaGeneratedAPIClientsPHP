@@ -2219,6 +2219,14 @@ class KalturaQuizVendorTaskData extends KalturaLocalizedVendorTaskData
 	 */
 	public $quizOutput = null;
 
+	/**
+	 * Instructions describing what should be taken into account during the quiz creation process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
 
 }
 

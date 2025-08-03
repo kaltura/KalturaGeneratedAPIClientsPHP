@@ -464,6 +464,29 @@ class KalturaAccessControlScope extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaActiveLiveStreamTime extends KalturaObjectBase
+{
+	/**
+	 * The start time of the live stream (unix timestamp in seconds)
+	 *
+	 * @var int
+	 */
+	public $startTime = null;
+
+	/**
+	 * The end time of the live stream (unix timestamp in seconds)
+	 *
+	 * @var int
+	 */
+	public $endTime = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaReportFilter extends KalturaObjectBase
 {
 	/**
@@ -9940,6 +9963,13 @@ class KalturaPlaybackContext extends KalturaObjectBase
 	 * @var array of KalturaObject
 	 */
 	public $bumperData;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaActiveLiveStreamTime
+	 */
+	public $activeLiveStreamTime;
 
 
 }
