@@ -2366,6 +2366,14 @@ class KalturaSummaryVendorTaskData extends KalturaLocalizedVendorTaskData
 	 */
 	public $summaryOutputJson = null;
 
+	/**
+	 * Additional instruction for the summary.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
 
 }
 

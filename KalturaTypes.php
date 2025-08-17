@@ -10625,6 +10625,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $eventSessionContextIdIn = null;
 
+	/**
+	 * filter by event video codec
+	 *
+	 * @var string
+	 */
+	public $videoCodecIn = null;
+
 
 }
 
