@@ -1212,6 +1212,13 @@ class KalturaAddEntryVendorTaskAction extends KalturaRuleAction
 	 */
 	public $catalogItemIds = null;
 
+	/**
+	 * Entry Object Type
+	 *
+	 * @var KalturaEntryObjectType
+	 */
+	public $entryObjectType = null;
+
 
 }
 
