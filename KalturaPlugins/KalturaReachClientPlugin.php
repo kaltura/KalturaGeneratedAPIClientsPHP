@@ -263,8 +263,10 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";
+	const EN_ASL = "English (ASL)";
 	const EN_US = "English (American)";
 	const EN_AU = "English (Australian)";
+	const EN_BSL = "English (BSL)";
 	const EN_GB = "English (British)";
 	const EO = "Esperanto";
 	const ET = "Estonian";
@@ -335,16 +337,6 @@ class KalturaCatalogItemLanguage extends KalturaEnumBase
 	const CY = "Welsh";
 	const XH = "Xhosa";
 	const ZU = "Zulu";
-}
-
-/**
- * @package Kaltura
- * @subpackage Client
- */
-class KalturaCatalogItemSignLanguage extends KalturaEnumBase
-{
-	const ENGLISH_ASL = "English (ASL)";
-	const ENGLISH_BSL = "English (BSL)";
 }
 
 /**
@@ -1779,7 +1771,7 @@ class KalturaVendorSignLanguageCatalogItem extends KalturaVendorCatalogItem
 	/**
 	 * 
 	 *
-	 * @var KalturaCatalogItemSignLanguage
+	 * @var KalturaCatalogItemLanguage
 	 */
 	public $targetLanguage = null;
 

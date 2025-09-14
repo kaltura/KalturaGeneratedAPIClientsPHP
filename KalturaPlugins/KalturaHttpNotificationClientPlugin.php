@@ -192,6 +192,13 @@ abstract class KalturaHttpNotificationData extends KalturaObjectBase
  */
 class KalturaHttpNotificationDataFields extends KalturaHttpNotificationData
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
+
 
 }
 
@@ -207,6 +214,13 @@ class KalturaHttpNotificationDataText extends KalturaHttpNotificationData
 	 * @var KalturaStringValue
 	 */
 	public $content;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
 
 
 }
