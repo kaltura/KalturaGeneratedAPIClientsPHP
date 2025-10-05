@@ -266,6 +266,13 @@ class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData
 	 */
 	public $dataStringReplacements;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $responseProfileId = null;
+
 
 }
 
