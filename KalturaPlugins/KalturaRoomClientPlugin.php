@@ -102,6 +102,13 @@ class KalturaRoomEntry extends KalturaBaseEntry
 	 */
 	public $templateRoomEntryId = null;
 
+	/**
+	 * The entryId of the recording
+	 *
+	 * @var string
+	 */
+	public $recordedEntryId = null;
+
 
 }
 
