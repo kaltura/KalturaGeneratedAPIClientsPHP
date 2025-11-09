@@ -257,6 +257,13 @@ class KalturaFtpDistributionProfile extends KalturaConfigurableDistributionProfi
 	 *
 	 * @var string
 	 */
+	public $dataContentFilenameXslt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $asperaPublicKey = null;
 
 	/**

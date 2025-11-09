@@ -1364,6 +1364,13 @@ class KalturaEntryCaptionAdvancedFilter extends KalturaSearchItem
 	 */
 	public $hasCaption = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaLanguage
+	 */
+	public $language = null;
+
 
 }
 
