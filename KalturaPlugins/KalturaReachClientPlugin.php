@@ -3514,6 +3514,27 @@ class KalturaEntryVendorTaskService extends KalturaServiceBase
 	}
 
 	/**
+	 * Reset entry vendor task. change status back to pending with a new catalog item
+	 * 
+	 * @param int $id Vendor task id to reset
+	 * @param int $catalogItemId New catalog item
+	 * @return KalturaEntryVendorTask
+	 */
+	function reset($id, $catalogItemId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "catalogItemId", $catalogItemId);
+		$this->client->queueServiceActionCall("reach_entryvendortask", "reset", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaEntryVendorTask");
+		return $resultObject;
+	}
+
+	/**
 	 * 
 	 * 
 	 * @param int $vendorPartnerId 

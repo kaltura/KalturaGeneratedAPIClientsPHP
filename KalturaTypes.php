@@ -14762,6 +14762,13 @@ class KalturaBulkUploadResultUser extends KalturaBulkUploadResult
 	 */
 	public $capabilities = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $groupUserCreationMode = null;
+
 
 }
 

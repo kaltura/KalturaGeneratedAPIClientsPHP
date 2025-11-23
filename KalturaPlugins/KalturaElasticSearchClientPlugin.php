@@ -860,6 +860,20 @@ class KalturaESearchCaptionItemData extends KalturaESearchItemData
 	 */
 	public $label = null;
 
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracy = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $usage = null;
+
 
 }
 
@@ -1370,6 +1384,41 @@ class KalturaEntryCaptionAdvancedFilter extends KalturaSearchItem
 	 * @var KalturaLanguage
 	 */
 	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyLessThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaCaptionAssetUsage
+	 */
+	public $usage = null;
 
 
 }
