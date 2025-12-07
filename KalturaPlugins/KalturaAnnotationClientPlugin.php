@@ -134,6 +134,13 @@ class KalturaAnnotation extends KalturaCuePoint
 	 */
 	public $searchableOnEntry = null;
 
+	/**
+	 * In case of cloned annotation it will hold source cuepoint createdAt.
+	 *
+	 * @var int
+	 */
+	public $originalCuePointCreateAt = null;
+
 
 }
 

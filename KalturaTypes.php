@@ -6664,6 +6664,14 @@ class KalturaFlavorParams extends KalturaAssetParams
 	 */
 	public $clipDuration = null;
 
+	/**
+	 * Audio languages extracted from multiStream field
+	 *
+	 * @var array of KalturaString
+	 * @readonly
+	 */
+	public $audioLanguages;
+
 
 }
 
