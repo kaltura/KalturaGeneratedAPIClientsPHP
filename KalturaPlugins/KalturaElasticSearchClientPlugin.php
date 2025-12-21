@@ -283,6 +283,45 @@ class KalturaESearchMetadataAggregateByFieldName extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchScoreFunctionBoostMode extends KalturaEnumBase
+{
+	const MULTIPLY = "multiply";
+	const SUM = "sum";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchScoreFunctionDecayAlgorithm extends KalturaEnumBase
+{
+	const EXP = "exp";
+	const GAUSS = "gauss";
+	const LINEAR = "linear";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchScoreFunctionField extends KalturaEnumBase
+{
+	const CREATED_AT = "created_at";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaESearchScoreFunctionOrigin extends KalturaEnumBase
+{
+	const NOW = "now";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaESearchSortOrder extends KalturaEnumBase
 {
 	const ORDER_BY_ASC = "asc";
@@ -664,6 +703,64 @@ class KalturaESearchOrderBy extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaESearchScoreFunctionParams extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchScoreFunctionDecayAlgorithm
+	 */
+	public $decayAlgorithm = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchScoreFunctionField
+	 */
+	public $functionField = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchScoreFunctionBoostMode
+	 */
+	public $boostMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchScoreFunctionOrigin
+	 */
+	public $origin = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $weight = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $scale = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $decay = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaESearchParams extends KalturaObjectBase
 {
 	/**
@@ -707,6 +804,13 @@ abstract class KalturaESearchParams extends KalturaObjectBase
 	 * @var KalturaNullableBoolean
 	 */
 	public $objectIdsNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaESearchScoreFunctionParams
+	 */
+	public $scoreFunctionParams;
 
 
 }

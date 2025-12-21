@@ -3064,15 +3064,18 @@ class KalturaVendorCatalogItemService extends KalturaServiceBase
 	 * 
 	 * 
 	 * @param int $vendorPartnerId 
+	 * @param KalturaVendorCatalogItemFilter $filter 
 	 * @return file
 	 */
-	function serve($vendorPartnerId = null)
+	function serve($vendorPartnerId = null, KalturaVendorCatalogItemFilter $filter = null)
 	{
 		if ($this->client->isMultiRequest())
 			throw new KalturaClientException("Action is not supported as part of multi-request.", KalturaClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "serve", $kparams);
 		if(!$this->client->getDestinationPath() && !$this->client->getReturnServedResult())
 			return $this->client->getServeUrl();
