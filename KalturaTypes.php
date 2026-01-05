@@ -13968,6 +13968,20 @@ class KalturaBaseEntryListResponse extends KalturaListResponse
  */
 abstract class KalturaBaseSyndicationFeedBaseFilter extends KalturaFilter
 {
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
 
 }
 

@@ -168,6 +168,13 @@ class KalturaCortexApiDistributionJobProviderData extends KalturaConfigurableDis
 	 */
 	public $captionsInfo;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaMediaType
+	 */
+	public $mediaType = null;
+
 
 }
 
