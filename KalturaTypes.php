@@ -12788,7 +12788,6 @@ abstract class KalturaUserEntry extends KalturaObjectBase
 	 * 
 	 *
 	 * @var KalturaUserEntryStatus
-	 * @readonly
 	 */
 	public $status = null;
 
@@ -19814,6 +19813,29 @@ class KalturaUiConfListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaUpdateUserEntriesData extends KalturaJobData
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryStatus
+	 */
+	public $oldStatus = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaUserEntryStatus
+	 */
+	public $newStatus = null;
 
 
 }
