@@ -177,6 +177,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const SENTIMENT_ANALYSIS = 17;
 	const DOCUMENT_ENRICHMENT = 18;
 	const SIGN_LANGUAGE = 19;
+	const SPEECH_TO_VIDEO = 20;
 }
 
 /**
@@ -785,6 +786,14 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 * @var string
 	 */
 	public $externalTaskId = null;
+
+	/**
+	 * Indicates if the task is pay-per-use based on the catalog item
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $isPayPerUse = null;
 
 
 }
@@ -1480,6 +1489,29 @@ class KalturaSentimentAnalysisVendorTaskData extends KalturaVendorTaskData
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaSpeechToVideoVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * The identifier of the avatar to be used for generating the video
+	 *
+	 * @var string
+	 */
+	public $avatarId = null;
+
+	/**
+	 * Optional. Conversion profile to be used for the generated video media entry
+	 *
+	 * @var int
+	 */
+	public $conversionProfileId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaUnlimitedVendorCredit extends KalturaBaseVendorCredit
 {
 	/**
@@ -1775,6 +1807,15 @@ class KalturaVendorSignLanguageCatalogItem extends KalturaVendorCatalogItem
 	 */
 	public $targetLanguage = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSpeechToVideoCatalogItem extends KalturaVendorCatalogItem
+{
 
 }
 
@@ -2790,6 +2831,15 @@ class KalturaVendorQuizCatalogItemFilter extends KalturaVendorCatalogItemFilter
  * @subpackage Client
  */
 class KalturaVendorSentimentAnalysisCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorSpeechToVideoCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }
