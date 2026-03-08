@@ -787,14 +787,6 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 */
 	public $externalTaskId = null;
 
-	/**
-	 * Indicates if the task is pay-per-use based on the catalog item
-	 *
-	 * @var bool
-	 * @readonly
-	 */
-	public $isPayPerUse = null;
-
 
 }
 

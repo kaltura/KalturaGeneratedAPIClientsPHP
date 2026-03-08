@@ -136,6 +136,14 @@ class KalturaShortLink extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $uniqueId = null;
+
+	/**
+	 * 
+	 *
 	 * @var KalturaShortLinkStatus
 	 */
 	public $status = null;
@@ -260,6 +268,13 @@ abstract class KalturaShortLinkBaseFilter extends KalturaFilter
 	 * @var string
 	 */
 	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $uniqueIdEqual = null;
 
 
 }

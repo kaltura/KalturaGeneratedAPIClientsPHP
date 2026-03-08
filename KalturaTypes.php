@@ -8315,6 +8315,15 @@ class KalturaLiveStreamStats extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+abstract class KalturaMediaCompositionAttributes extends KalturaObjectBase
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter
 {
 	/**
@@ -12075,6 +12084,22 @@ class KalturaStorageProfile extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaStringArrayObject extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $value;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaSyndicationFeedEntryCount extends KalturaObjectBase
 {
 	/**
@@ -15202,6 +15227,13 @@ class KalturaClipAttributes extends KalturaOperationAttributes
 	 */
 	public $captionAttributes;
 
+	/**
+	 * 
+	 *
+	 * @var array of KalturaMediaCompositionAttributes
+	 */
+	public $mediaCompositionAttributesArray;
+
 
 }
 
@@ -15337,6 +15369,13 @@ class KalturaConcatJobData extends KalturaJobData
 	 * @var array of KalturaString
 	 */
 	public $srcFiles;
+
+	/**
+	 * Additional input files to be used in conversion pre concatenation
+	 *
+	 * @var array of KalturaStringArrayObject
+	 */
+	public $inputFiles;
 
 	/**
 	 * Output file
@@ -18238,6 +18277,29 @@ class KalturaOrCondition extends KalturaCondition
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaOverlayAttributes extends KalturaMediaCompositionAttributes
+{
+	/**
+	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 *
+	 * @var KalturaContentResource
+	 */
+	public $resource;
+
+	/**
+	 * Only KalturaReplaceBackgroundAttributes is supported
+	 *
+	 * @var array of KalturaMediaCompositionAttributes
+	 */
+	public $resourceMediaCompositionAttributesArray;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaPartnerBaseFilter extends KalturaFilter
 {
 	/**
@@ -18699,6 +18761,22 @@ class KalturaRenderCaptionAttributes extends KalturaCaptionAttributes
 	 * @var string
 	 */
 	public $captionAssetId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaReplaceBackgroundAttributes extends KalturaMediaCompositionAttributes
+{
+	/**
+	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 *
+	 * @var KalturaContentResource
+	 */
+	public $resource;
 
 
 }
