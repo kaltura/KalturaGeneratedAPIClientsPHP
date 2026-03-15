@@ -3001,6 +3001,9 @@ class KalturaLanguage extends KalturaEnumBase
 	const APJ = "Apache (Jicarilla)";
 	const APW = "Apache (Western)";
 	const AR = "Arabic";
+	const AR_LB = "Arabic (Lebanon)";
+	const AR_QA = "Arabic (Qatar)";
+	const AR_SA = "Arabic (Saudi Arabia)";
 	const ARB = "Arabic (standard)";
 	const B_T = "Arabic Tunisian Spoken";
 	const ARC = "Aramaic";
@@ -3553,6 +3556,9 @@ class KalturaLanguageCode extends KalturaEnumBase
 	const ALG = "alg";
 	const AM = "am";
 	const AR = "ar";
+	const AR_LB = "ar_lb";
+	const AR_QA = "ar_qa";
+	const AR_SA = "ar_sa";
 	const AS_ = "as";
 	const ATH = "ath";
 	const AY = "ay";
