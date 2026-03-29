@@ -175,6 +175,13 @@ class KalturaZoomDropFolder extends KalturaDropFolder
 	 */
 	public $lastHandledMeetingTime = null;
 
+	/**
+	 * The amount of time, in seconds, to wait before processing a drop folder file
+	 *
+	 * @var int
+	 */
+	public $fileProcessingGracePeriod = null;
+
 
 }
 

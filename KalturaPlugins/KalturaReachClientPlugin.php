@@ -178,6 +178,8 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const DOCUMENT_ENRICHMENT = 18;
 	const SIGN_LANGUAGE = 19;
 	const SPEECH_TO_VIDEO = 20;
+	const IMMERSIVE_AGENT_CALL = 21;
+	const IMMERSIVE_AGENT_CHAT = 22;
 }
 
 /**
@@ -1341,6 +1343,31 @@ class KalturaEntryVendorTaskListResponse extends KalturaListResponse
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaImmersiveAgentCallVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * The unique identifier for the immersive agent call
+	 *
+	 * @var string
+	 */
+	public $callId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaImmersiveAgentChatVendorTaskData extends KalturaVendorTaskData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaIntelligentTaggingVendorTaskData extends KalturaVendorTaskData
 {
 	/**
@@ -1741,6 +1768,24 @@ class KalturaVendorExtendedAudioDescriptionCatalogItem extends KalturaVendorCata
 	 */
 	public $outputFormat = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentCallCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentChatCatalogItem extends KalturaVendorCatalogItem
+{
 
 }
 
@@ -2782,6 +2827,24 @@ abstract class KalturaVendorDubbingCatalogItemBaseFilter extends KalturaVendorCa
 	 */
 	public $targetLanguageIn = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentCallCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentChatCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
 
 }
 

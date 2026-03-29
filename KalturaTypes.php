@@ -10068,6 +10068,29 @@ class KalturaPlaylist extends KalturaBaseEntry
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaPosition extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $x = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $y = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaRemotePath extends KalturaObjectBase
 {
 	/**
@@ -18778,6 +18801,27 @@ class KalturaReplaceBackgroundAttributes extends KalturaMediaCompositionAttribut
 	 */
 	public $resource;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $backgroundColorCode = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $foregroundScalePercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaPosition
+	 */
+	public $foregroundPositionPercentage;
+
 
 }
 
@@ -18903,6 +18947,29 @@ class KalturaReportListResponse extends KalturaListResponse
 	 * @readonly
 	 */
 	public $objects;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaResolutionCropAttributes extends KalturaDimensionsAttributes
+{
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $targetWidth = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $targetHeight = null;
 
 
 }
