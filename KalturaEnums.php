@@ -617,6 +617,23 @@ class KalturaMailJobStatus extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaMediaCompositionAlignment extends KalturaEnumBase
+{
+	const BOTTOM_LEFT = 1;
+	const BOTTOM_CENTER = 2;
+	const BOTTOM_RIGHT = 3;
+	const TOP_LEFT = 4;
+	const TOP_CENTER = 6;
+	const TOP_RIGHT = 7;
+	const CENTER_LEFT = 8;
+	const CENTER_CENTER = 10;
+	const CENTER_RIGHT = 11;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaMediaType extends KalturaEnumBase
 {
 	const VIDEO = 1;
@@ -705,6 +722,18 @@ class KalturaNullableBoolean extends KalturaEnumBase
 	const NULL_VALUE = -1;
 	const FALSE_VALUE = 0;
 	const TRUE_VALUE = 1;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaOverlayShape extends KalturaEnumBase
+{
+	const CIRCLE = 1;
+	const RECTANGLE = 2;
+	const RECTANGLE_ROUNDED_CORNERS = 3;
+	const ELLIPSE = 4;
 }
 
 /**
@@ -4862,6 +4891,7 @@ class KalturaReportType extends KalturaEnumBase
 	const REACH_PROFILE_USAGE = "66";
 	const SELF_SERVE_BANDWIDTH = "67";
 	const PARTNER_USAGE_SF = "68";
+	const REACH_UNITS_USAGE = "69";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";
@@ -5008,6 +5038,12 @@ class KalturaReportType extends KalturaEnumBase
 	const EP_WEBCAST_ENGAGEMENT_OVER_TIME = "60018";
 	const EP_LATEST_DOWNLOADED_ATTACHMENTS = "60019";
 	const CNC_PARTICIPATION = "70001";
+	const IMMERSIVE_AGENTS_HIGHLIGHTS = "80001";
+	const IMMERSIVE_AGENTS_MESSAGES_OVERTIME = "80002";
+	const IMMERSIVE_AGENTS_MESSAGE_FEEDBACK = "80003";
+	const IMMERSIVE_AGENTS_TOP_SOURCES = "80004";
+	const IMMERSIVE_AGENTS_AVATAR_SESSIONS = "80005";
+	const IMMERSIVE_AGENTS_RESPONSE_EXPERIENCE_TYPES = "80006";
 	const QUIZ = "quiz.QUIZ";
 	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";
 	const QUIZ_USER_AGGREGATE_BY_QUESTION = "quiz.QUIZ_USER_AGGREGATE_BY_QUESTION";

@@ -48,6 +48,7 @@ class KalturaEntryObjectType extends KalturaEnumBase
 {
 	const ENTRY = 1;
 	const ASSET = 2;
+	const EXTERNAL_OBJECT = 3;
 }
 
 /**
@@ -180,6 +181,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const SPEECH_TO_VIDEO = 20;
 	const IMMERSIVE_AGENT_CALL = 21;
 	const IMMERSIVE_AGENT_CHAT = 22;
+	const AVATAR_VOD = 23;
 }
 
 /**
@@ -791,6 +793,14 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 * @var string
 	 */
 	public $externalTaskId = null;
+
+	/**
+	 * The identifier of the external object for EXTERNAL_OBJECT type tasks
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $externalObjectId = null;
 
 
 }
@@ -1590,6 +1600,15 @@ class KalturaVendorAudioDescriptionCatalogItem extends KalturaVendorCatalogItem
 	 */
 	public $clearAudioFlavorParamsId = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorAvatarVodCatalogItem extends KalturaVendorCatalogItem
+{
 
 }
 
@@ -2749,6 +2768,15 @@ class KalturaVendorLiveTranslationCatalogItem extends KalturaVendorLiveCatalogIt
 	 */
 	public $targetLanguage = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorAvatarVodCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
 
 }
 

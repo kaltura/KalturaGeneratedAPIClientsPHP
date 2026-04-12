@@ -1045,6 +1045,22 @@ class KalturaAssetServeOptions extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAudioAttributes extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $volume = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAuthentication extends KalturaObjectBase
 {
 	/**
@@ -10672,6 +10688,27 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $videoCodecIn = null;
 
+	/**
+	 * filter by agent id
+	 *
+	 * @var string
+	 */
+	public $agentIdIn = null;
+
+	/**
+	 * filter by Genie id
+	 *
+	 * @var string
+	 */
+	public $genieIdIn = null;
+
+	/**
+	 * filter by reach profile id
+	 *
+	 * @var string
+	 */
+	public $reachProfileIdIn = null;
+
 
 }
 
@@ -18316,6 +18353,41 @@ class KalturaOverlayAttributes extends KalturaMediaCompositionAttributes
 	 */
 	public $resourceMediaCompositionAttributesArray;
 
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $marginsPercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $overlayScalePercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaMediaCompositionAlignment
+	 */
+	public $overlayPlacement = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaOverlayShape
+	 */
+	public $overlayShape = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaAudioAttributes
+	 */
+	public $audioAttributes;
+
 
 }
 
@@ -18821,6 +18893,13 @@ class KalturaReplaceBackgroundAttributes extends KalturaMediaCompositionAttribut
 	 * @var KalturaPosition
 	 */
 	public $foregroundPositionPercentage;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaAudioAttributes
+	 */
+	public $audioAttributes;
 
 
 }
