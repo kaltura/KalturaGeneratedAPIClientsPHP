@@ -3072,6 +3072,13 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $allowedEmailDomainsForAdmins = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalIdentifier = null;
+
 
 }
 
@@ -10708,6 +10715,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $reachProfileIdIn = null;
+
+	/**
+	 * filter by preview mode
+	 *
+	 * @var bool
+	 */
+	public $isPreview = null;
 
 
 }

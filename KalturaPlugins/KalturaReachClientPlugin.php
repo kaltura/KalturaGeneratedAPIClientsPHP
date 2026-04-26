@@ -974,7 +974,6 @@ class KalturaReachProfile extends KalturaObjectBase
 	 * 
 	 *
 	 * @var float
-	 * @readonly
 	 */
 	public $usedCredit = null;
 
