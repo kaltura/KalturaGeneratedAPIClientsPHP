@@ -8184,6 +8184,14 @@ class KalturaLiveStreamEntry extends KalturaLiveEntry
 	public $hlsStreamUrl = null;
 
 	/**
+	 * Indicates whether the live entry is ready to be deleted
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $readyForDeletion = null;
+
+	/**
 	 * URL Manager to handle the live stream URL (for instance, add token)
 	 *
 	 * @var string

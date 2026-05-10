@@ -72,6 +72,7 @@ class KalturaESearchGroupFieldName extends KalturaEnumBase
 	const TITLE = "title";
 	const UPDATED_AT = "updated_at";
 	const USER_ID = "user_id";
+	const TYPE = "user_type";
 }
 
 /**
