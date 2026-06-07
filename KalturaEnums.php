@@ -728,6 +728,16 @@ class KalturaNullableBoolean extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaOverlayScaleBehavior extends KalturaEnumBase
+{
+	const CROP = 1;
+	const SCALE = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaOverlayShape extends KalturaEnumBase
 {
 	const CIRCLE = 1;
@@ -4898,6 +4908,7 @@ class KalturaReportType extends KalturaEnumBase
 	const DOCUMENT_ENTRY_MAP_OVERLAY_CITY = "73";
 	const DOCUMENT_ENTRY_PLATFORMS = "74";
 	const DOCUMENT_ENTRY_DOMAINS = "75";
+	const DOCUMENT_ENTRY_USER_ENGAGEMENT = "76";
 	const PARTNER_USAGE = "201";
 	const MAP_OVERLAY_COUNTRY_REALTIME = "10001";
 	const MAP_OVERLAY_REGION_REALTIME = "10002";

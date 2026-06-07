@@ -5384,6 +5384,29 @@ abstract class KalturaDimensionsAttributes extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDimensionsPercentage extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $heightPercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $widthPercentage = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDynamicEmailContents extends KalturaObjectBase
 {
 	/**
@@ -9653,6 +9676,29 @@ class KalturaOperationResource extends KalturaContentResource
 	 * @var int
 	 */
 	public $assetParamsId = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaOverlayScaleAttribute extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDimensionsPercentage
+	 */
+	public $scalePercentage;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaOverlayScaleBehavior
+	 */
+	public $scaleBehavior = null;
 
 
 }
@@ -18378,16 +18424,16 @@ class KalturaOverlayAttributes extends KalturaMediaCompositionAttributes
 	/**
 	 * 
 	 *
-	 * @var float
+	 * @var KalturaDimensionsPercentage
 	 */
-	public $marginsPercentage = null;
+	public $marginsPercentage;
 
 	/**
 	 * 
 	 *
-	 * @var float
+	 * @var KalturaOverlayScaleAttribute
 	 */
-	public $overlayScalePercentage = null;
+	public $overlayScaleAttribute;
 
 	/**
 	 * 
