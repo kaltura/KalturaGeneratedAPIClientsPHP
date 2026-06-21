@@ -9657,7 +9657,7 @@ class KalturaModerationFlag extends KalturaObjectBase
 class KalturaOperationResource extends KalturaContentResource
 {
 	/**
-	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
 	 *
 	 * @var KalturaContentResource
 	 */
@@ -18408,7 +18408,7 @@ class KalturaOrCondition extends KalturaCondition
 class KalturaOverlayAttributes extends KalturaMediaCompositionAttributes
 {
 	/**
-	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
 	 *
 	 * @var KalturaContentResource
 	 */
@@ -18935,7 +18935,7 @@ class KalturaRenderCaptionAttributes extends KalturaCaptionAttributes
 class KalturaReplaceBackgroundAttributes extends KalturaMediaCompositionAttributes
 {
 	/**
-	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
 	 *
 	 * @var KalturaContentResource
 	 */

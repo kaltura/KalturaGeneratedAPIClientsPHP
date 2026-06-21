@@ -529,6 +529,29 @@ class KalturaDictionary extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaEntryVendorTaskUnit extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $unitsUsed = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serviceName = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaVendorTaskData extends KalturaObjectBase
 {
 	/**
@@ -665,6 +688,13 @@ class KalturaEntryVendorTask extends KalturaObjectBase
 	 * @var int
 	 */
 	public $unitsUsed = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaEntryVendorTaskUnit
+	 */
+	public $unitsUsedArray;
 
 	/**
 	 * The user ID that approved this task for execution (in case moderation is requested)
@@ -1028,6 +1058,29 @@ class KalturaVendorCatalogItemPricing extends KalturaObjectBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorCatalogItemUnitPricing extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serviceName = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaVendorCatalogItemPricing
+	 */
+	public $priceUnit;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 {
 	/**
@@ -1111,6 +1164,13 @@ abstract class KalturaVendorCatalogItem extends KalturaObjectBase
 	 * @var KalturaVendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaVendorCatalogItemUnitPricing
+	 */
+	public $pricingArray;
 
 	/**
 	 * Property showing the catalog item's engine type, in case a vendor can offer the same service via different engines.

@@ -195,6 +195,29 @@ class KalturaDocumentFlavorParams extends KalturaFlavorParams
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDocumentImagesResource extends KalturaContentResource
+{
+	/**
+	 * ID of the flavor asset containing the image list
+	 *
+	 * @var string
+	 */
+	public $flavorAssetId = null;
+
+	/**
+	 * Zero-based index of the image to retrieve from the list
+	 *
+	 * @var int
+	 */
+	public $index = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaImageFlavorParams extends KalturaFlavorParams
 {
 	/**
