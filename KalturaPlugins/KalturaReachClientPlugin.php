@@ -1028,6 +1028,13 @@ class KalturaReachProfile extends KalturaObjectBase
 	 */
 	public $vendorTaskProcessingRegion = null;
 
+	/**
+	 * Comma separated catalogItemIds that are allowed for ordering using this reach profile
+	 *
+	 * @var string
+	 */
+	public $allowedCatalogItemIds = null;
+
 
 }
 
