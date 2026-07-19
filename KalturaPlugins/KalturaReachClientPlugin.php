@@ -562,6 +562,13 @@ abstract class KalturaVendorTaskData extends KalturaObjectBase
 	 */
 	public $entryDuration = null;
 
+	/**
+	 * string containing the comment provided by vendor
+	 *
+	 * @var string
+	 */
+	public $vendorComment = null;
+
 
 }
 

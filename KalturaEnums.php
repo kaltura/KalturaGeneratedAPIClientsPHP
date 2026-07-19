@@ -2899,6 +2899,18 @@ class KalturaGroupUserOrderBy extends KalturaEnumBase
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaHTMLPurifierBehaviourType extends KalturaEnumBase
+{
+	const IGNORE = "0";
+	const NOTIFY = "1";
+	const SANITIZE = "2";
+	const BLOCK = "3";
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaITunesSyndicationFeedAdultValues extends KalturaEnumBase
 {
 	const CLEAN = "clean";

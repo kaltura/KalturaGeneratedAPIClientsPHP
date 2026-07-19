@@ -3079,6 +3079,34 @@ class KalturaPartner extends KalturaObjectBase
 	 */
 	public $externalIdentifier = null;
 
+	/**
+	 * 
+	 *
+	 * @var KalturaHTMLPurifierBehaviourType
+	 */
+	public $htmlPurifierBehaviour = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $htmlPurifierBaseListUsage = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $purifyImageContent = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $fileTypeRestrictionEnabled = null;
+
 
 }
 
@@ -15058,6 +15086,13 @@ class KalturaBulkUploadResultVendorCatalogItem extends KalturaBulkUploadResult
 	 * @var KalturaVendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaVendorCatalogItemUnitPricing
+	 */
+	public $pricingArray;
 
 	/**
 	 * 
