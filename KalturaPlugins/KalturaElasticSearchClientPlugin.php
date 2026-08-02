@@ -219,6 +219,7 @@ class KalturaESearchEntryFieldName extends KalturaEnumBase
 	const ID = "id";
 	const IS_LIVE = "is_live";
 	const IS_QUIZ = "is_quiz";
+	const IS_SCHEDULED = "is_scheduled";
 	const USER_ID = "kuser_id";
 	const LAST_PLAYED_AT = "last_played_at";
 	const LENGTH_IN_MSECS = "length_in_msecs";
@@ -334,6 +335,7 @@ class KalturaESearchSortOrder extends KalturaEnumBase
  */
 class KalturaESearchUserFieldName extends KalturaEnumBase
 {
+	const ADMIN_TAGS = "admin_tags";
 	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";

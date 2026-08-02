@@ -52,6 +52,7 @@ class KalturaGroupProcessStatus extends KalturaEnumBase
  */
 class KalturaESearchGroupFieldName extends KalturaEnumBase
 {
+	const ADMIN_TAGS = "admin_tags";
 	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";
