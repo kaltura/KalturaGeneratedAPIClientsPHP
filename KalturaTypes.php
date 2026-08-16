@@ -10805,6 +10805,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 */
 	public $isPreview = null;
 
+	/**
+	 * filter by stream type
+	 *
+	 * @var string
+	 */
+	public $streamTypeIn = null;
+
 
 }
 
@@ -15107,6 +15114,13 @@ class KalturaBulkUploadResultVendorCatalogItem extends KalturaBulkUploadResult
 	 * @var int
 	 */
 	public $clearAudioFlavorParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $vendorData = null;
 
 
 }

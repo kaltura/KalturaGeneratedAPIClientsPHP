@@ -199,6 +199,7 @@ class KalturaVendorServiceTurnAroundTime extends KalturaEnumBase
 	const FIVE_BUSINESS_DAYS = 5;
 	const SIX_BUSINESS_DAYS = 6;
 	const SEVEN_BUSINESS_DAYS = 7;
+	const TEN_BUSINESS_DAYS = 10;
 	const THIRTY_MINUTES = 1800;
 	const TWO_HOURS = 7200;
 	const THREE_HOURS = 10800;
@@ -220,6 +221,7 @@ class KalturaVendorServiceType extends KalturaEnumBase
 {
 	const HUMAN = 1;
 	const MACHINE = 2;
+	const HYBRID = 3;
 }
 
 /**
@@ -928,6 +930,13 @@ class KalturaReachProfile extends KalturaObjectBase
 	 *
 	 * @var KalturaNullableBoolean
 	 */
+	public $enableHybridModeration = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
 	public $autoDisplayMachineCaptionsOnPlayer = null;
 
 	/**
@@ -936,6 +945,13 @@ class KalturaReachProfile extends KalturaObjectBase
 	 * @var KalturaNullableBoolean
 	 */
 	public $autoDisplayHumanCaptionsOnPlayer = null;
+
+	/**
+	 * 
+	 *
+	 * @var KalturaNullableBoolean
+	 */
+	public $autoDisplayHybridCaptionsOnPlayer = null;
 
 	/**
 	 * 
@@ -985,6 +1001,13 @@ class KalturaReachProfile extends KalturaObjectBase
 	 * @var string
 	 */
 	public $labelAdditionForHumanServiceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $labelAdditionForHybridServiceType = null;
 
 	/**
 	 * 
@@ -1307,6 +1330,24 @@ class KalturaAddEntryVendorTaskAction extends KalturaRuleAction
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaAudioDescriptionVendorTaskData extends KalturaVendorTaskData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaCaptionVendorTaskData extends KalturaVendorTaskData
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaCatalogItemAdvancedFilter extends KalturaSearchItem
 {
 	/**
@@ -1402,6 +1443,15 @@ class KalturaCategoryEntryCondition extends KalturaCondition
 	 */
 	public $comparison = null;
 
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaDubbingVendorTaskData extends KalturaVendorTaskData
+{
 
 }
 
@@ -1586,6 +1636,23 @@ class KalturaSentimentAnalysisVendorTaskData extends KalturaVendorTaskData
 	 * @var KalturaLanguageCode
 	 */
 	public $language = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaSignLanguageVendorTaskData extends KalturaVendorTaskData
+{
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $assetId = null;
 
 
 }
