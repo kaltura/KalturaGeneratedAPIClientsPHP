@@ -14599,6 +14599,13 @@ class KalturaBulkUploadResultCategory extends KalturaBulkUploadResult
 	 */
 	public $moderation = null;
 
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
+
 
 }
 

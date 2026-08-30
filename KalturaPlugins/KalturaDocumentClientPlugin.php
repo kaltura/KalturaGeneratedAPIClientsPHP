@@ -162,6 +162,14 @@ class KalturaDocumentEntry extends KalturaBaseEntry
 	 */
 	public $assetParamsIds = null;
 
+	/**
+	 * Number of views
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $views = null;
+
 
 }
 
