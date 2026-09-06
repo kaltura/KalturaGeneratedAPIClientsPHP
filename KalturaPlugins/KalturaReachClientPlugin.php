@@ -182,6 +182,9 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const IMMERSIVE_AGENT_CALL = 21;
 	const IMMERSIVE_AGENT_CHAT = 22;
 	const AVATAR_VOD = 23;
+	const LLM_MODELS = 24;
+	const IMMERSIVE_AGENT_EVAL = 25;
+	const IMMERSIVE_AGENT_PREVIEW = 26;
 }
 
 /**
@@ -1952,7 +1955,34 @@ class KalturaVendorImmersiveAgentChatCatalogItem extends KalturaVendorCatalogIte
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorImmersiveAgentEvalCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentPreviewCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorIntelligentTaggingCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLlmModelsCatalogItem extends KalturaVendorCatalogItem
 {
 
 }
@@ -3020,7 +3050,34 @@ class KalturaVendorImmersiveAgentChatCatalogItemFilter extends KalturaVendorCata
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorImmersiveAgentEvalCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorImmersiveAgentPreviewCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaVendorIntelligentTaggingCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorLlmModelsCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }

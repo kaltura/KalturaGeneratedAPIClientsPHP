@@ -39,6 +39,25 @@ require_once(dirname(__FILE__) . "/../KalturaTypes.php");
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaDrmKeyManagementPolicy extends KalturaEnumBase
+{
+	const UNKNOWN = 0;
+	const CLEAR = 1;
+	const SHARED_KEY = 2;
+	const ALL_VIDEO = 3;
+	const SD_HD = 4;
+	const SD_HD_UHD = 5;
+	const SD_HD_UHD1_UHD2 = 6;
+	const SD_HD1_HD2_UHD1_UHD2 = 7;
+	const SD_HD1_HD2_UHD = 8;
+	const SDHD1_HD2_UHD = 9;
+	const SDHD1_HD2_UHD1_UHD2 = 10;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaDrmLicenseExpirationPolicy extends KalturaEnumBase
 {
 	const FIXED_DURATION = 1;
@@ -64,6 +83,16 @@ class KalturaDrmProfileStatus extends KalturaEnumBase
 {
 	const ACTIVE = 1;
 	const DELETED = 2;
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKeyManagementPolicyObjectType extends KalturaEnumBase
+{
+	const PARTNER = 1;
+	const ENTRY = 2;
 }
 
 /**
@@ -355,6 +384,22 @@ class KalturaDrmProfile extends KalturaObjectBase
 	 * @var string
 	 */
 	public $signingKey = null;
+
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKeyManagementPolicy extends KalturaObjectBase
+{
+	/**
+	 * 
+	 *
+	 * @var KalturaDrmKeyManagementPolicy
+	 */
+	public $keyManagementPolicy = null;
 
 
 }
@@ -860,6 +905,62 @@ class KalturaDrmLicenseAccessService extends KalturaServiceBase
 		return $resultObject;
 	}
 }
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaKeyManagementPolicyService extends KalturaServiceBase
+{
+	function __construct(KalturaClient $client = null)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $objectType 
+	 * @param string $objectId 
+	 * @return KalturaKeyManagementPolicy
+	 */
+	function get($objectType, $objectId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->queueServiceActionCall("drm_keymanagementpolicy", "get", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaKeyManagementPolicy");
+		return $resultObject;
+	}
+
+	/**
+	 * 
+	 * 
+	 * @param int $objectType 
+	 * @param string $objectId 
+	 * @param KalturaKeyManagementPolicy $keyManagementPolicy 
+	 * @return KalturaKeyManagementPolicy
+	 */
+	function update($objectType, $objectId, KalturaKeyManagementPolicy $keyManagementPolicy)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->addParam($kparams, "keyManagementPolicy", $keyManagementPolicy->toParams());
+		$this->client->queueServiceActionCall("drm_keymanagementpolicy", "update", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultObject = $this->client->doQueue();
+		$this->client->throwExceptionIfError($resultObject);
+		$this->client->validateObjectType($resultObject, "KalturaKeyManagementPolicy");
+		return $resultObject;
+	}
+}
 /**
  * @package Kaltura
  * @subpackage Client
@@ -881,12 +982,18 @@ class KalturaDrmClientPlugin extends KalturaClientPlugin
 	 */
 	public $drmLicenseAccess = null;
 
+	/**
+	 * @var KalturaKeyManagementPolicyService
+	 */
+	public $keyManagementPolicy = null;
+
 	protected function __construct(KalturaClient $client)
 	{
 		parent::__construct($client);
 		$this->drmPolicy = new KalturaDrmPolicyService($client);
 		$this->drmProfile = new KalturaDrmProfileService($client);
 		$this->drmLicenseAccess = new KalturaDrmLicenseAccessService($client);
+		$this->keyManagementPolicy = new KalturaKeyManagementPolicyService($client);
 	}
 
 	/**
@@ -906,6 +1013,7 @@ class KalturaDrmClientPlugin extends KalturaClientPlugin
 			'drmPolicy' => $this->drmPolicy,
 			'drmProfile' => $this->drmProfile,
 			'drmLicenseAccess' => $this->drmLicenseAccess,
+			'keyManagementPolicy' => $this->keyManagementPolicy,
 		);
 		return $services;
 	}
