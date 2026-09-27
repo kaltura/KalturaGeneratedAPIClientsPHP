@@ -185,6 +185,7 @@ class KalturaVendorServiceFeature extends KalturaEnumBase
 	const LLM_MODELS = 24;
 	const IMMERSIVE_AGENT_EVAL = 25;
 	const IMMERSIVE_AGENT_PREVIEW = 26;
+	const VIDEO_GENERATION = 27;
 }
 
 /**
@@ -2101,6 +2102,15 @@ class KalturaVendorVideoAnalysisCatalogItem extends KalturaVendorCatalogItem
  * @package Kaltura
  * @subpackage Client
  */
+class KalturaVendorVideoGenerationCatalogItem extends KalturaVendorCatalogItem
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
 class KalturaAlignmentVendorTaskData extends KalturaVendorTaskDataCaptionAsset
 {
 	/**
@@ -3141,6 +3151,15 @@ class KalturaVendorSummaryCatalogItemFilter extends KalturaVendorCatalogItemFilt
  * @subpackage Client
  */
 class KalturaVendorVideoAnalysisCatalogItemFilter extends KalturaVendorCatalogItemFilter
+{
+
+}
+
+/**
+ * @package Kaltura
+ * @subpackage Client
+ */
+class KalturaVendorVideoGenerationCatalogItemFilter extends KalturaVendorCatalogItemFilter
 {
 
 }

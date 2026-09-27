@@ -260,6 +260,7 @@ class KalturaDistributionProviderType extends KalturaEnumBase
 	const PODCAST = "podcastDistribution.PODCAST";
 	const PUSH_TO_NEWS = "pushToNewsDistribution.PUSH_TO_NEWS";
 	const QUICKPLAY = "quickPlayDistribution.QUICKPLAY";
+	const RAIN_FOCUS = "rainFocusDistribution.RAIN_FOCUS";
 	const SYNACOR_HBO = "synacorHboDistribution.SYNACOR_HBO";
 	const TIME_WARNER = "timeWarnerDistribution.TIME_WARNER";
 	const TVCOM = "tvComDistribution.TVCOM";

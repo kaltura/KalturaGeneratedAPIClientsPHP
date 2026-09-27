@@ -3103,6 +3103,13 @@ class KalturaPartner extends KalturaObjectBase
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $htmlPurifierAllowedTags = null;
+
+	/**
+	 * 
+	 *
 	 * @var bool
 	 */
 	public $fileTypeRestrictionEnabled = null;
@@ -10811,6 +10818,13 @@ class KalturaReportInputFilter extends KalturaReportInputBaseFilter
 	 * @var string
 	 */
 	public $streamTypeIn = null;
+
+	/**
+	 * filter by reach catalog item id
+	 *
+	 * @var string
+	 */
+	public $reachCatalogItemIdIn = null;
 
 
 }
